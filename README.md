@@ -72,6 +72,24 @@ TEST_URL=http://127.0.0.1:8780 npm run test:online
 
 ## 部署
 
+### Cloudflare（当前站点）
+
+访问 **https://game.930316.xyz**。使用 `cf` CLI 的 Workers 静态资源托管，
+王冠峡谷提供单人 AI 练习。
+
+```sh
+npm run setup
+npm run deploy:cf
+```
+
+部署命令先生成静态文件，再运行 `cf deploy --prebuilt --profile work`。
+需要已授权的 `work` 配置；账号、Worker 名称和域名在 `scripts/build-cloudflare.mjs` 中设置。
+此脚本生成 `.cloudflare/output/v0/`，已验证兼容 `cf@1.0.0-beta.18`；升级 CLI 后先运行
+`cf deploy --prebuilt --profile work --dry-run` 检查构建输出兼容性。
+Cloudflare 自动管理自定义域名的 DNS 和 HTTPS。部署文件及凭据不提交 Git。
+
+### Node 服务
+
 在具备 Node.js 的主机按上述命令运行即可。配置反向代理时需同时转发 HTTP 与
 `/ws` 的 WebSocket Upgrade；公网建议使用 HTTPS。进程管理器应运行 `node server/start.mjs`，
 在发布阶段先执行 `npm run setup` 和 `npm run build`。

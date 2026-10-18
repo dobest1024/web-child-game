@@ -34,6 +34,14 @@
 - EdgeOne 国际站免登录部署成功；线上 Chrome 检查 14 个入口均加载出标题和游戏内容，已记录资源没有 HTTP 4xx/5xx。
 - 线上点击王冠峡谷“开始练习”后进入对局，确认 AI 自动出兵、3D 场景渲染及好友房间入口隐藏。
 
+## Cloudflare 自定义域名
+
+- 2026-10-18：使用 `cf@1.0.0-beta.18 deploy --prebuilt --profile work` 部署至 Workers 静态资源托管。
+- `game.930316.xyz` 已绑定；Cloudflare 创建代理 DNS 记录，浏览器通过 HTTPS 正常访问首页，无需预览令牌。
+- `npm run build:cf`、部署 dry-run 及 `npm test`（9/9）通过。
+- 14 个游戏入口在线加载出标题和内容，已记录资源没有 HTTP 4xx/5xx；王冠峡谷 AI 开局及自动出兵通过。
+- 未进行实体手机、国内不同运营商网络或所有关卡的完整验收。
+
 ## 页面截图
 
 ![桌面首页](home-desktop.png)
