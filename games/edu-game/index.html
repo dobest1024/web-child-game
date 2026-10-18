@@ -1,0 +1,1667 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>格子动物园</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=ZCOOL+KuaiLe&display=swap">
+<style>
+/* 布局：单列"玩具盒"——天空背景 + 山坡，地图是一张张世界卡片；游戏页自上而下：老师气泡 → 黄色木框棋盘 → 积木按钮 */
+:root{
+  --sky:#DCF0FF; --sky-2:#F2F9FF; --ground:#BDE7AE; --ground-2:#A6DB95;
+  --ink:#22344F; --ink-soft:#5A6D88;
+  --card:#FFFFFF; --cell-edge:#D6E0EE; --line:#C3D1E4;
+  --yard-a:#FFF1CC; --yard-b:#DDF0FF; --diag:#FFE1F0;
+  --frame:#FFBE3B; --frame-deep:#E09A0E;
+  --grape:#6F5AE8; --grape-soft:#E7E2FF;
+  --peer:#F1EEFF; --same:#D3F4E2; --focus:#FFE07A;
+  --leaf:#23A866; --coral:#EE5A57; --coral-soft:#FFD9D6;
+  --w1:#2FB673; --w2:#F0607A; --w3:#2E8FE0; --w4:#D24FB0; --w5:#5B5BD6; --w6:#C98712; --w7:#F07A24; --w8:#8A3FC2;
+  --w9:#13A3A0; --w10:#E35D3A; --w11:#6C8E1B; --w12:#3D6FB6;
+  --yard-c:#E2F6DF; --yard-d:#F3E4FF; --even:#D3DAE6; --edge:#B77A00;
+  --rg0:#FFE6A3; --rg1:#C9E6FF; --rg2:#CDEFC2; --rg3:#EAD3FF;
+  --c1:#E5484D; --c2:#E8730C; --c3:#2F9E44; --c4:#1C7ED6; --c5:#7048E8; --c6:#D6336C; --c7:#0C8599; --c8:#9A5B2E; --c9:#4263EB;
+  --display:"ZCOOL KuaiLe","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --body:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  --num:"Baloo 2",ui-rounded,"SF Pro Rounded",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --sky:#14203A; --sky-2:#1B2A48; --ground:#1D3A2E; --ground-2:#183126;
+    --ink:#EAF1FF; --ink-soft:#A3B4CF;
+    --card:#22314F; --cell-edge:#17233B; --line:#3A4C6E;
+    --yard-a:#3A3550; --yard-b:#24405E; --diag:#4E2E4C;
+    --frame:#E8A92C; --frame-deep:#9C6C0E;
+    --grape:#A193FF; --grape-soft:#3D3878;
+    --peer:#2C3560; --same:#1E4A3A; --focus:#6B5718;
+    --leaf:#45D08C; --coral:#FF7B77; --coral-soft:#5A2A30;
+    --w1:#2E9E62; --w2:#D2506A; --w3:#2F7FC8; --w4:#B5469A; --w5:#5656C4; --w6:#A9720F; --w7:#CF6418; --w8:#7A3AAE;
+    --w9:#12898A; --w10:#C24E30; --w11:#5E7C16; --w12:#355F9E;
+    --yard-c:#24453A; --yard-d:#3D2C52; --even:#43547A; --edge:#F0B43C;
+    --rg0:#4D4426; --rg1:#21405F; --rg2:#22483A; --rg3:#41305A;
+    --c1:#FF7A7E; --c2:#FFA552; --c3:#5FD37A; --c4:#5EAEFF; --c5:#A48BFF; --c6:#FF77A8; --c7:#3FD0E0; --c8:#E0A276; --c9:#8DA2FF;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --sky:#14203A; --sky-2:#1B2A48; --ground:#1D3A2E; --ground-2:#183126;
+  --ink:#EAF1FF; --ink-soft:#A3B4CF;
+  --card:#22314F; --cell-edge:#17233B; --line:#3A4C6E;
+  --yard-a:#3A3550; --yard-b:#24405E; --diag:#4E2E4C;
+  --frame:#E8A92C; --frame-deep:#9C6C0E;
+  --grape:#A193FF; --grape-soft:#3D3878;
+  --peer:#2C3560; --same:#1E4A3A; --focus:#6B5718;
+  --leaf:#45D08C; --coral:#FF7B77; --coral-soft:#5A2A30;
+  --w1:#2E9E62; --w2:#D2506A; --w3:#2F7FC8; --w4:#B5469A; --w5:#5656C4; --w6:#A9720F; --w7:#CF6418; --w8:#7A3AAE;
+  --w9:#12898A; --w10:#C24E30; --w11:#5E7C16; --w12:#355F9E;
+  --yard-c:#24453A; --yard-d:#3D2C52; --even:#43547A; --edge:#F0B43C;
+  --rg0:#4D4426; --rg1:#21405F; --rg2:#22483A; --rg3:#41305A;
+  --c1:#FF7A7E; --c2:#FFA552; --c3:#5FD37A; --c4:#5EAEFF; --c5:#A48BFF; --c6:#FF77A8; --c7:#3FD0E0; --c8:#E0A276; --c9:#8DA2FF;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{
+  margin:0; font-family:var(--body); font-size:16px; color:var(--ink);
+  background:linear-gradient(var(--sky-2), var(--sky) 60%) fixed, var(--sky);
+  -webkit-tap-highlight-color:transparent;
+}
+body::after{
+  content:""; position:fixed; inset:auto 0 0 0; height:120px; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(60% 120px at 20% 120%, var(--ground-2) 98%, transparent 100%),
+    radial-gradient(70% 140px at 85% 130%, var(--ground) 98%, transparent 100%);
+}
+button{font:inherit; color:inherit; touch-action:manipulation}
+button:focus-visible{outline:3px solid var(--grape); outline-offset:2px}
+.wrap{
+  max-width:980px; margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:16px 140px;
+}
+
+/* 积木按钮 */
+.toy{
+  border:2px solid var(--line); background:var(--card); border-radius:16px;
+  box-shadow:0 4px 0 var(--line); cursor:pointer; transition:transform .08s, box-shadow .08s;
+}
+.toy:active:not(:disabled){transform:translateY(3px); box-shadow:0 1px 0 var(--line)}
+.toy:disabled{cursor:default}
+.toy.sun{background:var(--frame); border-color:var(--frame-deep); box-shadow:0 4px 0 var(--frame-deep); color:#3A2600}
+.toy.sun:active{box-shadow:0 1px 0 var(--frame-deep)}
+.toy[aria-pressed="true"]{background:var(--grape); border-color:var(--grape); color:#fff}
+
+/* 顶栏 */
+.top{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.brand{font-family:var(--display); font-weight:400; font-size:clamp(30px, 6vw, 44px); margin:0; letter-spacing:2px; line-height:1.1}
+.brand small{display:block; font-family:var(--body); font-size:13px; letter-spacing:1px; color:var(--ink-soft); font-weight:500}
+.spacer{flex:1}
+.pill{display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:var(--card); border:2px solid var(--line); font-weight:700; white-space:nowrap}
+.pill b{font-family:var(--num); font-size:18px; line-height:1; font-variant-numeric:tabular-nums}
+.iconbtn{padding:8px 12px; font-weight:700}
+
+/* 老师 */
+.coach{display:flex; gap:12px; align-items:flex-start}
+.owl{
+  flex:none; width:58px; height:58px; border-radius:50%; display:grid; place-items:center; font-size:34px;
+  background:var(--card); border:3px solid var(--frame); box-shadow:0 3px 0 var(--frame-deep);
+}
+.owl.hop{animation:hop .5s}
+.bubble{
+  position:relative; flex:1; min-width:0; background:var(--card); border:2px solid var(--line);
+  border-radius:18px; padding:12px 44px 12px 14px; line-height:1.6; font-size:16px;
+}
+.bubble::before{content:""; position:absolute; left:-9px; top:20px; width:14px; height:14px; background:var(--card); border-left:2px solid var(--line); border-bottom:2px solid var(--line); transform:rotate(45deg)}
+.bubble p{margin:0}
+.bubble b{color:var(--grape)}
+.bubble small{color:var(--ink-soft)}
+.speak{position:absolute; right:6px; top:6px; border:0; background:transparent; font-size:20px; cursor:pointer; padding:4px; border-radius:10px}
+.actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+.actions:empty{display:none}
+.actions .toy{padding:8px 16px; font-weight:700}
+
+/* 地图 */
+#home .coach{margin:18px 0}
+.home-btns{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px}
+.learn{display:flex; align-items:center; gap:10px; padding:14px 20px; font-size:18px; font-weight:800}
+.learn.glow{animation:breathe 1.6s ease-in-out infinite}
+.daily{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:22px;
+  background:var(--card); border:3px dashed var(--frame); border-radius:22px; padding:14px 16px;
+}
+.daily .cal{flex:none; width:58px; text-align:center; border-radius:12px; overflow:hidden; border:2px solid var(--line); background:var(--card)}
+.daily .cal span{display:block; background:var(--coral); color:#fff; font-size:12px; font-weight:700; padding:2px 0}
+.daily .cal b{display:block; font-family:var(--num); font-size:26px; line-height:1.3}
+.daily .info{flex:1; min-width:180px}
+.daily h2{font-family:var(--display); font-weight:400; font-size:22px; margin:0}
+.daily p{margin:2px 0 0; color:var(--ink-soft); font-size:14px}
+.daily .toy{padding:10px 18px; font-weight:800}
+.worlds{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:18px}
+.world{background:var(--card); border:2px solid var(--line); border-radius:22px; overflow:hidden}
+.world .band{background:var(--wc); color:#fff; padding:12px 16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.world h2{font-family:var(--display); font-weight:400; font-size:24px; margin:0; letter-spacing:1px}
+.world .tag{font-family:var(--num); font-weight:800; background:rgba(255,255,255,.25); border-radius:10px; padding:0 8px; font-size:15px; white-space:nowrap}
+.world .wst{margin-left:auto; font-family:var(--num); font-weight:800; white-space:nowrap}
+.world .body{padding:14px 16px 16px; display:grid; gap:12px}
+.world .desc{margin:0; color:var(--ink-soft); font-size:14px}
+.world .syms{font-size:24px; letter-spacing:3px; overflow-wrap:anywhere}
+.levels{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px}
+.lv.saved::after{
+  content:"接着玩"; position:absolute; bottom:-8px; left:50%; transform:translateX(-50%);
+  background:var(--grape); color:#fff; font-size:11px; font-weight:700; line-height:18px; padding:0 7px; border-radius:9px; white-space:nowrap;
+}
+.lv{position:relative; aspect-ratio:1; max-width:100%; display:grid; place-items:center; align-content:center; gap:0; padding:4px; border-radius:50%}
+.lv .n{font-family:var(--num); font-weight:800; font-size:26px; line-height:1}
+.lv .st{font-size:12px; letter-spacing:1px; color:var(--frame-deep); line-height:1}
+.lv .st i{font-style:normal; color:var(--line)}
+.lv.done{border-color:var(--wc); box-shadow:0 4px 0 var(--wc)}
+.lv.next{background:var(--wc); color:#fff; border-color:var(--wc); box-shadow:0 4px 0 var(--ink-soft); animation:bob 1.4s ease-in-out infinite}
+.lv.next .st i{color:rgba(255,255,255,.6)}
+
+/* 游戏页 */
+.game{max-width:560px; margin:0 auto; display:grid; gap:14px; justify-items:center}
+.game > *{width:100%}
+.game .top .title{font-family:var(--display); font-size:22px; letter-spacing:1px}
+.stats{display:flex; gap:6px; flex-wrap:wrap}
+.stats .pill{font-size:14px; padding:4px 10px}
+#board{
+  --n:4; --bpr:2; --bc:2; --nc:2; --nf:.3;
+  width:min(100%, 480px, 56vh); width:min(100%, 480px, 56dvh);
+  container-type:inline-size;
+  display:grid; grid-template-columns:repeat(var(--bpr), 1fr); gap:7px; padding:9px;
+  background:var(--frame); border-radius:24px; box-shadow:0 7px 0 var(--frame-deep);
+  justify-self:center; touch-action:manipulation;
+}
+#board.n9{gap:5px; padding:6px; border-radius:18px; width:min(100%, 520px, 60vh); width:min(100%, 520px, 60dvh)}
+.yard{display:grid; grid-template-columns:repeat(var(--bc), 1fr); gap:4px; padding:4px; border-radius:15px; background:var(--yard-a)}
+.yard.b{background:var(--yard-b)}
+#board.n9 .yard{gap:3px; padding:3px; border-radius:11px}
+.cell{
+  aspect-ratio:1; border:0; padding:0; border-radius:12px; background:var(--card);
+  box-shadow:inset 0 -3px 0 var(--cell-edge);
+  display:grid; place-items:center; line-height:1; cursor:pointer; overflow:hidden;
+  font-family:var(--num); font-weight:800; color:var(--ink);
+  font-size:calc(100cqw / var(--n) * .5);
+}
+#board.n9 .cell{border-radius:7px; box-shadow:inset 0 -2px 0 var(--cell-edge)}
+.cell > span{display:block}
+.cell > .cv{display:grid; place-items:center; width:100%; height:100%; position:relative; z-index:1}
+#board.flat{grid-template-columns:repeat(var(--n), 1fr); gap:0; padding:8px}
+#board.flat .cell{position:relative; overflow:visible; border-radius:0; box-shadow:none}
+#board.flat .cell.sel{box-shadow:inset 0 0 0 3px var(--grape)}
+#board.flat .cell.bad{box-shadow:inset 0 0 0 3px var(--coral)}
+.cell.r0{background:var(--rg0)} .cell.r1{background:var(--rg1)} .cell.r2{background:var(--rg2)} .cell.r3{background:var(--rg3)}
+.cell .edge{position:absolute; inset:0; pointer-events:none}
+.cell .par{position:absolute; inset:12%; border-radius:50%; background:var(--even); pointer-events:none}
+.cell .cage{position:absolute; border:0 dashed var(--ink-soft); pointer-events:none}
+.cell .sum{position:absolute; top:2px; left:2px; z-index:2; padding:1px 3px; border-radius:5px; background:var(--card); font-family:var(--num); font-weight:800; line-height:1; color:var(--ink); font-size:calc(100cqw / var(--n) * .24); pointer-events:none}
+.cell .cmp{
+  position:absolute; z-index:3; pointer-events:none; display:grid; place-items:center;
+  width:calc(100cqw / var(--n) * .3); height:calc(100cqw / var(--n) * .3); border-radius:50%;
+  background:var(--card); color:var(--coral); font-family:var(--num); font-weight:800; line-height:1;
+  font-size:calc(100cqw / var(--n) * .24); box-shadow:0 0 0 2px var(--coral);
+}
+.cell .cmp.h{right:0; top:50%; transform:translate(50%, -50%)}
+.cell .cmp.v{bottom:0; left:50%; transform:translate(-50%, 50%) rotate(90deg)}
+.groupTitle{font-family:var(--display); font-weight:400; font-size:26px; margin:28px 0 12px; letter-spacing:1px}
+.groupTitle small{font-family:var(--body); font-size:14px; color:var(--ink-soft); margin-left:8px; letter-spacing:0}
+.cell.given{cursor:default}
+.cell.diag{background:var(--diag)}
+.cell.peer{background:var(--peer)}
+.cell.same{background:var(--same)}
+.cell.focus{background:var(--focus)}
+.cell.sel{background:var(--grape-soft); box-shadow:inset 0 0 0 3px var(--grape)}
+.cell.mark{outline:3px dashed var(--grape); outline-offset:-4px}
+.cell.off{opacity:.35; cursor:default}
+.cell.target{animation:glow 1.1s ease-in-out infinite}
+.cell.bad{background:var(--coral-soft); box-shadow:inset 0 0 0 3px var(--coral)}
+.cell.shake{animation:shake .42s}
+.cell.pop > span{animation:pop .38s}
+.cell.cheer > span{animation:cheer .7s both; animation-delay:var(--d, 0s)}
+.notes{
+  display:grid !important; grid-template-columns:repeat(var(--nc), 1fr); width:100%; height:100%; padding:6%;
+  font-size:calc(100cqw / var(--n) * var(--nf)); font-weight:700; color:var(--ink-soft);
+}
+.notes i{font-style:normal; display:grid; place-items:center; line-height:1}
+body.num .cell[data-v="1"], body.num .key[data-v="1"] .k, body.num .notes i[data-v="1"]{color:var(--c1)}
+body.num .cell[data-v="2"], body.num .key[data-v="2"] .k, body.num .notes i[data-v="2"]{color:var(--c2)}
+body.num .cell[data-v="3"], body.num .key[data-v="3"] .k, body.num .notes i[data-v="3"]{color:var(--c3)}
+body.num .cell[data-v="4"], body.num .key[data-v="4"] .k, body.num .notes i[data-v="4"]{color:var(--c4)}
+body.num .cell[data-v="5"], body.num .key[data-v="5"] .k, body.num .notes i[data-v="5"]{color:var(--c5)}
+body.num .cell[data-v="6"], body.num .key[data-v="6"] .k, body.num .notes i[data-v="6"]{color:var(--c6)}
+body.num .cell[data-v="7"], body.num .key[data-v="7"] .k, body.num .notes i[data-v="7"]{color:var(--c7)}
+body.num .cell[data-v="8"], body.num .key[data-v="8"] .k, body.num .notes i[data-v="8"]{color:var(--c8)}
+body.num .cell[data-v="9"], body.num .key[data-v="9"] .k, body.num .notes i[data-v="9"]{color:var(--c9)}
+
+.palette{display:flex; flex-wrap:wrap; justify-content:center; gap:10px}
+.key{position:relative; width:68px; height:68px; display:grid; place-items:center; padding:0}
+.palette.many .key{width:54px; height:58px}
+.palette.pencil .key{border-style:dashed; border-color:var(--grape)}
+.key .k{font-family:var(--num); font-weight:800; font-size:34px; line-height:1}
+.palette.many .key .k{font-size:28px}
+.key .left{position:absolute; top:-8px; right:-8px; min-width:22px; height:22px; padding:0 5px; border-radius:11px; background:var(--grape); color:#fff; font-family:var(--num); font-weight:800; font-size:13px; line-height:22px; text-align:center}
+.key.full{opacity:.35}
+.key.full .left{background:var(--leaf)}
+.key.nudge{animation:breathe 1s ease-in-out 3}
+.tools{display:flex; gap:8px; justify-content:center; flex-wrap:wrap}
+.tools .toy{padding:10px 14px; font-weight:700}
+
+/* 弹层 */
+.overlay{position:fixed; inset:0; z-index:20; display:grid; place-items:center; background:rgba(10,20,40,.45); overflow-y:auto;
+  padding:max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px))}
+.sheet{width:min(100%, 420px); background:var(--card); border-radius:26px; border:3px solid var(--frame); box-shadow:0 8px 0 var(--frame-deep); padding:24px 20px; text-align:center; display:grid; gap:14px}
+.sheet.wide{width:min(100%, 560px)}
+.sheet h3{font-family:var(--display); font-weight:400; font-size:32px; margin:0; letter-spacing:2px}
+.sheet p{margin:0; color:var(--ink-soft); line-height:1.6}
+.stars{display:flex; justify-content:center; gap:10px; font-size:52px; line-height:1}
+.stars span{color:var(--line); transform:scale(.6); transition:transform .3s}
+.stars span.on{color:var(--frame); animation:starIn .5s both; animation-delay:var(--d)}
+.sheet .row{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+.sheet .toy{padding:10px 18px; font-weight:800}
+.unlock{background:var(--same); color:var(--ink); border-radius:14px; padding:10px; font-weight:700}
+.got{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+.got div{background:var(--focus); border-radius:14px; padding:8px 12px; font-weight:700; animation:starIn .5s both .9s}
+.got div span{font-size:28px; display:block}
+.opt{display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left}
+.seg{display:inline-flex; border:2px solid var(--line); border-radius:14px; overflow:hidden}
+.seg button{border:0; background:transparent; padding:8px 14px; cursor:pointer; font-weight:700}
+.seg button[aria-pressed="true"]{background:var(--grape); color:#fff}
+.danger{color:var(--coral)!important}
+.book{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px}
+.stk{border:2px solid var(--line); border-radius:16px; padding:10px 4px; display:grid; gap:4px; justify-items:center; align-content:start}
+.stk .e{font-size:34px; line-height:1.1}
+.stk b{font-size:13px}
+.stk small{font-size:11px; color:var(--ink-soft); line-height:1.3}
+.stk.lock .e{filter:grayscale(1); opacity:.25}
+.stk.has{border-color:var(--frame); background:var(--yard-a)}
+#confetti{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:30}
+
+@keyframes pop{0%{transform:scale(.3)}70%{transform:scale(1.18)}100%{transform:scale(1)}}
+@keyframes cheer{0%,100%{transform:translateY(0) scale(1)}40%{transform:translateY(-22%) scale(1.15)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@keyframes glow{0%,100%{box-shadow:inset 0 0 0 3px var(--grape)}50%{box-shadow:inset 0 0 0 6px var(--grape)}}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-10px) rotate(-8deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes starIn{0%{transform:scale(0) rotate(-90deg)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+@media (max-width:420px){
+  .key{width:60px; height:60px}
+  .palette.many .key{width:50px; height:54px}
+  .owl{width:48px; height:48px; font-size:28px}
+  .bubble{font-size:15px}
+  .book{grid-template-columns:repeat(3, 1fr)}
+}
+</style>
+</head>
+<body>
+
+<section id="home" class="wrap">
+  <header class="top">
+    <h1 class="brand">格子动物园<small>6–10 岁的数独闯关</small></h1>
+    <span class="spacer"></span>
+    <span class="pill" title="收集到的星星">★ <b id="starTotal">0</b> / <span id="starMax">0</span></span>
+    <button class="toy iconbtn" id="btnSettings" type="button">设置</button>
+  </header>
+  <div class="coach">
+    <div class="owl" aria-hidden="true">🦉</div>
+    <div class="bubble"><p id="homeText"></p><button class="speak" type="button" data-speak="homeText" aria-label="读给我听">🔊</button></div>
+  </div>
+  <div class="home-btns">
+    <button class="toy sun learn" id="btnLearn" type="button"><span aria-hidden="true">🦉</span> 跟咕咕老师学玩法</button>
+    <button class="toy learn" id="btnBook" type="button"><span aria-hidden="true">📒</span> 贴纸册 <b id="bookN">0</b>/<span id="bookMax">0</span></button>
+  </div>
+  <div class="daily" id="daily"></div>
+  <div id="worlds"></div>
+</section>
+
+<section id="game" class="wrap" hidden>
+  <div class="game">
+    <header class="top">
+      <button class="toy iconbtn" id="btnBack" type="button">‹ 地图</button>
+      <span class="title" id="lvlTitle"></span>
+      <span class="spacer"></span>
+      <span class="stats" id="stats"><span class="pill">⏱ <b id="timer">0:00</b></span><span class="pill">错 <b id="mist">0</b></span><span class="pill">提示 <b id="hintN">0</b></span></span>
+    </header>
+    <div class="coach">
+      <div class="owl" id="owl" aria-hidden="true">🦉</div>
+      <div class="bubble"><p id="coachText"></p><div class="actions" id="coachActions"></div><button class="speak" type="button" data-speak="coachText" aria-label="读给我听">🔊</button></div>
+    </div>
+    <div id="board" role="grid" aria-label="数独棋盘"></div>
+    <div class="palette" id="palette"></div>
+    <div class="tools">
+      <button class="toy sun" id="btnHint" type="button">💡 提示</button>
+      <button class="toy" id="btnNotes" type="button" aria-pressed="false">✏️ 笔记</button>
+      <button class="toy" id="btnAutoNotes" type="button" hidden>🪄 全部笔记</button>
+      <button class="toy" id="btnRestart" type="button">↺ 重来</button>
+      <button class="toy" id="btnSkip" type="button" hidden>跳过 ⏭</button>
+    </div>
+  </div>
+</section>
+
+<div class="overlay" id="win" hidden>
+  <div class="sheet" id="winSheet"></div>
+</div>
+
+<div class="overlay" id="bookPop" hidden>
+  <div class="sheet wide">
+    <h3>贴纸册</h3>
+    <p>完成挑战就能得到贴纸，看看你能集齐几张！</p>
+    <div class="book" id="book"></div>
+    <div class="row"><button class="toy sun" id="btnCloseBook" type="button">合上</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="settings" hidden>
+  <div class="sheet">
+    <h3>设置</h3>
+    <div class="opt"><span>4×4、6×6 显示<br><small style="color:var(--ink-soft)">9×9 固定用数字</small></span><span class="seg" id="segMode"><button type="button" data-mode="emoji">图案</button><button type="button" data-mode="num">数字</button></span></div>
+    <div class="opt"><span>声音</span><span class="seg" id="segSound"><button type="button" data-sound="1">开</button><button type="button" data-sound="0">关</button></span></div>
+    <div class="opt"><span>清空闯关记录</span><button class="toy danger" id="btnReset" type="button" style="padding:8px 14px">清空</button></div>
+    <div class="row"><button class="toy sun" id="btnCloseSet" type="button">好了</button></div>
+  </div>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script>
+// ==LOGIC==
+const WORLDS = [
+  {id:'zoo', name:'小动物公寓', size:4, br:2, bc:2, wc:'--w1',
+   syms:['🐱','🐶','🐰','🐻'], names:['小猫','小狗','小兔','小熊'],
+   desc:'4×4 · 每排住 4 种小动物，最适合刚入门', empties:[4,5,6,7,8,8,9,10]},
+  {id:'fruit', name:'甜甜果园', size:4, br:2, bc:2, wc:'--w2',
+   syms:['🍎','🍌','🍇','🍊'], names:['苹果','香蕉','葡萄','橘子'],
+   desc:'4×4 · 空格更多，要多想一步', empties:[9,9,10,10,11,11,12,12]},
+  {id:'sea', name:'海底王国', size:6, br:2, bc:3, wc:'--w3',
+   syms:['🐠','🐙','🦀','🐳','🐢','🦑'], names:['小鱼','章鱼','螃蟹','鲸鱼','海龟','鱿鱼'],
+   desc:'6×6 · 小院子变成 2 行 3 列的长方形', empties:[10,12,14,16,18,19,20,21],
+   intro:'欢迎来到「海底王国」！棋盘变大成 6×6 啦，<b>小院子是 2 行 3 列的长方形</b>。规则还是一样：横排、竖排、小院子里都不能重复。'},
+  {id:'candy', name:'糖果工厂', size:6, br:2, bc:3, wc:'--w4',
+   syms:['🍭','🍬','🍩','🧁','🍪','🍫'], names:['棒棒糖','糖果','甜甜圈','纸杯蛋糕','饼干','巧克力'],
+   desc:'6×6 · 空格超级多，试试用 ✏️ 笔记', empties:[21,22,23,24,24,25,25,26],
+   intro:'「糖果工厂」的空格特别多！教你一个新本领：点 <b>✏️ 笔记</b>，就能在格子里用小字写下“可能是谁”，想清楚了再关掉笔记正式放进去。'},
+  {id:'space', name:'星空探险', size:9, br:3, bc:3, wc:'--w5',
+   syms:['🌙','⭐','🌈','🪐','🌍','☄️','🚀','🛸','👽'], names:['月亮','星星','彩虹','土星','地球','彗星','火箭','飞碟','外星人'],
+   desc:'9×9 · 真正的数独！', empties:[30,33,36,38,40,42,44,46],
+   intro:'欢迎来到「星空探险」，这是<b>真正的 9×9 数独</b>！格子里填<b>数字 1～9</b>，小院子是 3×3 的。别着急，一个一个找“只剩一个空”的地方。'},
+  {id:'dino', name:'恐龙山谷', size:9, br:3, bc:3, wc:'--w6',
+   syms:['🦕','🦖','🥚','🌋','🌴','🦴','🐊','🦎','🐉'], names:['腕龙','霸王龙','恐龙蛋','火山','椰子树','骨头','鳄鱼','蜥蜴','飞龙'],
+   desc:'9×9 · 线索只剩一小半', empties:[47,48,49,50,51,52,53,54],
+   intro:'「恐龙山谷」的线索很少！小窍门：盯住一个数字，看看在每个小院子里<b>它只能放在哪一格</b>。'},
+  {id:'rainbow', name:'彩虹游乐场', size:9, br:3, bc:3, diag:true, wc:'--w7',
+   syms:['🎈','🎨','🎵','🎁','🧸','🪁','🎀','🔔','🧩'], names:['气球','调色盘','音符','礼物','玩具熊','风筝','蝴蝶结','铃铛','拼图'],
+   desc:'9×9 · 粉色的两条斜线上也不能重复！', empties:[36,39,42,44,46,48,50,52],
+   intro:'「彩虹游乐场」多了<b>一条新规则</b>：棋盘上有两条粉色的<b>斜线</b>，每条斜线上的 9 个格子也不能重复！'},
+  {id:'castle', name:'魔法城堡', size:9, br:3, bc:3, tier:2, wc:'--w8',
+   syms:['👑','🧙','🔮','🧚','🦄','🗝️','📜','🧪','🏰'], names:['王冠','魔法师','水晶球','仙子','独角兽','钥匙','魔法书','药水','城堡'],
+   desc:'9×9 · 要用「高手技巧」才能解开', empties:[50,51,52,53,54,55,56,57],
+   intro:'这里是最难的「魔法城堡」！有时候<b>一眼找不到答案</b>，要先用 ✏️ 笔记写下可能的选项，再用高手技巧排除。卡住了就点 💡，咕咕老师教你高手技巧。'},
+  {id:'parity', name:'单双数花园', size:6, br:2, bc:3, variant:'parity', group:'new', wc:'--w9', badge:'🌷 双数 2 4 6 · 单数 1 3 5',
+   desc:'6×6 · 带灰色圆圈的格子只能填双数，白格子填单数', empties:[18,20,22,24,26,27,28,30],
+   intro:'「单双数花园」多了一条新规则：<b>带灰色圆圈的格子只能填双数（2、4、6）</b>，没有圆圈的格子只能填单数（1、3、5）。'},
+  {id:'compare', name:'大小比比看', size:6, br:2, bc:3, variant:'compare', cmpRate:.45, group:'new', wc:'--w10', badge:'🐊 5 &gt; 2 · 1 &lt; 4',
+   desc:'6×6 · 格子之间有 > < 号，要比一比谁大', empties:[16,18,20,22,24,26,27,28],
+   intro:'「大小比比看」的格子之间有 <b>&gt;</b> 和 <b>&lt;</b> 号。它像一张<b>大嘴巴，嘴巴朝着大的数</b>，比如 5 &gt; 2。'},
+  {id:'sum', name:'加法森林', size:6, br:2, bc:3, variant:'sum', group:'new', wc:'--w11', badge:'🌲 3 + 4 = 7',
+   desc:'6×6 · 虚线框里的数加起来，要等于角上的小数字', empties:[20,23,26,28,30,32,34,36],
+   intro:'「加法森林」里有很多<b>虚线框</b>：框里的数<b>加起来要等于左上角的小数字</b>，同一个框里的数也不能重复。'},
+  {id:'jigsaw', name:'拼图小镇', size:9, br:3, bc:3, variant:'jigsaw', boxName:'拼图块', group:'new', wc:'--w12', badge:'🧩 弯弯曲曲的小院子',
+   desc:'9×9 · 小院子变成弯弯曲曲的拼图块', empties:[36,39,42,44,46,48,50,52],
+   intro:'「拼图小镇」的小院子变成了<b>弯弯曲曲的拼图块</b>（粗线围起来、同一个颜色的 9 格）。每个拼图块里 1～9 也不能重复。'},
+];
+const LEVELS_PER_WORLD = 8;
+const DAILY_POOL = [
+  {w:3, empties:23}, {w:4, empties:44}, {w:8, empties:26}, {w:6, empties:46}, {w:10, empties:30},
+  {w:5, empties:50}, {w:9, empties:24}, {w:11, empties:46}, {w:7, empties:53},
+];
+
+function rng(seed){
+  return function(){
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function shuffle(a, r){
+  for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
+const GEO = {};
+function geom(n, br, bc, diag, regions){
+  const key = [n, br, bc, diag ? 1 : 0, regions ? regions.join('') : ''].join('-');
+  if(GEO[key]) return GEO[key];
+  const rows = [], cols = [], boxes = [], rOf = [], cOf = [], bOf = [];
+  for(let i = 0; i < n; i++){ rows.push([]); cols.push([]); boxes.push([]); }
+  const bpr = n / bc;
+  for(let r = 0; r < n; r++) for(let c = 0; c < n; c++){
+    const i = r * n + c, b = regions ? regions[i] : Math.floor(r / br) * bpr + Math.floor(c / bc);
+    rows[r].push(i); cols[c].push(i); boxes[b].push(i);
+    rOf[i] = r; cOf[i] = c; bOf[i] = b;
+  }
+  const units = [
+    ...rows.map(u => ({t:'row', u})),
+    ...cols.map(u => ({t:'col', u})),
+    ...boxes.map(u => ({t:'box', u})),
+  ];
+  const diagCells = new Set();
+  if(diag){
+    const d1 = [], d2 = [];
+    for(let k = 0; k < n; k++){ d1.push(k * n + k); d2.push(k * n + n - 1 - k); }
+    units.push({t:'diag', u:d1}, {t:'diag', u:d2});
+    d1.concat(d2).forEach(i => diagCells.add(i));
+  }
+  units.forEach(U => U.set = new Set(U.u));
+  const unitsOf = [], peers = [];
+  for(let i = 0; i < n * n; i++){
+    unitsOf[i] = units.filter(U => U.set.has(i));
+    peers[i] = [...new Set(unitsOf[i].flatMap(U => U.u))].filter(j => j !== i);
+  }
+  return GEO[key] = {n, br, bc, bpr, diag:!!diag, rows, cols, boxes, rOf, cOf, bOf, units, unitsOf, peers, diagCells};
+}
+const geomOf = W => geom(W.size, W.br, W.bc, W.diag);
+
+const bitCount = m => { let c = 0; while(m){ m &= m - 1; c++; } return c; };
+const lowVal = m => { let v = 0; while(!(m >> v & 1)) v++; return v; };
+const highVal = m => 31 - Math.clz32(m);
+function nbrs(n, i){
+  const r = Math.floor(i / n), c = i % n, out = [];
+  if(r > 0) out.push(i - n);
+  if(c < n - 1) out.push(i + 1);
+  if(r < n - 1) out.push(i + n);
+  if(c > 0) out.push(i - 1);
+  return out;
+}
+
+function candOf(G, a, i){
+  if(a[i]) return 0;
+  let m = (1 << (G.n + 1)) - 2;
+  for(const j of G.peers[i]) if(a[j]) m &= ~(1 << a[j]);
+  if(G.mask) m &= G.mask[i];
+  return m;
+}
+function allCands(G, a){
+  const C = a.map((_, i) => candOf(G, a, i));
+  if(G.cmp || G.cages) prune(G, a, C);
+  return C;
+}
+// 新玩法的额外规则：大小号、加法框，反复排除直到不再变化
+function prune(G, a, C){
+  const cand = i => a[i] ? 1 << a[i] : C[i];
+  let changed = true;
+  while(changed){
+    changed = false;
+    if(G.cmp) for(const {a:x, b:y} of G.cmp){   // x 比 y 大
+      const mx = cand(x), my = cand(y);
+      if(!mx || !my) continue;
+      if(!a[x]){ const m = C[x] & ~((1 << (lowVal(my) + 1)) - 1); if(m !== C[x]){ C[x] = m; changed = true; } }
+      if(!a[y]){ const m = C[y] & ((1 << highVal(mx)) - 1); if(m !== C[y]){ C[y] = m; changed = true; } }
+    }
+    if(G.cages) for(const cg of G.cages){
+      const poss = cg.cells.map(() => 0), pick = [];
+      const rec = (k, sum, used) => {
+        if(k === cg.cells.length){ if(sum === cg.sum) pick.forEach((v, t) => poss[t] |= 1 << v); return; }
+        const m = cand(cg.cells[k]);
+        for(let v = 1; v <= G.n && sum + v <= cg.sum; v++)
+          if(m >> v & 1 && !(used >> v & 1)){ pick[k] = v; rec(k + 1, sum + v, used | 1 << v); }
+      };
+      rec(0, 0, 0);
+      cg.cells.forEach((i, t) => {
+        if(a[i]) return;
+        const m = C[i] & poss[t];
+        if(m !== C[i]){ C[i] = m; changed = true; }
+      });
+    }
+  }
+}
+
+// 一步推理：先找唯一候选 / 唯一位置，level 2 才用高手技巧
+function nextStep(G, a, C, level){
+  for(let i = 0; i < a.length; i++){
+    if(a[i]) continue;
+    if(!C[i]) return {dead:true};
+    if(bitCount(C[i]) === 1) return {i, v:lowVal(C[i]), kind:'naked'};
+  }
+  for(const U of G.units){
+    for(let v = 1; v <= G.n; v++){
+      if(U.u.some(j => a[j] === v)) continue;
+      const spots = U.u.filter(j => C[j] >> v & 1);
+      if(!spots.length) return {dead:true};
+      if(spots.length === 1) return {i:spots[0], v, kind:'hidden', unit:U};
+    }
+  }
+  return level >= 2 ? advancedStep(G, a, C) : null;
+}
+// 高手技巧：①区块排除（某种图案在 A 里只能落在 A∩B，B 的其余格子就不能放它）②数对
+function advancedStep(G, a, C){
+  for(const A of G.units){
+    for(let v = 1; v <= G.n; v++){
+      if(A.u.some(j => a[j] === v)) continue;
+      const spots = A.u.filter(j => C[j] >> v & 1);
+      if(spots.length < 2) continue;
+      for(const B of G.unitsOf[spots[0]]){
+        if(B === A || !spots.every(j => B.set.has(j))) continue;
+        const elim = B.u.filter(j => !A.set.has(j) && C[j] >> v & 1).map(j => [j, v]);
+        if(elim.length) return {kind:'line', A, B, v, spots, elim};
+      }
+    }
+  }
+  for(const U of G.units){
+    const two = U.u.filter(j => !a[j] && bitCount(C[j]) === 2);
+    for(let x = 0; x < two.length; x++) for(let y = x + 1; y < two.length; y++){
+      const p = two[x], q = two[y];
+      if(C[p] !== C[q]) continue;
+      const m = C[p], elim = [];
+      for(const j of U.u) if(j !== p && j !== q && !a[j])
+        for(let v = 1; v <= G.n; v++) if(m >> v & 1 && C[j] >> v & 1) elim.push([j, v]);
+      if(elim.length) return {kind:'pair', U, pair:[p, q], m, elim};
+    }
+  }
+  return null;
+}
+function applyStep(G, a, C, s){
+  if(s.elim){ for(const [j, v] of s.elim) C[j] &= ~(1 << v); return; }
+  a[s.i] = s.v; C[s.i] = 0;
+  for(const p of G.peers[s.i]) C[p] &= ~(1 << s.v);
+}
+function solve(G, a0, level){
+  const a = a0.slice(), C = allCands(G, a);
+  let adv = false;
+  for(;;){
+    const s = nextStep(G, a, C, level);
+    if(!s) return {ok:a.every(Boolean), adv};
+    if(s.dead) return {ok:false, adv};
+    applyStep(G, a, C, s);
+    if(s.elim) adv = true;
+    else if(G.cmp || G.cages) allCands(G, a).forEach((m, k) => C[k] = m);
+  }
+}
+function fullGrid(G, r){
+  const a = new Array(G.n * G.n).fill(0);
+  const vals = [...Array(G.n)].map((_, k) => k + 1);
+  const rec = i => {
+    if(i === a.length) return true;
+    const m = candOf(G, a, i);
+    for(const v of shuffle(vals.filter(v => m >> v & 1), r)){
+      a[i] = v;
+      if(rec(i + 1)) return true;
+    }
+    a[i] = 0;
+    return false;
+  };
+  rec(0);
+  return a;
+}
+// 锯齿数独：从普通小院子出发，随机交换边界上的格子，保证每块大小不变、连成一片
+function jigsawRegions(n, br, bc, r){
+  const reg = geom(n, br, bc, false).bOf.slice();
+  const connected = id => {
+    const cells = reg.map((v, i) => v === id ? i : -1).filter(i => i >= 0);
+    const seen = new Set([cells[0]]), st = [cells[0]];
+    while(st.length){ const x = st.pop(); for(const y of nbrs(n, x)) if(reg[y] === id && !seen.has(y)){ seen.add(y); st.push(y); } }
+    return seen.size === cells.length;
+  };
+  for(let t = 0; t < n * n * 4; t++){
+    const x = Math.floor(r() * n * n);
+    const ys = nbrs(n, x).filter(y => reg[y] !== reg[x]);
+    if(!ys.length) continue;
+    const A = reg[x], B = reg[ys[Math.floor(r() * ys.length)]];
+    const zs = reg.map((v, i) => v === B && nbrs(n, i).some(k => reg[k] === A && k !== x) ? i : -1).filter(i => i >= 0);
+    if(!zs.length) continue;
+    const z = zs[Math.floor(r() * zs.length)];
+    reg[x] = B; reg[z] = A;
+    if(!connected(A) || !connected(B)){ reg[x] = A; reg[z] = B; }
+  }
+  return reg;
+}
+// 每次挑候选最少的格子填，配合步数上限，填不出来就换一种拼图块
+function fullGridMRV(G, r, limit){
+  const a = new Array(G.n * G.n).fill(0), vals = [...Array(G.n)].map((_, k) => k + 1);
+  let nodes = 0;
+  const rec = () => {
+    if(++nodes > limit) return false;
+    let best = -1, bm = 0, bn = 99;
+    for(let i = 0; i < a.length; i++) if(!a[i]){
+      const m = candOf(G, a, i), c = bitCount(m);
+      if(c < bn){ bn = c; best = i; bm = m; if(c <= 1) break; }
+    }
+    if(best < 0) return true;
+    if(!bn) return false;
+    for(const v of shuffle(vals.filter(v => bm >> v & 1), r)){
+      a[best] = v;
+      if(rec()) return true;
+      if(nodes > limit) break;
+    }
+    a[best] = 0;
+    return false;
+  };
+  return rec() ? a : null;
+}
+function addRules(W, G, sol, r){
+  const n = G.n;
+  if(W.variant === 'parity'){
+    let ev = 0;
+    for(let v = 2; v <= n; v += 2) ev |= 1 << v;
+    const od = ((1 << (n + 1)) - 2) & ~ev;
+    G.even = sol.map(v => v % 2 === 0);
+    G.mask = G.even.map(e => e ? ev : od);
+  }
+  if(W.variant === 'compare'){
+    G.cmp = [];
+    for(let i = 0; i < n * n; i++)
+      for(const j of [i % n < n - 1 ? i + 1 : -1, i + n < n * n ? i + n : -1])
+        if(j >= 0 && r() < W.cmpRate) G.cmp.push(sol[i] > sol[j] ? {a:i, b:j} : {a:j, b:i});
+  }
+  if(W.variant === 'sum'){
+    const owner = Array(n * n).fill(-1), cages = [];
+    for(const i of shuffle([...sol.keys()], r)){
+      if(owner[i] >= 0) continue;
+      const size = r() < .3 ? 3 : 2, cells = [i];
+      owner[i] = cages.length;
+      while(cells.length < size){
+        const opts = [];
+        cells.forEach(x => nbrs(n, x).forEach(y => {
+          if(owner[y] < 0 && !cells.some(z => sol[z] === sol[y]) && !opts.includes(y)) opts.push(y);
+        }));
+        if(!opts.length) break;
+        const y = opts[Math.floor(r() * opts.length)];
+        owner[y] = cages.length; cells.push(y);
+      }
+      cages.push({cells});
+    }
+    cages.forEach(cg => {   // 落单的格子并到旁边的框里
+      if(cg.cells.length !== 1) return;
+      const x = cg.cells[0];
+      for(const y of nbrs(n, x)){
+        const t = cages[owner[y]];
+        if(t !== cg && t.cells.length < 4 && !t.cells.some(z => sol[z] === sol[x])){ t.cells.push(x); owner[x] = owner[y]; cg.cells = []; break; }
+      }
+    });
+    G.cages = cages.filter(cg => cg.cells.length).map(cg => ({cells:cg.cells.sort((p, q) => p - q), sum:cg.cells.reduce((s, x) => s + sol[x], 0)}));
+    G.cageOf = [];
+    G.cages.forEach(cg => cg.cells.forEach(x => G.cageOf[x] = cg));
+  }
+}
+// 挖空时只保留"能一步步推出来"的空格：题目唯一解、不用猜；魔法城堡额外要求必须用到高手技巧
+function makePuzzle(W, seed, target){
+  const tier = W.tier || 1;
+  let best = null;
+  for(let at = 0; at < (W.tier === 2 ? 300 : 30); at++){
+    const r = rng(seed + at * 104729);
+    let G = geomOf(W), sol;
+    if(W.variant === 'jigsaw'){
+      G = geom(W.size, W.br, W.bc, false, jigsawRegions(W.size, W.br, W.bc, r));
+      sol = fullGridMRV(G, r, 20000);
+      if(!sol) continue;
+    } else sol = fullGrid(G, r);
+    if(W.variant && W.variant !== 'jigsaw'){ G = Object.create(G); addRules(W, G, sol, r); }
+    const puz = sol.slice();
+    let empty = 0;
+    for(const i of shuffle([...sol.keys()], r)){
+      if(empty >= target) break;
+      const v = puz[i];
+      puz[i] = 0;
+      if(solve(G, puz, tier).ok) empty++;
+      else puz[i] = v;
+    }
+    const res = {sol, puz, empty, G};
+    if(tier === 2 && solve(G, puz, 1).ok){ best = best || res; continue; }
+    if(empty < target){ if(!best || empty > best.empty) best = res; continue; }
+    return res;
+  }
+  return best;
+}
+const LEVEL_CACHE = {};
+function makeLevel(w, k){
+  const key = w + '-' + k;
+  return LEVEL_CACHE[key] || (LEVEL_CACHE[key] = makePuzzle(WORLDS[w], 20261017 + w * 1009 + k * 7919, WORLDS[w].empties[k]));
+}
+// ==/LOGIC==
+
+const $ = s => document.querySelector(s);
+const STORE_KEY = 'gezi-zoo-v1';
+function load(){ try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch(e){ return {}; } }
+function save(){ try { localStorage.setItem(STORE_KEY, JSON.stringify(P)); } catch(e){} }
+let P = Object.assign({stars:{}, best:{}, daily:{}, stickers:{}, saves:{}, learned:false, mode:'emoji', sound:true}, load());
+// 旧版本按世界序号存星星，换成世界 id
+(() => {
+  const OLD = ['zoo', 'fruit', 'sea', 'space'];
+  Object.keys(P.stars).forEach(key => {
+    const m = key.match(/^(\d)-(\d)$/);
+    if(m){ P.stars[OLD[m[1]] + '-' + m[2]] = Math.max(P.stars[key], P.stars[OLD[m[1]] + '-' + m[2]] || 0); delete P.stars[key]; }
+  });
+  // 过期的每日挑战存档没用了
+  Object.keys(P.saves).forEach(key => { if(key.startsWith('daily-') && key !== 'daily-' + dayKey()) delete P.saves[key]; });
+})();
+
+const UNIT_NAME = {row:'横排', col:'竖排', box:'小院子', diag:'斜线'};
+const PRAISE = ['对啦！', '好棒！', '你真聪明！', '完全正确！', '漂亮！', '继续加油！', '厉害厉害！'];
+const pick = a => a[Math.floor(Math.random() * a.length)];
+
+let S = null; // 当前棋局
+
+// 9×9 有 9 种，记图案太费劲，一律用数字；小棋盘按设置来
+const numMode = W => P.mode === 'num' || W.size === 9 || !!W.variant;
+const unitName = t => (t === 'box' && S && S.world.boxName) || UNIT_NAME[t];
+function sym(v){ return numMode(S.world) ? String(v) : S.syms[v - 1]; }
+function symHTML(v){ return `<span data-v="${v}">${sym(v)}</span>`; }
+const symList = (vs, sep) => vs.map(symHTML).join(numMode(S.world) ? (sep || '、') : '');
+const fmtTime = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+
+function starsOf(w, k){ return P.stars[WORLDS[w].id + '-' + k] || 0; }
+function clearedCount(w){ let c = 0; for(let k = 0; k < LEVELS_PER_WORLD; k++) if(starsOf(w, k)) c++; return c; }
+// 所有关卡随时都能玩，觉得简单可以直接跳到后面
+function levelOpen(w, k){ return w >= 0 && w < WORLDS.length && k >= 0 && k < LEVELS_PER_WORLD; }
+function nextLevelOf(w, k){
+  if(k + 1 < LEVELS_PER_WORLD) return {w, k:k + 1};
+  if(w + 1 < WORLDS.length) return {w:w + 1, k:0};
+  return null;
+}
+// 推荐关卡：从玩到最远的那关往后找没过的；后面都过了再回头找跳过的
+function nextPlayable(){
+  const all = [];
+  WORLDS.forEach((_, w) => { for(let k = 0; k < LEVELS_PER_WORLD; k++) all.push({w, k}); });
+  let far = -1;
+  all.forEach((L, g) => { if(starsOf(L.w, L.k)) far = g; });
+  return all.slice(far + 1).find(L => !starsOf(L.w, L.k)) || all.find(L => !starsOf(L.w, L.k)) || null;
+}
+function totalStars(){ return Object.values(P.stars).reduce((s, v) => s + v, 0); }
+
+/* ---------- 自动存档：每一步都记下来，下次打开同一关接着玩 ---------- */
+function saveKeyOf(){ return S.mode === 'daily' ? 'daily-' + S.dayKey : S.key; }
+function persist(){
+  if(!S || S.mode === 'lesson' || S.locked) return;
+  const key = saveKeyOf();
+  const touched = S.val.some((v, i) => v && !S.given[i]) || S.notes.some(Boolean) || S.mistakes || S.hints;
+  if(touched) P.saves[key] = {sol:S.sol.join(''), val:S.val, notes:S.notes, mistakes:S.mistakes, hints:S.hints, usedNotes:S.usedNotes, elapsed:elapsed()};
+  else delete P.saves[key];
+  save();
+}
+function resumeSave(){
+  const key = saveKeyOf(), sv = P.saves[key];
+  if(!sv) return false;
+  const ok = sv.sol === S.sol.join('') && Array.isArray(sv.val) && sv.val.length === S.val.length
+    && sv.val.every((v, i) => (S.given[i] ? v === S.sol[i] : !v || v === S.sol[i])) && !sv.val.every(Boolean);
+  if(!ok){ delete P.saves[key]; save(); return false; }
+  S.val = sv.val.slice();
+  if(Array.isArray(sv.notes) && sv.notes.length === S.val.length) S.notes = sv.notes.slice();
+  S.mistakes = sv.mistakes || 0; S.hints = sv.hints || 0; S.usedNotes = !!sv.usedNotes;
+  S.t0 = Date.now() - (sv.elapsed || 0) * 1000;
+  return true;
+}
+function resumeCoach(){
+  coach(`欢迎回来！上次玩到一半，咕咕老师帮你<b>存好了</b>，还剩 <b>${S.val.filter(v => !v).length}</b> 个空房间，接着玩吧！`,
+    [{label:'从头开始', fn:restartCurrent}]);
+}
+function restartCurrent(){
+  if(S.mode === 'lesson'){ startLesson(S.step); return; }
+  delete P.saves[saveKeyOf()]; save();
+  if(S.mode === 'daily') startDaily(true); else startLevel(S.w, S.k, true);
+}
+document.addEventListener('visibilitychange', () => {
+  if(!S) return;
+  if(document.hidden){ S.hiddenAt = Date.now(); persist(); }
+  else if(S.hiddenAt){ S.t0 += Date.now() - S.hiddenAt; S.hiddenAt = null; }
+});
+window.addEventListener('pagehide', () => persist());
+
+/* ---------- 每日挑战 ---------- */
+function dayKey(d = new Date()){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function dailyStreak(){
+  const d = new Date();
+  if(!P.daily[dayKey(d)]) d.setDate(d.getDate() - 1);
+  let n = 0;
+  while(P.daily[dayKey(d)]){ n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+function dailyConfig(){
+  const d = new Date(), key = dayKey(d);
+  const seed = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  const dayNo = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5);
+  const pool = DAILY_POOL[dayNo % DAILY_POOL.length];
+  return {key, seed, w:pool.w, empties:pool.empties, month:d.getMonth() + 1, date:d.getDate()};
+}
+
+/* ---------- 贴纸 ---------- */
+const STICKERS = [
+  {id:'grad', e:'🎓', name:'毕业生', how:'学会玩法'},
+  {id:'first3', e:'🏅', name:'第一个三星', how:'任意一关拿 3 颗星'},
+  {id:'w-zoo', e:'🐾', name:'动物好朋友', how:'通过小动物公寓全部关卡'},
+  {id:'w-fruit', e:'🧺', name:'果园小农夫', how:'通过甜甜果园全部关卡'},
+  {id:'w-sea', e:'🐬', name:'深海潜水员', how:'通过海底王国全部关卡'},
+  {id:'w-candy', e:'🎂', name:'糖果师傅', how:'通过糖果工厂全部关卡'},
+  {id:'w-space', e:'🛰️', name:'星空宇航员', how:'通过星空探险全部关卡'},
+  {id:'w-dino', e:'🦕', name:'恐龙探险家', how:'通过恐龙山谷全部关卡'},
+  {id:'w-rainbow', e:'🎡', name:'游乐场园长', how:'通过彩虹游乐场全部关卡'},
+  {id:'w-castle', e:'🏰', name:'魔法城主', how:'通过魔法城堡全部关卡'},
+  {id:'w-parity', e:'🌷', name:'单双数园丁', how:'通过单双数花园全部关卡'},
+  {id:'w-compare', e:'🐊', name:'比大小冠军', how:'通过大小比比看全部关卡'},
+  {id:'w-sum', e:'➕', name:'加法小能手', how:'通过加法森林全部关卡'},
+  {id:'w-jigsaw', e:'🧩', name:'拼图大师', how:'通过拼图小镇全部关卡'},
+  {id:'s50', e:'⭐', name:'星星收集者', how:'收集 50 颗星'},
+  {id:'s150', e:'🌟', name:'星星大王', how:'收集 150 颗星'},
+  {id:'fast', e:'⚡', name:'闪电小手', how:'5 分钟内完成一个 9×9'},
+  {id:'clean9', e:'🧠', name:'最强大脑', how:'9×9 一次不错、不用提示'},
+  {id:'notes', e:'✏️', name:'笔记达人', how:'用笔记完成一个 9×9'},
+  {id:'streak3', e:'🔥', name:'连续三天', how:'每日挑战连续完成 3 天'},
+];
+function awardStickers(ctx){
+  const earn = [];
+  const give = id => { if(!P.stickers[id]){ P.stickers[id] = true; earn.push(STICKERS.find(s => s.id === id)); } };
+  if(P.learned) give('grad');
+  if(ctx){
+    if(ctx.stars === 3) give('first3');
+    if(ctx.size === 9 && ctx.time <= 300) give('fast');
+    if(ctx.size === 9 && ctx.stars === 3) give('clean9');
+    if(ctx.size === 9 && ctx.usedNotes) give('notes');
+  }
+  WORLDS.forEach((W, w) => { if(clearedCount(w) === LEVELS_PER_WORLD) give('w-' + W.id); });
+  const t = totalStars();
+  if(t >= 50) give('s50');
+  if(t >= 150) give('s150');
+  if(dailyStreak() >= 3) give('streak3');
+  save();
+  return earn;
+}
+function renderBook(){
+  $('#book').innerHTML = STICKERS.map(s => P.stickers[s.id]
+    ? `<div class="stk has"><span class="e">${s.e}</span><b>${s.name}</b><small>${s.how}</small></div>`
+    : `<div class="stk lock"><span class="e">${s.e}</span><b>？？？</b><small>${s.how}</small></div>`).join('');
+}
+$('#btnBook').addEventListener('click', () => { SFX.tap(); renderBook(); $('#bookPop').hidden = false; });
+$('#btnCloseBook').addEventListener('click', () => { $('#bookPop').hidden = true; });
+
+/* ---------- 声音 ---------- */
+let AC = null;
+function ac(){
+  if(!AC){ try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){ AC = null; } }
+  if(AC && AC.state === 'suspended') AC.resume().catch(() => {});
+  return AC;
+}
+function tone(f, t0, d, type = 'sine', g = .14){
+  if(!P.sound) return;
+  const c = ac(); if(!c) return;
+  const o = c.createOscillator(), v = c.createGain(), t = c.currentTime + t0;
+  o.type = type; o.frequency.value = f;
+  v.gain.setValueAtTime(0, t);
+  v.gain.linearRampToValueAtTime(g, t + .015);
+  v.gain.exponentialRampToValueAtTime(.001, t + d);
+  o.connect(v).connect(c.destination);
+  o.start(t); o.stop(t + d + .05);
+}
+const SFX = {
+  tap(){ tone(700, 0, .07, 'triangle', .07); },
+  pencil(){ tone(1200, 0, .05, 'sine', .05); },
+  ok(){ tone(523, 0, .14, 'triangle'); tone(784, .09, .2, 'triangle'); },
+  no(){ tone(240, 0, .16, 'square', .04); tone(200, .12, .2, 'square', .04); },
+  cheer(){ [523, 659, 784, 1047].forEach((f, i) => tone(f, i * .08, .22, 'triangle', .11)); },
+  win(){ [523, 659, 784, 659, 784, 1047].forEach((f, i) => tone(f, i * .13, .3, 'triangle', .13)); },
+};
+
+/* ---------- 朗读 ---------- */
+function speak(id){
+  try {
+    let text = document.getElementById(id).textContent;
+    const W = S ? S.world : WORLDS[0];
+    if(!numMode(W)) W.syms.forEach((s, i) => { text = text.split(s).join(W.names[i]); });
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN'; u.rate = .95; u.pitch = 1.1;
+    speechSynthesis.speak(u);
+  } catch(e){}
+}
+document.querySelectorAll('[data-speak]').forEach(b => b.addEventListener('click', () => speak(b.dataset.speak)));
+
+/* ---------- 地图 ---------- */
+function renderHome(){
+  document.body.classList.toggle('num', P.mode === 'num');
+  $('#starTotal').textContent = totalStars();
+  $('#bookN').textContent = Object.keys(P.stickers).length;
+  $('#bookMax').textContent = STICKERS.length;
+  $('#starMax').textContent = WORLDS.length * LEVELS_PER_WORLD * 3;
+  const nx = nextPlayable();
+  let msg;
+  if(!P.learned) msg = '你好呀，我是<b>咕咕老师</b>！第一次来吗？先点黄色按钮，跟我学一学，三分钟就会玩！';
+  else if(!nx) msg = '哇！所有关卡都通过啦，你是真正的数独大师！试试把每一关都拿到 3 颗星，再集齐贴纸册吧。';
+  else msg = `下一关在「${WORLDS[nx.w].name}」第 ${nx.k + 1} 关，跳动的那个圆圈就是！<b>所有关卡都能直接点</b>，觉得太简单就跳到后面的世界去挑战吧。`;
+  $('#homeText').innerHTML = msg;
+  $('#btnLearn').classList.toggle('glow', !P.learned);
+
+  const D = dailyConfig(), DW = WORLDS[D.w], dStars = P.daily[D.key] || 0, streak = dailyStreak();
+  $('#daily').innerHTML = `
+    <div class="cal" aria-hidden="true"><span>${D.month} 月</span><b>${D.date}</b></div>
+    <div class="info"><h2>今日挑战</h2><p>${DW.size}×${DW.size} · ${DW.name}${DW.diag ? '（斜线规则）' : ''}${DW.tier === 2 ? '（高手题）' : ''} · 每天换一道新题${streak ? ` · 已连续 ${streak} 天 🔥` : ''}</p></div>
+    <button class="toy ${dStars ? '' : 'sun'}" type="button" id="btnDaily">${P.saves['daily-' + D.key] ? '继续挑战 ▶' : dStars ? '★'.repeat(dStars) + ' 再玩一次' : '开始挑战 ▶'}</button>`;
+  $('#btnDaily').addEventListener('click', () => { SFX.tap(); startDaily(); });
+
+  const card = (W, w) => {
+    const got = [...Array(LEVELS_PER_WORLD).keys()].reduce((s, k) => s + starsOf(w, k), 0);
+    const lv = [...Array(LEVELS_PER_WORLD).keys()].map(k => {
+      const st = starsOf(w, k);
+      const isNext = nx && nx.w === w && nx.k === k;
+      const stars = '★'.repeat(st) + '<i>' + '★'.repeat(3 - st) + '</i>';
+      return `<button class="toy lv ${st ? 'done' : ''} ${isNext ? 'next' : ''} ${P.saves[W.id + '-' + k] ? 'saved' : ''}" type="button" data-w="${w}" data-k="${k}" aria-label="第 ${k + 1} 关">
+        <span class="n">${k + 1}</span><span class="st">${stars}</span></button>`;
+    }).join('');
+    const showSyms = W.badge || (numMode(W) ? [...Array(W.size).keys()].map(i => i + 1).join(' ') : W.syms.join(''));
+    return `<article class="world" style="--wc:var(${W.wc})">
+      <div class="band"><h2>${W.name}</h2><span class="tag">${W.size}×${W.size}</span><span class="wst">★ ${got}/24</span></div>
+      <div class="body">
+        <div class="syms" aria-hidden="true">${showSyms}</div>
+        <p class="desc">${W.desc}</p>
+        <div class="levels">${lv}</div>
+      </div></article>`;
+  };
+  const group = (title, note, test) =>
+    `<h2 class="groupTitle">${title}<small>${note}</small></h2><div class="worlds">${WORLDS.map((W, w) => test(W) ? card(W, w) : '').join('')}</div>`;
+  $('#worlds').innerHTML = group('经典数独', '从 4×4 到 9×9，越往后越难', W => W.group !== 'new')
+    + group('新玩法', '数学数独和拼图数独，第 1 关有例子教你', W => W.group === 'new');
+}
+$('#worlds').addEventListener('click', e => {
+  const b = e.target.closest('.lv'); if(!b || b.disabled) return;
+  SFX.tap(); startLevel(+b.dataset.w, +b.dataset.k);
+});
+$('#btnLearn').addEventListener('click', () => { SFX.tap(); startLesson(0); });
+
+function show(id){
+  $('#home').hidden = id !== 'home';
+  $('#game').hidden = id !== 'game';
+  window.scrollTo(0, 0);
+}
+function goHome(){ S = null; renderHome(); show('home'); }
+
+/* ---------- 棋局 ---------- */
+function newBoard(opts){
+  const W = opts.world, G = opts.G || geomOf(W);
+  S = Object.assign({G, syms:W.syms, sel:null, mistakes:0, hints:0, lastHint:null, focus:new Set(), marks:new Set(),
+    play:null, locked:false, pencil:false, usedNotes:false, elapsed:0}, opts);
+  S.given = S.val.map(v => v > 0);
+  S.notes = S.notes || S.val.map(() => 0);
+  S.t0 = Date.now() - S.elapsed * 1000;
+  renderBoard(); renderPalette(); setPencil(false); show('game');
+  $('#btnSkip').hidden = S.mode !== 'level' || !nextLevelOf(S.w, S.k);
+  document.body.classList.toggle('num', numMode(W));
+}
+function startLevel(w, k, fresh){
+  const W = WORLDS[w], L = makeLevel(w, k);
+  newBoard({mode:'level', w, k, world:W, G:L.G, sol:L.sol, val:L.puz.slice(), key:W.id + '-' + k});
+  $('#lvlTitle').textContent = `${W.name} · 第 ${k + 1} 关`;
+  $('#stats').hidden = false;
+  if(!fresh && resumeSave()){ resumeCoach(); update(); return; }
+  const left = S.val.filter(v => !v).length;
+  coach(k === 0 && W.intro
+    ? W.intro + (numMode(W) ? '' : `<br>这里的伙伴：${W.syms.map((_, i) => symHTML(i + 1)).join('')}`)
+    : `一共有 <b>${left}</b> 个空房间。先点一个空格，再点下面的按钮把它住满。卡住了就点 💡提示。`,
+    k === 0 && W.variant ? [{label:'看个例子 👀', sun:true, fn:showExample}] : []);
+  update();
+}
+function startDaily(fresh){
+  const D = dailyConfig(), W = WORLDS[D.w];
+  const L = makePuzzle(W, D.seed, D.empties);
+  newBoard({mode:'daily', w:D.w, world:W, G:L.G, sol:L.sol, val:L.puz.slice(), key:'daily', dayKey:D.key});
+  $('#lvlTitle').textContent = `今日挑战 · ${D.month}月${D.date}日`;
+  $('#stats').hidden = false;
+  if(!fresh && resumeSave()){ resumeCoach(); update(); return; }
+  coach(`今天的题目来自「${W.name}」，一共 <b>${S.val.filter(v => !v).length}</b> 个空格。${W.diag ? '别忘了<b>两条斜线</b>上也不能重复！' : ''}${W.tier === 2 ? '这是高手题，记得用 ✏️ 笔记。' : ''}${W.variant ? W.intro : ''}每天完成就能连续打卡哦！`);
+  update();
+}
+
+function makeCell(i){
+  const G = S.G, c = document.createElement('button');
+  c.type = 'button'; c.className = 'cell' + (G.diagCells.has(i) ? ' diag' : ''); c.dataset.i = i;
+  c.setAttribute('aria-label', `第 ${G.rOf[i] + 1} 排第 ${G.cOf[i] + 1} 列`);
+  c.innerHTML = '<span class="cv"></span>';
+  c.cv = c.firstChild;
+  S.cells[i] = c;
+  return c;
+}
+// 给拼图块上色：相邻的块颜色不同
+function regionColors(G){
+  const col = [];
+  G.boxes.forEach((box, b) => {
+    const near = new Set();
+    box.forEach(i => nbrs(G.n, i).forEach(j => { if(G.bOf[j] !== b && col[G.bOf[j]] != null) near.add(col[G.bOf[j]]); }));
+    let k = 0; while(near.has(k)) k++;
+    col[b] = k % 4;
+  });
+  return col;
+}
+// 新玩法用平铺棋盘：粗线围出小院子/拼图块，格子里画单双圆圈、加法框和大小号
+function renderFlat(){
+  const G = S.G, n = G.n, el = $('#board'), col = regionColors(G);
+  el.className = 'flat n' + n;
+  for(let i = 0; i < n * n; i++){
+    const c = makeCell(i), r = G.rOf[i], cc = G.cOf[i], b = G.bOf[i];
+    c.classList.add('r' + col[b]);
+    const out = (rr, k) => rr < 0 || k < 0 || rr >= n || k >= n || G.bOf[rr * n + k] !== b;
+    const sides = [out(r - 1, cc), out(r, cc + 1), out(r + 1, cc), out(r, cc - 1)];
+    let deco = `<i class="edge" style="${['top', 'right', 'bottom', 'left'].map((p, t) => `border-${p}:${sides[t] ? '2px solid var(--edge)' : '1px solid var(--line)'}`).join(';')}"></i>`;
+    if(G.even && G.even[i]) deco += '<i class="par"></i>';
+    if(G.cageOf){
+      const cg = G.cageOf[i];
+      const inCage = (rr, k) => rr >= 0 && k >= 0 && rr < n && k < n && G.cageOf[rr * n + k] === cg;
+      const side = [inCage(r - 1, cc), inCage(r, cc + 1), inCage(r + 1, cc), inCage(r, cc - 1)];
+      const pos = ['top', 'right', 'bottom', 'left'].map((p, t) => `${p}:${side[t] ? '0' : '5px'}`).join(';');
+      const bw = side.map(x => x ? '0' : '2px').join(' ');
+      deco += `<i class="cage" style="${pos};border-width:${bw}"></i>`;
+      if(cg.cells[0] === i) deco += `<b class="sum">${cg.sum}</b>`;
+    }
+    if(G.cmp) G.cmp.forEach(({a, b:sm}) => {
+      const x = Math.min(a, sm), y = Math.max(a, sm);   // 记号画在左边/上边那格
+      if(x !== i) return;
+      const sign = a === x ? '&gt;' : '&lt;';
+      deco += `<b class="cmp ${y === x + 1 ? 'h' : 'v'}">${sign}</b>`;
+    });
+    c.insertAdjacentHTML('afterbegin', deco);
+    el.appendChild(c);
+  }
+}
+function renderBoard(){
+  const G = S.G, el = $('#board');
+  el.style.setProperty('--n', G.n);
+  el.style.setProperty('--bpr', G.bpr);
+  el.style.setProperty('--bc', G.bc);
+  el.style.setProperty('--nc', G.n === 4 ? 2 : 3);
+  el.style.setProperty('--nf', G.n === 4 ? .3 : G.n === 6 ? .22 : .25);
+  el.className = 'n' + G.n;
+  el.innerHTML = '';
+  S.cells = [];
+  if(S.world.variant){ renderFlat(); return; }
+  G.boxes.forEach((box, b) => {
+    const y = document.createElement('div');
+    y.className = 'yard' + ((Math.floor(b / G.bpr) + b % G.bpr) % 2 ? ' b' : '');
+    box.forEach(i => y.appendChild(makeCell(i)));
+    el.appendChild(y);
+  });
+}
+function renderPalette(){
+  const n = S.G.n, el = $('#palette');
+  el.classList.toggle('many', n > 6);
+  el.innerHTML = [...Array(n).keys()].map(k =>
+    `<button class="toy key" type="button" data-v="${k + 1}" aria-label="${numMode(S.world) ? k + 1 : S.world.names[k]}"><span class="k">${sym(k + 1)}</span><span class="left"></span></button>`).join('');
+}
+
+function cellHTML(i){
+  const v = S.val[i];
+  if(v) return `<span>${sym(v)}</span>`;
+  const m = S.notes[i];
+  if(!m) return '';
+  let h = '<span class="notes">';
+  for(let k = 1; k <= S.G.n; k++) h += m >> k & 1 ? `<i data-v="${k}">${sym(k)}</i>` : '<i></i>';
+  return h + '</span>';
+}
+function update(){
+  const G = S.G, sel = S.sel;
+  const selV = sel != null ? S.val[sel] : 0;
+  const peers = sel != null ? new Set(G.peers[sel]) : new Set();
+  S.cells.forEach((c, i) => {
+    const v = S.val[i];
+    const html = cellHTML(i);
+    if(c.dataset.html !== html){ c.cv.innerHTML = html; c.dataset.html = html; }
+    if(v) c.dataset.v = v; else delete c.dataset.v;
+    c.classList.toggle('given', S.given[i]);
+    c.classList.toggle('peer', peers.has(i) && !S.focus.size);
+    c.classList.toggle('same', !!selV && v === selV && i !== sel);
+    c.classList.toggle('focus', S.focus.has(i));
+    c.classList.toggle('mark', S.marks.has(i));
+    c.classList.toggle('sel', i === sel);
+    c.classList.toggle('off', !!S.play && !v && !S.play.has(i));
+    c.classList.toggle('target', S.mode === 'lesson' && S.target === i && !v);
+  });
+  const counts = Array(G.n + 1).fill(0);
+  S.val.forEach(v => counts[v]++);
+  document.querySelectorAll('#palette .key').forEach(b => {
+    const v = +b.dataset.v, left = G.n - counts[v];
+    b.querySelector('.left').textContent = left ? left : '✓';
+    b.classList.toggle('full', !left);
+  });
+  $('#mist').textContent = S.mistakes;
+  $('#hintN').textContent = S.hints;
+  tick();
+  persist();
+}
+function elapsed(){ return Math.floor((Date.now() - S.t0) / 1000); }
+function tick(){ if(S && !S.locked && S.mode !== 'lesson') $('#timer').textContent = fmtTime(elapsed()); }
+setInterval(() => { if(S && !$('#game').hidden) tick(); }, 1000);
+
+function coach(html, actions = []){
+  $('#coachText').innerHTML = html;
+  const box = $('#coachActions');
+  box.innerHTML = '';
+  actions.forEach(a => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'toy' + (a.sun ? ' sun' : ''); b.textContent = a.label;
+    b.addEventListener('click', () => { SFX.tap(); a.fn(); });
+    box.appendChild(b);
+  });
+}
+function owlHop(){ const o = $('#owl'); o.classList.remove('hop'); void o.offsetWidth; o.classList.add('hop'); }
+function retrigger(el, cls){ el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+
+$('#board').addEventListener('click', e => {
+  const c = e.target.closest('.cell'); if(!c) return;
+  selectCell(+c.dataset.i);
+});
+function selectCell(i){
+  if(S.locked) return;
+  if(S.play && !S.play.has(i)){
+    coach('先看<b>闪闪发光的那一格</b>哦！');
+    return;
+  }
+  SFX.tap();
+  S.sel = i;
+  if(S.mode !== 'lesson' || S.free){ S.focus = new Set(); S.marks = new Set(); }
+  update();
+}
+$('#palette').addEventListener('click', e => {
+  const b = e.target.closest('.key'); if(!b) return;
+  place(+b.dataset.v);
+});
+
+/* ---------- 笔记 ---------- */
+function setPencil(on){
+  S.pencil = on;
+  $('#btnNotes').setAttribute('aria-pressed', on);
+  $('#btnNotes').textContent = on ? '✏️ 笔记：开' : '✏️ 笔记';
+  $('#palette').classList.toggle('pencil', on);
+  $('#btnAutoNotes').hidden = !on || S.G.n < 6 || S.mode === 'lesson';
+}
+$('#btnNotes').addEventListener('click', () => {
+  if(S.locked) return;
+  SFX.tap(); setPencil(!S.pencil);
+  if(S.pencil) coach('笔记打开啦！现在点按钮会在格子里写<b>小字</b>，表示“可能是它”。再点一次就擦掉。想好了就关掉笔记，正式放进去。');
+});
+$('#btnAutoNotes').addEventListener('click', () => {
+  if(S.locked) return;
+  SFX.tap();
+  const C = allCands(S.G, S.val);
+  S.notes = C.slice(); S.usedNotes = true;
+  if(S.mode !== 'lesson') S.hints++;
+  coach('咕咕老师帮你把每个空格<b>可能住谁</b>都写好了（算用了 1 次提示）。找找只剩<b>一个小字</b>的格子！');
+  update();
+});
+function toggleNote(i, v){
+  if(S.val[i]){ coach('这个房间已经住满啦，笔记要写在<b>空房间</b>里。'); return; }
+  S.notes[i] ^= 1 << v;
+  S.usedNotes = true;
+  SFX.pencil();
+  update();
+}
+
+const dirName = (i, j) => j === i + 1 ? '右边' : j === i - 1 ? '左边' : j > i ? '下面' : '上面';
+function ruleNotes(i){
+  const G = S.G, out = [];
+  if(G.even) out.push(G.even[i] ? '它有灰色圆圈，只能填<b>双数</b>' : '它没有圆圈，只能填<b>单数</b>');
+  if(G.cmp) G.cmp.forEach(({a, b}) => {
+    if(a !== i && b !== i) return;
+    const j = a === i ? b : a;
+    out.push(`它比${dirName(i, j)}的格子<b>${a === i ? '大' : '小'}</b>${S.val[j] ? `（那里是 ${S.val[j]}）` : ''}`);
+  });
+  if(G.cageOf){
+    const cg = G.cageOf[i], got = cg.cells.filter(j => j !== i && S.val[j]).map(j => S.val[j]);
+    out.push(`它所在的虚线框加起来等于 <b>${cg.sum}</b>${got.length ? `，框里已经有 ${got.join(' + ')}` : ''}`);
+  }
+  return out;
+}
+function ruleBroken(i, v){
+  const G = S.G;
+  if(G.even && G.even[i] !== (v % 2 === 0))
+    return G.even[i] ? `带灰色圆圈的格子只能填<b>双数</b>，${v} 是单数哦！` : `没有圆圈的格子只能填<b>单数</b>，${v} 是双数哦！`;
+  if(G.cmp) for(const {a, b} of G.cmp){
+    if(a !== i && b !== i) continue;
+    const j = a === i ? b : a, w = S.val[j];
+    if(!w) continue;
+    if(a === i && v <= w) return `这一格要比${dirName(i, j)}的 ${w} <b>大</b>（大嘴巴朝着大的数），${v} 不够大！`;
+    if(b === i && v >= w) return `这一格要比${dirName(i, j)}的 ${w} <b>小</b>（大嘴巴朝着大的数），${v} 太大啦！`;
+  }
+  if(G.cageOf){
+    const cg = G.cageOf[i], others = cg.cells.filter(j => j !== i && S.val[j]).map(j => S.val[j]);
+    const sum = others.reduce((t, x) => t + x, 0) + v, expr = [...others, v].join(' + ');
+    if(others.includes(v)) return `同一个虚线框里的数<b>不能重复</b>，框里已经有 ${v} 了！`;
+    if(sum > cg.sum) return `虚线框加起来要等于 ${cg.sum}，${expr} = ${sum}，<b>太多啦</b>！`;
+    if(others.length === cg.cells.length - 1 && sum !== cg.sum) return `虚线框加起来要等于 ${cg.sum}，可是 ${expr} = ${sum}，<b>还不够</b>哦！`;
+  }
+  return null;
+}
+// 新玩法第 1 关：拿棋盘上真实的格子举个例子
+function showExample(){
+  const G = S.G, a = S.val, W = S.world, n = G.n;
+  let cells = [], msg = '';
+  if(W.variant === 'parity'){
+    const i = a.findIndex((v, k) => !v && G.even[k]);
+    if(i >= 0){
+      cells = [i];
+      const evens = [...Array(n).keys()].map(k => k + 1).filter(v => v % 2 === 0);
+      const seen = evens.filter(v => G.peers[i].some(j => a[j] === v));
+      msg = `看黄色的格子：它有<b>灰色圆圈</b>，所以只能是 ${evens.join('、')} 里的一个。` +
+        (seen.length ? `它的横排、竖排、小院子里已经有 ${seen.join('、')}，排除掉就只剩 <b>${evens.filter(v => !seen.includes(v)).join(' 或 ')}</b> 啦！` : '再看看它的横排、竖排、小院子里有哪些双数，排除掉就行！');
+    }
+  } else if(W.variant === 'compare'){
+    const p = G.cmp.find(({a:x, b:y}) => !a[x] !== !a[y]);
+    if(p){
+      cells = [p.a, p.b];
+      if(a[p.a]){
+        const w = a[p.a];
+        msg = `黄色两格之间，大嘴巴朝着 <b>${w}</b>，说明 ${w} 比空格大。所以空格只能是比 ${w} 小的数：<b>${[...Array(w - 1).keys()].map(k => k + 1).join('、')}</b>。`;
+      } else {
+        const w = a[p.b];
+        msg = `黄色两格之间，大嘴巴朝着<b>空格</b>，说明空格比 ${w} 大。所以空格只能是比 ${w} 大的数：<b>${[...Array(n - w).keys()].map(k => k + w + 1).join('、')}</b>。`;
+      }
+    }
+  } else if(W.variant === 'sum'){
+    const one = G.cages.find(cg => cg.cells.filter(j => !a[j]).length === 1);
+    if(one){
+      cells = one.cells;
+      const got = one.cells.filter(j => a[j]).map(j => a[j]), t = got.reduce((x, y) => x + y, 0);
+      msg = `黄色的虚线框加起来要等于 <b>${one.sum}</b>。框里已经有 ${got.length > 1 ? `${got.join(' + ')} = ${t}` : t}，所以空格就是 ${one.sum} − ${t} = <b>${one.sum - t}</b>！`;
+    } else {
+      const two = G.cages.find(cg => cg.cells.length === 2) || G.cages[0];
+      cells = two.cells;
+      const pairs = [];
+      for(let x = 1; x <= n; x++) for(let y = x + 1; y <= n; y++) if(x + y === two.sum) pairs.push(`${x} + ${y}`);
+      msg = `黄色的虚线框里两个数加起来等于 <b>${two.sum}</b>，可能是 ${pairs.join('、')}。再看看横排竖排，就能找出是哪一对！`;
+    }
+  } else if(W.variant === 'jigsaw'){
+    const start = S.sel != null ? S.sel : a.findIndex(v => !v);
+    cells = G.boxes[G.bOf[start]];
+    msg = '黄色这块弯弯曲曲的就是一个<b>拼图块</b>。它和小院子一样有 9 格，里面 1～9 每个数字只能出现一次。数一数它还缺哪些数字？';
+  }
+  S.focus = new Set(cells);
+  coach(msg || W.intro, [{label:'知道啦，开始吧 ▶', sun:true, fn:() => {
+    S.focus = new Set(); update();
+    coach('加油！先点一个空格，再点下面的数字。卡住了就点 💡提示。');
+  }}]);
+  update();
+}
+function findConflict(i, v){
+  for(const U of S.G.unitsOf[i])
+    for(const j of U.u) if(j !== i && S.val[j] === v) return {j, t:U.t};
+  return null;
+}
+
+function place(v){
+  if(S.locked) return;
+  if(S.mode === 'lesson' && S.step === 0){ const st = lessonSteps()[0]; coach(st.text() + '<br>准备好了就点下面的按钮。', st.actions()); return; }
+  const i = S.sel;
+  if(i == null){ coach('先<b>点一个空格子</b>，再选下面的按钮哦！'); SFX.no(); return; }
+  if(S.pencil){ toggleNote(i, v); return; }
+  if(S.val[i]){ coach('这个房间已经住满啦，换一个<b>空房间</b>吧。'); return; }
+  const cell = S.cells[i];
+  if(v === S.sol[i]){
+    S.val[i] = v;
+    S.notes[i] = 0;
+    for(const p of S.G.peers[i]) S.notes[p] &= ~(1 << v);
+    S.lastHint = null;
+    S.marks = new Set();
+    S.cells.forEach(c => c.classList.remove('bad'));
+    SFX.ok(); owlHop();
+    update();
+    retrigger(cell, 'pop');
+    const done = celebrateUnits(i);
+    if(S.mode === 'lesson'){ lessonCorrect(); return; }
+    if(S.val.every(Boolean)){
+      // 先记成绩再放动画：就算孩子马上离开，星星也不会丢
+      S.locked = true; S.time = elapsed();
+      const result = recordWin(), cur = S;
+      setTimeout(() => { if(S === cur) showWin(result); }, 650);
+      return;
+    }
+    const left = S.val.filter(x => !x).length;
+    coach(done.length
+      ? `${pick(PRAISE)}这个<b>${unitName(done[0])}</b>全住满啦！还剩 ${left} 个空房间。`
+      : `${pick(PRAISE)}还剩 <b>${left}</b> 个空房间。`);
+  } else {
+    if(S.mode !== 'lesson') S.mistakes++;
+    SFX.no();
+    retrigger(cell, 'shake');
+    const cf = findConflict(i, v);
+    if(cf){
+      const other = S.cells[cf.j];
+      retrigger(other, 'bad');
+      setTimeout(() => other.classList.remove('bad'), 1400);
+      coach(`哎呀，这个<b>${unitName(cf.t)}</b>里已经有 ${symHTML(v)} 了（看红色的格子），同一种不能住两个！`);
+    } else {
+      coach(ruleBroken(i, v) || `${symHTML(v)} 和旁边不打架，可是放这里以后别的格子会住不下。不确定的时候可以先用 ✏️ 笔记写下来，或者点 💡提示。`);
+    }
+    update();
+  }
+}
+
+function celebrateUnits(i){
+  const done = [];
+  S.G.unitsOf[i].forEach(U => {
+    if(U.u.every(j => S.val[j])){
+      done.push(U.t);
+      U.u.forEach((j, k) => { S.cells[j].style.setProperty('--d', (k * .06) + 's'); retrigger(S.cells[j], 'cheer'); });
+    }
+  });
+  if(done.length && !S.val.every(Boolean)) setTimeout(SFX.cheer, 180);
+  return done;
+}
+
+/* ---------- 提示：只讲道理，第二次才说答案 ---------- */
+function hint(){
+  if(S.locked) return;
+  if(S.mode === 'lesson' && !S.free){
+    const st = lessonSteps()[S.step];
+    coach(st.text(), st.actions ? st.actions() : []);
+    return;
+  }
+  const G = S.G, a = S.val, C = allCands(G, a);
+  const count = () => { if(S.mode !== 'lesson') S.hints++; };
+  if(S.lastHint != null && !a[S.lastHint]){
+    const i = S.lastHint, v = S.sol[i];
+    S.sel = i; count();
+    coach(`偷偷告诉你：闪闪的格子住的是 ${symHTML(v)}，点它放进去吧！`);
+    const key = document.querySelector(`#palette .key[data-v="${v}"]`);
+    if(key) retrigger(key, 'nudge');
+    if(S.pencil) setPencil(false);
+    update();
+    return;
+  }
+  let found = null;
+  for(const U of G.units){
+    const e = U.u.filter(j => !a[j]);
+    if(e.length === 1){ found = {i:e[0], U, kind:'last'}; break; }
+  }
+  if(!found){
+    const order = S.sel != null && !a[S.sel] ? [S.sel, ...a.keys()] : [...a.keys()];
+    for(const i of order) if(!a[i] && bitCount(C[i]) === 1){ found = {i, kind:'naked'}; break; }
+  }
+  if(!found){
+    const s = nextStep(G, a, C, 1);
+    if(s && !s.dead) found = {i:s.i, U:s.unit, kind:s.kind, v:s.v};
+  }
+  if(!found){
+    // 高手技巧：先排除，排除到能确定一格为止，只讲第一招
+    const C2 = C.slice();
+    let first = null, s = null, uses = 0;
+    for(let guard = 0; guard < 60; guard++){
+      s = nextStep(G, a, C2, 1);
+      if(s && !s.dead) break;
+      const adv = advancedStep(G, a, C2);
+      if(!adv){ s = null; break; }
+      first = first || adv;
+      uses++;
+      applyStep(G, a, C2, adv);
+    }
+    if(first && s && !s.dead) found = {i:s.i, kind:'adv', first, uses};
+  }
+  if(!found){ coach('这一步咕咕老师也要想一想……先试试用 ✏️ 笔记把可能的选项都写下来吧！'); return; }
+  const i = found.i;
+  let msg;
+  S.marks = new Set();
+  if(found.kind === 'last'){
+    S.focus = new Set(found.U.u);
+    msg = `看黄色的<b>${unitName(found.U.t)}</b>：只剩<b>一个空房间</b>啦！数一数，谁还没住进来？`;
+  } else if(found.kind === 'naked'){
+    S.focus = new Set(G.unitsOf[i].flatMap(U => U.u));
+    const have = [];
+    for(let v = 1; v <= G.n; v++) if(G.peers[i].some(j => a[j] === v)) have.push(v);
+    const notes = ruleNotes(i);
+    msg = (have.length ? `闪闪格子所在的${G.diagCells.has(i) ? '横排、竖排、斜线' : '横排、竖排'}和${unitName('box')}（黄色的地方）里，已经有 ${symList(have)} 了。` : '看闪闪的格子。')
+      + (notes.length ? `另外，${notes.join('；')}。想一想，它只能是几？` : '还差谁没出现？');
+  } else if(found.kind === 'hidden'){
+    S.focus = new Set(found.U.u);
+    msg = `在黄色的<b>${unitName(found.U.t)}</b>里，${symHTML(found.v)} 还没住进来。其他空房间所在的横排、竖排、${unitName('box')}${G.diag ? '或斜线' : ''}里已经有 ${symHTML(found.v)} 了，所以它只能住在……闪闪的格子！`;
+  } else {
+    const f = found.first;
+    if(f.kind === 'line'){
+      S.focus = new Set([...f.A.u, ...f.B.u]);
+      S.marks = new Set(f.spots);
+      msg = `<b>高手技巧「区块排除」</b>：在这个${unitName(f.A.t)}里，${symHTML(f.v)} 只能住在<b>虚线框</b>的几格中，而它们正好都在同一个${unitName(f.B.t)}上。所以这个${unitName(f.B.t)}的<b>其他格子</b>都不能放 ${symHTML(f.v)} 了！`;
+    } else {
+      const vs = []; for(let v = 1; v <= G.n; v++) if(f.m >> v & 1) vs.push(v);
+      S.focus = new Set(f.U.u);
+      S.marks = new Set(f.pair);
+      msg = `<b>高手技巧「数对」</b>：黄色的${unitName(f.U.t)}里，<b>虚线框</b>的两格都只能放 ${vs.map(symHTML).join(' 或 ')}，它俩一定一格一个。所以这个${unitName(f.U.t)}的其他格子都不能再放 ${vs.map(symHTML).join('、')}！`;
+    }
+    msg += found.uses > 1
+      ? '<br>用这一招排除以后，再用同样的办法多排除几次，<b>闪闪的格子</b>就能确定了！'
+      : '<br>这样排除以后，<b>闪闪的格子</b>就能确定了，想想是谁？';
+  }
+  S.sel = i; S.lastHint = i; count();
+  coach(msg + '<br><small>再点一次 💡 可以直接看答案。</small>');
+  update();
+}
+$('#btnHint').addEventListener('click', () => { SFX.tap(); hint(); });
+$('#btnRestart').addEventListener('click', () => { SFX.tap(); restartCurrent(); });
+// 跳过不给星星；做到一半的进度照样存着，随时能回来
+$('#btnSkip').addEventListener('click', () => {
+  if(S.mode !== 'level' || S.locked) return;
+  const nx = nextLevelOf(S.w, S.k);
+  if(!nx) return;
+  SFX.tap(); persist();
+  const from = `${S.world.name}第 ${S.k + 1} 关`;
+  startLevel(nx.w, nx.k);
+  coach(`跳过了「${from}」，随时可以回地图补上。${$('#coachText').innerHTML}`, [...$('#coachActions').children].length ? [{label:'从头开始', fn:restartCurrent}] : []);
+});
+$('#btnBack').addEventListener('click', () => { SFX.tap(); persist(); goHome(); });
+
+/* ---------- 教学 ---------- */
+const LESSON_SOL = [1,2,3,4, 3,4,1,2, 2,1,4,3, 4,3,2,1];
+function lessonSteps(){
+  const s = symHTML, G = geom(4, 2, 2, false);
+  return [
+    {givens:'all',
+     text:() => `你好，我是<b>咕咕老师</b>！这是一座小动物公寓，住着 ${s(1)}${s(2)}${s(3)}${s(4)} 四种小动物。规则只有一条：<b>每一横排、每一竖排、每个同色的小院子里，每种小动物只能住一只。</b>`,
+     actions:() => [{label:'我知道啦，开始练习 ▶', sun:true, fn:() => startLesson(1)}]},
+    {givens:[0,1,2], target:3, focus:G.rows[0],
+     text:() => `先看<b>黄色的这一横排</b>：已经住了 ${s(1)}${s(2)}${s(3)}。空着的房间该住谁呢？点下面的按钮试试！`,
+     ok:() => `答对啦！一横排里 4 种小动物各住一只，<b>缺谁就放谁</b>。`},
+    {givens:[1,5,9], target:13, focus:G.cols[1],
+     text:() => `竖着的一列也一样！这一<b>竖排</b>里有 ${s(2)}${s(4)}${s(1)}，最下面的房间还缺谁？`,
+     ok:() => `太棒了！<b>竖排里也不能重复</b>。`},
+    {givens:[10,11,15], target:14, focus:G.boxes[3],
+     text:() => `再看这个<b>小院子</b>（同一种底色的 4 个格子，现在是黄色）：里面有 ${s(4)}${s(3)}${s(1)}，最后一个房间给谁？`,
+     ok:() => `你真厉害！<b>小院子里也不能重复</b>。`},
+    {givens:[1,6,12], target:4, focus:[...G.rows[1], ...G.cols[0], ...G.boxes[0]],
+     text:() => `难一点啦：闪闪的格子同时在一个<b>横排</b>、一个<b>竖排</b>和一个<b>小院子</b>里。横排有 ${s(1)}，竖排有 ${s(4)}，小院子有 ${s(2)}。那它只能是……？`,
+     ok:() => `完全正确！这就是数独的秘诀：<b>把横排、竖排、小院子里已经有的都排除掉，剩下的就是答案！</b>`},
+    {givens:'free', empties:[1,6,8,11,14],
+     text:() => `最后一个小挑战：把 <b>5 个空房间</b>都住满！先点空格，再点小动物。不会就点 💡提示。`},
+  ];
+}
+function startLesson(step){
+  const st = lessonSteps()[step];
+  let val;
+  if(st.givens === 'all') val = LESSON_SOL.slice();
+  else if(st.givens === 'free'){ val = LESSON_SOL.slice(); st.empties.forEach(i => val[i] = 0); }
+  else { val = Array(16).fill(0); st.givens.forEach(i => val[i] = LESSON_SOL[i]); }
+  newBoard({mode:'lesson', step, world:WORLDS[0], sol:LESSON_SOL, val});
+  S.free = st.givens === 'free';
+  S.target = st.target ?? null;
+  S.focus = new Set(st.focus || []);
+  if(S.target != null){ S.play = new Set([S.target]); S.sel = S.target; }
+  $('#lvlTitle').textContent = `学玩法 · ${step === 0 ? '认识规则' : step < 5 ? '第 ' + step + ' 步' : '小挑战'}`;
+  $('#stats').hidden = true;
+  coach(st.text(), st.actions ? st.actions() : []);
+  update();
+}
+function lessonCorrect(){
+  const steps = lessonSteps(), st = steps[S.step];
+  if(S.free){
+    if(S.val.every(Boolean)){
+      S.locked = true; P.learned = true; save();
+      const cur = S;
+      setTimeout(() => { if(S === cur) winLesson(); }, 650);
+    }
+    else coach(`${pick(PRAISE)}还剩 <b>${S.val.filter(x => !x).length}</b> 个空房间。`);
+    return;
+  }
+  S.locked = true;
+  S.focus = new Set(); update();
+  coach(st.ok(), [{label: S.step + 1 < steps.length - 1 ? '下一步 ▶' : '去挑战 ▶', sun:true, fn:() => startLesson(S.step + 1)}]);
+}
+
+/* ---------- 过关 ---------- */
+function stickerHTML(list){
+  return list.length ? `<p><b>获得新贴纸！</b></p><div class="got">${list.map(s => `<div><span>${s.e}</span>${s.name}</div>`).join('')}</div>` : '';
+}
+function recordWin(){
+  const cost = S.mistakes + S.hints;
+  const stars = cost === 0 ? 3 : cost <= 2 ? 2 : 1;
+  const {w, k, time, mistakes, hints} = S, isDaily = S.mode === 'daily';
+  delete P.saves[saveKeyOf()];
+  const bestKey = isDaily ? 'daily-' + S.dayKey : S.key;
+  const prevBest = P.best[bestKey];
+  const record = !prevBest || time < prevBest;
+  if(record) P.best[bestKey] = time;
+  let next = null;
+  if(isDaily){
+    P.daily[S.dayKey] = Math.max(P.daily[S.dayKey] || 0, stars);
+  } else {
+    P.stars[S.key] = Math.max(starsOf(w, k), stars);
+    next = nextLevelOf(w, k);
+  }
+  save();
+  const earned = awardStickers({stars, time, size:S.G.n, usedNotes:S.usedNotes});
+  return {w, k, time, mistakes, hints, stars, isDaily, record, prevBest, next, earned};
+}
+function showWin({w, k, time, mistakes, hints, stars, isDaily, record, prevBest, next, earned}){
+  const title = stars === 3 ? '完美通关！' : stars === 2 ? '真厉害！' : '过关啦！';
+  const tip = stars === 3 ? '一次没错，也没用提示，你是数独小达人！'
+    : `错了 ${mistakes} 次，用了 ${hints} 次提示。一次不错、不用提示就能拿 3 颗星哦。`;
+  $('#winSheet').innerHTML = `
+    <h3>${isDaily ? '今日挑战完成！' : title}</h3>
+    <div class="stars">${[0,1,2].map(i => `<span class="${i < stars ? 'on' : ''}" style="--d:${.25 + i * .25}s">★</span>`).join('')}</div>
+    <p>用时 <b>${fmtTime(time)}</b>${record && prevBest ? '，<b>新纪录！</b>' : prevBest ? `（最快 ${fmtTime(prevBest)}）` : ''}<br>${tip}</p>
+    ${isDaily ? `<div class="unlock">已连续打卡 ${dailyStreak()} 天 🔥 明天还有新题目！</div>` : ''}
+    ${stickerHTML(earned)}
+    <div class="row">
+      ${next ? `<button class="toy sun" type="button" data-act="next">下一关 ▶</button>` : ''}
+      <button class="toy" type="button" data-act="again">再玩一次</button>
+      <button class="toy" type="button" data-act="map">回地图</button>
+    </div>`;
+  $('#winSheet').onclick = e => {
+    const a = e.target.closest('[data-act]'); if(!a) return;
+    SFX.tap(); $('#win').hidden = true;
+    if(a.dataset.act === 'next') startLevel(next.w, next.k);
+    else if(a.dataset.act === 'again') isDaily ? startDaily(true) : startLevel(w, k, true);
+    else goHome();
+  };
+  $('#win').hidden = false;
+  SFX.win(); confetti();
+}
+function winLesson(){
+  const earned = awardStickers(null);
+  $('#winSheet').innerHTML = `
+    <h3>毕业啦！</h3>
+    <div class="stars"><span class="on" style="--d:.2s">🎓</span></div>
+    <p>你已经学会数独的秘诀了：<br><b>横排、竖排、小院子里都不能重复</b>。<br>现在去闯关吧！</p>
+    ${stickerHTML(earned)}
+    <div class="row">
+      <button class="toy sun" type="button" data-act="go">开始第 1 关 ▶</button>
+      <button class="toy" type="button" data-act="map">回地图</button>
+    </div>`;
+  $('#winSheet').onclick = e => {
+    const a = e.target.closest('[data-act]'); if(!a) return;
+    SFX.tap(); $('#win').hidden = true;
+    if(a.dataset.act === 'go') startLevel(0, 0);
+    else goHome();
+  };
+  $('#win').hidden = false;
+  SFX.win(); confetti();
+}
+
+/* ---------- 彩带 ---------- */
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cv = $('#confetti'), ctx = cv.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const cs = getComputedStyle(document.documentElement);
+  const colors = ['--frame', '--w1', '--w2', '--w3', '--w4', '--w7'].map(t => cs.getPropertyValue(t).trim());
+  const ps = [...Array(140)].map(() => ({
+    x: innerWidth / 2 + (Math.random() - .5) * 120, y: innerHeight * .35,
+    vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4,
+    s: 6 + Math.random() * 6, r: Math.random() * 6, vr: (Math.random() - .5) * .4,
+    c: colors[Math.floor(Math.random() * colors.length)],
+  }));
+  const t0 = performance.now();
+  (function frame(t){
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    ps.forEach(p => {
+      p.vy += .35; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2);
+      ctx.restore();
+    });
+    if(t - t0 < 2600) requestAnimationFrame(frame);
+    else ctx.clearRect(0, 0, innerWidth, innerHeight);
+  })(t0);
+}
+
+/* ---------- 设置 ---------- */
+function syncSettings(){
+  document.querySelectorAll('#segMode button').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === P.mode));
+  document.querySelectorAll('#segSound button').forEach(b => b.setAttribute('aria-pressed', (b.dataset.sound === '1') === P.sound));
+}
+$('#btnSettings').addEventListener('click', () => { syncSettings(); $('#settings').hidden = false; });
+$('#btnCloseSet').addEventListener('click', () => { $('#settings').hidden = true; resetArm = false; $('#btnReset').textContent = '清空'; });
+$('#segMode').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  P.mode = b.dataset.mode; save(); syncSettings(); renderHome();
+});
+$('#segSound').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  P.sound = b.dataset.sound === '1'; save(); syncSettings(); SFX.tap();
+});
+let resetArm = false;
+$('#btnReset').addEventListener('click', () => {
+  if(!resetArm){ resetArm = true; $('#btnReset').textContent = '再点一次确认'; return; }
+  resetArm = false; $('#btnReset').textContent = '已清空';
+  Object.assign(P, {stars:{}, best:{}, daily:{}, stickers:{}, saves:{}, learned:false});
+  save(); renderHome();
+});
+
+/* ---------- 键盘 ---------- */
+document.addEventListener('keydown', e => {
+  if(!S || $('#game').hidden || !$('#win').hidden) return;
+  const n = S.G.n;
+  if(/^[1-9]$/.test(e.key) && +e.key <= n){ place(+e.key); e.preventDefault(); return; }
+  if(e.key === 'n' || e.key === 'N'){ $('#btnNotes').click(); return; }
+  if((e.key === 'Backspace' || e.key === 'Delete') && S.sel != null && !S.val[S.sel]){ S.notes[S.sel] = 0; update(); return; }
+  const mv = {ArrowUp:-n, ArrowDown:n, ArrowLeft:-1, ArrowRight:1}[e.key];
+  if(mv){
+    e.preventDefault();
+    let i = S.sel == null ? 0 : S.sel + mv;
+    if(S.sel != null && e.key === 'ArrowLeft' && S.sel % n === 0) i = S.sel;
+    if(S.sel != null && e.key === 'ArrowRight' && S.sel % n === n - 1) i = S.sel;
+    if(i >= 0 && i < n * n) selectCell(i);
+  }
+});
+
+/* ---------- 启动 ---------- */
+// 题目换过（比如生成规则更新、每日挑战跨了一天）就不恢复旧进度，免得旧答案对不上新题
+function restore(data){
+  if(Array.isArray(data.sol) && data.sol.join() === S.sol.join() && Array.isArray(data.val) && data.val.length === S.val.length){
+    S.val = data.val; S.mistakes = data.mistakes || 0; S.hints = data.hints || 0;
+    if(Array.isArray(data.notes) && data.notes.length === S.val.length) S.notes = data.notes;
+    S.t0 = Date.now() - (data.elapsed || 0) * 1000;
+    update();
+  }
+}
+function start(data){
+  renderHome();
+  if(!data || data.screen !== 'game') return;
+  if(data.mode === 'level' && levelOpen(data.w, data.k)){ startLevel(data.w, data.k); restore(data); }
+  else if(data.mode === 'daily'){ startDaily(); restore(data); }
+  else if(data.mode === 'lesson') startLesson(data.step || 0);
+}
+window.claude?.hot?.snapshot?.(() => S
+  ? {screen:'game', mode:S.mode, w:S.w, k:S.k, step:S.step, sol:S.sol, val:S.val, notes:S.notes, mistakes:S.mistakes, hints:S.hints, elapsed:elapsed()}
+  : {screen:'home'});
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>
+</body>
+</html>

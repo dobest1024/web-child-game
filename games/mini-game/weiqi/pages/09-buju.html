@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第9课 · 布局 | 围棋小课堂</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="../index.html">⚫⚪ 围棋小课堂</a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="01-renshi.html" class="active">从头学</a>
+      <a href="playground.html">练习场</a>
+      <a href="terms.html">小词典</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap lesson">
+  <div class="crumb"><a href="../index.html">首页</a> › 进阶篇 › 第9课</div>
+  <h1>🗺️ 第9课：布局——先占好地方</h1>
+
+  <div class="story">
+    <span class="box-title">🐣 小故事</span>
+    一盘棋刚开始，棋盘空空的，先下哪里好呢？高手有一句口诀：
+    <b>「金角、银边、草肚皮」</b>——角落像金子最值钱，边上像银子也不错，中间像草地最不值钱。
+    所以开局要<b>先抢角，再占边，最后才去中间</b>！
+  </div>
+
+  <h2>一、为什么角最值钱？</h2>
+  <p>因为<b>角落有两面墙（棋盘的边）帮你挡着</b>，你只要用很少的子就能围出一块地。
+     在边上要用多一点子，在中间围同样大的地，要用<b>好多好多子</b>，太亏啦！</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9" data-stones="B:cc,cb,bc"
+         data-caption="角上：只用 3 颗子，就围住了角里一块地（左下角）。真省力！">
+    </div>
+    <div class="goban" data-size="9" data-stones="B:ee,de,fe,ed,ef,dd,fd,df,ff"
+         data-caption="中间：用了 9 颗子，才围出中间一点点地。太费子了！">
+    </div>
+  </div>
+
+  <div class="tip">
+    <span class="box-title">💡 金角银边草肚皮</span>
+    围一样大的地：<b>角最省子，边其次，中间最费子。</b>所以开局抢角，是最聪明的选择！
+  </div>
+
+  <h2>二、开局：先占角</h2>
+  <p>棋盘有四个角。开局时，黑白双方常常<b>一人一个角</b>地先占起来。
+     占角时，棋子下在离角不远不近的「好点」上——比如<b>星位</b>（角上的小黑点）附近。</p>
+
+  <div class="goban" data-size="9"
+       data-stones="B:cc W:gg B:gc W:cg"
+       data-moves="B:cc W:gg B:gc W:cg"
+       data-caption="开局四手，黑白各占两个角。这是最常见、最舒服的开局。">
+  </div>
+
+  <h2>三、守角和拆边</h2>
+  <p>占了一个角以后，可以再加一手<b>把角守得更结实</b>（叫<span class="term">守角</span>），
+     也可以沿着边<b>伸展出去占更多地</b>（叫<span class="term">拆边</span>）。一边长大，一边赚地，棋就慢慢变大啦。</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9" data-stones="B:cc,ec" data-last="ec"
+         data-caption="守角 / 拆边：从角上的子，沿着下边伸一手(ec)，把下边也变成自己的地盘。">
+    </div>
+    <div class="goban" data-size="9" data-stones="B:cc,ce" data-last="ce"
+         data-caption="也可以沿着左边拆出去(ce)，把左边围起来。角＋边，地盘越来越大。">
+    </div>
+  </div>
+
+  <h2>四、布局三句口诀</h2>
+  <ol class="roadmap">
+    <li><b>先抢空角</b>：棋盘有四个角，开局先一人一个抢起来。</li>
+    <li><b>再占大边</b>：角占好了，沿着边拆出去，把边也变成自己的。</li>
+    <li><b>最后入中</b>：角和边都安排好，再去中间发展。中间最难围，别一开始就往中间挤。</li>
+  </ol>
+
+  <div class="note">
+    <span class="box-title">📝 小棋手要记住</span>
+    布局阶段不要急着打架、急着吃子。<b>先把好地方占住</b>，让自己的棋子站在「值钱」的位置，
+    比到处乱吃几颗子重要得多！这就是「大局观」的开始（第12课还会讲）。
+  </div>
+
+  <div class="quiz">
+    <div class="q">❓ 小测验：一盘棋刚开始，最应该先占哪里？</div>
+    <button class="opt">棋盘正中间</button>
+    <button class="opt" data-correct="1">棋盘的四个角</button>
+    <button class="opt">哪里都行，随便下</button>
+    <div class="fb" data-yes="答对啦！🎉 金角银边草肚皮，先抢角最划算。" data-no="再想想口诀～『金角』银边草肚皮，角最值钱哦。"></div>
+  </div>
+
+  <div class="pager">
+    <a href="08-sihuo.html">← 上一课</a>
+    <a class="next" href="10-dingshi-guanzi.html">下一课：定式与数地盘 →</a>
+  </div>
+</main>
+
+<footer class="site-footer">⚫⚪ 围棋小课堂 · 第9课 布局</footer>
+<script src="../js/goban.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

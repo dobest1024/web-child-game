@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五子棋小课堂 · 学战法</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html">⚫⚪ 五子棋<span>小课堂</span></a>
+  <a class="navlink" href="index.html">🏠 首页</a>
+  <a class="navlink" href="learn.html">📖 学规则</a>
+  <a class="navlink" href="openings.html">🌅 开局课</a>
+  <a class="navlink active" href="tactics.html">⚔️ 学战法</a>
+  <a class="navlink" href="mind.html">🧠 心理课</a>
+  <a class="navlink" href="play.html">🎮 来对弈</a>
+</nav>
+
+<div class="wrap">
+  <h1 class="page-title">第二课：<em>学战法</em> ⚔️</h1>
+  <p class="page-sub">学会这几招，你就比大多数小朋友厉害啦！</p>
+
+  <section class="card" id="t-live3">
+    <h2><span class="badge">1</span>活三：两头都没堵的三连</h2>
+    <p><strong>活三</strong>就是三颗棋子连在一起，<strong>两头都是空的</strong>。它非常厉害，因为对手只能堵一头，你还能往另一头长！</p>
+    <p>如果三连有一头被堵住了，就叫<strong>眠三</strong>（睡着的三），威力就小多啦。</p>
+    <div class="quiz-grid">
+      <div class="quiz-item">
+        <h3>活三（两头空，很厉害💪）</h3>
+        <canvas class="board" id="d-live3"></canvas>
+      </div>
+      <div class="quiz-item">
+        <h3>眠三（一头被堵，没那么强😴）</h3>
+        <canvas class="board" id="d-sleep3"></canvas>
+      </div>
+    </div>
+    <div class="tip">看到自己能摆出活三，就大胆摆！看到对手有活三，要马上挡！</div>
+  </section>
+
+  <section class="card" id="t-rush4">
+    <h2><span class="badge">2</span>冲四和活四</h2>
+    <p><strong>冲四</strong>：四颗子连起来但有一头被堵，对手<strong>必须马上来挡</strong>，不然你就赢了！</p>
+    <p><strong>活四</strong>：四颗子两头都空——这就<strong>赢定了</strong>！因为对手只能堵一头，你下另一头就五连啦！</p>
+    <div class="quiz-grid">
+      <div class="quiz-item">
+        <h3>冲四（对手必须挡⚠️）</h3>
+        <canvas class="board" id="d-rush4"></canvas>
+      </div>
+      <div class="quiz-item">
+        <h3>活四（赢定了🏆）</h3>
+        <canvas class="board" id="d-live4"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="t-jump">
+    <h2><span class="badge">3</span>会跳的棋子：跳三</h2>
+    <p>棋子<strong>中间空一格</strong>也算好朋友！像 ⚫⚫🕳️⚫ 这样的形状叫<strong>跳三</strong>，把中间的空格补上，一下就变成四个啦！</p>
+    <p>跳三还有个小秘密：它<strong>不容易被对手发现</strong>，因为看起来没连在一起。等对手反应过来，已经晚啦！</p>
+    <div class="quiz-grid">
+      <div class="quiz-item">
+        <h3>跳三（补上绿圈就是四💚）</h3>
+        <canvas class="board" id="d-jump3"></canvas>
+      </div>
+      <div class="quiz-item">
+        <h3>对手没堵空格，黑棋成四！</h3>
+        <canvas class="board" id="d-jump3b"></canvas>
+      </div>
+    </div>
+    <div class="tip">看对手的棋时，<strong>空一格的也要数进去</strong>，别被“隐身”的跳三偷袭了！</div>
+  </section>
+
+  <section class="card" id="t-double">
+    <h2><span class="badge">4</span>大杀招：双三和四三</h2>
+    <p>高手赢棋的秘密：<strong>一颗棋子同时做出两个威胁</strong>，对手只有一只手，挡不过来！</p>
+    <ul>
+      <li><strong>双三</strong>：一步棋同时摆出两个活三，对手只能挡一个。</li>
+      <li><strong>四三</strong>：一步棋同时摆出冲四和活三，对手忙着挡四，你的三就长成四啦！</li>
+    </ul>
+    <div class="board-box">
+      <canvas class="board" id="d-double3"></canvas>
+      <div class="board-caption">黑棋下在 ⭐ 的位置，横着和竖着同时变成活三——这就是双三！</div>
+    </div>
+    <div class="tip">想用大杀招，就要提前把棋子下成<strong>“拐弯”</strong>的形状，让它们以后能连成两条线。</div>
+  </section>
+
+  <section class="card" id="t-quiz">
+    <h2><span class="badge">⭐</span>小小练习场</h2>
+    <p>学完就练！点棋盘上你觉得对的位置。</p>
+    <div class="quiz-grid">
+      <div class="quiz-item">
+        <h3>第 1 题：黑棋一步就能赢，下哪里？</h3>
+        <canvas class="board" id="q1"></canvas>
+        <div class="board-caption" id="q1-caption"></div>
+        <button class="btn small blue" onclick="resetQ1()">再试一次 🔄</button>
+      </div>
+      <div class="quiz-item">
+        <h3>第 2 题：白棋要连五啦！黑棋挡哪里？</h3>
+        <canvas class="board" id="q2"></canvas>
+        <div class="board-caption" id="q2-caption"></div>
+        <button class="btn small blue" onclick="resetQ2()">再试一次 🔄</button>
+      </div>
+      <div class="quiz-item">
+        <h3>第 3 题：黑棋下哪里能摆出双三？</h3>
+        <canvas class="board" id="q3"></canvas>
+        <div class="board-caption" id="q3-caption"></div>
+        <button class="btn small blue" onclick="resetQ3()">再试一次 🔄</button>
+      </div>
+      <div class="quiz-item">
+        <h3>第 4 题：黑棋下哪里能变成活四？</h3>
+        <canvas class="board" id="q4"></canvas>
+        <div class="board-caption" id="q4-caption"></div>
+        <button class="btn small blue" onclick="resetQ4()">再试一次 🔄</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="pager">
+    <a class="btn blue" href="openings.html">⬅️ 上一课：开局课</a>
+    <a class="btn" href="mind.html">下一课：心理课 ➡️</a>
+  </div>
+</div>
+
+<footer>⚫⚪ 五子棋小课堂 · 和小朋友一起快乐下棋</footer>
+
+<script src="js/board.js"></script>
+<script>
+// ---- 战法示意图（静态小棋盘） ----
+function diagram(id, blacks, whites, greenMarks = [], redMarks = []) {
+  const b = new Board(document.getElementById(id), { size: 7, cell: 36 });
+  for (const [r, c] of blacks) b.stones[r][c] = 1;
+  for (const [r, c] of whites) b.stones[r][c] = 2;
+  b.lastMove = null;
+  b.marks = greenMarks.map(([r, c]) => ({ row: r, col: c, color: "#7bc950" }))
+    .concat(redMarks.map(([r, c]) => ({ row: r, col: c, color: "#ff6b6b" })));
+  b.draw();
+  return b;
+}
+
+// 活三：两头空位用绿圈标出
+diagram("d-live3", [[3,2],[3,3],[3,4]], [], [[3,1],[3,5]]);
+// 眠三：左头被白堵
+diagram("d-sleep3", [[3,2],[3,3],[3,4]], [[3,1]], [[3,5]]);
+// 冲四：左头被堵，右边空点必须防守
+diagram("d-rush4", [[3,1],[3,2],[3,3],[3,4]], [[3,0]], [], [[3,5]]);
+// 活四：两头都空
+diagram("d-live4", [[3,1],[3,2],[3,3],[3,4]], [], [[3,0],[3,5]]);
+// 跳三：中间空一格
+diagram("d-jump3", [[3,1],[3,2],[3,4]], [], [[3,3]]);
+// 跳三补上空格后成四
+diagram("d-jump3b", [[3,1],[3,2],[3,3],[3,4]], [[2,2]], [[3,0],[3,5]]);
+// 双三：黑下 (3,3) 后横竖都是活三，⭐ 用绿圈表示
+const dd = diagram("d-double3", [[3,1],[3,2],[1,3],[2,3]], [[5,5],[1,1]], [[3,3]]);
+// 在 ⭐ 位置画一颗半透明黑子提示
+dd.ctx.globalAlpha = 0.45;
+dd.drawStone(3, 3, 1);
+dd.ctx.globalAlpha = 1;
+
+// ---- 练习 1：黑棋已有四连(2~5)，下 (3,1) 或 (3,6) 即五连 ----
+const q1Caption = document.getElementById("q1-caption");
+let q1;
+function resetQ1() {
+  q1.clear();
+  for (let c = 2; c <= 5; c++) q1.set(3, c, 1);
+  q1.set(1, 2, 2); q1.set(5, 4, 2); q1.set(2, 5, 2);
+  q1.lastMove = null;
+  q1.draw();
+  q1Caption.textContent = "提示：数一数黑棋已经连了几个？";
+  q1Caption.className = "board-caption";
+}
+q1 = new Board(document.getElementById("q1"), {
+  size: 9, cell: 36,
+  onClick(r, c) {
+    if (q1.stones[r][c] !== 0) return;
+    q1.set(r, c, 1);
+    if (r === 3 && (c === 1 || c === 6)) {
+      q1.marks = [{ row: r, col: c, color: "#7bc950" }];
+      q1Caption.textContent = "五子连珠！你赢啦！🎉";
+      q1Caption.className = "board-caption good";
+    } else {
+      q1Caption.textContent = "再想想：黑棋四个连在一起，接在头上就是五个！";
+      q1Caption.className = "board-caption bad";
+    }
+    q1.draw();
+  },
+});
+resetQ1();
+
+// ---- 练习 2：白棋斜着四连，黑棋必须挡 (1,1) 或 (6,6) ----
+const q2Caption = document.getElementById("q2-caption");
+let q2;
+function resetQ2() {
+  q2.clear();
+  for (let i = 2; i <= 5; i++) q2.set(i, i, 2);
+  q2.set(2, 4, 1); q2.set(4, 2, 1); q2.set(5, 3, 1);
+  q2.lastMove = null;
+  q2.draw();
+  q2Caption.textContent = "提示：白棋是斜着连的，像滑滑梯！";
+  q2Caption.className = "board-caption";
+}
+q2 = new Board(document.getElementById("q2"), {
+  size: 9, cell: 36,
+  onClick(r, c) {
+    if (q2.stones[r][c] !== 0) return;
+    q2.set(r, c, 1);
+    if ((r === 1 && c === 1) || (r === 6 && c === 6)) {
+      q2.marks = [{ row: r, col: c, color: "#7bc950" }];
+      q2Caption.textContent = "挡住了！好眼力！👏";
+      q2Caption.className = "board-caption good";
+    } else {
+      q2.marks = [{ row: 1, col: 1, color: "#ff6b6b" }, { row: 6, col: 6, color: "#ff6b6b" }];
+      q2Caption.textContent = "白棋下一步就赢了！要堵在红圈的位置。";
+      q2Caption.className = "board-caption bad";
+    }
+    q2.draw();
+  },
+});
+resetQ2();
+
+// ---- 练习 3：黑棋下 (4,4) 横竖同时成活三 → 双三 ----
+const q3Caption = document.getElementById("q3-caption");
+let q3;
+function resetQ3() {
+  q3.clear();
+  for (const [r, c] of [[4,2],[4,3],[2,4],[3,4]]) q3.set(r, c, 1);
+  q3.set(6, 6, 2); q3.set(2, 2, 2);
+  q3.lastMove = null;
+  q3.draw();
+  q3Caption.textContent = "提示：找一个能让横排和竖排同时变长的点！";
+  q3Caption.className = "board-caption";
+}
+q3 = new Board(document.getElementById("q3"), {
+  size: 9, cell: 36,
+  onClick(r, c) {
+    if (q3.stones[r][c] !== 0) return;
+    q3.set(r, c, 1);
+    if (r === 4 && c === 4) {
+      q3.marks = [
+        { row: 4, col: 2, color: "#7bc950" }, { row: 4, col: 3, color: "#7bc950" },
+        { row: 2, col: 4, color: "#7bc950" }, { row: 3, col: 4, color: "#7bc950" },
+        { row: 4, col: 4, color: "#ffd166" },
+      ];
+      q3Caption.textContent = "双三！横竖都是活三，对手挡不住啦！🌟🌟";
+      q3Caption.className = "board-caption good";
+    } else {
+      q3.marks = [{ row: 4, col: 4, color: "#ff6b6b" }];
+      q3Caption.textContent = "差一点！下在红圈，横排竖排同时变成活三！";
+      q3Caption.className = "board-caption bad";
+    }
+    q3.draw();
+  },
+});
+resetQ3();
+
+// ---- 练习 4：黑棋跳三补 (4,4) → 活四 ----
+const q4Caption = document.getElementById("q4-caption");
+let q4;
+function resetQ4() {
+  q4.clear();
+  for (const [r, c] of [[4,2],[4,3],[4,5]]) q4.set(r, c, 1);
+  q4.set(3, 3, 2); q4.set(5, 5, 2); q4.set(3, 5, 2);
+  q4.lastMove = null;
+  q4.draw();
+  q4Caption.textContent = "提示：黑棋中间是不是空了一格？";
+  q4Caption.className = "board-caption";
+}
+q4 = new Board(document.getElementById("q4"), {
+  size: 9, cell: 36,
+  onClick(r, c) {
+    if (q4.stones[r][c] !== 0) return;
+    q4.set(r, c, 1);
+    if (r === 4 && c === 4) {
+      q4.marks = [2, 3, 4, 5].map((cc) => ({ row: 4, col: cc, color: "#7bc950" }));
+      q4Caption.textContent = "活四！两头都空，下一步必胜！🏆";
+      q4Caption.className = "board-caption good";
+    } else {
+      q4.marks = [{ row: 4, col: 4, color: "#ff6b6b" }];
+      q4Caption.textContent = "再看看：把跳三中间的空格补上，就是活四！";
+      q4Caption.className = "board-caption bad";
+    }
+    q4.draw();
+  },
+});
+resetQ4();
+</script>
+</body>
+</html>

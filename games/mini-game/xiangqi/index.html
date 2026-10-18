@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>象棋小棋手 · 中国象棋启蒙乐园</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header class="topbar">
+    <div class="logo">♟️ 象棋小棋手</div>
+    <nav class="nav">
+      <a href="#" class="nav-link" data-target="home">🏠 首页</a>
+      <a href="#" class="nav-link" data-target="pieces">🧩 认识棋子</a>
+      <a href="#" class="nav-link" data-target="play">🎮 自由练习</a>
+      <a href="#" class="nav-link" data-target="levels">🪜 进阶之路</a>
+      <a href="#" class="nav-link" data-target="tactics">⚔️ 战法</a>
+      <a href="#" class="nav-link" data-target="mind">💗 下棋心理</a>
+      <a href="#" class="nav-link" data-target="think">🧠 学会思考</a>
+      <a href="#" class="nav-link" data-target="quiz">🎲 趣味问答</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 首页 -->
+    <section id="home" class="section">
+      <div class="hero">
+        <h1>欢迎来到<br><span class="hl">象棋小棋手</span>乐园！</h1>
+        <p class="hero-sub">嗨，小朋友！我是棋盘上的好朋友。<br>
+          在这里，我们一起从零开始，一步一步变成厉害的小棋手。<br>
+          先认识棋子，再学走法，然后学打仗的本领，最后学会动脑筋思考！</p>
+        <button id="start-btn" class="big-btn">🚀 开始学习吧！</button>
+        <div class="hero-cards">
+          <div class="hc">🧩<br>认识棋子</div>
+          <div class="hc">🎮<br>动手练习</div>
+          <div class="hc">🪜<br>六级进阶</div>
+          <div class="hc">🧠<br>学会思考</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 认识棋子 -->
+    <section id="pieces" class="section">
+      <h2 class="sec-title">🧩 认识棋子，看它们怎么走</h2>
+      <p class="sec-tip">点一点下面的棋子卡片，棋盘上就会告诉你它能走到哪里。<br>
+        也可以直接点棋盘上的棋子，绿点是能走的地方，红圈是能吃的棋子！</p>
+      <div class="pieces-layout">
+        <div class="piece-grid" id="piece-grid"></div>
+        <div class="piece-stage">
+          <div class="board-host small" id="piece-board"></div>
+          <div class="piece-info" id="piece-info"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 自由练习 -->
+    <section id="play" class="section">
+      <h2 class="sec-title">🎮 自由练习棋盘</h2>
+      <p class="sec-tip">这是一副完整的棋。点一个棋子，再点绿点，就能走棋啦！<br>
+        和爸爸妈妈一起来下一盘吧～ 想重新开始就点“重新摆棋”。</p>
+      <div class="play-controls">
+        <button id="play-reset" class="mid-btn">🔄 重新摆棋</button>
+      </div>
+      <div class="board-host big" id="play-board"></div>
+    </section>
+
+    <!-- 进阶之路 -->
+    <section id="levels" class="section">
+      <h2 class="sec-title">🪜 进阶之路 · 六个台阶</h2>
+      <p class="sec-tip">从认识棋子到学会思考，我们一级一级往上爬，每爬一级就更厉害一点！</p>
+      <div class="levels-wrap" id="levels-wrap"></div>
+    </section>
+
+    <!-- 战法 -->
+    <section id="tactics" class="section">
+      <h2 class="sec-title">⚔️ 战法 · 厉害的小招式</h2>
+      <p class="sec-tip">这些是棋手们最爱用的“必杀技”，先认识它们，下棋时慢慢就会用啦！</p>
+      <div class="cards-wrap" id="tactics-wrap"></div>
+    </section>
+
+    <!-- 心理 -->
+    <section id="mind" class="section">
+      <h2 class="sec-title">💗 下棋心理 · 做个好棋手</h2>
+      <p class="sec-tip">下棋不只是动脑筋，还要有好心态。一起来学做一个又厉害又有礼貌的小棋手！</p>
+      <div class="cards-wrap" id="mind-wrap"></div>
+    </section>
+
+    <!-- 思考 -->
+    <section id="think" class="section">
+      <h2 class="sec-title">🧠 学会思考 · 走棋前问自己</h2>
+      <p class="sec-tip">高手和新手最大的区别，就是会思考。每走一步前，问自己这 4 个问题！</p>
+      <div class="think-wrap" id="think-wrap"></div>
+      <div class="think-motto">💡 记住口诀：<b>“一看二想三动手，安全第一别着急！”</b></div>
+    </section>
+
+    <!-- 问答 -->
+    <section id="quiz" class="section">
+      <h2 class="sec-title">🎲 趣味问答 · 试试你学会了吗</h2>
+      <p class="sec-tip">动动小脑筋，回答下面的问题。答对答错都没关系，重要的是学到东西！</p>
+      <div class="quiz-wrap" id="quiz-wrap"></div>
+      <div class="quiz-score" id="quiz-score"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>♟️ 象棋小棋手 · 陪伴每一个爱象棋的小朋友快乐成长</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

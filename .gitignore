@@ -1,0 +1,9 @@
+node_modules/
+.cache/
+dist/
+artifacts/
+.DS_Store
+.env*
+.openai/
+.wrangler/
+*.log

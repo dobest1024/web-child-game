@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f8f8f2" />
+    <title>开始游戏 · 小小游乐岛</title>
+    <link rel="icon" href="/portal/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/portal/style.css" />
+    <link rel="stylesheet" href="/portal/player.css" />
+    <script type="module" src="/portal/player.js"></script>
+  </head>
+  <body class="player-page">
+    <header class="player-bar">
+      <a class="back-link" href="/">← <span>返回游乐岛</span></a>
+      <h1 id="game-title">准备出发</h1>
+      <div class="player-actions">
+        <a id="open-game" target="_blank" rel="noopener" hidden>单独打开 ↗</a
+        ><button id="fullscreen" hidden>全屏 ⛶</button>
+      </div>
+    </header>
+    <main class="player-main" id="player">
+      <div id="player-status" class="player-status" role="status">
+        <span class="loading-flower" aria-hidden="true">✳</span>
+        <h2>小世界正在打开…</h2>
+        <p>马上就可以开始探索了。</p>
+      </div>
+    </main>
+  </body>
+</html>

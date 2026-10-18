@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第3课 · 吃子 | 围棋小课堂</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="../index.html">⚫⚪ 围棋小课堂</a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="01-renshi.html" class="active">从头学</a>
+      <a href="playground.html">练习场</a>
+      <a href="terms.html">小词典</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap lesson">
+  <div class="crumb"><a href="../index.html">首页</a> › 基础篇 › 第3课</div>
+  <h1>🍴 第3课：吃子——没气就被提走</h1>
+
+  <div class="story">
+    <span class="box-title">🐣 小故事</span>
+    还记得「气」就是棋子的呼吸吗？如果一颗（或一块）棋子的气<b>全部</b>被对方堵光了，
+    它就不能呼吸啦，要从棋盘上<b>拿下来</b>，这叫「<span class="term">提子</span>」，也就是<b>吃子</b>！被吃掉的子归对方收着。
+  </div>
+
+  <h2>一、吃掉一颗子</h2>
+  <p>要吃掉对方一颗中间的子，需要把它<b>四面</b>都堵住。看下面：白棋已经堵了三面，只要再下最后一手，黑子的气就没啦！</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9" data-stones="B:ee W:de,fe,ed" data-marks="×:ef"
+         data-caption="吃之前：黑子只剩 1 口气（红叉）。轮到白棋了。">
+    </div>
+    <div class="goban" data-size="9" data-stones="W:de,fe,ed,ef" data-last="ef"
+         data-caption="白棋下在红叉处 → 黑子没气，被提走！棋盘上空了出来。">
+    </div>
+  </div>
+
+  <div class="tip">
+    <span class="box-title">💡 关键一手叫「打吃」</span>
+    把对方堵到只剩 1 口气，叫<b>打吃</b>。这时候对方要么逃跑（往外长一手增加气），要么就要被吃。
+    学会打吃，你就会「抓子」啦！
+  </div>
+
+  <h2>二、角和边上的子最好吃</h2>
+  <p>因为角上的子只有 2 口气、边上的子只有 3 口气，所以把对方往角和边上赶，更容易吃掉它！</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9" data-stones="B:aa W:ba" data-marks="×:ab"
+         data-caption="角上的黑子只剩 1 口气，白下在红叉处就能吃掉它（角上只要 2 颗白子）。">
+    </div>
+    <div class="goban" data-size="9" data-stones="B:ea W:da,fa" data-marks="×:eb"
+         data-caption="边上的黑子被打吃，白下红叉处即可提子（边上要 3 颗白子）。">
+    </div>
+  </div>
+
+  <h2>三、一次吃一大块！</h2>
+  <p>不只能吃一颗，连在一起的一整块棋，只要把它<b>整块的气</b>全堵光，就能<b>一次全吃掉</b>。块越大，吃掉越威风，但也越难围住。</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9" data-stones="B:ee,fe W:ed,fd,de,ge,ef" data-marks="×:ff"
+         data-caption="两颗黑子连在一起，被白棋堵到只剩 1 口气（红叉）。">
+    </div>
+    <div class="goban" data-size="9" data-stones="W:ed,fd,de,ge,ef,ff" data-last="ff"
+         data-caption="白下红叉处 → 两颗黑子一起被提走！">
+    </div>
+  </div>
+
+  <div class="warn">
+    <span class="box-title">⚠️ 小心：别让自己被打吃还不知道</span>
+    每走一手前，先看看自己有没有哪块棋只剩 1～2 口气。如果只剩 1 口气，赶快逃或者连，不然就被吃啦！
+  </div>
+
+  <h2>四、逃跑也是本事</h2>
+  <p>被打吃时，可以往<b>气多的方向多走一手</b>，把棋子接长，增加气。但如果怎么逃气都不够，那就是逃不掉，
+     聪明的小棋手会<b>果断放弃</b>几颗小棋子，去别处下更大的地方——这也是高手的智慧哦！（第11课会讲）</p>
+
+  <div class="goban" data-size="9" data-stones="B:ee,ef W:de,ed,fe" data-marks="×:ff ×:df ×:eg"
+       data-caption="黑子往下逃一手（ef），气又变多了（3 个红叉）。逃跑就是给自己增加气。">
+  </div>
+
+  <div class="quiz">
+    <div class="q">❓ 小测验：要吃掉对方棋盘正中间的一颗子，需要在它周围放几颗自己的子？</div>
+    <button class="opt">2 颗</button>
+    <button class="opt">3 颗</button>
+    <button class="opt" data-correct="1">4 颗（上下左右都堵住）</button>
+    <div class="fb" data-yes="答对啦！🎉 中间的子有 4 口气，要 4 颗子把它围死。" data-no="再想想～ 中间的子有 4 口气，每口气都要堵住。"></div>
+  </div>
+
+  <div class="tip">
+    <span class="box-title">🎮 动手玩一玩</span>
+    去 <a href="playground.html">练习场</a> 试试：把对方的子围起来，亲眼看它「啪」地被提走！
+  </div>
+
+  <div class="pager">
+    <a href="02-qi.html">← 上一课</a>
+    <a class="next" href="04-jinzhe-dajie.html">下一课：禁着点和打劫 →</a>
+  </div>
+</main>
+
+<footer class="site-footer">⚫⚪ 围棋小课堂 · 第3课 吃子</footer>
+<script src="../js/goban.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

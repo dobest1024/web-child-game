@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第4课 · 禁着点和打劫 | 围棋小课堂</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="../index.html">⚫⚪ 围棋小课堂</a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="01-renshi.html" class="active">从头学</a>
+      <a href="playground.html">练习场</a>
+      <a href="terms.html">小词典</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap lesson">
+  <div class="crumb"><a href="../index.html">首页</a> › 基础篇 › 第4课</div>
+  <h1>🚧 第4课：禁着点和打劫</h1>
+
+  <p>这一课有两条特别的规则。它们一开始有点绕，但只要看图，你一下就明白啦！</p>
+
+  <h2>一、禁着点：自己不能把自己闷死</h2>
+  <div class="story">
+    <span class="box-title">🐣 小故事</span>
+    有些地方，你一下进去就<b>立刻没气</b>了——等于自己把自己闷死。围棋规定：<b>不能这样自杀</b>。
+    这种地方就叫「<span class="term">禁着点</span>」，是不许下的。
+  </div>
+
+  <p>下图正中间的空点，四周都被白棋围住了。黑棋如果下进去，这颗黑子上下左右全是白子，<b>一口气都没有</b>，
+     所以这里是禁着点，黑棋不能下。</p>
+
+  <div class="goban" data-size="9" data-stones="W:de,fe,ed,ef" data-marks="×:ee"
+       data-caption="中间红叉处是黑棋的禁着点：下进去立刻没气，不允许。">
+  </div>
+
+  <div class="tip">
+    <span class="box-title">💡 唯一的例外</span>
+    如果你下进去的同时，正好能<b>吃掉对方的子</b>（让对方先没气），那就<b>不算自杀</b>，可以下！
+    因为吃掉对方后，那个位置又有气啦。<b>「吃」永远优先。</b>
+  </div>
+
+  <h2>二、打劫：不能马上「提回去」</h2>
+  <div class="story">
+    <span class="box-title">🐣 小故事</span>
+    有一种特别的棋形，黑白可以你提我一颗、我提你一颗，<b>来来回回提个没完</b>，棋就下不下去了。
+    为了不让大家吵架，围棋发明了「<span class="term">打劫</span>」规则：
+    <b>被提之后，不能马上在同一个地方提回来</b>，要先到<b>别处</b>下一手，下一回合才可以回提。
+  </div>
+
+  <p>看下图：白棋只剩 1 口气（红叉处）。轮到黑棋——</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9"
+         data-stones="W:ee,ge,fd,ff B:de,ed,ef" data-marks="×:fe"
+         data-caption="① 白子（中间那颗 ee）只剩 1 口气。黑棋下红叉处 fe 可以提掉它。">
+    </div>
+    <div class="goban" data-size="9"
+         data-stones="B:de,ed,ef,fe W:ge,fd,ff" data-marks="×:ee" data-last="fe"
+         data-caption="② 黑提掉白子后，变成这样。现在白棋很想马上在红叉处提回黑子——打劫规则说：不行！要先去别处下一手。">
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="box-title">📝 打劫一句话</span>
+    <b>提了别人，对方不能立刻提回来</b>，必须先在别的地方走一手（这一手叫「找劫材」），下一轮才能回提。
+    打劫很有意思，是高手们经常用的厉害招数，以后你会越来越喜欢它！
+  </div>
+
+  <div class="warn">
+    <span class="box-title">⚠️ 在练习场里试一试</span>
+    我们的<a href="playground.html">练习场</a>真的实现了打劫规则！当你提掉一颗会形成打劫的子，
+    马上去原位回提，棋盘会提醒你「现在不能下，要先在别处走一手」。
+  </div>
+
+  <h2>三、轮到没地方下了，可以「停一手」</h2>
+  <p>如果实在没有好地方下，可以说「我这手不下了」，叫做<span class="term">停一手</span>（虚着 / Pass）。
+     当<b>双方都连着停一手</b>，这盘棋就<b>结束</b>啦，开始数地盘比胜负。</p>
+
+  <div class="quiz">
+    <div class="q">❓ 小测验：刚被对方在打劫里提掉一颗子，你最想马上提回来，可以吗？</div>
+    <button class="opt">可以，马上提回来！</button>
+    <button class="opt" data-correct="1">不可以，要先去别的地方下一手，下一轮才能回提</button>
+    <button class="opt">永远都不能提回来</button>
+    <div class="fb" data-yes="答对啦！🎉 这就是打劫规则：不能立刻回提。" data-no="再想想～ 打劫规则不让你立刻提回去，要先去别处走一手。"></div>
+  </div>
+
+  <div class="pager">
+    <a href="03-chizi.html">← 上一课</a>
+    <a class="next" href="05-lianjie-fenduan.html">下一课：连接与分断 →</a>
+  </div>
+</main>
+
+<footer class="site-footer">⚫⚪ 围棋小课堂 · 第4课 禁着点和打劫</footer>
+<script src="../js/goban.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

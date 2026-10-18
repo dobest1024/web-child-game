@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1课 · 认识围棋 | 围棋小课堂</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="../index.html">⚫⚪ 围棋小课堂</a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="01-renshi.html" class="active">从头学</a>
+      <a href="playground.html">练习场</a>
+      <a href="terms.html">小词典</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap lesson">
+  <div class="crumb"><a href="../index.html">首页</a> › 基础篇 › 第1课</div>
+  <h1>🎯 第1课：认识围棋</h1>
+
+  <div class="story">
+    <span class="box-title">🐣 小故事</span>
+    很久很久以前，人们发明了一种特别好玩的游戏：在一张画满格子的木板上，
+    一个人用<b>黑色</b>的小石头，一个人用<b>白色</b>的小石头，比谁圈到的地盘更大。
+    这个游戏已经有<b>四千多岁</b>啦，比你的爷爷的爷爷的爷爷还要老很多很多！它的名字就叫——<span class="term">围棋</span>。
+  </div>
+
+  <h2>一、棋盘：纵横交错的大网格</h2>
+  <p>正式的围棋棋盘上有 <b>19 条横线</b> 和 <b>19 条竖线</b>，交叉成很多很多个小十字。
+     棋子就放在<b>线和线交叉的点</b>上，不是放在格子里哦！</p>
+  <p>刚开始学，我们用小一点的 <b>9 路棋盘</b>（9 条横线、9 条竖线），更容易看明白。</p>
+
+  <div class="goban" data-size="9"
+       data-marks="○:cc ○:gc ○:cg ○:gg ○:ee"
+       data-caption="9 路棋盘。上面 5 个小黑点叫「星位」，是帮我们认路的记号。中间那个星叫「天元」。">
+  </div>
+
+  <div class="tip">
+    <span class="box-title">💡 记住啦</span>
+    棋子下在<b>交叉点</b>上（线和线碰头的地方），不是下在方格里面。这点和五子棋一样～
+  </div>
+
+  <h2>二、棋子：黑子和白子</h2>
+  <p>围棋只有两种棋子：黑子和白子。它们长得圆圆的、滑滑的。游戏里：</p>
+  <ul>
+    <li>拿<b>黑子</b>的小朋友<b>先下</b>第一手；</li>
+    <li>然后一人一手，<b>轮流</b>下，黑、白、黑、白……</li>
+    <li>棋子放下去之后，<b>就不能再移动了</b>（除非被对方吃掉提走）。</li>
+  </ul>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9" data-stones="B:ee" data-last="ee"
+         data-caption="第1手：黑棋先下（红圈是最新的一手）。">
+    </div>
+    <div class="goban" data-size="9" data-stones="B:ee W:gg" data-last="gg"
+         data-caption="第2手：白棋接着下。就这样轮流来。">
+    </div>
+  </div>
+
+  <h2>三、围棋比什么？比「地盘」大小</h2>
+  <p>围棋的目标特别简单：<b>谁圈住的空地多，谁就赢！</b></p>
+  <p>用自己的棋子把一片空地围起来，像盖一个小院子，这片院子就是你的<span class="term">地盘</span>（也叫「目」）。
+     下到最后，数一数谁的地盘大，谁就是赢家。</p>
+
+  <div class="goban" data-size="9"
+       data-stones="B:cb,cc,cd,bd,db W:gf,gg,gh,fg,hg"
+       data-labels="黑:bb 白:hh"
+       data-caption="左下角黑棋圈了一块地，右上角白棋也圈了一块地。最后比谁圈得大。">
+  </div>
+
+  <div class="note">
+    <span class="box-title">📝 三句话记住围棋</span>
+    1️⃣ 黑先白后，轮流下在交叉点上。<br>
+    2️⃣ 把空地围起来，就是你的地盘。<br>
+    3️⃣ 最后地盘大的人赢。
+  </div>
+
+  <h2>四、怎么开始？先占「角」</h2>
+  <p>围在角落里的地盘最省力气，因为有两条边帮你挡着。所以开局时，小棋手们都喜欢<b>先占角，再守边，最后才往中间发展</b>。
+     这句口诀叫做：<b>金角、银边、草肚皮</b>（角最值钱，边次之，中间最难围）。第9课我们会细讲～</p>
+
+  <div class="goban" data-size="9"
+       data-stones="B:cc W:gg B:gc W:cg"
+       data-moves="B:cc W:gg B:gc W:cg"
+       data-caption="开局先抢四个角，是最常见也最聪明的下法。">
+  </div>
+
+  <div class="quiz">
+    <div class="q">❓ 小测验：围棋的棋子应该下在哪里？</div>
+    <button class="opt" data-correct="1">下在横线和竖线的交叉点上</button>
+    <button class="opt">下在方格的中间</button>
+    <button class="opt">随便放在棋盘外面也行</button>
+    <div class="fb" data-yes="答对啦！🎉 交叉点才是棋子的家。" data-no="再想想～ 棋子要放在线交叉的小十字上哦。"></div>
+  </div>
+
+  <div class="tip">
+    <span class="box-title">🎮 动手玩一玩</span>
+    去 <a href="playground.html">练习场</a> 摆几颗棋子，感受一下黑白轮流落子的样子吧！
+  </div>
+
+  <div class="pager">
+    <a href="../index.html">← 回首页</a>
+    <a class="next" href="02-qi.html">下一课：气 →</a>
+  </div>
+</main>
+
+<footer class="site-footer">⚫⚪ 围棋小课堂 · 第1课 认识围棋</footer>
+<script src="../js/goban.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

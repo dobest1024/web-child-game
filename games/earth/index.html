@@ -1,0 +1,2440 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>星球探险队</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@500;700;900&display=swap">
+<style>
+:root{
+  /* Layout: one-screen app. A fixed top bar; each mode fills the screen above a live starfield; big tappable cards sized for small hands. */
+  --space:#0a0d2b;
+  --panel:#1c2363;
+  --panel-2:#27317d;
+  --line:#3a4596;
+  --ink:#f5f2ff;
+  --ink-dim:#b3b8e6;
+  --sun:#ffc53d;
+  --rocket:#ff6b57;
+  --mint:#3fe0b5;
+  --sky:#7cc0ff;
+  --good:#46e08f;
+  --bad:#ff7a8a;
+  --display:"ZCOOL KuaiLe","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --body:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --bar-h:64px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%;margin:0}
+body{background:var(--space);color:var(--ink);font-family:var(--body);font-size:16px;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
+button:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+#sky,#fx{position:fixed;inset:0;width:100%;height:100%;display:block}
+#sky{z-index:0}
+#fx{z-index:40;pointer-events:none}
+#app{position:relative;z-index:1;height:100%}
+
+/* top bar */
+.bar{position:fixed;z-index:20;top:0;left:0;right:0;display:flex;align-items:center;gap:10px;
+  padding-top:calc(env(safe-area-inset-top,0px) + 10px);padding-bottom:10px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));pointer-events:none}
+.bar > *{pointer-events:auto}
+.bar .spacer{flex:1;pointer-events:none}
+.bar-title{font-family:var(--display);font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 16px;border-radius:999px;background:rgba(28,35,99,.88);border:2px solid var(--line);font-weight:900;font-size:17px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pill .star{color:var(--sun)}
+.pill.icon{width:44px;padding:0}
+.pill svg{width:22px;height:22px;display:block}
+@media (max-width:480px){.bar-title{display:none}.pill{padding:0 12px;font-size:16px}}
+
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;overflow-y:auto;overflow-x:hidden;
+  padding-top:calc(var(--bar-h) + 12px);padding-bottom:28px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* home */
+#home{gap:14px;text-align:center}
+#home > :first-child{margin-top:auto}
+#home > :last-child{margin-bottom:auto}
+.title{font-family:var(--display);font-weight:400;font-size:clamp(46px,12vw,88px);line-height:1;margin:0;letter-spacing:.04em;color:var(--sun);text-shadow:0 5px 0 #c4681a,0 12px 36px rgba(255,170,40,.35)}
+.subtitle{margin:0;color:var(--ink-dim);font-size:clamp(16px,4.2vw,20px);text-wrap:balance}
+#hero{width:min(220px,50vw,26vh);height:min(220px,50vw,26vh);max-width:100%;flex:none}
+.modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;width:min(660px,100%)}
+.mode{display:flex;align-items:center;gap:12px;text-align:left;padding:14px 16px;border-radius:24px;background:var(--c);color:#1a1440;box-shadow:0 6px 0 var(--d);transition:transform .1s,box-shadow .1s}
+.mode:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--d)}
+.mode:active{transform:translateY(4px);box-shadow:0 2px 0 var(--d)}
+.mode canvas{flex:none;width:56px;height:56px}
+.mode span{min-width:0}
+.mode b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(20px,4.8vw,26px);line-height:1.15}
+.mode small{display:block;font-size:13px;line-height:1.4;opacity:.78;margin-top:2px}
+.m-explore{--c:#ffc53d;--d:#c4871a}
+.m-quiz{--c:#3fe0b5;--d:#1f9e7d}
+.m-order{--c:#7cc0ff;--d:#3f7fc2}
+.m-book{--c:#ff9fc4;--d:#c8608a}
+.m-arcade{--c:#ff8a6b;--d:#c4553a}
+.m-cons{--c:#c9a8ff;--d:#8a64d1}
+@media (min-width:760px){.modes{grid-template-columns:repeat(3,minmax(0,1fr));width:min(860px,100%)}}
+.progress{color:var(--ink-dim);font-size:15px;margin:0}
+.progress b{color:var(--ink)}
+@media (max-width:440px){.mode{flex-direction:column;text-align:center;padding:12px 8px;gap:6px}}
+
+/* explore */
+#explore{padding:0}
+#exCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;display:block}
+.ex-hint{position:absolute;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));width:max-content;max-width:max(190px,calc(100% - 190px));padding:10px 18px;border-radius:18px;background:rgba(20,26,78,.9);border:2px solid var(--line);text-align:center;font-size:15px;line-height:1.5;transition:opacity .8s;pointer-events:none}
+.ex-hint kbd{font-family:var(--body);background:var(--panel-2);border-radius:6px;padding:1px 6px;border:1px solid var(--line)}
+
+/* fact card */
+.modal{position:fixed;inset:0;z-index:30;display:grid;place-items:center;overflow-y:auto;background:rgba(5,6,25,.72);
+  padding-block:20px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.card{position:relative;width:min(600px,100%);background:linear-gradient(180deg,var(--panel-2),var(--panel));border:3px solid var(--line);border-radius:30px;padding:22px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:18px;align-items:center;box-shadow:0 24px 70px rgba(0,0,0,.55);animation:pop .4s cubic-bezier(.2,1.5,.4,1)}
+.card-art{display:grid;place-items:center}
+.card-art canvas{width:210px;height:210px;max-width:100%;animation:float 3.2s ease-in-out infinite}
+.chip{display:inline-block;padding:4px 12px;border-radius:999px;background:rgba(255,197,61,.16);color:var(--sun);font-size:13px;font-weight:900;letter-spacing:.08em}
+.card h2{font-family:var(--display);font-weight:400;font-size:46px;line-height:1.1;margin:6px 0 4px}
+.hello{margin:0 0 12px;color:var(--mint);font-weight:700;line-height:1.5}
+.facts{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:8px;text-align:left}
+.facts li{background:rgba(255,255,255,.07);border-radius:14px;padding:10px 12px 10px 36px;position:relative;line-height:1.55}
+.facts li::before{content:"★";position:absolute;left:12px;top:10px;color:var(--sun)}
+.new-badge{position:absolute;top:-16px;right:18px;background:var(--rocket);color:#fff;font-weight:900;padding:6px 14px;border-radius:999px;box-shadow:0 4px 0 #b83d2d;transform:rotate(4deg);animation:wiggle 1.2s ease-in-out infinite}
+@media (max-width:560px){.card{grid-template-columns:1fr;text-align:center;justify-items:center;padding:20px 16px}.card-art canvas{width:170px;height:170px}.card h2{font-size:40px}.actions{justify-content:center}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border-radius:18px;font-weight:900;font-size:18px;transition:transform .1s,box-shadow .1s}
+.btn svg{width:22px;height:22px}
+.btn.primary{background:var(--sun);color:#3a2200;box-shadow:0 5px 0 #c4871a}
+.btn.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #c4871a}
+.btn.ghost{background:rgba(255,255,255,.08);border:2px solid var(--line)}
+.btn.ghost:active{transform:translateY(2px)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* quiz */
+.wrap{width:min(760px,100%);display:flex;flex-direction:column;gap:18px;flex:1;justify-content:center}
+.dots{display:flex;gap:8px;justify-content:center}
+.dots i{width:16px;height:16px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--sun);box-shadow:0 0 0 4px rgba(255,197,61,.25)}
+.dots i.ok{background:var(--good)}
+.dots i.no{background:var(--bad)}
+.q-row{display:flex;gap:12px;align-items:center;justify-content:center}
+.question{font-family:var(--display);font-weight:400;font-size:clamp(26px,6.4vw,42px);text-align:center;margin:0;text-wrap:balance;line-height:1.25;min-width:0}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.opt{background:var(--panel);border:3px solid var(--line);border-radius:24px;padding:14px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:clamp(17px,4.4vw,22px);font-weight:900;min-height:120px;box-shadow:0 6px 0 #0d1140;transition:transform .1s;line-height:1.3}
+.opt:hover:not(:disabled){transform:translateY(-3px)}
+.opt:disabled{cursor:default}
+.opt canvas{width:72px;height:72px}
+.opt.right{border-color:var(--good);background:#16493e;animation:pop .35s}
+.opt.wrong{border-color:var(--bad);background:#4a1e36;animation:shake .4s}
+.opt.dim{opacity:.45}
+.feedback{background:rgba(255,255,255,.06);border-radius:20px;padding:14px 18px;text-align:center;line-height:1.6;font-size:17px}
+.feedback b{display:block;font-family:var(--display);font-weight:400;font-size:28px}
+.feedback.ok b{color:var(--good)}
+.feedback.no b{color:var(--bad)}
+.center{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.result{text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
+.result .big{font-family:var(--display);font-size:clamp(56px,16vw,96px);line-height:1;color:var(--sun)}
+.result p{margin:0;font-size:19px;line-height:1.6;text-wrap:balance}
+
+/* order */
+.lead{text-align:center;margin:0;font-size:clamp(17px,4.4vw,20px);line-height:1.5;text-wrap:balance}
+.lane{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:2px dashed var(--line);border-radius:24px;padding:12px}
+.lane-sun{flex:none;display:flex;flex-direction:column;align-items:center;font-size:13px;color:var(--sun);font-weight:900}
+.lane-sun canvas{width:68px;height:68px}
+.slots{flex:1;min-width:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.slot{min-height:84px;border-radius:14px;background:rgba(0,0,0,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:13px;color:var(--ink-dim);font-weight:700;padding:4px 0}
+.slot canvas{width:46px;height:46px}
+.slot.filled{background:rgba(63,224,181,.14);color:var(--ink);animation:pop .35s}
+.slot.next{outline:2px solid var(--sun);outline-offset:-2px}
+@media (max-width:640px){.slots{grid-template-columns:repeat(4,minmax(0,1fr))}.lane-sun canvas{width:52px;height:52px}}
+.tray{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:min(560px,100%);align-self:center}
+.tray .opt{min-height:104px;font-size:17px}
+.tray .opt canvas{width:58px;height:58px}
+.msg{min-height:3.2em;text-align:center;font-size:18px;font-weight:700;line-height:1.6;display:grid;place-items:center}
+.msg .tip{color:var(--sun)}
+
+/* book */
+.book{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:min(760px,100%)}
+.sticker{background:var(--panel);border:3px solid var(--line);border-radius:24px;padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:0 6px 0 #0d1140;transition:transform .1s}
+.sticker:hover{transform:translateY(-3px) rotate(-1deg)}
+.sticker canvas{width:88px;height:88px;max-width:100%}
+.sticker b{font-family:var(--display);font-weight:400;font-size:24px}
+.sticker small{color:var(--ink-dim);font-size:13px;text-align:center}
+.sticker.locked canvas{filter:brightness(0) opacity(.4)}
+.sticker.locked b{color:var(--ink-dim)}
+
+.toast{position:fixed;z-index:45;left:50%;top:calc(env(safe-area-inset-top,0px) + 74px);transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);background:var(--sun);color:#3a2200;font-weight:900;padding:12px 20px;border-radius:18px;box-shadow:0 6px 0 #c4871a;text-align:center;line-height:1.5;animation:drop .4s cubic-bezier(.2,1.5,.4,1)}
+
+/* explore missions */
+.mission{position:absolute;z-index:2;top:calc(var(--bar-h) + 2px);left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 10px;padding:8px 10px 8px 12px;border-radius:20px;background:rgba(20,26,78,.92);border:2px solid var(--line);font-weight:900;font-size:16px;line-height:1.4;text-align:center}
+.mission .pill{height:36px;font-size:15px;padding:0 14px;background:var(--sun);color:#3a2200;border-color:#c4871a}
+.mission .m-hint{flex-basis:100%;color:var(--sun);font-size:14px}
+
+/* level pickers and tabs */
+.levels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;width:100%}
+.levels.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.lvl{background:var(--panel);border:3px solid var(--line);border-radius:22px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:0 6px 0 #0d1140;transition:transform .1s;min-width:0}
+.lvl:hover:not(:disabled){transform:translateY(-3px)}
+.lvl canvas{width:56px;height:56px}
+.lvl b{font-family:var(--display);font-weight:400;font-size:20px;line-height:1.2}
+.lvl small{color:var(--ink-dim);font-size:13px;line-height:1.35;text-align:center}
+.lvl .rate{color:var(--sun);letter-spacing:2px;font-size:15px;font-weight:900}
+.lvl:disabled{opacity:.45;cursor:not-allowed}
+.lvl.cur{border-color:var(--sun);box-shadow:0 6px 0 #0d1140,0 0 0 4px rgba(255,197,61,.25)}
+@media (max-width:520px){.levels{gap:8px}.lvl{padding:10px 2px}.lvl b{font-size:16px}.lvl canvas{width:44px;height:44px}.lvl .rate{letter-spacing:0;font-size:13px}}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tab{min-height:44px;padding:0 16px;border-radius:999px;background:var(--panel);border:2px solid var(--line);font-weight:900;font-size:16px}
+.tab.on{background:var(--sun);color:#3a2200;border-color:#c4871a}
+.tab:disabled{opacity:.4;cursor:not-allowed}
+
+/* arcade */
+#arcCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;display:block}
+.overlay{position:absolute;inset:0;z-index:3;display:flex;overflow-y:auto;background:rgba(5,6,25,.5);
+  padding-block:calc(var(--bar-h) + 12px) 24px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.panel{width:min(520px,100%);margin:auto;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:3px solid var(--line);border-radius:30px;padding:24px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.55);animation:pop .4s cubic-bezier(.2,1.5,.4,1)}
+.panel h2{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.1;margin:0}
+.panel p{margin:0;line-height:1.6;font-size:17px;text-wrap:balance}
+.panel .fact{background:rgba(255,255,255,.07);border-radius:14px;padding:10px 14px;color:var(--mint);font-weight:700}
+.rating{font-size:52px;letter-spacing:6px;color:var(--sun);line-height:1}
+.rating .off{color:var(--line)}
+
+/* constellations */
+#consCanvas{width:100%;height:min(56vh,520px);min-height:280px;border-radius:24px;background:#060821;border:2px solid var(--line);display:block;touch-action:none;cursor:pointer}
+
+/* badges */
+.section-title{font-family:var(--display);font-weight:400;font-size:28px;margin:10px 0 0;text-align:center}
+.badges{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;width:min(860px,100%)}
+.wonders{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;width:min(860px,100%)}
+.wonders .sticker{padding:10px 4px}
+.wonders .sticker canvas{width:64px;height:64px}
+.wonders .sticker b{font-size:17px;text-align:center;line-height:1.25}
+
+/* cosmos journey */
+#cosCanvas{width:100%;height:min(62vh,600px);min-height:300px;border-radius:24px;background:#04051a;border:2px solid var(--line);display:block;touch-action:manipulation;cursor:pointer}
+.cos-head{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.cos-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.mode.wide{grid-column:1/-1;justify-content:center}
+@media (max-width:600px){.badges{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.badge{background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.medal{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:26px;background:radial-gradient(circle at 35% 30%,#fff3b8,var(--sun) 55%,#c4871a);color:#5a3500;box-shadow:0 4px 0 #8a5a10}
+.badge b{font-size:16px}
+.badge small{color:var(--ink-dim);font-size:13px;line-height:1.4}
+.badge.locked .medal{background:var(--line);color:var(--ink-dim);box-shadow:none}
+.badge.locked b{color:var(--ink-dim)}
+
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+@keyframes drop{from{transform:translate(-50%,-30px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+@keyframes float{50%{transform:translateY(-8px)}}
+@keyframes wiggle{50%{transform:rotate(-4deg) scale(1.06)}}
+@keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header class="bar">
+  <button class="pill" id="backBtn" hidden aria-label="回到首页">← 回家</button>
+  <div class="bar-title" id="barTitle"></div>
+  <div class="spacer"></div>
+  <div class="pill" id="stickerPill" hidden>贴纸 <span id="stickerCount">0</span>/9</div>
+  <div class="pill" title="我的星星"><span class="star">★</span><span id="starCount">0</span></div>
+  <button class="pill icon" id="soundBtn" aria-label="声音开关"></button>
+</header>
+
+<div id="app">
+  <section class="screen" id="home">
+    <h1 class="title">星球探险队</h1>
+    <p class="subtitle">开着小火箭，去太阳系的每颗星球打个招呼！</p>
+    <canvas id="hero" aria-hidden="true"></canvas>
+    <div class="modes">
+      <button class="mode m-cons wide" data-go="cosmos"><canvas data-icon="cosmos"></canvas><span><b>宇宙大旅行</b><small id="pCosmos"></small></span></button>
+      <button class="mode m-explore" data-go="explore"><canvas data-icon="rocket"></canvas><span><b>开火箭探险</b><small id="pExplore"></small></span></button>
+      <button class="mode m-arcade" data-go="arcade"><canvas data-icon="moon"></canvas><span><b>太空大冒险</b><small id="pArcade"></small></span></button>
+      <button class="mode m-quiz" data-go="quiz"><canvas data-icon="jupiter"></canvas><span><b>星球问答</b><small id="pQuiz"></small></span></button>
+      <button class="mode m-order" data-go="order"><canvas data-icon="saturn"></canvas><span><b>行星排排队</b><small id="pOrder"></small></span></button>
+      <button class="mode m-cons" data-go="cons"><canvas data-icon="cons"></canvas><span><b>星座连连看</b><small id="pCons"></small></span></button>
+      <button class="mode m-book" data-go="book"><canvas data-icon="earth"></canvas><span><b>图鉴和勋章</b><small id="pBook"></small></span></button>
+    </div>
+    <p class="progress" id="homeProgress"></p>
+  </section>
+
+  <section class="screen" id="explore" hidden>
+    <canvas id="exCanvas" aria-label="太空地图，用方向键或按住屏幕驾驶火箭"></canvas>
+    <div class="mission" id="mission"><span class="chip" id="mNum"></span><span id="mText"></span><button class="pill" id="mHint">提示</button><span class="m-hint" id="mHintText" hidden></span></div>
+    <div class="ex-hint" id="exHint">电脑：按 <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> 开火箭<br>手机/平板：按住屏幕，火箭会飞向你的手指</div>
+  </section>
+
+  <section class="screen" id="quiz" hidden>
+    <div class="wrap" id="quizPick">
+      <p class="lead">选一个关卡。每关 8 道题，答对 5 题就能打开下一关！</p>
+      <div class="levels" id="quizLevels"></div>
+    </div>
+    <div class="wrap" id="quizPlay" hidden>
+      <div class="dots" id="quizDots"></div>
+      <div class="q-row">
+        <h2 class="question" id="quizQ"></h2>
+        <button class="pill icon" id="quizSpeak" aria-label="读题"></button>
+      </div>
+      <div class="opts" id="quizOpts"></div>
+      <div class="feedback" id="quizFb" hidden></div>
+      <div class="center"><button class="btn primary" id="quizNext" hidden>下一题 →</button></div>
+    </div>
+    <div class="wrap result" id="quizEnd" hidden>
+      <div class="big" id="quizScore"></div>
+      <p id="quizMsg"></p>
+      <div class="center">
+        <button class="btn primary" id="quizNextLv" hidden>下一关 →</button>
+        <button class="btn ghost" id="quizAgain">再玩一次</button>
+        <button class="btn ghost" id="quizBack">选关卡</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="order" hidden>
+    <div class="wrap">
+      <div class="tabs" id="orderTabs"></div>
+      <p class="lead" id="orderLead"></p>
+      <div class="lane">
+        <div class="lane-sun"><canvas id="orderSun"></canvas><span id="laneLabel">太阳</span></div>
+        <div class="slots" id="orderSlots"></div>
+      </div>
+      <div class="msg" id="orderMsg"></div>
+      <div class="tray" id="orderTray"></div>
+      <div class="center" id="orderDone" hidden>
+        <button class="btn primary" id="orderAgain">再排一次</button>
+        <button class="btn ghost" data-go="home">回首页</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="book" hidden>
+    <div class="wrap" style="justify-content:flex-start">
+      <h2 class="section-title">星球贴纸</h2>
+      <p class="lead" id="bookLead"></p>
+      <div class="book" id="bookGrid"></div>
+      <h2 class="section-title">宇宙奇观</h2>
+      <p class="lead" id="wonderLead"></p>
+      <div class="wonders" id="wonderGrid"></div>
+      <h2 class="section-title">我的勋章</h2>
+      <div class="badges" id="badgeGrid"></div>
+    </div>
+  </section>
+
+  <section class="screen" id="cosmos" hidden>
+    <div class="wrap" style="justify-content:flex-start">
+      <div class="tabs" id="cosTabs"></div>
+      <div class="cos-head">
+        <h2 class="question" id="cosName"></h2>
+        <span class="chip" id="cosSize"></span>
+        <p class="lead" id="cosLead"></p>
+      </div>
+      <canvas id="cosCanvas" aria-label="宇宙画面，点闪光的问号发现奇观"></canvas>
+      <div class="cos-bar">
+        <span class="pill" id="cosCount"></span>
+        <button class="btn ghost" id="cosIn">← 拉近一层</button>
+        <button class="btn primary" id="cosOut">缩小视野，看更大的宇宙 →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="arcade" hidden>
+    <div class="wrap" id="arcSelect">
+      <p class="lead">从地球出发，躲开石头、捡星星，一站一站飞！一次都没被撞到，就能拿 3 颗星。</p>
+      <div class="levels" id="arcLevels"></div>
+    </div>
+    <canvas id="arcCanvas" hidden></canvas>
+    <div class="overlay" id="arcOver" hidden><div class="panel" id="arcPanel"></div></div>
+  </section>
+
+  <section class="screen" id="cons" hidden>
+    <div class="wrap" style="justify-content:flex-start">
+      <div class="tabs" id="consTabs"></div>
+      <p class="lead" id="consLead"></p>
+      <canvas id="consCanvas" aria-label="星空，按数字顺序点星星"></canvas>
+      <div class="feedback" id="consDone" hidden></div>
+    </div>
+  </section>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="card" role="dialog" aria-modal="true" aria-labelledby="cardName">
+    <div class="new-badge" id="cardNew">新贴纸 +5★</div>
+    <div class="card-art"><canvas id="cardArt"></canvas></div>
+    <div>
+      <span class="chip" id="cardTag"></span>
+      <h2 id="cardName"></h2>
+      <p class="hello" id="cardHello"></p>
+      <ul class="facts" id="cardFacts"></ul>
+      <div class="actions">
+        <button class="btn primary" id="cardOk">收下贴纸！</button>
+        <button class="btn ghost" id="cardSpeak"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const TAU = Math.PI * 2;
+const dprOf = () => Math.min(2, window.devicePixelRatio || 1);
+const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FONT = '"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif';
+
+/* ---------- 星球资料 ---------- */
+const PLANETS = [
+  {id:'sun', name:'太阳', tag:'恒星', short:'太阳系的中心',
+   hello:'我是太阳！我好烫，可别靠得太近哦。',
+   facts:['太阳是一颗恒星，自己会发光发热。','太阳特别大，大约130万个地球才能把它装满。','太阳光跑到地球，大约要8分钟。']},
+  {id:'mercury', name:'水星', tag:'第1颗行星', short:'离太阳最近，个子最小',
+   hello:'嗨！我是水星，跑得最快的小个子。',
+   facts:['水星离太阳最近，也是最小的行星。','水星跑得飞快，绕太阳一圈只要88天。','白天热得能把铅块烤化，晚上又冷到零下180度。']},
+  {id:'venus', name:'金星', tag:'第2颗行星', short:'最热的行星',
+   hello:'你好呀，我是金星，有点热哦！',
+   facts:['金星是最热的行星，比离太阳更近的水星还热。','厚厚的云层像被子一样，把热量紧紧捂住。','在金星上，太阳是从西边升起来的！']},
+  {id:'earth', name:'地球', tag:'第3颗行星', short:'我们的家',
+   hello:'欢迎回家！我是地球，我们住在这里。',
+   facts:['地球是我们的家，也是目前知道的唯一有生命的星球。','地球表面大约71%是海洋，从太空看是蓝色的。','月球是地球的好朋友，一直绕着地球转。']},
+  {id:'mars', name:'火星', tag:'第4颗行星', short:'红色星球',
+   hello:'我是红红的火星，欢迎来做客！',
+   facts:['火星的土里有很多铁锈，所以看起来是红色的。','火星上有太阳系最高的火山，大约是珠穆朗玛峰的2.5倍高。','2021年，中国的祝融号火星车登上了火星。']},
+  {id:'jupiter', name:'木星', tag:'第5颗行星', short:'最大的行星',
+   hello:'哈哈，我是木星，行星里的大块头！',
+   facts:['木星是最大的行星，能装下1300多个地球。','木星上的大红斑，是一个比地球还大的风暴。','木星是一颗气态行星，没有可以站的地面。']},
+  {id:'saturn', name:'土星', tag:'第6颗行星', short:'戴着漂亮光环',
+   hello:'看我的光环！我是土星。',
+   facts:['土星有一圈漂亮的光环，是冰块和石头组成的。','土星比水还轻，有超大浴缸的话，它能浮起来。','土星已经发现了两百多颗卫星，是卫星最多的行星。']},
+  {id:'uranus', name:'天王星', tag:'第7颗行星', short:'躺着转圈',
+   hello:'我是天王星，我喜欢躺着转圈圈。',
+   facts:['天王星是侧躺着转圈的，像一个在地上滚的球。','它看起来是蓝绿色的，因为大气里有甲烷。','天王星绕太阳一圈要84年。']},
+  {id:'neptune', name:'海王星', tag:'第8颗行星', short:'离太阳最远',
+   hello:'你飞了好远呀！我是海王星。',
+   facts:['海王星离太阳最远，又冷又暗。','海王星上的风最大，一小时能刮2000多公里，比飞机还快。','它绕太阳一圈要165年，比人的一辈子还长！']}
+];
+const BY = {}; PLANETS.forEach(p => BY[p.id] = p);
+const ORDER = PLANETS.filter(p => p.id !== 'sun').map(p => p.id);
+
+BY.moon = {id:'moon', name:'月球', tag:'地球的卫星', short:'地球的好朋友',
+  hello:'嗨，我是月球，一直陪着地球转圈圈。',
+  facts:['月球是地球唯一的天然卫星，离地球大约38万公里。','月球自己不会发光，月光是它反射的太阳光。','2019年，中国的嫦娥四号第一次降落在月球背面。']};
+
+/* 宇宙奇观：art 决定卡片上画什么 */
+const WONDERS = {
+  solar:{name:'太阳系', tag:'我们的家园', art:'solar', hello:'这里就是太阳和它的 8 颗行星。',
+    facts:['太阳系里有1颗恒星、8颗行星，还有很多矮行星、小行星和彗星。','光从太阳跑到最远的海王星，要4个多小时。','太阳系大约在46亿年前诞生。']},
+  comet:{name:'哈雷彗星', tag:'彗星', art:'comet', hello:'我拖着长长的尾巴，大约76年回来一次！',
+    facts:['彗星是冰和尘土组成的“脏雪球”。','靠近太阳时，冰会变成气体，拖出长长的尾巴。','哈雷彗星上一次回来是1986年，下一次大约在2061年。']},
+  pluto:{name:'冥王星', tag:'矮行星', art:'pluto', hello:'我以前是第9颗行星，现在是矮行星啦。',
+    facts:['2006年，科学家把冥王星改叫“矮行星”。','它住在海王星外面的柯伊伯带，那里有很多冰冻的小天体。','冥王星上有一大片爱心形状的冰原。']},
+  proxima:{name:'比邻星', tag:'离太阳最近的恒星', art:'reddwarf', hello:'我是太阳最近的邻居！',
+    facts:['比邻星离我们大约4.2光年，它的光要跑4年多才能到地球。','它是一颗红矮星，比太阳小，也比太阳暗。','它太暗了，用眼睛看不见，要用望远镜。']},
+  sirius:{name:'天狼星', tag:'夜空最亮的恒星', art:'bluestar', hello:'晚上抬头看，我最亮！',
+    facts:['天狼星是夜空中最亮的恒星。','它离我们大约8.6光年。','天狼星比太阳大、比太阳热，看起来白里透蓝。']},
+  orion_neb:{name:'猎户座大星云', tag:'星云', art:'nebula', hello:'这里是恒星宝宝出生的地方。',
+    facts:['星云是太空里由气体和尘埃组成的大云团。','气体在星云里慢慢聚在一起，就会诞生新的恒星。','它在猎户座腰带下面，天气好时用眼睛也能看到一小团。']},
+  crab:{name:'蟹状星云', tag:'超新星留下的星云', art:'supernova', hello:'我是一颗大恒星爆炸以后留下的。',
+    facts:['很大的恒星老了，会发生超新星爆发，一下子变得特别亮。','1054年，中国古人记录了一颗突然出现的“客星”，连白天都能看到。','那次爆炸留下的就是蟹状星云，它中间还藏着一颗中子星。']},
+  milkyway:{name:'银河系', tag:'我们住的星系', art:'milkyway', hello:'太阳只是我身体里几千亿颗恒星中的一颗。',
+    facts:['银河系里有几千亿颗恒星，太阳只是其中一颗。','光从银河系一边跑到另一边，大约要10万年。','太阳带着我们绕银河系中心转一圈，要2亿多年。']},
+  sgra:{name:'人马座A*', tag:'银河系中心的黑洞', art:'blackhole', hello:'我是藏在银河系正中间的超大黑洞。',
+    facts:['银河系的正中心有一个超大质量黑洞，叫人马座A*。','它的质量大约是太阳的400万倍。','2022年，科学家公布了它的第一张照片。']},
+  cygx1:{name:'天鹅座X-1', tag:'黑洞', art:'blackhole2', hello:'小心！太靠近我就回不去啦。',
+    facts:['黑洞的引力特别特别大，连光都逃不出来，所以是黑的。','天鹅座X-1是最早被科学家认定的黑洞之一。','它把旁边恒星的气体吸过来，气体转着圈发出很强的X射线。']},
+  pulsar:{name:'脉冲星', tag:'中子星', art:'pulsar', hello:'我转得飞快，像宇宙里的灯塔！',
+    facts:['大恒星爆炸后，剩下的核心可能变成中子星。','中子星特别重，一小勺的物质就有大约10亿吨。','中国的“天眼”FAST射电望远镜，已经发现了上千颗脉冲星。']},
+  localgroup:{name:'本星系群', tag:'星系的小家庭', art:'localgroup', hello:'银河系也有邻居，我们是一家人。',
+    facts:['银河系、仙女座星系、三角座星系，还有几十个小星系，组成了本星系群。','里面最大的两个星系是仙女座星系和银河系。','光从它的一头跑到另一头，大约要1000万年。']},
+  andromeda:{name:'仙女座星系', tag:'离我们最近的大星系', art:'andromeda', hello:'嗨，银河系！几十亿年后我们会见面哦。',
+    facts:['仙女座星系离我们大约250万光年，我们看到的是它250万年前的样子。','它比银河系还大，里面大约有1万亿颗恒星。','大约45亿年后，它会和银河系撞在一起，合成一个新的大星系。']},
+  triangulum:{name:'三角座星系', tag:'本星系群的老三', art:'triangulum', hello:'我是本星系群里第三大的星系！',
+    facts:['三角座星系是本星系群里第三大的星系。','它离我们大约300万光年。','在特别黑的夜空下，视力好的人能用眼睛隐约看到它。']},
+  lmc:{name:'大麦哲伦云', tag:'银河系的卫星星系', art:'lmc', hello:'我绕着银河系转，像银河系的“月亮”。',
+    facts:['大麦哲伦云是绕着银河系转的小星系。','它离我们大约16万光年。','在南半球的夜空，用眼睛就能看到它，像一小片云。']},
+  virgo_sc:{name:'室女座超星系团', tag:'更大的星系家族', art:'virgosc', hello:'好多星系群和星系团聚在一起，就是我。',
+    facts:['本星系群只是室女座超星系团里的一个小成员。','它里面有上百个星系群和星系团。','光从它的一头跑到另一头，要1亿多年。']},
+  virgo_cl:{name:'室女座星系团', tag:'星系团', art:'cluster', hello:'我这里挤着一千多个星系！',
+    facts:['室女座星系团离我们大约5400万光年。','里面有一千多个星系挤在一起。','它的引力很大，正拉着周围的星系慢慢靠近。']},
+  m87:{name:'M87黑洞', tag:'第一张黑洞照片', art:'m87', hello:'咔嚓！我是第一个被拍下照片的黑洞。',
+    facts:['2019年，科学家把全世界的望远镜连在一起，拍下了第一张黑洞照片。','照片里是一个发光的圆环，中间黑黑的是黑洞的影子。','它的质量大约是太阳的65亿倍！']},
+  laniakea:{name:'拉尼亚凯亚超星系团', tag:'我们的超级大家园', art:'laniakea', hello:'我的名字在夏威夷语里是“无尽的天堂”。',
+    facts:['2014年，科学家画出了拉尼亚凯亚超星系团的地图。','它里面大约有10万个星系，室女座超星系团只是它的一部分。','光从它的一边跑到另一边，大约要5亿年。']},
+  attractor:{name:'巨引源', tag:'星系们奔向的地方', art:'attractor', hello:'大家都在朝我这边慢慢流过来！',
+    facts:['拉尼亚凯亚里的星系，像河水一样朝同一个方向流动。','它们流向的那个引力特别大的地方，叫巨引源。','巨引源躲在银河系的盘后面，被尘埃挡住，很难看清楚。']},
+  universe:{name:'可观测宇宙', tag:'我们能看到的全部', art:'universe', hello:'这就是我们能看到的整个宇宙！',
+    facts:['宇宙大约138亿岁了。','可观测宇宙里大约有几千亿个星系。','因为宇宙一直在膨胀，可观测宇宙的直径大约有930亿光年。']},
+  web:{name:'宇宙网', tag:'宇宙的大结构', art:'web', hello:'星系们排成丝线，织成一张大网。',
+    facts:['从最大的尺度看，星系们排成长长的丝线和墙。','丝线之间是很空很空的大空洞。','整个宇宙看起来像一块海绵，或者一张巨大的蜘蛛网。']},
+  bigbang:{name:'宇宙大爆炸', tag:'宇宙的开始', art:'bigbang', hello:'一切都是从这里开始的！',
+    facts:['大约138亿年前，宇宙从一个又热又小的状态开始变大，这叫大爆炸。','刚开始的宇宙非常非常热，后来慢慢变凉。','后来才有了恒星、星系、太阳和地球，还有我们。']}
+};
+const WONDER_IDS = Object.keys(WONDERS);
+
+/* 宇宙大旅行的 7 层；spots 坐标是画面正方形里的比例位置 */
+const STAGES = [
+  {name:'太阳系', size:'光从一头跑到另一头：8 个多小时', lead:'这是我们的家：太阳和 8 颗行星。点一点闪光的问号，发现宇宙奇观！',
+    spots:[['solar',.5,.5],['comet',.2,.24],['pluto',.9,.72]]},
+  {name:'恒星邻居', size:'比邻星离我们 4.2 光年', lead:'视野拉远，太阳变成了一颗小星星。“光年”是光跑一年的距离，大约 9.5 万亿公里！',
+    spots:[['proxima',.64,.62],['sirius',.24,.34],['orion_neb',.78,.24],['crab',.24,.78]]},
+  {name:'银河系', size:'直径大约 10 万光年', lead:'再拉远！几千亿颗恒星组成了一个大旋涡，这就是银河系。',
+    spots:[['milkyway',.3,.68],['sgra',.5,.5],['cygx1',.72,.3],['pulsar',.3,.3]]},
+  {name:'本星系群', size:'直径大约 1000 万光年', lead:'银河系也有邻居，几十个星系组成了一个小家庭。',
+    spots:[['localgroup',.5,.86],['andromeda',.7,.34],['triangulum',.82,.64],['lmc',.17,.74]]},
+  {name:'室女座超星系团', size:'直径大约 1 亿光年', lead:'本星系群变成了一个小点，周围全是星系群和星系团。',
+    spots:[['virgo_sc',.3,.4],['virgo_cl',.55,.32],['m87',.66,.5]]},
+  {name:'拉尼亚凯亚超星系团', size:'直径大约 5 亿光年', lead:'再拉远，星系们像河流一样，流向同一个地方。',
+    spots:[['laniakea',.8,.8],['attractor',.55,.45]]},
+  {name:'可观测宇宙', size:'直径大约 930 亿光年', lead:'这是我们能看到的整个宇宙，星系们连成了一张大网！',
+    spots:[['universe',.2,.2],['web',.68,.32],['bigbang',.9,.62]]}
+];
+
+const QUIZ_LEVELS = [
+  {name:'小小宇航员', desc:'认识星球的样子', icon:'moon', qs:[
+    {q:'哪颗星球是我们住的家？', opts:['earth','mars','venus'], a:'earth', tip:'地球上有水、有空气，是我们的家。'},
+    {q:'哪颗行星戴着漂亮的大光环？', opts:['saturn','mercury','mars'], a:'saturn', tip:'土星的光环是由冰块和石头组成的。'},
+    {q:'哪颗行星被叫作“红色星球”？', opts:['mars','neptune','earth'], a:'mars', tip:'火星的土里有很多铁锈，所以红红的。'},
+    {q:'太阳系里最大的行星是哪颗？', opts:['jupiter','earth','uranus'], a:'jupiter', tip:'木星超级大，能装下1300多个地球！'},
+    {q:'一直绕着地球转的好朋友是谁？', opts:['moon','mars','sun'], a:'moon', tip:'月球是地球唯一的天然卫星。'},
+    {q:'哪一个自己会发光发热？', opts:['sun','moon','earth'], a:'sun', tip:'太阳是恒星，自己会发光。月光其实是月球反射的太阳光。'},
+    {q:'地球表面大部分被什么盖住？', opts:['海洋','沙漠','冰块'], a:'海洋', tip:'地球表面大约71%是海洋，所以从太空看是蓝色的。'},
+    {q:'海王星是什么颜色的？', opts:['蓝色','红色','黄色'], a:'蓝色', tip:'海王星大气里的甲烷，让它看起来是漂亮的蓝色。'},
+    {q:'宇航员在太空站里会怎么样？', opts:['飘来飘去','跑得飞快','变成透明'], a:'飘来飘去', tip:'在太空站里几乎感觉不到重力，人和东西都会飘起来。'},
+    {q:'月亮有时圆、有时弯，这是为什么？', opts:['被太阳照亮的部分在变','月亮被咬了一口','月亮在长大'], a:'被太阳照亮的部分在变', tip:'我们看到的月亮亮面一直在变，这叫月相。'},
+    {q:'中国第一位飞上太空的航天员是谁？', opts:['杨利伟','李白','孙悟空'], a:'杨利伟', tip:'2003年，杨利伟乘坐神舟五号飞上了太空。'}
+  ]},
+  {name:'太空探索家', desc:'行星的小秘密', icon:'mars', qs:[
+    {q:'哪颗行星离太阳最近？', opts:['mercury','venus','neptune'], a:'mercury', tip:'水星离太阳最近，绕太阳一圈只要88天。'},
+    {q:'哪颗行星离太阳最远？', opts:['neptune','saturn','mars'], a:'neptune', tip:'海王星离太阳最远，又冷又暗。'},
+    {q:'哪颗行星是“躺着”转圈的？', opts:['uranus','jupiter','venus'], a:'uranus', tip:'天王星侧躺着自转，像在地上滚的球。'},
+    {q:'哪颗行星最热？', opts:['venus','mercury','mars'], a:'venus', tip:'金星厚厚的云层像被子，把热量捂住，比水星还热！'},
+    {q:'哪颗行星比水还轻？', opts:['saturn','earth','mercury'], a:'saturn', tip:'土星比水还轻，有超大浴缸的话它能浮起来。'},
+    {q:'太阳是一颗什么星？', opts:['恒星','行星','卫星'], a:'恒星', tip:'太阳是恒星，自己会发光发热。'},
+    {q:'太阳系一共有几颗行星？', opts:['8颗','5颗','12颗'], a:'8颗', tip:'水金地火木土天海，一共8颗行星。'},
+    {q:'木星上的“大红斑”是什么？', opts:['巨大的风暴','一片红色的海','一座火山'], a:'巨大的风暴', tip:'大红斑是一个比地球还大的风暴，已经刮了几百年。'},
+    {q:'登上火星的中国火星车叫什么？', opts:['祝融号','玉兔号','神舟号'], a:'祝融号', tip:'2021年，祝融号火星车成功登上了火星。玉兔号去的是月球哦。'},
+    {q:'中国自己的空间站叫什么名字？', opts:['天宫','长城','嫦娥'], a:'天宫', tip:'中国空间站叫“天宫”，航天员在里面工作和生活。'},
+    {q:'月球上的脚印为什么能留很久？', opts:['月球上没有风和雨','月球的土很黏','有人在看守'], a:'月球上没有风和雨', tip:'月球没有空气，也就没有风和雨，脚印不会被吹走、冲掉。'}
+  ]},
+  {name:'天文小博士', desc:'超难挑战题', icon:'saturn', qs:[
+    {q:'太阳光跑到地球大约要多久？', opts:['8分钟','8秒钟','8天'], a:'8分钟', tip:'光跑得飞快，从太阳到地球也要大约8分钟。'},
+    {q:'地球绕太阳转一圈，大约要多少天？', opts:['365天','88天','30天'], a:'365天', tip:'地球绕太阳一圈大约365天，就是一年。'},
+    {q:'地球自己转一圈，要多长时间？', opts:['一天','一个月','一年'], a:'一天', tip:'地球自转一圈就是一天，所以有白天和黑夜。'},
+    {q:'为什么太阳每天从东边升起？', opts:['地球在自转','太阳绕着地球跑','风把太阳吹过来'], a:'地球在自转', tip:'地球自西向东转，所以我们看到太阳从东边升起。'},
+    {q:'在哪颗行星上，太阳从西边升起？', opts:['venus','mars','earth'], a:'venus', tip:'金星自转的方向和地球相反，太阳从西边升起。'},
+    {q:'小行星带在哪两颗行星之间？', opts:['火星和木星','地球和火星','土星和天王星'], a:'火星和木星', tip:'小行星带在火星和木星之间，里面有很多大大小小的石头。'},
+    {q:'太阳系最高的火山在哪颗行星上？', opts:['mars','earth','venus'], a:'mars', tip:'火星上的奥林帕斯山，大约是珠穆朗玛峰的2.5倍高。'},
+    {q:'月球离地球大约多远？', opts:['38万公里','38公里','3800万公里'], a:'38万公里', tip:'大约38万公里，开汽车不停地开，要5个多月。'},
+    {q:'水星绕太阳一圈要多久？', opts:['88天','365天','1天'], a:'88天', tip:'水星离太阳最近，跑得最快，88天就是它的一年。'},
+    {q:'天王星为什么是蓝绿色的？', opts:['大气里有甲烷','表面全是海水','被涂了颜料'], a:'大气里有甲烷', tip:'甲烷会吸收红光，让天王星看起来蓝绿蓝绿的。'},
+    {q:'2019年，中国哪个探测器第一次降落在月球背面？', opts:['嫦娥四号','祝融号','神舟五号'], a:'嫦娥四号', tip:'2019年，嫦娥四号成为第一个在月球背面着陆的探测器。'}
+  ]},
+  {name:'宇宙大发现', desc:'星系和黑洞', icon:'sgra', qs:[
+    {q:'我们住的星系叫什么？', opts:['milkyway','andromeda','lmc'], a:'milkyway', tip:'我们住在银河系，太阳只是里面几千亿颗恒星中的一颗。'},
+    {q:'离我们最近的大星系是哪个？', opts:['andromeda','m87','virgo_cl'], a:'andromeda', tip:'仙女座星系离我们大约250万光年，将来会和银河系撞在一起。'},
+    {q:'黑洞为什么是黑的？', opts:['连光都逃不出来','它被涂成了黑色','它在睡觉'], a:'连光都逃不出来', tip:'黑洞的引力太大，连光都跑不出来，所以看起来是黑的。'},
+    {q:'银河系的正中心有什么？', opts:['sgra','sirius','pluto'], a:'sgra', tip:'银河系中心有个超大黑洞，叫人马座A*，大约是太阳的400万倍重。'},
+    {q:'2019年，科学家拍下的第一张黑洞照片是哪个？', opts:['m87','sgra','cygx1'], a:'m87', tip:'第一张黑洞照片拍的是M87星系中心的黑洞。'},
+    {q:'宇宙大约多少岁了？', opts:['138亿岁','6000岁','100岁'], a:'138亿岁', tip:'宇宙大约在138亿年前的大爆炸中诞生。'},
+    {q:'“光年”是什么？', opts:['光跑一年的距离','一年的时间','一种很亮的灯'], a:'光跑一年的距离', tip:'光年是距离，光跑一年大约是9.5万亿公里。'},
+    {q:'离太阳最近的恒星是哪颗？', opts:['proxima','sirius','bigbang'], a:'proxima', tip:'比邻星离我们大约4.2光年，是太阳最近的邻居。'},
+    {q:'夜空中最亮的恒星是哪颗？', opts:['sirius','proxima','pulsar'], a:'sirius', tip:'天狼星是夜空中最亮的恒星，离我们大约8.6光年。'},
+    {q:'很大的恒星老了，会发生什么？', opts:['超新星爆发','变成月亮','变成彗星'], a:'超新星爆发', tip:'大恒星老了会发生超新星爆发，可能留下中子星或者黑洞。'},
+    {q:'中国古人在1054年记录的“客星”，留下了哪个星云？', opts:['crab','orion_neb','web'], a:'crab', tip:'那次超新星爆发留下了蟹状星云。'},
+    {q:'银河系属于哪个超星系团？', opts:['laniakea','andromeda','comet'], a:'laniakea', tip:'银河系在拉尼亚凯亚超星系团里，那里大约有10万个星系。'}
+  ]}
+];
+
+const MISSIONS = [
+  {type:'visit', id:'earth', text:'先去拜访我们的家', hint:'蓝蓝的、有海洋的那颗，就是地球。'},
+  {type:'visit', id:'mars', text:'找一颗红红的星球', hint:'红色星球是火星，在地球外面那一圈。'},
+  {type:'visit', id:'venus', text:'去最热的那颗行星', hint:'最热的是金星，它比水星还热！'},
+  {type:'visit', id:'mercury', text:'去离太阳最近的小个子', hint:'离太阳最近的是水星。'},
+  {type:'collect', n:10, text:'收集 10 颗星星', hint:'金色的星星到处都有，飞过去就能捡到。'},
+  {type:'visit', id:'jupiter', text:'穿过小行星带，找最大的行星', hint:'最大的行星是木星。小心路上的石头！'},
+  {type:'visit', id:'saturn', text:'找戴着漂亮光环的行星', hint:'戴光环的是土星。'},
+  {type:'visit', id:'uranus', text:'找一颗躺着转圈的行星', hint:'躺着转的是天王星。'},
+  {type:'visit', id:'neptune', text:'飞到离太阳最远的行星', hint:'最远的是海王星，在最外面一圈。'},
+  {type:'collect', n:20, text:'收集 20 颗星星', hint:'多绕几圈，星星会一直出现。'},
+  {type:'visit', id:'sun', text:'去和太阳打个招呼', hint:'太阳就在正中间，又大又亮。'},
+  {type:'visit', id:'earth', text:'任务都做完了，飞回家吧', hint:'地球在第三圈，蓝色的那颗。'}
+];
+
+const ARC_LEVELS = [
+  {to:'moon', len:28, speed:160, rock:.9, drift:0, comet:0, shield:0},
+  {to:'mars', len:32, speed:180, rock:1.2, drift:0, comet:0, shield:.08},
+  {to:'venus', len:35, speed:200, rock:1.5, drift:20, comet:0, shield:.1},
+  {to:'mercury', len:38, speed:215, rock:1.7, drift:30, comet:0, shield:.1},
+  {to:'jupiter', len:42, speed:230, rock:1.9, drift:40, comet:.15, shield:.12},
+  {to:'saturn', len:45, speed:245, rock:2.1, drift:50, comet:.25, shield:.12},
+  {to:'uranus', len:48, speed:260, rock:2.3, drift:60, comet:.35, shield:.14},
+  {to:'neptune', len:52, speed:280, rock:2.5, drift:70, comet:.5, shield:.15}
+];
+
+const SIZE_ORDER = ['mercury','mars','venus','earth','neptune','uranus','saturn','jupiter'];
+const DIAM = {mercury:4879, venus:12104, earth:12742, mars:6779, jupiter:139820, saturn:116460, uranus:50724, neptune:49244};
+const SIZE_SHORT = {mercury:'最小的行星', mars:'差不多只有地球一半宽', venus:'和地球差不多大', earth:'比金星大一点点', neptune:'大约有4个地球那么宽', uranus:'比海王星大一点点', saturn:'第二大的行星', jupiter:'最大的行星'};
+const ORDER_MODES = {
+  dist:{tab:'按远近排', seq:ORDER, lead:'从<b>离太阳最近</b>的行星开始，一颗一颗点下去，把 8 颗行星排好队！', first:'第 1 个：离太阳最近的是谁？',
+    wrong:n => `${n}离太阳还远着呢，先找一颗更近的！`, short:id => BY[id].short, rhyme:'水、金、地、火、木、土、天、海'},
+  size:{tab:'按大小排', seq:SIZE_ORDER, lead:'从<b>最小</b>的行星开始，按从小到大排好队！排好后能看到它们真正的大小差别。', first:'第 1 个：最小的行星是谁？',
+    wrong:n => `${n}还要大一些，先找一颗更小的！`, short:id => SIZE_SHORT[id], rhyme:'从小到大：水、火、金、地、海、天、土、木'}
+};
+
+const CONS = [
+  {name:'北斗七星', pts:[[.04,.3],[.2,.31],[.34,.38],[.48,.45],[.52,.72],[.82,.76],[.86,.46]], seq:[0,1,2,3,4,5,6,3],
+    fact:'北斗七星像一把大勺子。顺着勺口那两颗星往外延长大约5倍，就能找到北极星。'},
+  {name:'仙后座', pts:[[.06,.34],[.28,.66],[.5,.42],[.72,.7],[.94,.3]], seq:[0,1,2,3,4],
+    fact:'仙后座的五颗亮星排成一个大大的“W”，它和北斗七星分别在北极星的两边。'},
+  {name:'猎户座', pts:[[.28,.12],[.7,.18],[.4,.5],[.5,.47],[.6,.44],[.3,.88],[.74,.84]], seq:[0,2,5,6,4,1,0,null,2,3,4],
+    fact:'猎户座腰带上的三颗星排成一排，非常好认。左肩那颗红红的星叫参宿四，是一颗超级大的恒星。'},
+  {name:'天鹅座', pts:[[.5,.08],[.5,.4],[.5,.62],[.5,.92],[.1,.28],[.3,.34],[.7,.46],[.9,.52]], seq:[0,1,2,3,null,4,5,1,6,7],
+    fact:'天鹅座像一只在银河里展翅飞翔的天鹅。它尾巴上的天津四，和织女星、牛郎星组成了“夏季大三角”。'},
+  {name:'狮子座', pts:[[.3,.78],[.27,.55],[.36,.36],[.27,.18],[.12,.17],[.1,.32],[.62,.5],[.9,.6],[.66,.3]], seq:[5,4,3,2,1,0,6,7,8,2],
+    fact:'狮子座里有一个反写的问号，那是狮子的头和鬃毛。最亮的那颗星叫轩辕十四，在狮子的胸口。'},
+  {name:'小熊座', pts:[[.08,.22],[.27,.26],[.44,.34],[.58,.46],[.86,.42],[.9,.72],[.62,.76]], seq:[0,1,2,3,4,5,6,3],
+    fact:'小熊尾巴尖上那颗星就是北极星。它几乎一直待在正北方，迷路时可以用它来认方向。'}
+];
+
+const BADGES = [
+  {id:'sticker', icon:'贴', name:'星球收藏家', desc:'集齐 9 张星球贴纸', ok:() => save.stickers.length >= PLANETS.length},
+  {id:'mission', icon:'务', name:'任务达人', desc:'完成全部探险任务', ok:() => save.mission >= MISSIONS.length},
+  {id:'pilot', icon:'飞', name:'太空飞行员', desc:'大冒险 8 关全部通过', ok:() => ARC_LEVELS.every((_, i) => (save.arc[i] || 0) > 0)},
+  {id:'ace', icon:'王', name:'王牌飞行员', desc:'大冒险 8 关都拿 3 颗星', ok:() => ARC_LEVELS.every((_, i) => (save.arc[i] || 0) >= 3)},
+  {id:'quiz', icon:'博', name:'天文小博士', desc:'问答第 4 关答对 5 题', ok:() => (save.quizBest[3] || 0) >= 5},
+  {id:'order', icon:'队', name:'排队小能手', desc:'两种排队都完成', ok:() => !!(save.orderDone.dist && save.orderDone.size)},
+  {id:'cons', icon:'座', name:'星座猎人', desc:'连出全部 6 个星座', ok:() => save.cons.length >= CONS.length},
+  {id:'cosmos', icon:'宇', name:'宇宙旅行家', desc:'到达可观测宇宙', ok:() => cosUnlocked(STAGES.length - 1)},
+  {id:'wonder', icon:'奇', name:'奇观收藏家', desc:'收集全部宇宙奇观', ok:() => save.wonders.length >= WONDER_IDS.length},
+  {id:'rich', icon:'★', name:'星星富翁', desc:'攒到 200 颗星星', ok:() => save.stars >= 200}
+];
+
+/* ---------- 存档 ---------- */
+const SAVE_KEY = 'planet-explorers-v1';
+const save = {stars:0, stickers:[], muted:false, mission:0, arc:{}, quizBest:[0,0,0,0], orderDone:{}, cons:[], wonders:[], badges:[]};
+try { const raw = localStorage.getItem(SAVE_KEY); if (raw) Object.assign(save, JSON.parse(raw)); } catch (e) {}
+for (const k of ['stickers','cons','wonders','badges']) if (!Array.isArray(save[k])) save[k] = [];
+if (!Array.isArray(save.quizBest)) save.quizBest = [0,0,0,0];
+for (const k of ['arc','orderDone']) if (!save[k] || typeof save[k] !== 'object') save[k] = {};
+save.mission = Math.max(0, Number(save.mission) || 0);
+function writeSave() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(save)); } catch (e) {} }
+function persist() { writeSave(); checkBadges(); }
+function checkBadges() {
+  for (const b of BADGES) {
+    if (save.badges.includes(b.id) || !b.ok()) continue;
+    save.badges.push(b.id); writeSave();
+    toast(`获得勋章「${b.name}」！`, 3200);
+  }
+}
+const infoOf = id => BY[id] || WONDERS[id];
+function addStars(n) { save.stars = Math.max(0, save.stars + n); persist(); refreshCounts(); }
+function refreshCounts() {
+  $('#starCount').textContent = save.stars;
+  $('#stickerCount').textContent = save.stickers.length;
+}
+
+/* ---------- 声音 ---------- */
+let actx = null;
+function audio() {
+  if (!actx) { try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return null; } }
+  if (actx.state === 'suspended') actx.resume();
+  return actx;
+}
+function tone(freq, dur, type = 'sine', vol = .14, when = 0, slideTo = 0) {
+  if (save.muted) return;
+  const a = audio(); if (!a) return;
+  const t = a.currentTime + when;
+  const o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.setValueAtTime(freq, t);
+  if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, t + dur);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(vol, t + .02);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + .05);
+}
+const SFX = {
+  click(){ tone(620, .06, 'sine', .08); },
+  star(){ tone(988, .1, 'triangle', .12); tone(1480, .14, 'triangle', .1, .07); },
+  bump(){ tone(180, .3, 'sawtooth', .1, 0, 60); },
+  good(){ [523, 659, 784].forEach((f, i) => tone(f, .2, 'triangle', .14, i * .09)); },
+  bad(){ tone(330, .22, 'square', .06, 0, 220); },
+  land(){ tone(400, .35, 'sine', .12, 0, 900); },
+  fanfare(){ [523, 659, 784, 1047, 784, 1047].forEach((f, i) => tone(f, .26, 'triangle', .14, i * .11)); }
+};
+let zhVoice = null;
+function pickVoice() { try { zhVoice = speechSynthesis.getVoices().find(v => /zh[-_]CN/i.test(v.lang)) || speechSynthesis.getVoices().find(v => /^zh/i.test(v.lang)) || null; } catch (e) {} }
+try { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; } catch (e) {}
+function say(text) {
+  if (save.muted) return;
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN'; u.rate = .95; u.pitch = 1.15;
+    if (zhVoice) u.voice = zhVoice;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function hush() { try { speechSynthesis.cancel(); } catch (e) {} }
+
+const ICON_ON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
+const ICON_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M17 9l5 6M22 9l-5 6"/></svg>';
+function renderSoundBtn() { $('#soundBtn').innerHTML = save.muted ? ICON_OFF : ICON_ON; }
+$('#soundBtn').addEventListener('click', () => { save.muted = !save.muted; persist(); renderSoundBtn(); if (save.muted) hush(); else SFX.click(); });
+$('#quizSpeak').innerHTML = ICON_ON;
+$('#cardSpeak').innerHTML = ICON_ON + '听一听';
+
+/* ---------- 画星球 ---------- */
+const BASE = {
+  sun:['#fff6b8','#ff9a1f'], mercury:['#bdb8b1','#7a756f'], venus:['#f6dc9c','#d39a52'],
+  earth:['#56adff','#1d5cc4'], mars:['#f08550','#b23e1c'], jupiter:['#ecc89c','#c4895a'],
+  saturn:['#f5e3b4','#d2b071'], uranus:['#b0f3f4','#5cc3d2'], neptune:['#6a8fff','#2742b3'],
+  moon:['#e2e2e8','#9a9aa8'], pluto:['#ecd9c2','#a07e62']
+};
+function rng(seed) { let s = seed >>> 0 || 1; return () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; }; }
+const CRATERS = {};
+function craters(id) {
+  if (CRATERS[id]) return CRATERS[id];
+  const R = rng(id.charCodeAt(0) * 9973 + id.length * 131);
+  return CRATERS[id] = Array.from({length:8}, () => ({x:R() * 1.6 - .8, y:R() * 1.6 - .8, r:.08 + R() * .14}));
+}
+const LAND = [{x:-.55,y:-.3,rx:.32,ry:.24},{x:-.35,y:.3,rx:.18,ry:.32},{x:.4,y:-.25,rx:.38,ry:.2},{x:.55,y:.35,rx:.2,ry:.16},{x:1.0,y:.05,rx:.26,ry:.3}];
+const wrap = (v, p) => ((v % p) + p) % p;
+
+function ring(ctx, x, y, r, front, cols, tilt, thick) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(tilt);
+  ctx.beginPath();
+  if (front) ctx.rect(-r * 3, 0, r * 6, r * 3); else ctx.rect(-r * 3, -r * 3, r * 6, r * 3);
+  ctx.clip();
+  cols.forEach((c, i) => {
+    const rr = r * (1.38 + i * .2);
+    ctx.beginPath(); ctx.ellipse(0, 0, rr, rr * .3, 0, 0, TAU);
+    ctx.lineWidth = r * thick; ctx.strokeStyle = c; ctx.stroke();
+  });
+  ctx.restore();
+}
+const SATURN_RING = ['rgba(233,214,160,.95)','rgba(196,168,112,.9)','rgba(240,226,186,.75)'];
+const URANUS_RING = ['rgba(210,245,250,.45)'];
+
+function drawPlanet(ctx, id, x, y, r, o = {}) {
+  const rot = o.rot || 0;
+  ctx.save();
+  if (id === 'sun') {
+    const g = ctx.createRadialGradient(x, y, r * .7, x, y, r * 1.9);
+    g.addColorStop(0, 'rgba(255,190,60,.55)'); g.addColorStop(1, 'rgba(255,120,30,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 1.9, 0, TAU); ctx.fill();
+  }
+  if (id === 'saturn') ring(ctx, x, y, r, false, SATURN_RING, -.35, .2);
+  if (id === 'uranus') ring(ctx, x, y, r, false, URANUS_RING, 1.32, .06);
+
+  ctx.save();
+  ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.clip();
+  const B = BASE[id];
+  const bg = ctx.createLinearGradient(x, y - r, x, y + r);
+  bg.addColorStop(0, B[0]); bg.addColorStop(1, B[1]);
+  ctx.fillStyle = bg; ctx.fillRect(x - r, y - r, r * 2, r * 2);
+
+  if (id === 'mercury' || id === 'moon') {
+    for (const c of craters(id)) {
+      const cx = x + c.x * r, cy = y + c.y * r;
+      ctx.fillStyle = 'rgba(40,36,50,.22)'; ctx.beginPath(); ctx.arc(cx, cy, c.r * r, 0, TAU); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.18)'; ctx.beginPath(); ctx.arc(cx - c.r * r * .25, cy - c.r * r * .25, c.r * r * .55, 0, TAU); ctx.fill();
+    }
+  } else if (id === 'venus') {
+    ctx.strokeStyle = 'rgba(255,248,220,.5)'; ctx.lineWidth = r * .1; ctx.lineCap = 'round';
+    for (let i = 0; i < 5; i++) {
+      const y0 = y + (i - 2) * r * .4, s = Math.sin(rot * 3 + i) * r * .15;
+      ctx.beginPath(); ctx.moveTo(x - r, y0); ctx.bezierCurveTo(x - r * .3, y0 - r * .22 + s, x + r * .3, y0 + r * .22 - s, x + r, y0); ctx.stroke();
+    }
+  } else if (id === 'earth') {
+    ctx.fillStyle = '#4fc275';
+    for (const b of LAND) {
+      const bx = wrap(b.x + 1.3 + rot, 2.6) - 1.3;
+      ctx.beginPath(); ctx.ellipse(x + bx * r, y + b.y * r, b.rx * r, b.ry * r, .3, 0, TAU); ctx.fill();
+    }
+    ctx.fillStyle = 'rgba(255,255,255,.95)';
+    ctx.beginPath(); ctx.ellipse(x, y - r * .98, r * .55, r * .16, 0, 0, TAU); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(x, y + r * .98, r * .5, r * .14, 0, 0, TAU); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = r * .08; ctx.lineCap = 'round';
+    const cx = wrap(rot * 1.4 + 1, 2.6) - 1.3;
+    ctx.beginPath(); ctx.moveTo(x + (cx - .3) * r, y + r * .55); ctx.lineTo(x + (cx + .25) * r, y + r * .5); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x + (cx - .9) * r, y - r * .55); ctx.lineTo(x + (cx - .45) * r, y - r * .6); ctx.stroke();
+  } else if (id === 'mars') {
+    ctx.fillStyle = 'rgba(120,32,10,.35)';
+    for (const c of craters('mars')) { ctx.beginPath(); ctx.ellipse(x + c.x * r, y + c.y * r, c.r * r * 1.8, c.r * r, .4, 0, TAU); ctx.fill(); }
+    ctx.fillStyle = 'rgba(255,250,245,.92)';
+    ctx.beginPath(); ctx.ellipse(x, y - r * .97, r * .42, r * .16, 0, 0, TAU); ctx.fill();
+  } else if (id === 'jupiter' || id === 'saturn') {
+    const bands = id === 'jupiter'
+      ? [[-1,'#c98b55'],[-.68,'#f2d6ab'],[-.44,'#b8733f'],[-.2,'#f5dfba'],[.08,'#c98b55'],[.32,'#f0d0a2'],[.58,'#b06a38'],[.82,'#ead0a4']]
+      : [[-1,'#d8bb7c'],[-.6,'#f6e7bf'],[-.3,'#e4cd95'],[.05,'#f7eac6'],[.4,'#dcc184'],[.7,'#efdcae']];
+    bands.forEach(([yy, c], i) => {
+      const next = i + 1 < bands.length ? bands[i + 1][0] : 1.05;
+      ctx.fillStyle = c; ctx.fillRect(x - r, y + yy * r, r * 2, (next - yy) * r + 1);
+    });
+    if (id === 'jupiter') {
+      ctx.fillStyle = '#c9472b';
+      ctx.beginPath(); ctx.ellipse(x + r * .32, y + r * .45, r * .24, r * .13, 0, 0, TAU); ctx.fill();
+      ctx.fillStyle = 'rgba(255,200,170,.6)';
+      ctx.beginPath(); ctx.ellipse(x + r * .28, y + r * .42, r * .1, r * .05, 0, 0, TAU); ctx.fill();
+    }
+  } else if (id === 'uranus') {
+    ctx.fillStyle = 'rgba(255,255,255,.12)'; ctx.fillRect(x - r * .25, y - r, r * .5, r * 2);
+  } else if (id === 'neptune') {
+    ctx.fillStyle = 'rgba(15,25,90,.55)';
+    ctx.beginPath(); ctx.ellipse(x - r * .3, y + r * .35, r * .22, r * .12, -.2, 0, TAU); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.6)'; ctx.lineWidth = r * .07; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x - r * .1, y - r * .45); ctx.lineTo(x + r * .45, y - r * .5); ctx.stroke();
+  } else if (id === 'pluto') {
+    ctx.fillStyle = 'rgba(255,250,240,.85)';
+    const hx = x + r * .25, hy = y + r * .42, hs = r * .3;
+    ctx.beginPath(); ctx.moveTo(hx, hy + hs * .6);
+    ctx.bezierCurveTo(hx - hs * 1.3, hy - hs * .2, hx - hs * .8, hy - hs * 1.2, hx, hy - hs * .5);
+    ctx.bezierCurveTo(hx + hs * .8, hy - hs * 1.2, hx + hs * 1.3, hy - hs * .2, hx, hy + hs * .6); ctx.fill();
+    ctx.fillStyle = 'rgba(90,50,30,.25)';
+    for (const c of craters('pluto')) { ctx.beginPath(); ctx.arc(x + c.x * r, y + c.y * r * .6 - r * .3, c.r * r * .7, 0, TAU); ctx.fill(); }
+  } else if (id === 'sun') {
+    ctx.fillStyle = 'rgba(255,255,210,.25)';
+    for (const c of craters('sun')) { ctx.beginPath(); ctx.arc(x + c.x * r, y + c.y * r, c.r * r * 1.2, 0, TAU); ctx.fill(); }
+  }
+
+  if (id !== 'sun') {
+    const sg = ctx.createRadialGradient(x - r * .35, y - r * .4, r * .05, x, y, r * 1.08);
+    sg.addColorStop(0, 'rgba(255,255,255,.28)'); sg.addColorStop(.45, 'rgba(255,255,255,0)'); sg.addColorStop(1, 'rgba(5,5,35,.55)');
+    ctx.fillStyle = sg; ctx.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  ctx.restore();
+
+  if (id === 'saturn') ring(ctx, x, y, r, true, SATURN_RING, -.35, .2);
+  if (id === 'uranus') ring(ctx, x, y, r, true, URANUS_RING, 1.32, .06);
+  if (o.face) drawFace(ctx, x, y, r, o.blink);
+  ctx.restore();
+}
+
+function drawFace(ctx, x, y, r, blink) {
+  const ex = r * .32, ey = y - r * .02, er = Math.max(1.6, r * .13), lw = Math.max(1.4, r * .055);
+  ctx.lineCap = 'round';
+  for (const s of [-1, 1]) {
+    const cx = x + s * ex;
+    if (blink) {
+      ctx.strokeStyle = '#1b1640'; ctx.lineWidth = lw;
+      ctx.beginPath(); ctx.moveTo(cx - er, ey); ctx.quadraticCurveTo(cx, ey + er * .7, cx + er, ey); ctx.stroke();
+    } else {
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.ellipse(cx, ey, er, er * 1.15, 0, 0, TAU); ctx.fill();
+      ctx.fillStyle = '#1b1640'; ctx.beginPath(); ctx.arc(cx + er * .12, ey + er * .2, er * .62, 0, TAU); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(cx + er * .35, ey - er * .05, er * .22, 0, TAU); ctx.fill();
+    }
+  }
+  ctx.fillStyle = 'rgba(255,105,140,.45)';
+  for (const s of [-1, 1]) { ctx.beginPath(); ctx.arc(x + s * r * .55, y + r * .2, r * .1, 0, TAU); ctx.fill(); }
+  ctx.strokeStyle = '#1b1640'; ctx.lineWidth = lw;
+  ctx.beginPath(); ctx.arc(x, y + r * .12, r * .18, .15 * Math.PI, .85 * Math.PI); ctx.stroke();
+}
+
+function drawRocket(ctx, x, y, a, s = 1, flame = 0) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.scale(s, s);
+  if (flame > 0) {
+    const f = 10 + Math.random() * 9 * flame;
+    const g = ctx.createLinearGradient(-12, 0, -14 - f, 0);
+    g.addColorStop(0, '#fff2a8'); g.addColorStop(.5, '#ffb03a'); g.addColorStop(1, 'rgba(255,90,40,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(-11, -6); ctx.quadraticCurveTo(-14 - f, 0, -11, 6); ctx.closePath(); ctx.fill();
+  }
+  ctx.fillStyle = '#ff6b57';
+  for (const k of [-1, 1]) { ctx.beginPath(); ctx.moveTo(-4, 7 * k); ctx.lineTo(-15, 15 * k); ctx.lineTo(-13, 4 * k); ctx.closePath(); ctx.fill(); }
+  ctx.fillStyle = '#f4f1ff';
+  ctx.beginPath(); ctx.moveTo(20, 0); ctx.quadraticCurveTo(12, -10, -12, -8); ctx.lineTo(-12, 8); ctx.quadraticCurveTo(12, 10, 20, 0); ctx.fill();
+  ctx.save(); ctx.clip();
+  ctx.fillStyle = '#ff6b57'; ctx.fillRect(10, -12, 12, 24);
+  ctx.fillStyle = 'rgba(30,20,80,.18)'; ctx.fillRect(-12, 2, 34, 10);
+  ctx.restore();
+  ctx.fillStyle = '#2b3a8f'; ctx.beginPath(); ctx.arc(2, 0, 4.6, 0, TAU); ctx.fill();
+  ctx.strokeStyle = '#9fb1ff'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.beginPath(); ctx.arc(.8, -1.6, 1.5, 0, TAU); ctx.fill();
+  ctx.restore();
+}
+
+function drawStar(c, x, y, R, rot) {
+  c.save(); c.translate(x, y); c.rotate(rot);
+  c.fillStyle = 'rgba(255,214,80,.18)'; c.beginPath(); c.arc(0, 0, R * 1.7, 0, TAU); c.fill();
+  c.beginPath();
+  for (let i = 0; i < 10; i++) { const rr = i % 2 ? R * .45 : R, a = i * Math.PI / 5 - Math.PI / 2; c.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); }
+  c.closePath(); c.fillStyle = '#ffd54a'; c.fill();
+  c.restore();
+}
+
+function drawRock(c, x, y, size, rot, verts) {
+  c.save(); c.translate(x, y); c.rotate(rot);
+  c.beginPath();
+  verts.forEach((v, i) => { const px = Math.cos(v.a) * v.r * size, py = Math.sin(v.a) * v.r * size; i ? c.lineTo(px, py) : c.moveTo(px, py); });
+  c.closePath(); c.fillStyle = '#8c7b6a'; c.fill();
+  c.lineWidth = 2; c.strokeStyle = '#5f5045'; c.stroke();
+  c.fillStyle = 'rgba(60,45,35,.45)'; c.beginPath(); c.arc(size * .2, -size * .15, size * .22, 0, TAU); c.fill();
+  c.restore();
+}
+function drawHeart(c, x, y, s, full) {
+  c.save(); c.translate(x, y); c.scale(s / 20, s / 20);
+  c.beginPath(); c.moveTo(0, 8); c.bezierCurveTo(-14, -2, -10, -14, 0, -6); c.bezierCurveTo(10, -14, 14, -2, 0, 8); c.closePath();
+  c.fillStyle = full ? '#ff6b8a' : 'rgba(255,255,255,.15)'; c.fill();
+  c.lineWidth = 2; c.strokeStyle = full ? '#ffd0dc' : 'rgba(255,255,255,.3)'; c.stroke();
+  c.restore();
+}
+
+/* ---------- 宇宙奇观的画法 ---------- */
+function glow(c, x, y, r, col, a = 1) {
+  const g = c.createRadialGradient(x, y, 0, x, y, r);
+  g.addColorStop(0, `rgba(${col},${a})`); g.addColorStop(1, `rgba(${col},0)`);
+  c.fillStyle = g; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+}
+function drawStarBall(c, x, y, r, inner, outer, halo, face) {
+  glow(c, x, y, r * 2.6, halo, .55);
+  const b = c.createRadialGradient(x - r * .3, y - r * .3, r * .1, x, y, r);
+  b.addColorStop(0, inner); b.addColorStop(1, outer);
+  c.fillStyle = b; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+  if (face) drawFace(c, x, y, r, false);
+}
+function spikes(c, x, y, len, col) {
+  c.save(); c.strokeStyle = col; c.lineCap = 'round';
+  for (let k = 0; k < 4; k++) {
+    const a = k * Math.PI / 4, l = k % 2 ? len * .55 : len;
+    c.lineWidth = k % 2 ? 1.5 : 2.5;
+    c.beginPath(); c.moveTo(x - Math.cos(a) * l, y - Math.sin(a) * l); c.lineTo(x + Math.cos(a) * l, y + Math.sin(a) * l); c.stroke();
+  }
+  c.restore();
+}
+const PTS_CACHE = {};
+function cached(key, make) { return PTS_CACHE[key] || (PTS_CACHE[key] = make()); }
+function spiralPts(seed, arms) {
+  return cached('sp' + seed + '_' + arms, () => {
+    const R = rng(seed), pts = [];
+    for (let i = 0; i < 900; i++) {
+      const f = Math.pow(R(), .8);
+      pts.push({a:f * 3.4 * Math.PI + (i % arms) * TAU / arms + (R() - .5) * .5, r:.1 + f * .9 + (R() - .5) * .06, s:R()});
+    }
+    return pts;
+  });
+}
+function drawSpiral(c, x, y, R, o = {}) {
+  const col = o.color || '200,215,255', core = o.core || '255,230,170';
+  c.save(); c.translate(x, y); c.rotate(o.angle || 0); c.scale(1, o.squash ?? 1);
+  const g = c.createRadialGradient(0, 0, 0, 0, 0, R);
+  g.addColorStop(0, `rgba(${core},.95)`); g.addColorStop(.16, `rgba(${core},.45)`); g.addColorStop(.6, `rgba(${col},.1)`); g.addColorStop(1, `rgba(${col},0)`);
+  c.fillStyle = g; c.beginPath(); c.arc(0, 0, R, 0, TAU); c.fill();
+  c.globalCompositeOperation = 'lighter';
+  const ds = Math.max(.6, R / 90), rot = o.rot || 0;
+  for (const p of spiralPts(o.seed || 1, o.arms || 2)) {
+    const a = p.a + rot, sz = ds * (1 + p.s);
+    c.fillStyle = `rgba(${p.s > .86 ? '255,170,210' : col},${.25 + p.s * .5})`;
+    c.fillRect(Math.cos(a) * p.r * R, Math.sin(a) * p.r * R, sz, sz);
+  }
+  c.restore();
+}
+function drawBlob(c, x, y, R, seed, col, n = 260) {
+  const pts = cached('bl' + seed, () => { const r = rng(seed); return Array.from({length:n}, () => { const a = r() * TAU, d = Math.pow(r(), .7); return {x:Math.cos(a) * d * (1 + r() * .4), y:Math.sin(a) * d * .55 + (r() - .5) * .2, s:r()}; }); });
+  glow(c, x, y, R, col, .3);
+  c.save(); c.globalCompositeOperation = 'lighter';
+  for (const p of pts) { c.fillStyle = `rgba(${col},${.3 + p.s * .5})`; const s = Math.max(.8, R / 60) * (1 + p.s); c.fillRect(x + p.x * R, y + p.y * R, s, s); }
+  c.restore();
+}
+function drawGalaxyCloud(c, x, y, R, seed, n) {
+  const pts = cached('gc' + seed, () => { const r = rng(seed); return Array.from({length:n}, () => { const a = r() * TAU, d = Math.pow(r(), 1.6); return {x:Math.cos(a) * d, y:Math.sin(a) * d, s:r(), t:r() * 3}; }); });
+  glow(c, x, y, R, '255,220,160', .22);
+  for (const p of pts) {
+    const px = x + p.x * R, py = y + p.y * R, s = Math.max(1.2, R / 40) * (.6 + p.s);
+    glow(c, px, py, s * 2.4, p.s > .5 ? '255,235,200' : '190,210,255', .8);
+    c.save(); c.translate(px, py); c.rotate(p.t); c.fillStyle = 'rgba(255,250,240,.9)'; c.beginPath(); c.ellipse(0, 0, s, s * .5, 0, 0, TAU); c.fill(); c.restore();
+  }
+}
+function bhDisk(c, x, y, r, front, t) {
+  c.save(); c.translate(x, y); c.beginPath();
+  if (front) c.rect(-r * 5, 0, r * 10, r * 5); else c.rect(-r * 5, -r * 5, r * 10, r * 5);
+  c.clip();
+  for (let i = 0; i < 5; i++) {
+    const rr = r * (1.35 + i * .3);
+    c.beginPath(); c.ellipse(0, 0, rr, rr * .28, 0, 0, TAU);
+    c.lineWidth = r * .3; c.strokeStyle = `rgba(255,${150 + i * 18},${60 + i * 25},${.9 - i * .15})`; c.stroke();
+  }
+  for (let k = 0; k < 8; k++) {
+    const a = t * 1.6 + k * TAU / 8, rr = r * (1.5 + (k % 3) * .3), px = Math.cos(a) * rr, py = Math.sin(a) * rr * .28;
+    if ((py > 0) === front) glow(c, px, py, r * .25, '255,240,200', .8);
+  }
+  c.restore();
+}
+function drawBlackHole(c, x, y, r, t) {
+  glow(c, x, y, r * 3, '255,150,60', .25);
+  bhDisk(c, x, y, r, false, t);
+  c.strokeStyle = 'rgba(255,200,120,.8)'; c.lineWidth = r * .12; c.beginPath(); c.arc(x, y, r * 1.1, 0, TAU); c.stroke();
+  c.fillStyle = '#000'; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+  bhDisk(c, x, y, r, true, t);
+}
+function webPts(seed, n) {
+  return cached('web' + seed, () => {
+    const r = rng(seed), nodes = Array.from({length:n}, () => { const a = r() * TAU, d = Math.sqrt(r()); return {x:Math.cos(a) * d, y:Math.sin(a) * d, s:r()}; });
+    const edges = [];
+    nodes.forEach((p, i) => {
+      nodes.map((q, j) => [j, Math.hypot(p.x - q.x, p.y - q.y)]).filter(e => e[0] !== i).sort((a, b) => a[1] - b[1]).slice(0, 3)
+        .forEach(([j]) => { if (i < j) edges.push([i, j]); });
+    });
+    return {nodes, edges};
+  });
+}
+function drawWeb(c, x, y, R, seed, n = 46) {
+  const {nodes, edges} = webPts(seed, n);
+  c.save(); c.globalCompositeOperation = 'lighter'; c.lineCap = 'round';
+  for (const [lw, a] of [[R / 22, .12], [R / 90 + .6, .55]]) {
+    c.lineWidth = lw; c.strokeStyle = `rgba(160,140,255,${a})`;
+    for (const [i, j] of edges) { c.beginPath(); c.moveTo(x + nodes[i].x * R, y + nodes[i].y * R); c.lineTo(x + nodes[j].x * R, y + nodes[j].y * R); c.stroke(); }
+  }
+  for (const p of nodes) glow(c, x + p.x * R, y + p.y * R, R * (.03 + p.s * .05), '255,200,240', .9);
+  c.restore();
+}
+function drawFlow(c, x, y, R, ax, ay, t) {
+  c.save(); c.lineCap = 'round';
+  for (let k = 0; k < 28; k++) {
+    const a = k * TAU / 28, sx = x + Math.cos(a) * R, sy = y + Math.sin(a) * R * .8;
+    const mx = (sx + ax) / 2 + Math.cos(a + 1.3) * R * .25, my = (sy + ay) / 2 + Math.sin(a + 1.3) * R * .25;
+    c.strokeStyle = 'rgba(120,200,255,.32)'; c.lineWidth = Math.max(1, R / 160);
+    c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo(mx, my, ax, ay); c.stroke();
+    const f = wrap(t * .15 + k * .37, 1), u = 1 - f;
+    const px = u * u * sx + 2 * u * f * mx + f * f * ax, py = u * u * sy + 2 * u * f * my + f * f * ay;
+    glow(c, px, py, Math.max(2.5, R / 50), '200,235,255', .95);
+  }
+  glow(c, ax, ay, R * .3, '255,220,170', .7);
+  c.restore();
+}
+
+/* 一张奇观卡片：在 s×s 的方框里画 art */
+function drawWonder(c, art, x, y, s, t) {
+  c.save();
+  switch (art) {
+    case 'solar': {
+      drawPlanet(c, 'sun', x, y, s * .12, {face:true});
+      ['mercury','venus','earth','mars'].forEach((id, i) => {
+        const rr = s * (.2 + i * .07), a = t * (.5 - i * .08) + i * 1.7;
+        c.strokeStyle = 'rgba(170,185,255,.3)'; c.lineWidth = 1; c.beginPath(); c.arc(x, y, rr, 0, TAU); c.stroke();
+        drawPlanet(c, id, x + Math.cos(a) * rr, y + Math.sin(a) * rr, s * (.025 + i * .004));
+      });
+      break;
+    }
+    case 'comet': {
+      const hx = x + s * .18, hy = y - s * .18, dx = -.7, dy = .7, px = -dy, py = dx;
+      for (const [len, wd, col, bend] of [[.62, .12, '255,220,150', .12], [.55, .06, '140,200,255', 0]]) {
+        const ex = hx + dx * s * len + px * s * bend, ey = hy + dy * s * len + py * s * bend;
+        const g = c.createLinearGradient(hx, hy, ex, ey);
+        g.addColorStop(0, `rgba(${col},.85)`); g.addColorStop(1, `rgba(${col},0)`);
+        c.fillStyle = g; c.beginPath();
+        c.moveTo(hx + px * s * .05, hy + py * s * .05); c.lineTo(ex + px * s * wd, ey + py * s * wd);
+        c.lineTo(ex - px * s * wd * .3, ey - py * s * wd * .3); c.lineTo(hx - px * s * .05, hy - py * s * .05); c.closePath(); c.fill();
+      }
+      drawStarBall(c, hx, hy, s * .09, '#ffffff', '#9fd4ff', '170,220,255', true);
+      break;
+    }
+    case 'pluto':
+      drawPlanet(c, 'pluto', x, y, s * .36, {face:true});
+      break;
+    case 'reddwarf':
+      drawStarBall(c, x, y, s * .26, '#ffb08a', '#d9412b', '255,90,60', true);
+      break;
+    case 'bluestar':
+      spikes(c, x, y, s * .46, 'rgba(210,230,255,.7)');
+      drawStarBall(c, x, y, s * .24, '#ffffff', '#9cc4ff', '150,190,255', true);
+      break;
+    case 'nebula': {
+      const R = rng(42);
+      c.globalCompositeOperation = 'lighter';
+      const cols = ['255,90,170', '160,90,255', '60,200,220', '255,150,90'];
+      for (let i = 0; i < 9; i++) glow(c, x + (R() - .5) * s * .55, y + (R() - .5) * s * .5, s * (.16 + R() * .2), cols[i % 4], .45 + R() * .25);
+      for (let i = 0; i < 4; i++) glow(c, x + (R() - .5) * s * .3, y + (R() - .5) * s * .3, s * .03, '255,255,255', 1);
+      break;
+    }
+    case 'supernova': {
+      const R = rng(1054);
+      glow(c, x, y, s * .45, '255,120,60', .35);
+      c.lineCap = 'round';
+      for (let i = 0; i < 46; i++) {
+        const a = R() * TAU, r1 = s * (.08 + R() * .1), r2 = s * (.24 + R() * .2);
+        c.strokeStyle = R() < .5 ? 'rgba(255,110,70,.7)' : 'rgba(255,200,120,.65)'; c.lineWidth = 1 + R() * 2.5;
+        c.beginPath(); c.moveTo(x + Math.cos(a) * r1, y + Math.sin(a) * r1); c.lineTo(x + Math.cos(a + .1) * r2, y + Math.sin(a + .1) * r2); c.stroke();
+      }
+      glow(c, x, y, s * .14, '190,220,255', .9);
+      glow(c, x, y, s * .04, '255,255,255', 1);
+      break;
+    }
+    case 'milkyway':
+      drawSpiral(c, x, y, s * .46, {seed:7, arms:4, rot:t * .05});
+      break;
+    case 'blackhole':
+      drawBlackHole(c, x, y, s * .15, t);
+      break;
+    case 'blackhole2': {
+      drawStarBall(c, x + s * .27, y - s * .2, s * .12, '#ffffff', '#8fb6ff', '150,190,255', true);
+      c.strokeStyle = 'rgba(160,200,255,.6)'; c.lineWidth = s * .03; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(x + s * .17, y - s * .15); c.quadraticCurveTo(x + s * .05, y - s * .05, x - s * .02, y + s * .02); c.stroke();
+      drawBlackHole(c, x - s * .1, y + s * .08, s * .09, t);
+      break;
+    }
+    case 'pulsar': {
+      c.save(); c.translate(x, y); c.rotate(t * 2.5);
+      for (const k of [-1, 1]) {
+        const g = c.createLinearGradient(0, 0, 0, k * s * .48);
+        g.addColorStop(0, 'rgba(200,230,255,.9)'); g.addColorStop(1, 'rgba(120,180,255,0)');
+        c.fillStyle = g; c.beginPath(); c.moveTo(0, 0); c.lineTo(-s * .09, k * s * .48); c.lineTo(s * .09, k * s * .48); c.closePath(); c.fill();
+      }
+      c.restore();
+      drawStarBall(c, x, y, s * .1, '#ffffff', '#a8d2ff', '170,210,255', true);
+      break;
+    }
+    case 'localgroup':
+      drawSpiral(c, x - s * .2, y + s * .14, s * .16, {seed:7, arms:4});
+      drawSpiral(c, x + s * .18, y - s * .14, s * .22, {seed:11, squash:.4, angle:-.6, core:'255,215,180'});
+      drawSpiral(c, x + s * .26, y + s * .22, s * .08, {seed:5, color:'170,200,255'});
+      break;
+    case 'andromeda':
+      drawSpiral(c, x, y, s * .46, {seed:11, squash:.38, angle:-.6, core:'255,215,180', rot:t * .03});
+      break;
+    case 'triangulum':
+      drawSpiral(c, x, y, s * .4, {seed:5, color:'170,200,255', rot:t * .04});
+      break;
+    case 'lmc':
+      drawBlob(c, x, y, s * .36, 33, '200,215,255');
+      glow(c, x - s * .05, y, s * .12, '255,230,190', .5);
+      break;
+    case 'virgosc':
+      drawGalaxyCloud(c, x - s * .18, y + s * .12, s * .16, 3, 14);
+      drawGalaxyCloud(c, x + s * .14, y - s * .1, s * .24, 9, 26);
+      drawGalaxyCloud(c, x + s * .2, y + s * .26, s * .1, 4, 8);
+      break;
+    case 'cluster':
+      drawGalaxyCloud(c, x, y, s * .4, 21, 40);
+      break;
+    case 'm87': {
+      const g = c.createRadialGradient(x, y, s * .12, x, y, s * .36);
+      g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(.3, 'rgba(255,110,30,.95)'); g.addColorStop(.55, 'rgba(255,190,90,.9)'); g.addColorStop(1, 'rgba(120,30,0,0)');
+      c.fillStyle = g; c.beginPath(); c.arc(x, y, s * .36, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(255,235,150,.6)'; c.lineWidth = s * .05;
+      c.beginPath(); c.arc(x, y, s * .21, .1 * Math.PI, .9 * Math.PI); c.stroke();
+      break;
+    }
+    case 'laniakea':
+      drawFlow(c, x, y, s * .44, x + s * .05, y - s * .03, t);
+      break;
+    case 'attractor':
+      drawFlow(c, x, y, s * .44, x, y, t);
+      glow(c, x, y, s * .08, '255,255,255', 1);
+      break;
+    case 'universe': {
+      c.save(); c.beginPath(); c.arc(x, y, s * .44, 0, TAU); c.clip();
+      c.fillStyle = '#0b0730'; c.fillRect(x - s / 2, y - s / 2, s, s);
+      drawWeb(c, x, y, s * .44, 77, 40);
+      c.restore();
+      c.strokeStyle = 'rgba(255,150,90,.7)'; c.lineWidth = s * .03; c.beginPath(); c.arc(x, y, s * .44, 0, TAU); c.stroke();
+      break;
+    }
+    case 'web':
+      drawWeb(c, x, y, s * .44, 13, 40);
+      break;
+    case 'bigbang': {
+      const g = c.createRadialGradient(x, y, 0, x, y, s * .46);
+      g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.2, 'rgba(255,240,150,.95)'); g.addColorStop(.45, 'rgba(255,140,60,.7)'); g.addColorStop(.75, 'rgba(160,60,200,.4)'); g.addColorStop(1, 'rgba(60,20,120,0)');
+      c.fillStyle = g; c.beginPath(); c.arc(x, y, s * .46, 0, TAU); c.fill();
+      c.save(); c.translate(x, y); c.rotate(t * .2); c.strokeStyle = 'rgba(255,240,200,.5)'; c.lineCap = 'round';
+      for (let i = 0; i < 16; i++) { c.lineWidth = i % 2 ? 1.5 : 3; c.rotate(TAU / 16); c.beginPath(); c.moveTo(s * .12, 0); c.lineTo(s * (i % 2 ? .3 : .42), 0); c.stroke(); }
+      c.restore();
+      break;
+    }
+  }
+  c.restore();
+}
+
+function artR(id, s) { return id === 'saturn' ? s * .24 : id === 'sun' ? s * .3 : id === 'uranus' ? s * .34 : s * .4; }
+function planetCanvas(id, size, face = true) {
+  const c = document.createElement('canvas'), d = dprOf();
+  c.width = c.height = Math.round(size * d);
+  const x = c.getContext('2d'); x.scale(d, d);
+  if (WONDERS[id]) drawWonder(x, WONDERS[id].art, size / 2, size / 2, size, 0);
+  else drawPlanet(x, id, size / 2, size / 2, artR(id, size), {face});
+  return c;
+}
+function localPt(el, e) {
+  const r = el.getBoundingClientRect();
+  return {x:e.clientX - r.left - el.clientLeft, y:e.clientY - r.top - el.clientTop};
+}
+function fitCanvas(c) {
+  const d = dprOf(), w = c.clientWidth || 1, h = c.clientHeight || 1;
+  if (c.width !== Math.round(w * d) || c.height !== Math.round(h * d)) { c.width = Math.round(w * d); c.height = Math.round(h * d); }
+  const ctx = c.getContext('2d'); ctx.setTransform(d, 0, 0, d, 0, 0);
+  return {ctx, w, h};
+}
+
+/* ---------- 背景星空 ---------- */
+const sky = $('#sky');
+let skyStars = [], shooting = null;
+function sizeSky() {
+  const {w, h} = fitCanvas(sky);
+  skyStars = Array.from({length: Math.round(w * h / 4500)}, () => ({x:Math.random() * w, y:Math.random() * h, r:Math.random() * 1.5 + .4, p:Math.random() * TAU, s:.6 + Math.random() * 1.6}));
+}
+function drawSky(t, dt) {
+  const {ctx, w, h} = fitCanvas(sky);
+  ctx.fillStyle = '#0a0d2b'; ctx.fillRect(0, 0, w, h);
+  const n1 = ctx.createRadialGradient(w * .15, h * .2, 0, w * .15, h * .2, Math.max(w, h) * .55);
+  n1.addColorStop(0, 'rgba(120,70,200,.28)'); n1.addColorStop(1, 'rgba(120,70,200,0)');
+  ctx.fillStyle = n1; ctx.fillRect(0, 0, w, h);
+  const n2 = ctx.createRadialGradient(w * .9, h * .85, 0, w * .9, h * .85, Math.max(w, h) * .5);
+  n2.addColorStop(0, 'rgba(40,170,190,.2)'); n2.addColorStop(1, 'rgba(40,170,190,0)');
+  ctx.fillStyle = n2; ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = '#fff';
+  for (const s of skyStars) {
+    ctx.globalAlpha = reduceMotion ? .7 : .35 + .65 * (.5 + .5 * Math.sin(t * s.s + s.p));
+    ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, TAU); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  if (reduceMotion) return;
+  if (!shooting && Math.random() < dt * .25) shooting = {x:Math.random() * w * .7, y:Math.random() * h * .4, life:1};
+  if (shooting) {
+    shooting.x += 520 * dt; shooting.y += 260 * dt; shooting.life -= dt * 1.4;
+    const g = ctx.createLinearGradient(shooting.x, shooting.y, shooting.x - 90, shooting.y - 45);
+    g.addColorStop(0, `rgba(255,255,255,${Math.max(0, shooting.life)})`); g.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.strokeStyle = g; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(shooting.x, shooting.y); ctx.lineTo(shooting.x - 90, shooting.y - 45); ctx.stroke();
+    if (shooting.life <= 0) shooting = null;
+  }
+}
+
+/* ---------- 彩带特效 ---------- */
+const fx = $('#fx');
+let fxParts = [];
+function confetti(n = 90, x, y) {
+  if (reduceMotion) return;
+  x = x ?? innerWidth / 2; y = y ?? innerHeight / 3;
+  const cols = ['#ffc53d','#3fe0b5','#7cc0ff','#ff9fc4','#ff6b57'];
+  for (let i = 0; i < n; i++) fxParts.push({x, y, vx:(Math.random() - .5) * 700, vy:-Math.random() * 600 - 150, life:1.4 + Math.random(), c:cols[i % cols.length], s:5 + Math.random() * 6, rot:Math.random() * 6, vr:(Math.random() - .5) * 12, star:Math.random() < .35});
+}
+function drawFX(dt) {
+  const {ctx, w, h} = fitCanvas(fx);
+  ctx.clearRect(0, 0, w, h);
+  if (!fxParts.length) return;
+  for (const p of fxParts) {
+    p.vy += 900 * dt; p.vx *= .99; p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt; p.life -= dt;
+    ctx.globalAlpha = Math.min(1, p.life * 2);
+    if (p.star) drawStar(ctx, p.x, p.y, p.s, p.rot);
+    else { ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); ctx.restore(); }
+  }
+  ctx.globalAlpha = 1;
+  fxParts = fxParts.filter(p => p.life > 0 && p.y < h + 40);
+}
+
+const toastQ = [];
+let toastBusy = false;
+function toast(text, ms = 2600) { toastQ.push([text, ms]); if (!toastBusy) nextToast(); }
+function nextToast() {
+  const t = $('#toast'), it = toastQ.shift();
+  if (!it) { toastBusy = false; t.hidden = true; return; }
+  toastBusy = true; t.textContent = it[0]; t.hidden = false;
+  t.style.animation = 'none'; void t.offsetWidth; t.style.animation = '';
+  setTimeout(nextToast, it[1]);
+}
+
+/* ---------- 星球卡片 ---------- */
+let card = null;
+function openCard(id, reward = false) {
+  return new Promise(resolve => {
+    const p = infoOf(id), wonder = !!WONDERS[id];
+    const isNew = reward && !(wonder ? save.wonders : save.stickers).includes(id);
+    $('#cardTag').textContent = p.tag;
+    $('#cardName').textContent = p.name;
+    $('#cardHello').textContent = p.hello;
+    $('#cardFacts').innerHTML = '';
+    p.facts.forEach(f => { const li = document.createElement('li'); li.textContent = f; $('#cardFacts').appendChild(li); });
+    $('#cardNew').hidden = !isNew;
+    $('#cardNew').textContent = wonder ? '新奇观 +3★' : '新贴纸 +5★';
+    $('#cardOk').textContent = isNew ? (wonder ? '收进图鉴！' : '收下贴纸！') : (reward ? (wonder ? '继续 →' : '继续探险 →') : '好的');
+    $('#modal').hidden = false;
+    card = {id, resolve, isNew};
+    if (isNew) SFX.fanfare(); else SFX.land();
+    say(p.hello);
+    setTimeout(() => $('#cardOk').focus(), 50);
+  });
+}
+function closeCard() {
+  if (!card) return;
+  const {id, resolve, isNew} = card;
+  card = null;
+  $('#modal').hidden = true;
+  hush();
+  if (isNew && WONDERS[id]) {
+    save.wonders.push(id); addStars(3);
+    confetti(60);
+    toast(`发现宇宙奇观「${WONDERS[id].name}」！`);
+  } else if (isNew) {
+    save.stickers.push(id); persist(); addStars(5);
+    confetti(70);
+    if (save.stickers.length === PLANETS.length) {
+      setTimeout(() => { confetti(160); SFX.fanfare(); toast('9 张贴纸全部集齐！你是真正的太空小探险家！', 4200); say('太棒了！9张贴纸全部集齐，你是真正的太空小探险家！'); }, 400);
+    } else {
+      toast(`拿到「${BY[id].name}」贴纸！还差 ${PLANETS.length - save.stickers.length} 张`);
+    }
+  } else SFX.click();
+  resolve();
+}
+$('#cardOk').addEventListener('click', closeCard);
+$('#cardSpeak').addEventListener('click', () => { if (!card) return; const p = infoOf(card.id); say(p.name + '。' + p.facts.join('')); });
+$('#modal').addEventListener('click', e => { if (e.target.id === 'modal') closeCard(); });
+function drawCardArt(t) {
+  const {ctx, w, h} = fitCanvas($('#cardArt'));
+  ctx.clearRect(0, 0, w, h);
+  if (WONDERS[card.id]) drawWonder(ctx, WONDERS[card.id].art, w / 2, h / 2, w, t);
+  else drawPlanet(ctx, card.id, w / 2, h / 2, artR(card.id, w), {face:true, rot:t * .12, blink:(t % 3.5) < .14});
+}
+
+/* ---------- 首页 ---------- */
+function drawHero(t) {
+  const {ctx, w, h} = fitCanvas($('#hero'));
+  ctx.clearRect(0, 0, w, h);
+  const cx = w / 2, cy = h / 2, R = w * .27;
+  const ma = t * .7, mx = cx + Math.cos(ma) * w * .42, my = cy + Math.sin(ma) * w * .12;
+  const ra = -t * .9 + 2, rx = cx + Math.cos(ra) * w * .4, ry = cy - h * .05 + Math.sin(ra) * w * .3;
+  const behind = Math.sin(ma) < 0;
+  if (behind) drawPlanet(ctx, 'moon', mx, my, w * .07);
+  drawPlanet(ctx, 'earth', cx, cy, R, {face:true, rot:t * .1, blink:(t % 4) < .15});
+  if (!behind) drawPlanet(ctx, 'moon', mx, my, w * .07);
+  const da = -1, dx = -Math.sin(ra) * da, dy = Math.cos(ra) * .75 * da;
+  drawRocket(ctx, rx, ry, Math.atan2(dy, dx), w / 220, 1);
+}
+function drawModeIcons() {
+  document.querySelectorAll('canvas[data-icon]').forEach(c => {
+    const {ctx, w, h} = fitCanvas(c);
+    ctx.clearRect(0, 0, w, h);
+    const id = c.dataset.icon;
+    if (id === 'rocket') drawRocket(ctx, w / 2 + 2, h / 2, -.8, w / 46, 1);
+    else if (id === 'cosmos') drawWonder(ctx, 'milkyway', w / 2, h / 2, w * 1.05, 0);
+    else if (id === 'cons') drawMiniCons(ctx, w, h);
+    else drawPlanet(ctx, id, w / 2, h / 2, artR(id, w), {face:true});
+  });
+}
+function drawMiniCons(ctx, w, h) {
+  const C = CONS[0], pad = 5, s = w - pad * 2, P = i => [pad + C.pts[i][0] * s, pad + C.pts[i][1] * s];
+  ctx.strokeStyle = '#2a1f6a'; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); C.seq.forEach((k, i) => { const [x, y] = P(k); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); ctx.stroke();
+  C.pts.forEach((_, i) => { const [x, y] = P(i); ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(x, y, 3.6, 0, TAU); ctx.fill(); ctx.stroke(); });
+}
+function renderHome() {
+  $('#homeProgress').innerHTML = `已收集 <b>${save.stickers.length}/9</b> 张星球贴纸 · <b>${save.wonders.length}/${WONDER_IDS.length}</b> 个宇宙奇观 · 攒了 <b>${save.stars}</b> 颗星星`;
+  $('#pCosmos').textContent = `从太阳系一直飞到可观测宇宙 · 奇观 ${save.wonders.length}/${WONDER_IDS.length}`;
+  $('#pExplore').textContent = save.mission >= MISSIONS.length ? '任务全部完成' : `任务 ${save.mission + 1}/${MISSIONS.length}`;
+  $('#pArcade').textContent = `通关 ${ARC_LEVELS.filter((_, i) => save.arc[i]).length}/${ARC_LEVELS.length}`;
+  $('#pQuiz').textContent = `关卡 ${QUIZ_LEVELS.filter((_, i) => quizUnlocked(i)).length}/${QUIZ_LEVELS.length}`;
+  $('#pOrder').textContent = `完成 ${Object.keys(ORDER_MODES).filter(k => save.orderDone[k]).length}/2`;
+  $('#pCons').textContent = `星座 ${save.cons.length}/${CONS.length}`;
+  $('#pBook').textContent = `勋章 ${save.badges.length}/${BADGES.length}`;
+  requestAnimationFrame(drawModeIcons);
+}
+
+/* ---------- 开火箭探险 ---------- */
+const WORLD_R = 1580;
+const ORBIT = {mercury:240, venus:340, earth:450, mars:560, jupiter:880, saturn:1075, uranus:1255, neptune:1430};
+const SIZE = {sun:95, mercury:16, venus:24, earth:26, mars:20, jupiter:62, saturn:48, uranus:34, neptune:33};
+const START_ANG = {mercury:.6, venus:2.4, earth:4.2, mars:5.4, jupiter:1.2, saturn:3.1, uranus:5.0, neptune:.2};
+const BELT = [655, 760];
+const ACC = 900, MAXV = 430;
+const KEYS = new Set();
+const EX = {
+  inited:false, t:0, paused:false, w:0, h:0, zoom:1, cam:{x:0, y:0}, collected:0, hinted:false,
+  rocket:{x:0, y:0, vx:0, vy:0, a:0, inv:0}, keys:KEYS, pointer:null, thrust:false, moved:false,
+  stars:[], rocks:[], parts:[], floats:[], bg:[], ignore:null, shake:0
+};
+const exCanvas = $('#exCanvas');
+function bodyPos(p, t) {
+  if (p.id === 'sun') return {x:0, y:0};
+  const o = ORBIT[p.id], w = .05 * Math.pow(240 / o, 1.5), a = START_ANG[p.id] + w * t;
+  return {x:Math.cos(a) * o, y:Math.sin(a) * o};
+}
+function randStar() {
+  for (;;) {
+    const r = 170 + Math.random() * (WORLD_R - 220), a = Math.random() * TAU;
+    if (r > BELT[0] - 20 && r < BELT[1] + 20) continue;
+    return {x:Math.cos(a) * r, y:Math.sin(a) * r, spin:Math.random() * 6};
+  }
+}
+function exInit() {
+  EX.inited = true;
+  EX.stars = Array.from({length:70}, randStar);
+  EX.rocks = Array.from({length:34}, () => {
+    const size = 9 + Math.random() * 13, n = 7;
+    return {rad:BELT[0] + Math.random() * (BELT[1] - BELT[0]), ang:Math.random() * TAU, w:.03 + Math.random() * .04,
+      size, rot:Math.random() * 6, vr:(Math.random() - .5) * 1.5, x:0, y:0,
+      verts:Array.from({length:n}, (_, i) => ({a:i / n * TAU, r:.75 + Math.random() * .35}))};
+  });
+  const e = bodyPos(BY.earth, 0), d = Math.hypot(e.x, e.y);
+  EX.rocket.x = e.x + e.x / d * 80; EX.rocket.y = e.y + e.y / d * 80; EX.rocket.a = Math.atan2(e.y, e.x);
+  EX.cam.x = EX.rocket.x; EX.cam.y = EX.rocket.y;
+}
+function exResize() {
+  const {w, h} = fitCanvas(exCanvas);
+  EX.w = w; EX.h = h;
+  EX.zoom = Math.max(.55, Math.min(1, Math.min(w, h) / 720));
+  EX.bg = Array.from({length:Math.round(w * h / 3500)}, () => ({x:Math.random() * w, y:Math.random() * h, r:Math.random() < .2 ? 2 : 1.2, a:.3 + Math.random() * .6, p:.05 + Math.random() * .25}));
+}
+function startExplore() {
+  if (!EX.inited) exInit();
+  exResize();
+  EX.paused = false; EX.keys.clear(); EX.pointer = null;
+  $('#exHint').style.opacity = 1; EX.moved = false;
+  renderMission();
+  const m = MISSIONS[save.mission];
+  setTimeout(() => say(m ? '任务：' + m.text : '自由探索时间！'), 300);
+}
+function renderMission() {
+  const m = MISSIONS[save.mission];
+  if (!m) {
+    $('#mNum').textContent = '完成';
+    $('#mText').textContent = save.stickers.length < PLANETS.length ? '任务全部完成！跟着箭头去找剩下的贴纸吧' : '你已经是探险高手啦，自由飞行吧！';
+    $('#mHint').hidden = true; $('#mHintText').hidden = true;
+    return;
+  }
+  $('#mNum').textContent = `任务 ${save.mission + 1}/${MISSIONS.length}`;
+  $('#mText').textContent = m.text + (m.type === 'collect' ? `（${EX.collected}/${m.n}）` : '');
+  $('#mHint').hidden = EX.hinted;
+  $('#mHintText').hidden = !EX.hinted;
+  $('#mHintText').textContent = m.hint;
+}
+$('#mHint').addEventListener('click', () => {
+  EX.hinted = true; renderMission(); SFX.click();
+  const m = MISSIONS[save.mission]; if (m) say(m.hint);
+});
+function completeMission() {
+  save.mission++; EX.hinted = false; EX.collected = 0;
+  addStars(3); SFX.good(); confetti(60);
+  const next = MISSIONS[save.mission];
+  if (next) {
+    toast(`任务完成！+3 ★ 下一个：${next.text}`, 3200);
+    setTimeout(() => say('任务完成！下一个任务：' + next.text), 700);
+  } else {
+    toast('12 个任务全部完成！你是任务达人！', 3600);
+    say('太厉害了！所有任务都完成啦！');
+  }
+  renderMission();
+}
+function missionLanded(id) {
+  const m = MISSIONS[save.mission];
+  if (!m || m.type !== 'visit') return;
+  if (m.id === id) completeMission();
+  else toast(`这是${BY[id].name}。任务要找的是另一颗哦`);
+}
+function floatText(x, y, text, color) { EX.floats.push({x, y, text, color, life:1.1}); }
+function angLerp(a, b, k) { let d = wrap(b - a + Math.PI, TAU) - Math.PI; return a + d * k; }
+
+function land(p, nx, ny) {
+  const E = EX, r = E.rocket;
+  E.paused = true; E.pointer = null; E.keys.clear(); E.thrust = false;
+  r.vx = r.vy = 0;
+  openCard(p.id, true).then(() => {
+    const R = SIZE[p.id];
+    E.ignore = p.id; E.paused = false;
+    r.x = p.x + nx * (R + 30); r.y = p.y + ny * (R + 30);
+    r.vx = nx * 240; r.vy = ny * 240; r.a = Math.atan2(ny, nx);
+    missionLanded(p.id);
+  });
+}
+
+function exStep(dt) {
+  const E = EX, r = E.rocket;
+  for (const p of PLANETS) { const q = bodyPos(p, E.t); p.x = q.x; p.y = q.y; }
+  if (!E.paused) {
+    E.t += dt;
+    let ix = 0, iy = 0;
+    const k = E.keys;
+    if (k.has('ArrowLeft') || k.has('KeyA')) ix--;
+    if (k.has('ArrowRight') || k.has('KeyD')) ix++;
+    if (k.has('ArrowUp') || k.has('KeyW')) iy--;
+    if (k.has('ArrowDown') || k.has('KeyS')) iy++;
+    if (E.pointer) {
+      const wx = E.cam.x + (E.pointer.x - E.w / 2) / E.zoom, wy = E.cam.y + (E.pointer.y - E.h / 2) / E.zoom;
+      const dx = wx - r.x, dy = wy - r.y, d = Math.hypot(dx, dy);
+      if (d > 22) { ix = dx / d; iy = dy / d; }
+    }
+    const m = Math.hypot(ix, iy);
+    E.thrust = m > 0;
+    if (m > 0) {
+      r.vx += ix / m * ACC * dt; r.vy += iy / m * ACC * dt;
+      if (!E.moved) { E.moved = true; setTimeout(() => { $('#exHint').style.opacity = 0; }, 2500); }
+    }
+    const drag = Math.exp(-1.5 * dt); r.vx *= drag; r.vy *= drag;
+    const sp = Math.hypot(r.vx, r.vy);
+    if (sp > MAXV) { r.vx *= MAXV / sp; r.vy *= MAXV / sp; }
+    r.x += r.vx * dt; r.y += r.vy * dt;
+    if (sp > 15) r.a = angLerp(r.a, Math.atan2(r.vy, r.vx), 1 - Math.exp(-8 * dt));
+    const dc = Math.hypot(r.x, r.y);
+    if (dc > WORLD_R) {
+      const nx = r.x / dc, ny = r.y / dc, vn = r.vx * nx + r.vy * ny;
+      r.x = nx * WORLD_R; r.y = ny * WORLD_R;
+      if (vn > 0) { r.vx -= vn * nx * 1.6; r.vy -= vn * ny * 1.6; }
+      if (!E.edgeTold) { E.edgeTold = true; floatText(r.x, r.y - 40, '前面就是太阳系的边缘啦', '#7cc0ff'); }
+    }
+    if (r.inv > 0) r.inv -= dt;
+
+    if (E.thrust && !reduceMotion) {
+      for (let i = 0; i < 2; i++) {
+        const c = Math.cos(r.a), s = Math.sin(r.a);
+        E.parts.push({x:r.x - c * 22, y:r.y - s * 22, vx:-c * 140 + (Math.random() - .5) * 70, vy:-s * 140 + (Math.random() - .5) * 70, life:.45, max:.45, c:Math.random() < .5 ? '#ffb03a' : '#fff2a8', s:3 + Math.random() * 3});
+      }
+    }
+
+    for (const s of E.stars) {
+      s.spin += dt * 2;
+      if (Math.hypot(s.x - r.x, s.y - r.y) < 32) {
+        addStars(1); SFX.star(); floatText(s.x, s.y, '+1 ★', '#ffd54a');
+        Object.assign(s, randStar());
+        const m = MISSIONS[save.mission];
+        if (m && m.type === 'collect') { EX.collected++; if (EX.collected >= m.n) completeMission(); else renderMission(); }
+      }
+    }
+
+    for (const a of E.rocks) {
+      a.ang += a.w * dt; a.rot += a.vr * dt;
+      a.x = Math.cos(a.ang) * a.rad; a.y = Math.sin(a.ang) * a.rad;
+      if (r.inv <= 0) {
+        const dx = r.x - a.x, dy = r.y - a.y, d = Math.hypot(dx, dy) || 1;
+        if (d < a.size + 14) {
+          r.vx = dx / d * 320; r.vy = dy / d * 320; r.inv = 1.2; E.shake = .3;
+          SFX.bump();
+          if (save.stars > 0) { addStars(-1); floatText(r.x, r.y - 30, '咚！-1 ★', '#ff7a8a'); }
+          else floatText(r.x, r.y - 30, '咚！小心石头', '#ff7a8a');
+        }
+      }
+    }
+
+    for (const p of PLANETS) {
+      const R = SIZE[p.id], dx = r.x - p.x, dy = r.y - p.y, d = Math.hypot(dx, dy) || 1;
+      if (E.ignore === p.id) {
+        if (d > R + 110) E.ignore = null;
+        else if (d < R + 14) { r.x = p.x + dx / d * (R + 14); r.y = p.y + dy / d * (R + 14); }
+        continue;
+      }
+      if (d < R + 14) { land(p, dx / d, dy / d); break; }
+    }
+
+    for (const p of E.parts) { p.x += p.vx * dt; p.y += p.vy * dt; p.life -= dt; }
+    E.parts = E.parts.filter(p => p.life > 0);
+    for (const f of E.floats) { f.y -= 40 * dt; f.life -= dt; }
+    E.floats = E.floats.filter(f => f.life > 0);
+  }
+  const tx = r.x + r.vx * .35, ty = r.y + r.vy * .35, ck = 1 - Math.exp(-4 * dt);
+  E.cam.x += (tx - E.cam.x) * ck; E.cam.y += (ty - E.cam.y) * ck;
+  E.shake = Math.max(0, E.shake - dt);
+  exDraw();
+}
+
+function exDraw() {
+  const E = EX, {ctx: c, w, h} = fitCanvas(exCanvas), r = E.rocket, z = E.zoom;
+  c.fillStyle = '#070a24'; c.fillRect(0, 0, w, h);
+  c.fillStyle = '#fff';
+  for (const s of E.bg) {
+    c.globalAlpha = s.a;
+    c.fillRect(wrap(s.x - E.cam.x * s.p, w), wrap(s.y - E.cam.y * s.p, h), s.r, s.r);
+  }
+  c.globalAlpha = 1;
+
+  const sh = E.shake > 0 && !reduceMotion ? E.shake * 30 : 0;
+  c.save();
+  c.translate(w / 2 + (Math.random() - .5) * sh, h / 2 + (Math.random() - .5) * sh);
+  c.scale(z, z); c.translate(-E.cam.x, -E.cam.y);
+  const vx0 = E.cam.x - w / 2 / z - 80, vx1 = E.cam.x + w / 2 / z + 80, vy0 = E.cam.y - h / 2 / z - 80, vy1 = E.cam.y + h / 2 / z + 80;
+  const inView = (x, y, pad = 0) => x > vx0 - pad && x < vx1 + pad && y > vy0 - pad && y < vy1 + pad;
+
+  c.strokeStyle = 'rgba(170,185,255,.16)'; c.lineWidth = 2 / z; c.setLineDash([8 / z, 12 / z]);
+  for (const id of ORDER) { c.beginPath(); c.arc(0, 0, ORBIT[id], 0, TAU); c.stroke(); }
+  c.setLineDash([]);
+  c.strokeStyle = 'rgba(190,160,120,.07)'; c.lineWidth = BELT[1] - BELT[0];
+  c.beginPath(); c.arc(0, 0, (BELT[0] + BELT[1]) / 2, 0, TAU); c.stroke();
+  c.strokeStyle = 'rgba(160,200,255,.12)'; c.lineWidth = 6 / z;
+  c.beginPath(); c.arc(0, 0, WORLD_R + 20, 0, TAU); c.stroke();
+
+  c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.font = `700 ${14 / z}px ${FONT}`; c.fillStyle = 'rgba(230,205,170,.55)';
+  for (let k = 0; k < 6; k++) {
+    const a = k * TAU / 6 + .5, R = (BELT[0] + BELT[1]) / 2;
+    if (inView(Math.cos(a) * R, Math.sin(a) * R)) c.fillText('小行星带', Math.cos(a) * R, Math.sin(a) * R);
+  }
+
+  for (const s of E.stars) if (inView(s.x, s.y)) drawStar(c, s.x, s.y, 12, s.spin);
+
+  for (const a of E.rocks) {
+    if (!inView(a.x, a.y)) continue;
+    drawRock(c, a.x, a.y, a.size, a.rot, a.verts);
+  }
+
+  PLANETS.forEach((p, i) => {
+    const R = SIZE[p.id];
+    if (!inView(p.x, p.y, R * 2)) return;
+    drawPlanet(c, p.id, p.x, p.y, R, {face:true, rot:E.t * .05, blink:((E.t + i * 1.3) % 4) < .14});
+    const ly = p.y + R + (p.id === 'saturn' ? 22 : p.id === 'sun' ? 40 : 8) + 14 / z;
+    c.font = `900 ${16 / z}px ${FONT}`;
+    const label = p.name + (save.stickers.includes(p.id) ? ' ✓' : '');
+    c.lineWidth = 4 / z; c.strokeStyle = 'rgba(7,10,36,.85)'; c.strokeText(label, p.x, ly);
+    c.fillStyle = save.stickers.includes(p.id) ? '#3fe0b5' : '#f5f2ff'; c.fillText(label, p.x, ly);
+  });
+
+  for (const p of E.parts) { c.globalAlpha = p.life / p.max; c.fillStyle = p.c; c.beginPath(); c.arc(p.x, p.y, p.s * (p.life / p.max), 0, TAU); c.fill(); }
+  c.globalAlpha = 1;
+
+  if (!(r.inv > 0 && Math.floor(r.inv * 12) % 2)) drawRocket(c, r.x, r.y, r.a, 1.5, E.thrust ? 1 : 0);
+
+  for (const f of E.floats) {
+    c.globalAlpha = Math.min(1, f.life * 2);
+    c.font = `900 ${18 / z}px ${FONT}`;
+    c.lineWidth = 4 / z; c.strokeStyle = 'rgba(7,10,36,.9)'; c.strokeText(f.text, f.x, f.y);
+    c.fillStyle = f.color; c.fillText(f.text, f.x, f.y);
+  }
+  c.globalAlpha = 1;
+  c.restore();
+
+  drawNav(c, w, h);
+  drawMini(c, w, h);
+}
+
+function navTarget() {
+  const m = MISSIONS[save.mission];
+  if (m) return m.type === 'visit' && EX.hinted ? BY[m.id] : null;
+  let target = null, best = Infinity;
+  for (const p of PLANETS) {
+    if (save.stickers.includes(p.id)) continue;
+    const d = Math.hypot(p.x - EX.rocket.x, p.y - EX.rocket.y);
+    if (d < best) { best = d; target = p; }
+  }
+  return target;
+}
+function drawMini(c, w, h) {
+  const E = EX, R = Math.min(64, Math.min(w, h) * .14), cx = w - R - 20, cy = h - R - 20, k = R / WORLD_R, tg = navTarget();
+  c.save();
+  c.fillStyle = 'rgba(20,26,78,.88)'; c.strokeStyle = '#3a4596'; c.lineWidth = 2;
+  c.beginPath(); c.arc(cx, cy, R + 6, 0, TAU); c.fill(); c.stroke();
+  c.strokeStyle = 'rgba(170,185,255,.22)'; c.lineWidth = 1;
+  for (const id of ORDER) { c.beginPath(); c.arc(cx, cy, ORBIT[id] * k, 0, TAU); c.stroke(); }
+  for (const p of PLANETS) {
+    const x = cx + p.x * k, y = cy + p.y * k;
+    c.fillStyle = BASE[p.id][1]; c.beginPath(); c.arc(x, y, p.id === 'sun' ? 4.5 : Math.max(2, SIZE[p.id] * k * 3), 0, TAU); c.fill();
+    if (p === tg) { c.strokeStyle = '#ffc53d'; c.lineWidth = 2; c.beginPath(); c.arc(x, y, 6 + Math.sin(E.t * 5) * 1.5, 0, TAU); c.stroke(); }
+  }
+  c.fillStyle = '#fff'; c.beginPath(); c.arc(cx + E.rocket.x * k, cy + E.rocket.y * k, 3, 0, TAU); c.fill();
+  c.restore();
+}
+function drawNav(c, w, h) {
+  const E = EX, z = E.zoom, target = navTarget();
+  if (!target) return;
+  const sx = (target.x - E.cam.x) * z + w / 2, sy = (target.y - E.cam.y) * z + h / 2;
+  const m = 56, top = 140;
+  c.textAlign = 'center'; c.textBaseline = 'middle';
+  if (sx > m && sx < w - m && sy > top && sy < h - m) {
+    const R = SIZE[target.id] * z + 14 + Math.sin(E.t * 4) * 3;
+    c.strokeStyle = 'rgba(255,197,61,.85)'; c.lineWidth = 3; c.setLineDash([8, 8]);
+    c.beginPath(); c.arc(sx, sy, R, 0, TAU); c.stroke(); c.setLineDash([]);
+    return;
+  }
+  const cx = w / 2, cy = (h + top) / 2;
+  const dx = sx - cx, dy = sy - cy;
+  const hw = w / 2 - m, hh = (h - top) / 2 - m;
+  const s = Math.min(hw / Math.abs(dx || 1e-6), hh / Math.abs(dy || 1e-6));
+  const ax = cx + dx * s, ay = cy + dy * s, ang = Math.atan2(dy, dx);
+  c.save();
+  c.fillStyle = 'rgba(28,35,99,.92)'; c.strokeStyle = '#ffc53d'; c.lineWidth = 3;
+  c.beginPath(); c.arc(ax, ay, 30, 0, TAU); c.fill(); c.stroke();
+  c.translate(ax, ay); c.rotate(ang);
+  c.fillStyle = '#ffc53d'; c.beginPath(); c.moveTo(44, 0); c.lineTo(32, -9); c.lineTo(32, 9); c.closePath(); c.fill();
+  c.restore();
+  drawPlanet(c, target.id, ax, ay, target.id === 'saturn' ? 11 : target.id === 'sun' ? 13 : 17, {});
+  c.font = `900 14px ${FONT}`;
+  const ty = ay + (ay > h / 2 ? -46 : 46);
+  c.lineWidth = 4; c.strokeStyle = 'rgba(7,10,36,.9)'; c.strokeText('去' + target.name, ax, ty);
+  c.fillStyle = '#ffc53d'; c.fillText('去' + target.name, ax, ty);
+}
+
+exCanvas.addEventListener('pointerdown', e => {
+  if (EX.paused) return;
+  try { exCanvas.setPointerCapture(e.pointerId); } catch (err) {}
+  EX.pointer = localPt(exCanvas, e); audio();
+});
+exCanvas.addEventListener('pointermove', e => { if (EX.pointer) EX.pointer = localPt(exCanvas, e); });
+['pointerup','pointercancel','lostpointercapture'].forEach(n => exCanvas.addEventListener(n, () => { EX.pointer = null; }));
+const DRIVE_KEYS = ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','KeyA','KeyD','KeyW','KeyS'];
+window.addEventListener('keydown', e => {
+  if (card && (e.key === 'Escape')) { closeCard(); return; }
+  const driving = (current === 'explore' && !EX.paused) || (current === 'arcade' && ARC.phase === 'fly');
+  if (driving && DRIVE_KEYS.includes(e.code)) { KEYS.add(e.code); e.preventDefault(); audio(); }
+});
+window.addEventListener('keyup', e => KEYS.delete(e.code));
+window.addEventListener('blur', () => { KEYS.clear(); EX.pointer = null; ARC.pointer = null; });
+
+/* ---------- 问答 ---------- */
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const QZ = {lv:0, list:[], i:0, score:0, marks:[]};
+const quizUnlocked = i => i === 0 || (save.quizBest[i - 1] || 0) >= 5 || (i === 3 && cosUnlocked(STAGES.length - 1));
+function quizPick() {
+  $('#quizPick').hidden = false; $('#quizPlay').hidden = true; $('#quizEnd').hidden = true;
+  $('#barTitle').textContent = TITLES.quiz;
+  const box = $('#quizLevels'); box.innerHTML = '';
+  QUIZ_LEVELS.forEach((L, i) => {
+    const open = quizUnlocked(i), best = save.quizBest[i] || 0;
+    const b = document.createElement('button'); b.className = 'lvl'; b.disabled = !open;
+    b.appendChild(planetCanvas(L.icon, 56, open));
+    const t = document.createElement('b'); t.textContent = L.name;
+    const s = document.createElement('small');
+    s.textContent = open ? L.desc : (i === 3 ? '通过第 3 关，或走完宇宙大旅行' : '上一关答对 5 题就能打开');
+    const r = document.createElement('span'); r.className = 'rate';
+    r.textContent = open ? (best ? `最好 ${best}/8` : '还没玩过') : '未解锁';
+    b.append(t, s, r);
+    b.addEventListener('click', () => { SFX.click(); startQuiz(i); });
+    box.appendChild(b);
+  });
+}
+function startQuiz(lv) {
+  QZ.lv = lv; QZ.list = shuffle(QUIZ_LEVELS[lv].qs.slice()).slice(0, 8); QZ.i = 0; QZ.score = 0; QZ.marks = [];
+  $('#quizPick').hidden = true; $('#quizPlay').hidden = false; $('#quizEnd').hidden = true;
+  $('#barTitle').textContent = `星球问答 · ${QUIZ_LEVELS[lv].name}`;
+  renderQ();
+}
+function renderDots() {
+  $('#quizDots').innerHTML = QZ.list.map((_, i) => `<i class="${QZ.marks[i] || (i === QZ.i ? 'on' : '')}"></i>`).join('');
+}
+function renderQ() {
+  const it = QZ.list[QZ.i];
+  renderDots();
+  $('#quizQ').textContent = it.q;
+  const box = $('#quizOpts'); box.innerHTML = '';
+  shuffle(it.opts.slice()).forEach(o => {
+    const b = document.createElement('button'); b.className = 'opt'; b.dataset.v = o;
+    const info = infoOf(o);
+    if (info) { b.appendChild(planetCanvas(o, 72)); b.append(info.name); }
+    else b.textContent = o;
+    b.addEventListener('click', () => answer(b, o));
+    box.appendChild(b);
+  });
+  $('#quizFb').hidden = true; $('#quizNext').hidden = true;
+  say(it.q);
+}
+function answer(btn, o) {
+  const it = QZ.list[QZ.i], ok = o === it.a;
+  document.querySelectorAll('#quizOpts .opt').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.v === it.a) b.classList.add('right');
+    else if (b !== btn) b.classList.add('dim');
+  });
+  const fb = $('#quizFb');
+  if (ok) { QZ.score++; addStars(2); SFX.good(); fb.className = 'feedback ok'; fb.innerHTML = '<b>答对啦！+2 ★</b>'; confetti(30, btn.getBoundingClientRect().left + btn.offsetWidth / 2, btn.getBoundingClientRect().top); }
+  else { btn.classList.add('wrong'); SFX.bad(); fb.className = 'feedback no'; fb.innerHTML = '<b>差一点点！</b>'; }
+  fb.append(it.tip);
+  fb.hidden = false;
+  QZ.marks[QZ.i] = ok ? 'ok' : 'no';
+  renderDots();
+  say((ok ? '答对啦！' : '差一点点！') + it.tip);
+  const nb = $('#quizNext');
+  nb.textContent = QZ.i === QZ.list.length - 1 ? '看看成绩 →' : '下一题 →';
+  nb.hidden = false; nb.focus();
+}
+$('#quizNext').addEventListener('click', () => {
+  SFX.click();
+  if (QZ.i < QZ.list.length - 1) { QZ.i++; renderQ(); return; }
+  $('#quizPlay').hidden = true; $('#quizEnd').hidden = false;
+  const n = QZ.list.length, lv = QZ.lv, last = lv === QUIZ_LEVELS.length - 1;
+  $('#quizScore').textContent = `${QZ.score} / ${n}`;
+  const msg = QZ.score === n ? '全部答对！你就是小小天文学家！'
+    : QZ.score >= 6 ? '真厉害！你懂的宇宙知识真多。'
+    : QZ.score >= 4 ? '不错哦！去探险和宇宙大旅行，能学到更多知识。'
+    : '没关系，先去看看星球和宇宙奇观的卡片，再回来挑战！';
+  if (QZ.score > (save.quizBest[lv] || 0)) { save.quizBest[lv] = QZ.score; persist(); }
+  const unlock = !last && quizUnlocked(lv + 1);
+  const extra = last ? '' : unlock ? `「${QUIZ_LEVELS[lv + 1].name}」关卡已经打开！` : '答对 5 题就能打开下一关。';
+  $('#quizMsg').textContent = `这一轮拿到 ${QZ.score * 2} 颗星星。${msg}${extra}`;
+  $('#quizNextLv').hidden = !unlock;
+  if (QZ.score >= 6) { confetti(120); SFX.fanfare(); }
+  say(`你答对了${QZ.score}道题。${msg}${extra}`);
+});
+$('#quizAgain').addEventListener('click', () => { SFX.click(); startQuiz(QZ.lv); });
+$('#quizBack').addEventListener('click', () => { SFX.click(); quizPick(); });
+$('#quizNextLv').addEventListener('click', () => { SFX.click(); startQuiz(QZ.lv + 1); });
+$('#quizSpeak').addEventListener('click', () => { const it = QZ.list[QZ.i]; if (it) say(it.q); });
+
+/* ---------- 排排队 ---------- */
+const ORD = {mode:'dist', next:0, miss:0};
+function renderOrderTabs() {
+  const box = $('#orderTabs'); box.innerHTML = '';
+  for (const [k, M] of Object.entries(ORDER_MODES)) {
+    const b = document.createElement('button'); b.className = 'tab' + (k === ORD.mode ? ' on' : '');
+    b.textContent = M.tab + (save.orderDone[k] ? ' ✓' : '');
+    b.addEventListener('click', () => { SFX.click(); startOrder(k); });
+    box.appendChild(b);
+  }
+}
+function startOrder(mode = ORD.mode) {
+  ORD.mode = mode; ORD.next = 0; ORD.miss = 0;
+  const M = ORDER_MODES[mode];
+  renderOrderTabs();
+  $('#orderLead').innerHTML = M.lead;
+  const sc = $('#orderSun'); sc.hidden = mode !== 'dist';
+  $('#laneLabel').textContent = mode === 'dist' ? '太阳' : '从小到大';
+  if (mode === 'dist') { const {ctx, w, h} = fitCanvas(sc); ctx.clearRect(0, 0, w, h); drawPlanet(ctx, 'sun', w / 2, h / 2, w * .3, {face:true}); }
+  $('#orderSlots').innerHTML = M.seq.map((_, i) => `<div class="slot${i === 0 ? ' next' : ''}">${i + 1}</div>`).join('');
+  const tray = $('#orderTray'); tray.innerHTML = ''; tray.hidden = false;
+  shuffle(M.seq.slice()).forEach(id => {
+    const b = document.createElement('button'); b.className = 'opt';
+    b.appendChild(planetCanvas(id, 58)); b.append(BY[id].name);
+    b.addEventListener('click', () => pickOrder(id, b));
+    tray.appendChild(b);
+  });
+  $('#orderDone').hidden = true;
+  $('#orderMsg').textContent = M.first;
+}
+function pickOrder(id, btn) {
+  const M = ORDER_MODES[ORD.mode];
+  if (id !== M.seq[ORD.next]) {
+    ORD.miss++; SFX.bad();
+    btn.classList.remove('wrong'); void btn.offsetWidth; btn.classList.add('wrong');
+    const tip = ORD.miss >= 2 ? `<br><span class="tip">小口诀：${M.rhyme}</span>` : '';
+    $('#orderMsg').innerHTML = M.wrong(BY[id].name) + tip;
+    say(M.wrong(BY[id].name));
+    return;
+  }
+  SFX.good();
+  const slots = document.querySelectorAll('#orderSlots .slot'), slot = slots[ORD.next];
+  slot.classList.remove('next'); slot.classList.add('filled'); slot.innerHTML = '';
+  const pc = planetCanvas(id, 46);
+  if (ORD.mode === 'size') { const s = Math.round(16 + 30 * Math.pow(DIAM[id] / DIAM.jupiter, .6)); pc.style.width = pc.style.height = s + 'px'; }
+  slot.appendChild(pc); slot.append(BY[id].name);
+  btn.remove();
+  ORD.next++;
+  if (ORD.next < M.seq.length) {
+    slots[ORD.next].classList.add('next');
+    $('#orderMsg').innerHTML = `对啦！${BY[id].name}：${M.short(id)}。<br>第 ${ORD.next + 1} 个是谁？`;
+    say(`对啦！${BY[id].name}，${M.short(id)}。`);
+  } else {
+    const gain = ORD.miss === 0 ? 8 : 5;
+    save.orderDone[ORD.mode] = true;
+    addStars(gain); confetti(140); SFX.fanfare();
+    renderOrderTabs();
+    $('#orderTray').hidden = true; $('#orderDone').hidden = false;
+    $('#orderMsg').innerHTML = `全部排好啦！+${gain} ★<br><span class="tip">记住口诀：${M.rhyme}</span>`;
+    say(`全部排好啦！记住口诀：${M.rhyme}`);
+  }
+}
+$('#orderAgain').addEventListener('click', () => { SFX.click(); startOrder(); });
+
+/* ---------- 图鉴 ---------- */
+function stickerBtn(id, got, size, lockedText) {
+  const p = infoOf(id);
+  const b = document.createElement('button'); b.className = 'sticker' + (got ? '' : ' locked');
+  b.appendChild(planetCanvas(id, size, got));
+  const name = document.createElement('b'); name.textContent = got ? p.name : '？？？';
+  const sm = document.createElement('small'); sm.textContent = got ? p.tag : '还没找到';
+  b.append(name, sm);
+  b.addEventListener('click', () => {
+    if (got) openCard(id, false);
+    else { SFX.bad(); toast(lockedText); }
+  });
+  return b;
+}
+function renderBook() {
+  const n = save.stickers.length;
+  $('#bookLead').innerHTML = n === PLANETS.length ? '9 张贴纸全部集齐！点一点，再听星球们说说话。'
+    : `已收集 <b>${n}/9</b> 张。没拿到的贴纸，开火箭飞过去就能拿到！`;
+  const g = $('#bookGrid'); g.innerHTML = '';
+  PLANETS.forEach(p => g.appendChild(stickerBtn(p.id, save.stickers.includes(p.id), 88, '这颗星球还在等你！去「开火箭探险」找到它吧')));
+  const wn = save.wonders.length;
+  $('#wonderLead').innerHTML = `已发现 <b>${wn}/${WONDER_IDS.length}</b> 个。去「宇宙大旅行」点闪光的问号，就能发现新的奇观！`;
+  const wg = $('#wonderGrid'); wg.innerHTML = '';
+  WONDER_IDS.forEach(id => wg.appendChild(stickerBtn(id, save.wonders.includes(id), 64, '这个奇观还藏在宇宙里！去「宇宙大旅行」找找看')));
+  const bg = $('#badgeGrid'); bg.innerHTML = '';
+  for (const b of BADGES) {
+    const d = document.createElement('div'); d.className = 'badge' + (save.badges.includes(b.id) ? '' : ' locked');
+    d.innerHTML = `<div class="medal">${b.icon}</div><b>${b.name}</b><small>${b.desc}</small>`;
+    bg.appendChild(d);
+  }
+}
+
+/* ---------- 宇宙大旅行 ---------- */
+const COS = {lv:0, trans:null, told:new Set()};
+const cosCanvas = $('#cosCanvas');
+const stageDone = i => STAGES[i].spots.every(([id]) => save.wonders.includes(id));
+const cosUnlocked = i => i === 0 || stageDone(i - 1);
+function startCosmos() {
+  COS.trans = null;
+  const i = STAGES.findIndex((_, k) => cosUnlocked(k) && !stageDone(k));
+  COS.lv = i < 0 ? 0 : i;
+  renderCosmos();
+  const S = STAGES[COS.lv];
+  setTimeout(() => say(`${S.name}。${S.lead}`), 300);
+}
+function renderCosmos() {
+  const S = STAGES[COS.lv], found = S.spots.filter(([id]) => save.wonders.includes(id)).length;
+  const tabs = $('#cosTabs'); tabs.innerHTML = '';
+  STAGES.forEach((st, i) => {
+    const b = document.createElement('button'); b.className = 'tab' + (i === COS.lv ? ' on' : '');
+    b.disabled = !cosUnlocked(i);
+    b.textContent = cosUnlocked(i) ? st.name + (stageDone(i) ? ' ✓' : '') : `第 ${i + 1} 层`;
+    b.addEventListener('click', () => { SFX.click(); cosGo(i); });
+    tabs.appendChild(b);
+  });
+  $('#cosName').textContent = `第 ${COS.lv + 1} 层 · ${S.name}`;
+  $('#cosSize').textContent = S.size;
+  $('#cosLead').textContent = S.lead;
+  $('#cosCount').textContent = `发现奇观 ${found}/${S.spots.length}`;
+  $('#cosIn').hidden = COS.lv === 0;
+  const out = $('#cosOut'), done = stageDone(COS.lv);
+  out.hidden = COS.lv === STAGES.length - 1;
+  out.disabled = !done;
+  out.textContent = done ? '缩小视野，看更大的宇宙 →' : '找到所有问号，就能飞得更远';
+}
+function cosGo(i) {
+  if (i === COS.lv || i < 0 || i >= STAGES.length || !cosUnlocked(i)) return;
+  if (!reduceMotion) COS.trans = {from:COS.lv, to:i, t0:performance.now()};
+  tone(i > COS.lv ? 700 : 160, .8, 'sine', .1, 0, i > COS.lv ? 140 : 800);
+  COS.lv = i; renderCosmos();
+  const S = STAGES[i];
+  say(`${S.name}。${S.lead}`);
+}
+$('#cosOut').addEventListener('click', () => cosGo(COS.lv + 1));
+$('#cosIn').addEventListener('click', () => cosGo(COS.lv - 1));
+function cosLayout(w, h) { const S = Math.min(w - 16, h - 16); return {ox:(w - S) / 2, oy:(h - S) / 2, S}; }
+function bgStars(c, L, seed, n) {
+  const pts = cached('bg' + seed, () => { const r = rng(seed); return Array.from({length:n}, () => ({x:r(), y:r(), s:r()})); });
+  const base = c.globalAlpha;
+  c.fillStyle = '#fff';
+  for (const p of pts) { c.globalAlpha = base * (.2 + p.s * .6); const z = p.s * 1.8 + .4; c.fillRect(L.ox + p.x * L.S, L.oy + p.y * L.S, z, z); }
+  c.globalAlpha = base;
+}
+function label(c, text, x, y, col = '#f5f2ff', size = 14) {
+  c.font = `900 ${size}px ${FONT}`; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.lineWidth = 4; c.strokeStyle = 'rgba(4,5,26,.9)'; c.strokeText(text, x, y);
+  c.fillStyle = col; c.fillText(text, x, y);
+}
+function hereMark(c, x, y, r, text) {
+  c.save(); c.setLineDash([5, 5]); c.strokeStyle = '#3fe0b5'; c.lineWidth = 2;
+  c.beginPath(); c.arc(x, y, r, 0, TAU); c.stroke(); c.restore();
+  label(c, text, x, y + r + 14, '#3fe0b5', 13);
+}
+function dashedCircle(c, x, y, r, col) {
+  c.save(); c.setLineDash([6, 8]); c.strokeStyle = col; c.lineWidth = 2;
+  c.beginPath(); c.arc(x, y, r, 0, TAU); c.stroke(); c.restore();
+}
+function drawStage(c, i, L, t) {
+  const S = L.S, P = (x, y) => [L.ox + x * S, L.oy + y * S];
+  switch (i) {
+    case 0: {
+      bgStars(c, L, 100, 120);
+      const [cx, cy] = P(.5, .5);
+      const kb = cached('kuiper', () => { const r = rng(5); return Array.from({length:240}, () => ({a:r() * TAU, d:.44 + r() * .05, s:r()})); });
+      c.fillStyle = 'rgba(200,190,170,.55)';
+      for (const p of kb) c.fillRect(cx + Math.cos(p.a) * p.d * S, cy + Math.sin(p.a) * p.d * S, 1 + p.s, 1 + p.s);
+      const radii = [.1,.14,.18,.22,.28,.33,.38,.42], angs = [.3,2.2,4,5.3,1.1,2.9,4.8,.15], sizes = [.008,.011,.012,.009,.024,.02,.015,.015];
+      c.strokeStyle = 'rgba(170,185,255,.18)'; c.lineWidth = 1;
+      for (const rr of radii) { c.beginPath(); c.arc(cx, cy, rr * S, 0, TAU); c.stroke(); }
+      drawPlanet(c, 'sun', cx, cy, S * .045, {face:true});
+      ORDER.forEach((id, k) => {
+        const a = angs[k] + t * .08 / (k + 1), x = cx + Math.cos(a) * radii[k] * S, y = cy + Math.sin(a) * radii[k] * S;
+        drawPlanet(c, id, x, y, Math.max(2.5, sizes[k] * S));
+        if (id === 'earth') label(c, '你在这里', x, y - 14, '#3fe0b5', 12);
+      });
+      const [kx, ky] = P(.9, .72); drawPlanet(c, 'pluto', kx, ky, Math.max(3, S * .01));
+      const [mx, my] = P(.2, .24), dl = Math.hypot(mx - cx, my - cy), ux = (mx - cx) / dl, uy = (my - cy) / dl;
+      const g = c.createLinearGradient(mx, my, mx + ux * S * .14, my + uy * S * .14);
+      g.addColorStop(0, 'rgba(170,220,255,.85)'); g.addColorStop(1, 'rgba(170,220,255,0)');
+      c.strokeStyle = g; c.lineWidth = S * .012; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(mx, my); c.lineTo(mx + ux * S * .14, my + uy * S * .14); c.stroke();
+      glow(c, mx, my, S * .014, '230,245,255', 1);
+      break;
+    }
+    case 1: {
+      bgStars(c, L, 200, 220);
+      const [sx, sy] = P(.5, .5), [px, py] = P(.64, .62), [rx, ry] = P(.24, .34);
+      c.save(); c.setLineDash([4, 6]); c.strokeStyle = 'rgba(255,255,255,.35)'; c.lineWidth = 1.5;
+      c.beginPath(); c.moveTo(sx, sy); c.lineTo(px, py); c.stroke(); c.restore();
+      label(c, '4.2 光年', (sx + px) / 2 + 30, (sy + py) / 2 - 6, '#b3b8e6', 12);
+      drawStarBall(c, sx, sy, S * .012, '#fff7c0', '#ffb83a', '255,200,80', false);
+      hereMark(c, sx, sy, S * .035, '太阳系在这里');
+      drawStarBall(c, px, py, S * .012, '#ffb08a', '#d9412b', '255,90,60', false);
+      spikes(c, rx, ry, S * .05, 'rgba(210,230,255,.7)');
+      drawStarBall(c, rx, ry, S * .016, '#ffffff', '#9cc4ff', '150,190,255', false);
+      drawWonder(c, 'nebula', ...P(.78, .24), S * .32, t);
+      drawWonder(c, 'supernova', ...P(.24, .78), S * .26, t);
+      break;
+    }
+    case 2: {
+      bgStars(c, L, 300, 140);
+      const [cx, cy] = P(.5, .5), [hx, hy] = P(.68, .64);
+      drawSpiral(c, cx, cy, S * .47, {seed:7, arms:4});
+      drawBlackHole(c, cx, cy, S * .012, t);
+      glow(c, hx, hy, 7, '255,220,120', 1);
+      hereMark(c, hx, hy, S * .03, '太阳在这里');
+      drawBlackHole(c, ...P(.72, .3), S * .01, t);
+      drawWonder(c, 'pulsar', ...P(.3, .3), S * .12, t);
+      break;
+    }
+    case 3: {
+      bgStars(c, L, 400, 90);
+      const [cx, cy] = P(.5, .5), [mx, my] = P(.3, .6);
+      dashedCircle(c, cx, cy, S * .46, 'rgba(170,185,255,.3)');
+      const dw = cached('dwarfs', () => { const r = rng(9); return Array.from({length:28}, () => { const a = r() * TAU, d = Math.sqrt(r()) * .42; return {x:.5 + Math.cos(a) * d, y:.5 + Math.sin(a) * d}; }); });
+      for (const p of dw) glow(c, ...P(p.x, p.y), S * .012, '200,210,255', .8);
+      drawSpiral(c, mx, my, S * .09, {seed:7, arms:4});
+      hereMark(c, mx, my, S * .1, '银河系在这里');
+      drawBlob(c, ...P(.17, .74), S * .04, 33, '200,215,255');
+      drawSpiral(c, ...P(.7, .34), S * .17, {seed:11, squash:.38, angle:-.6, core:'255,215,180'});
+      drawSpiral(c, ...P(.82, .64), S * .06, {seed:5, color:'170,200,255'});
+      break;
+    }
+    case 4: {
+      bgStars(c, L, 500, 60);
+      const groups = cached('vsc', () => { const r = rng(808); return Array.from({length:22}, () => ({x:.08 + r() * .84, y:.08 + r() * .84})); });
+      groups.forEach((g, k) => drawGalaxyCloud(c, ...P(g.x, g.y), S * .035, 600 + k, 6));
+      drawGalaxyCloud(c, ...P(.58, .38), S * .14, 21, 40);
+      const [ex, ey] = P(.66, .5);
+      glow(c, ex, ey, S * .05, '255,220,170', .95);
+      c.strokeStyle = 'rgba(150,200,255,.8)'; c.lineWidth = 2; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(ex, ey); c.lineTo(ex + S * .06, ey - S * .03); c.stroke();
+      const [lx, ly] = P(.16, .78);
+      glow(c, lx, ly, S * .02, '200,215,255', .9);
+      hereMark(c, lx, ly, S * .035, '本星系群在这里');
+      break;
+    }
+    case 5: {
+      bgStars(c, L, 600, 60);
+      const [cx, cy] = P(.5, .5), [ax, ay] = P(.55, .45), [hx, hy] = P(.25, .72);
+      c.save(); c.setLineDash([6, 8]); c.strokeStyle = 'rgba(120,200,255,.35)'; c.lineWidth = 2;
+      c.beginPath(); c.ellipse(cx, cy, S * .47, S * .4, 0, 0, TAU); c.stroke(); c.restore();
+      drawFlow(c, cx, cy, S * .46, ax, ay, t);
+      hereMark(c, hx, hy, S * .06, '室女座超星系团');
+      break;
+    }
+    case 6: {
+      const [cx, cy] = P(.5, .5);
+      c.save(); c.beginPath(); c.arc(cx, cy, S * .46, 0, TAU); c.clip();
+      c.fillStyle = '#0b0730'; c.fillRect(L.ox, L.oy, S, S);
+      drawWeb(c, cx, cy, S * .46, 78, 60);
+      c.restore();
+      c.strokeStyle = 'rgba(255,150,90,.6)'; c.lineWidth = S * .025; c.beginPath(); c.arc(cx, cy, S * .46, 0, TAU); c.stroke();
+      hereMark(c, cx, cy, S * .02, '拉尼亚凯亚在这里');
+      break;
+    }
+  }
+}
+function drawSpots(c, L, t) {
+  STAGES[COS.lv].spots.forEach(([id, x, y], k) => {
+    const px = L.ox + x * L.S, py = L.oy + y * L.S;
+    if (save.wonders.includes(id)) {
+      c.fillStyle = 'rgba(63,224,181,.95)'; c.beginPath(); c.arc(px, py, 9, 0, TAU); c.fill();
+      c.strokeStyle = '#0a2a22'; c.lineWidth = 2.5; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(px - 4, py); c.lineTo(px - 1, py + 3); c.lineTo(px + 4, py - 3); c.stroke();
+      label(c, WONDERS[id].name, px, py + 22, '#3fe0b5', 13);
+    } else {
+      const pr = 20 + Math.sin(t * 4 + k) * 4;
+      c.fillStyle = 'rgba(255,197,61,.2)'; c.strokeStyle = '#ffc53d'; c.lineWidth = 3;
+      c.beginPath(); c.arc(px, py, pr, 0, TAU); c.fill(); c.stroke();
+      label(c, '?', px, py + 1, '#ffc53d', 20);
+    }
+  });
+}
+function drawCosmos(t) {
+  const {ctx: c, w, h} = fitCanvas(cosCanvas), L = cosLayout(w, h);
+  c.fillStyle = '#04051a'; c.fillRect(0, 0, w, h);
+  const tr = COS.trans;
+  if (tr) {
+    const k = Math.min(1, (performance.now() - tr.t0) / 1300), e = k * k * (3 - 2 * k), out = tr.to > tr.from;
+    const layer = (lv, scale, alpha) => {
+      c.save(); c.globalAlpha = alpha; c.translate(w / 2, h / 2); c.scale(scale, scale); c.translate(-w / 2, -h / 2);
+      drawStage(c, lv, L, t); c.restore();
+    };
+    if (out) { layer(tr.from, 1 - .85 * e, 1 - e); layer(tr.to, 4 - 3 * e, e); }
+    else { layer(tr.from, 1 + 3 * e, 1 - e); layer(tr.to, .15 + .85 * e, e); }
+    if (k >= 1) COS.trans = null;
+    return;
+  }
+  drawStage(c, COS.lv, L, t);
+  drawSpots(c, L, t);
+}
+cosCanvas.addEventListener('click', e => {
+  if (COS.trans || card) return;
+  audio();
+  const L = cosLayout(cosCanvas.clientWidth, cosCanvas.clientHeight);
+  let hit = null, best = 38;
+  const pt = localPt(cosCanvas, e);
+  for (const [id, x, y] of STAGES[COS.lv].spots) {
+    const d = Math.hypot(L.ox + x * L.S - pt.x, L.oy + y * L.S - pt.y);
+    if (d < best) { best = d; hit = id; }
+  }
+  if (!hit) return;
+  const lv = COS.lv;
+  openCard(hit, true).then(() => {
+    renderCosmos();
+    if (!stageDone(lv) || COS.told.has(lv)) return;
+    COS.told.add(lv);
+    if (lv < STAGES.length - 1) {
+      toast('这一层的奇观都找到啦！点「缩小视野」去看更大的宇宙', 3200);
+      setTimeout(() => say('这一层的奇观都找到啦！点缩小视野，去看更大的宇宙。'), 500);
+    } else if (save.wonders.length >= WONDER_IDS.length) {
+      confetti(160); SFX.fanfare();
+      toast('全部宇宙奇观都收集齐了！你是真正的宇宙旅行家！', 4000);
+    }
+  });
+});
+
+/* ---------- 太空大冒险 ---------- */
+const ARC = {lv:0, phase:'idle', t:0, w:0, h:0, objs:[], parts:[], floats:[], bg:[], rocket:{x:0, y:0, tx:0, ty:0}, pointer:null, hearts:3, inv:0, shield:0, got:0, arriveT:0, shake:0, win:false};
+const arcCanvas = $('#arcCanvas');
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const arcUnlocked = i => i === 0 || (save.arc[i - 1] || 0) > 0;
+function keyDir() {
+  let ix = 0, iy = 0;
+  if (KEYS.has('ArrowLeft') || KEYS.has('KeyA')) ix--;
+  if (KEYS.has('ArrowRight') || KEYS.has('KeyD')) ix++;
+  if (KEYS.has('ArrowUp') || KEYS.has('KeyW')) iy--;
+  if (KEYS.has('ArrowDown') || KEYS.has('KeyS')) iy++;
+  return [ix, iy];
+}
+function arcShowSelect() {
+  ARC.phase = 'idle'; ARC.pointer = null;
+  $('#arcSelect').hidden = false; arcCanvas.hidden = true; $('#arcOver').hidden = true;
+  $('#barTitle').textContent = TITLES.arcade;
+  const box = $('#arcLevels'); box.innerHTML = '';
+  const cur = ARC_LEVELS.findIndex((_, i) => arcUnlocked(i) && !save.arc[i]);
+  ARC_LEVELS.forEach((L, i) => {
+    const open = arcUnlocked(i), got = save.arc[i] || 0;
+    const b = document.createElement('button'); b.className = 'lvl' + (i === cur ? ' cur' : ''); b.disabled = !open;
+    b.appendChild(planetCanvas(L.to, 56, open));
+    const t = document.createElement('b'); t.textContent = `第${i + 1}关`;
+    const s = document.createElement('small'); s.textContent = '飞往' + BY[L.to].name;
+    const r = document.createElement('span'); r.className = 'rate'; r.textContent = open ? '★'.repeat(got) + '☆'.repeat(3 - got) : '未解锁';
+    b.append(t, s, r);
+    b.addEventListener('click', () => { SFX.click(); audio(); arcStart(i); });
+    box.appendChild(b);
+  });
+}
+function arcResize() {
+  const {w, h} = fitCanvas(arcCanvas);
+  ARC.w = w; ARC.h = h;
+  ARC.bg = Array.from({length:Math.round(w * h / 3000)}, () => ({x:Math.random() * w, y:Math.random() * h, s:.3 + Math.random() * .9, r:Math.random() < .2 ? 2 : 1.2}));
+}
+function arcStart(i) {
+  const L = ARC_LEVELS[i];
+  Object.assign(ARC, {lv:i, phase:'fly', t:0, objs:[], parts:[], floats:[], hearts:3, inv:0, shield:0, got:0, arriveT:0, shake:0, pointer:null, win:false});
+  KEYS.clear();
+  $('#arcSelect').hidden = true; $('#arcOver').hidden = true; arcCanvas.hidden = false;
+  arcResize();
+  const r = ARC.rocket; r.x = r.tx = ARC.w / 2; r.y = r.ty = ARC.h * .8;
+  $('#barTitle').textContent = `第${i + 1}关 · 飞往${BY[L.to].name}`;
+  say(`第${i + 1}关，飞往${BY[L.to].name}！躲开石头，捡星星！`);
+}
+function spawnRock(L, x) {
+  const size = 13 + Math.random() * 15 + ARC.lv;
+  ARC.objs.push({k:'rock', x, y:-size - 10, vx:(Math.random() - .5) * 2 * L.drift, vy:L.speed * (.8 + Math.random() * .5), r:size,
+    rot:Math.random() * 6, vr:(Math.random() - .5) * 2, verts:Array.from({length:7}, (_, i) => ({a:i / 7 * TAU, r:.75 + Math.random() * .35}))});
+}
+function arcBurst(x, y, col, n = 12) {
+  if (reduceMotion) return;
+  for (let i = 0; i < n; i++) { const a = Math.random() * TAU, v = 60 + Math.random() * 160; ARC.parts.push({x, y, vx:Math.cos(a) * v, vy:Math.sin(a) * v, life:.5, max:.5, c:col, s:2 + Math.random() * 3}); }
+}
+function arcFloat(x, y, text, color) { ARC.floats.push({x, y, text, color, life:1.1}); }
+function arcPlanetR() { return Math.min(ARC.w, ARC.h) * (ARC_LEVELS[ARC.lv].to === 'saturn' ? .12 : .17); }
+function arcPlanetY() { const R = arcPlanetR(), k = Math.min(1, ARC.arriveT / 1.6), e = 1 - Math.pow(1 - k, 3); return -R * 2 + (ARC.h * .3 + R * 2) * e; }
+function arcStep(dt) {
+  const A = ARC, L = ARC_LEVELS[A.lv], r = A.rocket, w = A.w, h = A.h;
+  if (A.phase === 'fly' || A.phase === 'arrive') {
+    A.t += dt;
+    for (const s of A.bg) s.y = (s.y + L.speed * s.s * .4 * dt) % h;
+    const dens = clamp(w / 520, .7, 1.6), sx = () => 24 + Math.random() * (w - 48);
+    if (A.phase === 'fly') {
+      if (A.t >= L.len) { A.phase = 'arrive'; A.arriveT = 0; A.pointer = null; say(`快看，${BY[L.to].name}到了！`); }
+      if (Math.random() < L.rock * dens * dt) spawnRock(L, sx());
+      if (Math.random() < 1.3 * dens * dt) A.objs.push({k:'star', x:sx(), y:-20, vx:0, vy:L.speed * .75, r:13, rot:0, vr:2});
+      if (L.shield && Math.random() < L.shield * dt) A.objs.push({k:'shield', x:sx(), y:-20, vx:0, vy:L.speed * .65, r:16});
+      if (A.hearts < 3 && A.lv > 0 && Math.random() < .05 * dt) A.objs.push({k:'heart', x:sx(), y:-20, vx:0, vy:L.speed * .65, r:15});
+      if (L.comet && Math.random() < L.comet * dt) A.objs.push({k:'comet', x:sx(), y:-30, vx:(Math.random() - .5) * 140, vy:L.speed * 2.1, r:11});
+      const [ix, iy] = keyDir();
+      if (ix || iy) { r.tx += ix * 440 * dt; r.ty += iy * 440 * dt; }
+      if (A.pointer) { r.tx = A.pointer.x; r.ty = A.pointer.y - 60; }
+      r.tx = clamp(r.tx, 24, w - 24); r.ty = clamp(r.ty, h * .4, h - 48);
+    } else {
+      A.arriveT += dt;
+      r.tx = w / 2;
+      if (A.arriveT > 1.6) r.ty = arcPlanetY() + arcPlanetR() + 50;
+      if (A.arriveT > 3.2) arcFinish(true);
+    }
+    const k = 1 - Math.exp(-(A.phase === 'fly' ? 12 : 3) * dt);
+    r.x += (r.tx - r.x) * k; r.y += (r.ty - r.y) * k;
+    if (!reduceMotion) A.parts.push({x:r.x + (Math.random() - .5) * 8, y:r.y + 24, vx:(Math.random() - .5) * 40, vy:140 + Math.random() * 80, life:.35, max:.35, c:Math.random() < .5 ? '#ffb03a' : '#fff2a8', s:2 + Math.random() * 3});
+    for (const o of A.objs) {
+      o.x += o.vx * dt; o.y += o.vy * dt; if (o.vr) o.rot += o.vr * dt;
+      if ((o.x < o.r && o.vx < 0) || (o.x > w - o.r && o.vx > 0)) o.vx *= -1;
+      if (A.phase !== 'fly') continue;
+      const d = Math.hypot(o.x - r.x, o.y - r.y);
+      if (o.k === 'star' && d < o.r + 22) { o.dead = true; A.got++; addStars(1); SFX.star(); arcBurst(o.x, o.y, '#ffd54a', 8); }
+      else if (o.k === 'shield' && d < o.r + 22) { o.dead = true; A.shield = 5; SFX.good(); arcFloat(o.x, o.y, '防护罩！', '#7cc0ff'); }
+      else if (o.k === 'heart' && d < o.r + 22) { o.dead = true; A.hearts = Math.min(3, A.hearts + 1); SFX.good(); arcFloat(o.x, o.y, '+1 颗心', '#ff9fc4'); }
+      else if ((o.k === 'rock' || o.k === 'comet') && d < o.r * .85 + 14) {
+        if (A.shield > 0) { o.dead = true; arcBurst(o.x, o.y, '#b9a896', 12); tone(240, .12, 'triangle', .1); }
+        else if (A.inv <= 0) {
+          o.dead = true; A.hearts--; A.inv = 1.5; A.shake = .35; SFX.bump(); arcBurst(o.x, o.y, '#b9a896', 14);
+          arcFloat(r.x, r.y - 50, A.hearts > 0 ? `咚！还剩 ${A.hearts} 颗心` : '咚！', '#ff7a8a');
+          if (A.hearts <= 0) { arcFinish(false); break; }
+        }
+      }
+    }
+    A.objs = A.objs.filter(o => !o.dead && o.y < h + 60);
+    A.inv = Math.max(0, A.inv - dt); A.shield = Math.max(0, A.shield - dt); A.shake = Math.max(0, A.shake - dt);
+  }
+  for (const p of A.parts) { p.x += p.vx * dt; p.y += p.vy * dt; p.life -= dt; }
+  A.parts = A.parts.filter(p => p.life > 0);
+  for (const f of A.floats) { f.y -= 40 * dt; f.life -= dt; }
+  A.floats = A.floats.filter(f => f.life > 0);
+  arcDraw();
+}
+function arcDraw() {
+  const A = ARC, {ctx: c, w, h} = fitCanvas(arcCanvas), L = ARC_LEVELS[A.lv], r = A.rocket;
+  c.fillStyle = '#070a24'; c.fillRect(0, 0, w, h);
+  const moving = A.phase === 'fly' || A.phase === 'arrive';
+  c.fillStyle = '#fff';
+  for (const s of A.bg) { c.globalAlpha = .25 + s.s * .6; c.fillRect(s.x, s.y, s.r, moving ? s.r + s.s * 6 : s.r); }
+  c.globalAlpha = 1;
+  const sh = A.shake > 0 && !reduceMotion ? A.shake * 26 : 0;
+  c.save(); c.translate((Math.random() - .5) * sh, (Math.random() - .5) * sh);
+  if (A.phase === 'arrive' || (A.phase === 'done' && A.win)) drawPlanet(c, L.to, w / 2, arcPlanetY(), arcPlanetR(), {face:true, rot:A.t * .05, blink:(A.t % 3.5) < .15});
+  c.textAlign = 'center'; c.textBaseline = 'middle';
+  for (const o of A.objs) {
+    if (o.k === 'star') drawStar(c, o.x, o.y, o.r, o.rot);
+    else if (o.k === 'rock') drawRock(c, o.x, o.y, o.r, o.rot, o.verts);
+    else if (o.k === 'comet') {
+      const tx = o.x - o.vx * .25, ty = o.y - o.vy * .25, g = c.createLinearGradient(o.x, o.y, tx, ty);
+      g.addColorStop(0, 'rgba(180,230,255,.9)'); g.addColorStop(1, 'rgba(180,230,255,0)');
+      c.strokeStyle = g; c.lineWidth = o.r * 1.4; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(o.x, o.y); c.lineTo(tx, ty); c.stroke();
+      c.fillStyle = '#eaf8ff'; c.beginPath(); c.arc(o.x, o.y, o.r, 0, TAU); c.fill();
+    } else if (o.k === 'shield') {
+      c.fillStyle = 'rgba(124,192,255,.25)'; c.strokeStyle = '#7cc0ff'; c.lineWidth = 3;
+      c.beginPath(); c.arc(o.x, o.y, o.r, 0, TAU); c.fill(); c.stroke();
+      c.fillStyle = '#eaf4ff'; c.font = `900 15px ${FONT}`; c.fillText('盾', o.x, o.y + 1);
+    } else if (o.k === 'heart') drawHeart(c, o.x, o.y, 30, true);
+  }
+  for (const p of A.parts) { c.globalAlpha = p.life / p.max; c.fillStyle = p.c; c.beginPath(); c.arc(p.x, p.y, p.s, 0, TAU); c.fill(); }
+  c.globalAlpha = 1;
+  if (!(A.inv > 0 && Math.floor(A.inv * 12) % 2)) drawRocket(c, r.x, r.y, -Math.PI / 2, 1.6, A.phase === 'done' ? 0 : 1);
+  if (A.shield > 0) {
+    const on = A.shield > 1.2 || Math.floor(A.shield * 8) % 2;
+    c.fillStyle = 'rgba(124,192,255,.15)'; c.strokeStyle = on ? 'rgba(124,192,255,.9)' : 'rgba(124,192,255,.3)'; c.lineWidth = 3;
+    c.beginPath(); c.arc(r.x, r.y - 6, 40, 0, TAU); c.fill(); c.stroke();
+  }
+  for (const f of A.floats) {
+    c.globalAlpha = Math.min(1, f.life * 2);
+    c.font = `900 18px ${FONT}`; c.lineWidth = 4; c.strokeStyle = 'rgba(7,10,36,.9)';
+    c.strokeText(f.text, f.x, f.y); c.fillStyle = f.color; c.fillText(f.text, f.x, f.y);
+  }
+  c.globalAlpha = 1;
+  c.restore();
+  if (A.phase === 'fly' && A.t < 3.5) {
+    c.globalAlpha = Math.min(1, 3.5 - A.t);
+    label(c, `第${A.lv + 1}关 · 飞往${BY[L.to].name}`, w / 2, h * .42, '#ffc53d', 28);
+    label(c, '拖动手指或按方向键：捡星星，躲石头', w / 2, h * .42 + 36, '#f5f2ff', 16);
+    c.globalAlpha = 1;
+  }
+  const top = 84, x0 = 54, x1 = w - 54, p = A.phase === 'fly' ? Math.min(1, A.t / L.len) : 1;
+  c.lineCap = 'round'; c.lineWidth = 6;
+  c.strokeStyle = 'rgba(255,255,255,.18)'; c.beginPath(); c.moveTo(x0, top); c.lineTo(x1, top); c.stroke();
+  c.strokeStyle = '#ffc53d'; c.beginPath(); c.moveTo(x0, top); c.lineTo(x0 + (x1 - x0) * p, top); c.stroke();
+  drawPlanet(c, 'earth', x0 - 24, top, 12);
+  drawPlanet(c, L.to, x1 + 24, top, L.to === 'saturn' ? 8 : 12);
+  drawRocket(c, x0 + (x1 - x0) * p, top, 0, .7, 0);
+  for (let i = 0; i < 3; i++) drawHeart(c, 30 + i * 32, top + 38, 26, i < A.hearts);
+  c.font = `900 18px ${FONT}`; c.textAlign = 'right'; c.textBaseline = 'middle'; c.fillStyle = '#ffd54a';
+  c.fillText(`★ ${A.got}`, w - 18, top + 38);
+}
+function arcFinish(win) {
+  const A = ARC, L = ARC_LEVELS[A.lv], name = BY[L.to].name;
+  A.phase = 'done'; A.win = win; A.pointer = null; KEYS.clear();
+  const p = $('#arcPanel');
+  if (win) {
+    const rate = A.hearts, last = A.lv === ARC_LEVELS.length - 1;
+    if (rate > (save.arc[A.lv] || 0)) { save.arc[A.lv] = rate; persist(); }
+    SFX.fanfare(); confetti(120);
+    const fact = BY[L.to].facts[Math.floor(Math.random() * BY[L.to].facts.length)];
+    p.innerHTML = `<h2>到达${name}！</h2><div class="rating">${'★'.repeat(rate)}<span class="off">${'★'.repeat(3 - rate)}</span></div>`
+      + `<p>这一关捡到 ${A.got} 颗星星。${rate === 3 ? '一次都没被撞到，太棒了！' : '一次都不被撞到，就能拿 3 颗星哦。'}</p>`
+      + `<p class="fact">${fact}</p><div class="center">${last ? '' : '<button class="btn primary" data-arc="next">下一关 →</button>'}`
+      + '<button class="btn ghost" data-arc="retry">再玩一次</button><button class="btn ghost" data-arc="select">选关卡</button></div>';
+    say(`到达${name}！${fact}`);
+    if (last) toast('8 关全部通关！你是了不起的太空飞行员！', 3600);
+  } else {
+    SFX.bad();
+    p.innerHTML = `<h2>能量用完啦</h2><p>小行星太多了！别灰心，这一关捡到了 ${A.got} 颗星星。</p>`
+      + '<p class="fact">小窍门：金色星星要捡，灰色石头要躲，蓝色泡泡是防护罩。</p>'
+      + '<div class="center"><button class="btn primary" data-arc="retry">再试一次</button><button class="btn ghost" data-arc="select">选关卡</button></div>';
+    say('能量用完啦，再试一次吧！');
+  }
+  setTimeout(() => { if (current === 'arcade' && ARC.phase === 'done') $('#arcOver').hidden = false; }, win ? 300 : 700);
+}
+$('#arcPanel').addEventListener('click', e => {
+  const b = e.target.closest('[data-arc]'); if (!b) return;
+  SFX.click();
+  const a = b.dataset.arc;
+  if (a === 'next') arcStart(ARC.lv + 1);
+  else if (a === 'retry') arcStart(ARC.lv);
+  else arcShowSelect();
+});
+arcCanvas.addEventListener('pointerdown', e => {
+  if (ARC.phase !== 'fly') return;
+  try { arcCanvas.setPointerCapture(e.pointerId); } catch (err) {}
+  ARC.pointer = localPt(arcCanvas, e); audio();
+});
+arcCanvas.addEventListener('pointermove', e => {
+  if (ARC.phase !== 'fly') return;
+  if (ARC.pointer || e.pointerType === 'mouse') ARC.pointer = localPt(arcCanvas, e);
+});
+['pointerup','pointercancel','pointerleave'].forEach(n => arcCanvas.addEventListener(n, () => { ARC.pointer = null; }));
+
+/* ---------- 星座连连看 ---------- */
+const CS = {lv:0, step:0, done:false, bg:[], labels:{}};
+const consCanvas = $('#consCanvas');
+const consUnlocked = i => i === 0 || save.cons.includes(i - 1);
+function firstCons() { const i = CONS.findIndex((_, k) => consUnlocked(k) && !save.cons.includes(k)); return i < 0 ? 0 : i; }
+function renderConsTabs() {
+  const box = $('#consTabs'); box.innerHTML = '';
+  CONS.forEach((C, i) => {
+    const b = document.createElement('button'); b.className = 'tab' + (i === CS.lv ? ' on' : '');
+    b.disabled = !consUnlocked(i);
+    b.textContent = consUnlocked(i) ? C.name + (save.cons.includes(i) ? ' ✓' : '') : `第 ${i + 1} 个`;
+    b.addEventListener('click', () => { SFX.click(); startCons(i); });
+    box.appendChild(b);
+  });
+}
+function consSkip() { const s = CONS[CS.lv].seq; while (CS.step < s.length && s[CS.step] === null) CS.step++; }
+function startCons(i) {
+  const C = CONS[i];
+  CS.lv = i; CS.step = 0; CS.done = false; consSkip();
+  const R = rng(i * 7919 + 17);
+  CS.bg = Array.from({length:90}, () => ({x:R(), y:R(), r:R() * 1.3 + .3, p:R() * 6}));
+  CS.labels = {}; let n = 0;
+  for (const k of C.seq) if (k !== null && !(k in CS.labels)) CS.labels[k] = ++n;
+  renderConsTabs();
+  $('#consLead').textContent = `从 1 开始，按数字顺序点亮星星，连出「${C.name}」！`;
+  $('#consDone').hidden = true;
+  say(`按数字顺序点亮星星，连出${C.name}！`);
+}
+function consLayout(w, h) { const side = Math.min(w - 40, h - 50); return {ox:(w - side) / 2, oy:(h - side) / 2, side}; }
+function consPt(C, i, L) { return [L.ox + C.pts[i][0] * L.side, L.oy + C.pts[i][1] * L.side]; }
+function drawCons(t) {
+  const {ctx: c, w, h} = fitCanvas(consCanvas), C = CONS[CS.lv], L = consLayout(w, h);
+  c.fillStyle = '#060821'; c.fillRect(0, 0, w, h);
+  c.fillStyle = '#fff';
+  for (const s of CS.bg) { c.globalAlpha = .2 + .4 * (.5 + .5 * Math.sin(t * 1.5 + s.p)); c.beginPath(); c.arc(s.x * w, s.y * h, s.r, 0, TAU); c.fill(); }
+  c.globalAlpha = 1;
+  const upto = CS.done ? C.seq.length : CS.step;
+  c.lineCap = 'round';
+  for (const [lw, col] of [[10, 'rgba(255,213,74,.18)'], [3, '#ffd54a']]) {
+    c.lineWidth = lw; c.strokeStyle = col;
+    for (let k = 1; k < upto; k++) {
+      const a = C.seq[k - 1], b = C.seq[k];
+      if (a === null || b === null) continue;
+      const [x1, y1] = consPt(C, a, L), [x2, y2] = consPt(C, b, L);
+      c.beginPath(); c.moveTo(x1, y1); c.lineTo(x2, y2); c.stroke();
+    }
+  }
+  const lit = new Set(C.seq.slice(0, upto).filter(k => k !== null)), target = CS.done ? -1 : C.seq[CS.step];
+  c.textAlign = 'center'; c.textBaseline = 'middle';
+  C.pts.forEach((_, i) => {
+    const [x, y] = consPt(C, i, L), on = lit.has(i);
+    glow(c, x, y, on ? 26 : 18, on ? '255,213,74' : '200,215,255', on ? .7 : .5);
+    c.fillStyle = on ? '#ffe680' : '#ffffff'; c.beginPath(); c.arc(x, y, on ? 8 : 6, 0, TAU); c.fill();
+    if (i === target) { c.strokeStyle = '#ffc53d'; c.lineWidth = 3; c.beginPath(); c.arc(x, y, 18 + Math.sin(t * 6) * 4, 0, TAU); c.stroke(); }
+    if (!on && !CS.done) { c.font = `900 15px ${FONT}`; c.fillStyle = i === target ? '#ffc53d' : '#b3b8e6'; c.fillText(CS.labels[i], x + 17, y - 17); }
+  });
+}
+consCanvas.addEventListener('pointerdown', e => {
+  if (CS.done) return;
+  audio();
+  const C = CONS[CS.lv], L = consLayout(consCanvas.clientWidth, consCanvas.clientHeight);
+  let hit = -1, best = 40;
+  const pt = localPt(consCanvas, e);
+  C.pts.forEach((_, i) => { const [x, y] = consPt(C, i, L), d = Math.hypot(x - pt.x, y - pt.y); if (d < best) { best = d; hit = i; } });
+  if (hit < 0) return;
+  if (hit !== C.seq[CS.step]) { SFX.bad(); $('#consLead').textContent = '不是这颗哦。找一找有黄色圆圈、正在闪的那颗星！'; return; }
+  tone(440 * Math.pow(2, Math.min(CS.step, 12) / 12), .18, 'triangle', .13);
+  CS.step++; consSkip();
+  if (CS.step >= C.seq.length) consComplete();
+  else $('#consLead').textContent = '很好！继续点有黄色圆圈的那颗星。';
+});
+function consComplete() {
+  const C = CONS[CS.lv], first = !save.cons.includes(CS.lv), hasNext = CS.lv < CONS.length - 1;
+  CS.done = true;
+  if (first) save.cons.push(CS.lv);
+  addStars(first ? 5 : 1);
+  SFX.fanfare(); confetti(110);
+  const box = $('#consDone');
+  box.className = 'feedback ok';
+  box.innerHTML = `<b>连出了${C.name}！+${first ? 5 : 1} ★</b>${C.fact}<div class="center" style="margin-top:12px">`
+    + (hasNext ? '<button class="btn primary" data-cons="next">下一个星座 →</button>' : '')
+    + '<button class="btn ghost" data-cons="again">再连一次</button></div>';
+  box.hidden = false;
+  box.scrollIntoView({behavior:reduceMotion ? 'auto' : 'smooth', block:'nearest'});
+  $('#consLead').textContent = hasNext ? '下一个星座已经解锁啦！' : '6 个星座全部连出来了，你是星座猎人！';
+  renderConsTabs();
+  say(`连出了${C.name}！${C.fact}`);
+}
+$('#consDone').addEventListener('click', e => {
+  const b = e.target.closest('[data-cons]'); if (!b) return;
+  SFX.click(); startCons(b.dataset.cons === 'next' ? CS.lv + 1 : CS.lv);
+});
+
+/* ---------- 切换页面 ---------- */
+const TITLES = {home:'', cosmos:'宇宙大旅行', explore:'开火箭探险', arcade:'太空大冒险', quiz:'星球问答', order:'行星排排队', cons:'星座连连看', book:'图鉴和勋章'};
+let current = 'home';
+function go(id) {
+  hush();
+  current = id;
+  KEYS.clear();
+  document.querySelectorAll('.screen').forEach(s => { s.hidden = s.id !== id; });
+  $('#backBtn').hidden = id === 'home';
+  $('#barTitle').textContent = TITLES[id];
+  $('#stickerPill').hidden = id !== 'explore';
+  if (id === 'home') renderHome();
+  if (id === 'cosmos') startCosmos();
+  if (id === 'explore') startExplore();
+  if (id === 'arcade') arcShowSelect();
+  if (id === 'quiz') quizPick();
+  if (id === 'order') startOrder();
+  if (id === 'cons') startCons(firstCons());
+  if (id === 'book') renderBook();
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-go]');
+  if (t) { audio(); SFX.click(); go(t.dataset.go); }
+});
+$('#backBtn').addEventListener('click', () => { SFX.click(); if (card) closeCard(); go('home'); });
+
+/* ---------- 主循环 ---------- */
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000), t = now / 1000;
+  last = now;
+  if (current === 'explore') exStep(dt);
+  else if (current === 'arcade' && ARC.phase !== 'idle') arcStep(dt);
+  else drawSky(t, dt);
+  if (current === 'home') drawHero(t);
+  if (current === 'cosmos') drawCosmos(t);
+  if (current === 'cons') drawCons(t);
+  if (card) drawCardArt(t);
+  drawFX(dt);
+  requestAnimationFrame(frame);
+}
+window.addEventListener('resize', () => {
+  sizeSky();
+  if (current === 'explore') exResize();
+  if (current === 'arcade' && ARC.phase !== 'idle') {
+    arcResize();
+    const r = ARC.rocket; r.tx = r.x = clamp(r.x, 24, ARC.w - 24); r.ty = r.y = clamp(r.y, ARC.h * .4, ARC.h - 48);
+  }
+  if (current === 'home') drawModeIcons();
+});
+renderSoundBtn();
+refreshCounts();
+sizeSky();
+go('home');
+checkBadges();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (current === 'home') drawModeIcons(); });
+requestAnimationFrame(frame);
+})();
+</script>
+</html>

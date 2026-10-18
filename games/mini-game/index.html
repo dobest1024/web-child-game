@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小朋友游戏乐园 🎮</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    padding: 40px 20px;
+  }
+  header { text-align: center; margin-bottom: 40px; }
+  header h1 { font-size: 2.6rem; color: #fff; text-shadow: 0 3px 8px rgba(0,0,0,.15); }
+  header p { margin-top: 12px; font-size: 1.1rem; color: rgba(255,255,255,.9); }
+  .grid {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #fff; border-radius: 20px; padding: 28px 24px;
+    text-decoration: none; color: inherit;
+    box-shadow: 0 8px 24px rgba(0,0,0,.1);
+    transition: transform .2s ease, box-shadow .2s ease;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 14px 32px rgba(0,0,0,.18); }
+  .card .icon { font-size: 3.4rem; margin-bottom: 14px; }
+  .card h2 { font-size: 1.3rem; margin-bottom: 8px; }
+  .card p { font-size: .95rem; color: #777; line-height: 1.5; }
+  footer { text-align: center; margin-top: 50px; color: rgba(255,255,255,.85); font-size: .9rem; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>🎮 小朋友游戏乐园</h1>
+    <p>挑一个喜欢的游戏，开始玩吧！</p>
+  </header>
+
+  <main class="grid">
+    <a class="card" href="xiangqi/index.html">
+      <div class="icon">♟️</div>
+      <h2>象棋小棋手</h2>
+      <p>中国象棋启蒙乐园</p>
+    </a>
+    <a class="card" href="weiqi/index.html">
+      <div class="icon">⚫</div>
+      <h2>围棋小课堂</h2>
+      <p>给小朋友的围棋进阶之路</p>
+    </a>
+    <a class="card" href="wuziqi/index.html">
+      <div class="icon">🔴</div>
+      <h2>五子棋小课堂</h2>
+      <p>连成五子就获胜</p>
+    </a>
+    <a class="card" href="mofang/index.html">
+      <div class="icon">🧊</div>
+      <h2>魔方小老师</h2>
+      <p>一步步学会还原魔方</p>
+    </a>
+    <a class="card" href="pinyin/index.html">
+      <div class="icon">🚂</div>
+      <h2>拼音小火车</h2>
+      <p>快乐学拼音</p>
+    </a>
+    <a class="card" href="tank/index.html">
+      <div class="icon">🚜</div>
+      <h2>小坦克大冒险</h2>
+      <p>勇敢的坦克闯关去</p>
+    </a>
+  </main>
+
+  <footer>用心做给小朋友的游戏合集 ❤️</footer>
+</body>
+</html>

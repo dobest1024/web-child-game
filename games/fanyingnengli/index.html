@@ -1,0 +1,1119 @@
+<meta charset="utf-8">
+<title>小闪电反应营</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=ZCOOL+KuaiLe&display=swap">
+<style>
+/* Layout: toy-box arcade — chunky ink-outlined pieces with hard drop shadows on a dotted play mat; one deliberate bright theme */
+:root{
+  --bg:#E9EEFF; --dot:#D2DBFA; --ink:#1E2356; --ink-soft:#5A6194; --card:#FFFFFF;
+  --tang:#F25A2A; --grape:#6B4CF6; --mint:#1FA75A; --sun:#FFC21A; --red:#EF3B36; --blue:#2D6BFF; --pink:#FF6FB5; --orange:#FF8F1F; --sun-d:#A87700;
+  --grass:#7BCB5A; --grass-d:#4E9A34; --pit:#3B2A1E; --sea:#DDF4FF; --ok-bg:#E1F7E8; --bad-bg:#FFE3DF; --veil:rgba(30,35,86,.5);
+  --f-disp:"ZCOOL KuaiLe","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --f-body:"Nunito","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  color-scheme:light;
+}
+html{height:100%;box-sizing:border-box;touch-action:manipulation;-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+body{margin:0}
+body{height:100%;overflow:hidden;background:var(--bg) radial-gradient(var(--dot) 1.6px,transparent 1.8px) 0 0/22px 22px;color:var(--ink);font-family:var(--f-body);font-size:16px;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+button:focus-visible{outline:3px solid var(--tang);outline-offset:3px}
+b{font-weight:900}
+
+.screen{height:100%;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+#home{overflow-y:auto;padding-block:20px 40px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+
+/* home hero */
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.brand h1{margin:0;font:400 clamp(44px,10vw,80px)/1.05 var(--f-disp);letter-spacing:.02em;text-wrap:balance}
+.brand h1 span{display:inline-block;color:var(--c);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:0 4px 0 var(--ink)}
+.brand h1 span:nth-child(odd){transform:rotate(-4deg)}
+.brand h1 span:nth-child(even){transform:rotate(3deg) translateY(4px)}
+.brand p{margin:12px 0 0;font-size:18px;font-weight:800;color:var(--ink-soft)}
+.mute{flex:none;border:3px solid var(--ink);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:900;box-shadow:0 4px 0 var(--ink)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:18px}
+.card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;background:var(--card);border:3px solid var(--ink);border-radius:24px;padding:16px;box-shadow:0 6px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+@media (hover:hover){.card:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--ink)}}
+.card:active,.btn:active,.lv:active,.mute:active,.round:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.c-icon{width:60px;height:60px;border-radius:18px;border:3px solid var(--ink);background:var(--c);display:grid;place-items:center;font-size:32px;margin-bottom:4px}
+.c-name{font:400 26px/1.1 var(--f-disp)}
+.c-skill{font-size:14px;font-weight:800;color:var(--ink-soft)}
+.c-best{margin-top:6px;font-size:13px;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--bg);font-variant-numeric:tabular-nums}
+
+.parents{background:var(--card);border:3px solid var(--ink);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.parents h2{margin:0;font:400 24px var(--f-disp)}
+.parents p{margin:0;max-width:65ch;line-height:1.65;color:var(--ink-soft);font-weight:700}
+.parents dl{margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:10px 20px}
+.parents dl div{min-width:0}
+.parents dt{font-weight:900}
+.parents dd{margin:2px 0 0;color:var(--ink-soft);font-weight:700;font-size:14px;line-height:1.5}
+
+/* play screen */
+#play{display:flex;flex-direction:column;padding-block:12px 16px;gap:8px}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.round{width:48px;height:48px;border-radius:50%;border:3px solid var(--ink);background:var(--card);font-size:24px;font-weight:900;box-shadow:0 4px 0 var(--ink);flex:none}
+.bar h2{margin:0;font:400 26px var(--f-disp);flex:1;min-width:0}
+.stats{display:flex;gap:8px}
+.pill{background:var(--card);border:3px solid var(--ink);border-radius:999px;padding:4px 12px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill:empty{display:none}
+.hint{margin:0;text-align:center;font-weight:800;color:var(--ink-soft);min-height:1.4em}
+#stage{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+
+/* grid boards (数字 / 找不同) */
+.grid-board{--bw:min(calc(100vw - 32px),720px,calc(100vh - 230px));--bw:min(calc(100vw - 32px),720px,calc(100dvh - 230px));width:var(--bw);height:var(--bw);display:grid;grid-template-columns:repeat(var(--n),1fr);gap:calc(var(--bw) * .018)}
+.cell{display:grid;place-items:center;padding:0;font:900 calc(var(--bw) / var(--n) * .44)/1 var(--f-body);background:var(--card);border:3px solid var(--ink);border-radius:calc(var(--bw) / var(--n) * .2);box-shadow:0 4px 0 var(--ink);font-variant-numeric:tabular-nums;transition:transform .08s,opacity .2s}
+.cell:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.cell.done{opacity:.25;transform:scale(.9);box-shadow:none}
+.odd .cell{color:var(--ink);font-size:calc(var(--bw) / var(--n) * .5)}
+.odd.txt .cell{font-family:var(--f-body);font-weight:900}
+.cell.hit{background:var(--sun)}
+
+/* quiz (颜色 / 小鱼) */
+.quiz{width:min(100%,660px);display:flex;flex-direction:column;gap:14px}
+.rule{align-self:center;font:400 22px var(--f-disp);background:var(--card);border:3px solid var(--ink);border-radius:999px;padding:6px 18px}
+.rule.word{background:var(--sun)}
+.rule.red{background:var(--red);color:var(--card)}
+.qcard{position:relative;height:clamp(150px,30vh,250px);display:grid;place-items:center;background:var(--card);border:3px solid var(--ink);border-radius:28px;box-shadow:0 6px 0 var(--ink);transition:background .15s}
+.qcard.pop{animation:pop .22s ease-out}
+.qcard.right{background:var(--ok-bg)}
+.qcard.wrong{background:var(--bad-bg)}
+.sea{background:var(--sea)}
+.word{font:400 clamp(90px,26vw,150px)/1 var(--f-disp);-webkit-text-stroke:5px var(--ink);paint-order:stroke fill}
+.mark{position:absolute;top:10px;right:16px;font:400 32px var(--f-disp)}
+.right .mark{color:var(--mint)}
+.wrong .mark{color:var(--red)}
+.tbar{height:14px;border:3px solid var(--ink);border-radius:999px;background:var(--card);overflow:hidden}
+.tbar i{display:block;height:100%;background:var(--tang);transform-origin:left}
+.cbtns{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cbtns.n3{grid-template-columns:repeat(3,1fr)}
+.cb{height:clamp(72px,13vh,130px);background:var(--c);border:3px solid var(--ink);border-radius:22px;box-shadow:0 6px 0 var(--ink)}
+.cb:active,.db:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.school{display:flex;align-items:center;justify-content:center;gap:clamp(4px,1.5vw,12px)}
+.cbtns.n5{grid-template-columns:repeat(3,1fr)}
+.cb span{font:400 clamp(26px,7vw,38px) var(--f-disp);color:var(--card);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill}
+.fslot{width:clamp(44px,14vw,82px);aspect-ratio:1;display:grid;place-items:center}
+.fslot svg{width:100%;height:auto;display:block}
+.fslot.mid{border-bottom:4px dashed var(--ink-soft)}
+.bubble{width:clamp(44px,14vw,82px);aspect-ratio:1;display:grid;place-items:center}
+.dirbtns.cross{grid-template-columns:repeat(3,1fr);grid-template-areas:". u ." "l d r"}
+.cross .db{height:clamp(62px,11vh,90px);font-size:34px}
+.cross [data-k="U"]{grid-area:u}.cross [data-k="L"]{grid-area:l}.cross [data-k="D"]{grid-area:d}.cross [data-k="R"]{grid-area:r}
+.bubble::before{content:"";width:16px;height:16px;border-radius:50%;border:3px solid var(--blue);opacity:.4}
+.dirbtns{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.db{height:clamp(80px,16vh,120px);display:flex;align-items:center;justify-content:center;gap:10px;font:400 36px var(--f-disp);background:var(--grape);color:var(--card);border:3px solid var(--ink);border-radius:24px;box-shadow:0 6px 0 var(--ink)}
+.db span{font-size:24px}
+
+/* 闪电反应 pad */
+.pad{width:min(100%,680px);height:min(58vh,560px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:4px solid var(--ink);border-radius:36px;box-shadow:0 8px 0 var(--ink);color:var(--card);font-family:var(--f-disp);transition:background .06s}
+.pad-big{font-size:clamp(52px,13vw,100px);line-height:1;font-variant-numeric:tabular-nums}
+.pad-big small{font-size:.38em;margin-left:.15em}
+.pad-sub{font-size:22px;font-family:var(--f-body);font-weight:800}
+.pad.ready,.pad.show{background:var(--grape)}
+.pad.wait{background:var(--red)}
+.pad.go{background:var(--mint)}
+.pad.trap{background:var(--sun);color:var(--ink)}
+.pad.oops{background:var(--card);color:var(--ink)}
+.pad.trap.b{background:var(--blue);color:var(--card)}
+.pad.listen{background:var(--grape)}
+.pad.right{background:var(--mint)}
+.pad.wrong{background:var(--red)}
+
+/* 魔方转转看 */
+.c-icon svg,.p-icon svg{width:72%;height:auto}
+.cbtns.n6{grid-template-columns:repeat(3,1fr)}
+.cbtns.n6 .cb{height:clamp(58px,10vh,90px)}
+.cubesvg{height:clamp(130px,26vh,220px);width:auto;display:block}
+.face{--fs:120px;width:var(--fs);display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--fs) * .04);padding:calc(var(--fs) * .05);background:var(--ink);border-radius:calc(var(--fs) * .1)}
+.face i{aspect-ratio:1;border-radius:calc(var(--fs) * .04)}
+#qshow .face{--fs:clamp(110px,22vh,170px)}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.opts.o4{grid-template-columns:repeat(4,1fr);gap:10px}
+.ob{display:grid;place-items:center;padding:10px 4px;background:var(--card);border:3px solid var(--ink);border-radius:20px;box-shadow:0 6px 0 var(--ink)}
+.ob:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.ob .face{--fs:clamp(56px,19vw,100px)}
+.o4 .ob .face{--fs:clamp(50px,14vw,90px)}
+
+/* 记忆闪光 */
+.status{font:400 28px var(--f-disp);min-height:1.2em}
+.simon{--sw:min(100%,600px,calc((100vh - 300px) * var(--cols) / var(--rows)));--sw:min(100%,600px,calc((100dvh - 300px) * var(--cols) / var(--rows)));width:var(--sw);display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:14px}
+.sp{aspect-ratio:1;background:var(--pc);border:4px solid var(--ink);border-radius:28px;box-shadow:0 6px 0 var(--ink);opacity:.45;transition:opacity .08s,transform .08s}
+.sp.lit{opacity:1;transform:scale(1.05);box-shadow:0 0 0 6px var(--card),0 6px 0 var(--ink)}
+
+/* 接水果 */
+.sky{position:relative;width:min(100%,620px);height:min(64vh,760px);border:4px solid var(--ink);border-radius:28px;box-shadow:0 8px 0 var(--ink);overflow:hidden;background:linear-gradient(var(--sea),var(--card));touch-action:none;cursor:pointer}
+.lane{position:absolute;top:0;bottom:0;border-left:3px dashed var(--dot)}
+.item{position:absolute;top:0;display:grid;place-items:center;font-size:clamp(34px,9vw,52px);line-height:1;transform:translateY(-50%);pointer-events:none}
+.basket{position:absolute;bottom:2%;height:14%;display:grid;place-items:center;font-size:clamp(44px,12vw,66px);line-height:1;transition:left .07s;pointer-events:none}
+.sky .float{top:72%}
+
+/* 木头人 */
+.light{width:clamp(130px,32vw,190px);aspect-ratio:1;border-radius:50%;border:5px solid var(--ink);box-shadow:0 6px 0 var(--ink);display:grid;place-items:center;text-align:center;font:400 30px/1.2 var(--f-disp);color:var(--card);padding:10px}
+.light.go{background:var(--mint)}
+.light.stop{background:var(--red)}
+.track{position:relative;width:min(100%,680px);height:84px;background:var(--card);border:3px solid var(--ink);border-radius:999px;box-shadow:0 5px 0 var(--ink)}
+.runner{position:absolute;top:50%;font-size:48px;line-height:1;transform:translate(-50%,-50%) scaleX(-1)}
+.flagend{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:38px;line-height:1}
+.hold{width:min(100%,680px);height:clamp(84px,16vh,124px);font:400 32px var(--f-disp);background:var(--tang);color:var(--card);border:4px solid var(--ink);border-radius:28px;box-shadow:0 8px 0 var(--ink);touch-action:none}
+.hold.on{transform:translateY(5px);box-shadow:0 3px 0 var(--ink)}
+.dots{display:flex;gap:10px}
+.dots i{width:16px;height:16px;border-radius:50%;border:3px solid var(--ink);background:var(--card)}
+.dots i.on{background:var(--mint)}
+
+/* 打地鼠 */
+.field{--fw:min(calc(100vw - 32px),720px,calc((100vh - 240px) * var(--cols) / 3));--fw:min(calc(100vw - 32px),720px,calc((100dvh - 240px) * var(--cols) / 3));width:var(--fw);display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:calc(var(--fw) * .025);padding:calc(var(--fw) * .03);background:var(--grass);border:4px solid var(--ink);border-radius:28px;box-shadow:0 8px 0 var(--ink)}
+.hole{position:relative;aspect-ratio:1;overflow:hidden;border-radius:18px;cursor:pointer;touch-action:manipulation}
+.hole::before{content:"";position:absolute;left:8%;right:8%;bottom:6%;height:32%;background:var(--pit);border-radius:50%}
+.hole::after{content:"";position:absolute;left:2%;right:2%;bottom:0;height:18%;background:var(--grass-d);border-radius:50% 50% 10px 10px;z-index:2}
+.critter{position:absolute;left:10%;right:10%;bottom:14%;height:72%;padding:0;border:0;background:none;pointer-events:none;display:grid;place-items:center;font-size:calc(var(--fw) / var(--cols) * .5);line-height:1;transform:translateY(115%);transition:transform .12s ease-out,opacity .15s}
+.hole.up .critter{transform:translateY(0)}
+.hole.whack .critter{transform:translateY(10%) scale(.75) rotate(-18deg);opacity:.5}
+.float{position:absolute;left:50%;top:6%;z-index:3;transform:translateX(-50%);font:400 30px var(--f-disp);color:var(--card);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;animation:floatUp .7s ease-out forwards;pointer-events:none}
+
+/* overlay */
+.ov{position:fixed;inset:0;z-index:20;background:var(--veil);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.panel{width:min(100%,440px);max-height:100%;overflow-y:auto;background:var(--card);border:4px solid var(--ink);border-radius:32px;box-shadow:0 10px 0 var(--ink);padding:24px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.panel h2{margin:0;font:400 34px/1.1 var(--f-disp)}
+.panel .how{margin:0;line-height:1.6;font-weight:700;color:var(--ink-soft);max-width:34ch}
+.p-icon{width:84px;height:84px;border-radius:24px;border:3px solid var(--ink);background:var(--c);display:grid;place-items:center;font-size:46px}
+.chip{font-size:14px;font-weight:900;background:var(--bg);border-radius:999px;padding:4px 12px}
+.levels{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.lv{border:3px solid var(--ink);border-radius:18px;background:var(--card);padding:10px 8px;box-shadow:0 4px 0 var(--ink)}
+.lv[aria-pressed="true"]{background:var(--sun)}
+.lv b{display:block;font:400 22px var(--f-disp)}
+.lv span{font-size:13px;font-weight:800;color:var(--ink-soft)}
+.best{margin:0;font-weight:800;font-size:14px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.btn{font:400 26px var(--f-disp);padding:12px 26px;border:3px solid var(--ink);border-radius:20px;box-shadow:0 6px 0 var(--ink);background:var(--card)}
+.btn.go{background:var(--tang);color:var(--card)}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.panel.count{background:none;border:0;box-shadow:none}
+.cd{font:400 clamp(110px,30vw,170px)/1 var(--f-disp);color:var(--card);-webkit-text-stroke:6px var(--ink);paint-order:stroke fill;text-shadow:0 8px 0 var(--ink);animation:pop .3s ease-out}
+.stars{display:flex;gap:6px}
+.stars span{font-size:54px;line-height:1;color:var(--dot);-webkit-text-stroke:2px var(--ink)}
+.stars span.on{color:var(--sun);animation:starIn .45s var(--d) both}
+.big-num{font:900 64px/1 var(--f-body);font-variant-numeric:tabular-nums}
+.big-num small{font:400 24px var(--f-disp);margin-left:6px}
+.tag{font:400 22px var(--f-disp)}
+.newbest{background:var(--red);color:var(--card);font:400 20px var(--f-disp);padding:4px 16px;border-radius:999px;border:3px solid var(--ink);transform:rotate(-3deg)}
+.details{margin:0;width:100%;display:flex;flex-direction:column;gap:6px}
+.details div{display:flex;justify-content:space-between;gap:12px;padding:8px 14px;background:var(--bg);border-radius:14px;font-weight:800}
+.details dt{color:var(--ink-soft)}
+.details dd{margin:0;font-variant-numeric:tabular-nums}
+
+.shake{animation:shake .32s}
+@keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+@keyframes pop{from{transform:scale(.85)}to{transform:scale(1)}}
+@keyframes starIn{from{transform:scale(0) rotate(-90deg)}to{transform:scale(1) rotate(0)}}
+@keyframes floatUp{to{transform:translate(-50%,-60%);opacity:0}}
+
+/* 星星奖励 */
+.jar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--card);border:3px solid var(--ink);border-radius:24px;padding:14px 18px;box-shadow:0 6px 0 var(--ink)}
+.jar-count{font:900 34px/1 var(--f-body);font-variant-numeric:tabular-nums;white-space:nowrap}
+.jar-count small{font-size:16px;color:var(--ink-soft)}
+.jar-main{flex:1;min-width:min(100%,220px);display:flex;flex-direction:column;gap:6px}
+.jar-title{font:400 22px var(--f-disp)}
+.jar-next{font-size:14px;font-weight:800;color:var(--ink-soft)}
+.jar-bar{height:14px;border:3px solid var(--ink);border-radius:999px;background:var(--bg);overflow:hidden}
+.jar-bar i{display:block;height:100%;background:var(--sun)}
+.c-stars{font-size:13px;font-weight:900;color:var(--sun-d);font-variant-numeric:tabular-nums}
+.lv em{display:block;font-style:normal;font-size:14px;letter-spacing:1px;color:var(--sun);-webkit-text-stroke:.5px var(--ink)}
+.gain{font:400 22px var(--f-disp);background:var(--sun);border:3px solid var(--ink);border-radius:999px;padding:4px 16px}
+.levelup{font:400 20px var(--f-disp);color:var(--grape)}
+.spark{position:fixed;z-index:15;pointer-events:none;font-size:18px;line-height:1;color:var(--sun);-webkit-text-stroke:1px var(--ink);transform:translate(-50%,-50%);animation:spark .65s ease-out forwards}
+.spark.big{font-size:30px;-webkit-text-stroke:0}
+@keyframes spark{to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.5);opacity:0}}
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 90px);z-index:16;transform:translateX(-50%);font:400 26px var(--f-disp);background:var(--sun);border:3px solid var(--ink);border-radius:999px;padding:6px 20px;box-shadow:0 5px 0 var(--ink);white-space:nowrap;pointer-events:none;animation:toast 1.1s ease-out forwards}
+@keyframes toast{0%{transform:translateX(-50%) scale(.6);opacity:0}15%{transform:translateX(-50%) scale(1.08);opacity:1}75%{opacity:1}100%{transform:translateX(-50%) translateY(-20px);opacity:0}}
+.conf{position:fixed;top:-50px;z-index:30;pointer-events:none;font-size:var(--s);line-height:1;animation:fall var(--t) linear var(--d) forwards}
+@keyframes fall{to{transform:translateY(calc(100vh + 100px)) rotate(var(--r))}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media (max-width:420px){.bar h2{font-size:22px}.pill{padding:3px 9px;font-size:14px}}
+</style>
+
+<section id="home" class="screen">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <h1 aria-label="小闪电反应营"><span style="--c:var(--tang)">小</span><span style="--c:var(--sun)">闪</span><span style="--c:var(--mint)">电</span><span style="--c:var(--blue)">反</span><span style="--c:var(--grape)">应</span><span style="--c:var(--red)">营</span></h1>
+        <p>6–10 岁 · 每局约 1 分钟 · 比比谁又快又准</p>
+      </div>
+      <button class="mute" id="mute"></button>
+    </div>
+    <div class="jar" id="jar"></div>
+    <div class="cards" id="cards"></div>
+    <section class="parents">
+      <h2>给家长</h2>
+      <p>每个游戏对应一种常用的注意力训练方法。建议每天 10 分钟左右，挑 2–3 个游戏轮着玩。成绩只和自己比，看到"新纪录"多夸一句，比追求三颗星更有用。</p>
+      <dl>
+        <div><dt>数字快找</dt><dd>舒尔特方格。练视觉搜索和专注，5×5 在 30 秒内完成已经很快。</dd></div>
+        <div><dt>颜色陷阱</dt><dd>斯特鲁普任务。字义会干扰颜色判断，练"忍住第一反应"的抑制控制。</dd></div>
+        <div><dt>闪电一拍</dt><dd>简单反应时。这个年龄段通常在 300–500 毫秒之间，年龄越大越快。</dd></div>
+        <div><dt>打地鼠</dt><dd>Go/No-Go 任务。该拍就拍、不该拍就停，练反应速度和冲动控制。</dd></div>
+        <div><dt>小鱼往哪游</dt><dd>Flanker 任务。忽略两边鱼群的干扰，只看中间，练选择性注意。</dd></div>
+        <div><dt>找不同</dt><dd>视觉辨别。b/d、日/目这类相似字形，对认字和阅读也有帮助。</dd></div>
+        <div><dt>魔方转转看</dt><dd>空间想象和心理旋转。先背熟魔方配色（白黄、红橙、蓝绿互为对面），再练在脑子里转一个面，这正是学魔方公式时最常用的能力。</dd></div>
+        <div><dt>记忆闪光</dt><dd>工作记忆（类似数字广度测试）。这个年龄能记住 5–7 个就很好，倒着按更难。</dd></div>
+        <div><dt>听音拍</dt><dd>听觉版 Go/No-Go。只靠耳朵分辨高低音，练听觉注意和冲动控制。</dd></div>
+        <div><dt>接水果</dt><dd>手眼协调和预判。要看清东西落在哪条道，提前移过去。</dd></div>
+        <div><dt>木头人</dt><dd>停止信号任务。把已经在做的动作马上停下，比"一开始就不做"更难。</dd></div>
+      </dl>
+    </section>
+  </div>
+</section>
+
+<section id="play" class="screen" hidden>
+  <header class="bar">
+    <button class="round" id="back" aria-label="返回游戏列表">←</button>
+    <h2 id="gTitle"></h2>
+    <div class="stats"><span class="pill" id="s1"></span><span class="pill" id="s2"></span></div>
+  </header>
+  <p class="hint" id="hint"></p>
+  <main id="stage"></main>
+</section>
+
+<div class="ov" id="ov" hidden><div class="panel" id="panel"></div></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const rnd = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const now = () => performance.now();
+
+const store = {
+  get(k, d = null) { try { const v = localStorage.getItem('xsd_' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('xsd_' + k, JSON.stringify(v)); } catch (e) {} }
+};
+
+/* ---------- sound ---------- */
+let actx = null, muted = store.get('muted', false);
+function ensureAudio() {
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+  } catch (e) {}
+}
+function tone(freq, dur = .12, type = 'sine', vol = .15, delay = 0) {
+  if (muted && !(run && run.forceSound)) return;
+  try {
+    ensureAudio();
+    const t = actx.currentTime + delay, o = actx.createOscillator(), g = actx.createGain();
+    o.type = type; o.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+    o.connect(g).connect(actx.destination); o.start(t); o.stop(t + dur + .02);
+  } catch (e) {}
+}
+/* ---------- 星星奖励：答对冒星星，连对弹提示 ---------- */
+let lastPt = null, streak = 0;
+document.addEventListener('pointerdown', e => { lastPt = { x: e.clientX, y: e.clientY, t: Date.now() }; }, true);
+function sparkle() {
+  if (document.getElementById('play').hidden) return;
+  let x, y;
+  if (lastPt && Date.now() - lastPt.t < 500) ({ x, y } = lastPt);
+  else { const r = document.getElementById('stage').getBoundingClientRect(); x = r.left + r.width / 2; y = r.top + r.height / 2; }
+  for (let i = 0; i < 6; i++) {
+    const s = document.createElement('span'), a = Math.random() * Math.PI * 2, d = 35 + Math.random() * 45;
+    s.className = 'spark' + (i ? '' : ' big'); s.textContent = i ? '✦' : '⭐';
+    s.style.left = x + 'px'; s.style.top = y + 'px';
+    s.style.setProperty('--dx', (i ? Math.cos(a) * d : 0) + 'px'); s.style.setProperty('--dy', (i ? Math.sin(a) * d : -60) + 'px');
+    document.body.appendChild(s); setTimeout(() => s.remove(), 700);
+  }
+}
+function toast(text) {
+  const old = document.querySelector('.toast'); if (old) old.remove();
+  const t = document.createElement('div'); t.className = 'toast'; t.innerHTML = text;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 1150);
+}
+function reward() {
+  streak++; sparkle();
+  if (streak % 5 === 0) { toast(`⭐ 连对 ${streak} 个！`); tone(1047, .1, 'triangle', .1, .12); tone(1319, .14, 'triangle', .1, .2); }
+}
+function confetti(n = 30) {
+  const pieces = ['⭐', '🌟', '✨', '⭐', '💛'];
+  for (let i = 0; i < n; i++) {
+    const c = document.createElement('span'); c.className = 'conf'; c.textContent = pick(pieces);
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.setProperty('--s', 18 + Math.random() * 22 + 'px'); c.style.setProperty('--t', 1.4 + Math.random() * 1.2 + 's');
+    c.style.setProperty('--d', Math.random() * .6 + 's'); c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+    document.body.appendChild(c); setTimeout(() => c.remove(), 3200);
+  }
+}
+const sfx = {
+  ok() { tone(880, .1, 'triangle'); tone(1320, .12, 'triangle', .12, .06); reward(); },
+  bad() { tone(200, .22, 'sawtooth', .08); streak = 0; },
+  tick() { tone(620, .08, 'square', .05); },
+  go() { tone(990, .25, 'triangle', .15); },
+  win() { [523, 659, 784, 1047].forEach((f, i) => tone(f, .18, 'triangle', .13, i * .11)); }
+};
+
+/* ---------- run lifecycle: every timer belongs to the current run ---------- */
+let run = null;
+function newRun() { stopRun(); run = { active: true, timers: [], raf: 0, onKey: null }; return run; }
+function stopRun() { if (!run) return; run.active = false; run.timers.forEach(clearTimeout); cancelAnimationFrame(run.raf); run = null; }
+function later(fn, ms) { const r = run; if (!r) return 0; const id = setTimeout(() => { if (r.active) fn(); }, ms); r.timers.push(id); return id; }
+function loop(fn) { const r = run; const step = () => { if (!r.active) return; if (fn() !== false) r.raf = requestAnimationFrame(step); }; r.raf = requestAnimationFrame(step); }
+
+function setStats(a, b) { $('#s1').innerHTML = a; $('#s2').innerHTML = b; }
+function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
+const bestKey = (id, li) => `best_${id}_${li}`;
+
+/* ---------- shared quiz engine (颜色陷阱 / 小鱼) ---------- */
+function runQuiz(opt) {
+  let i = 0, correct = 0, pts = 0, qStart = 0, locked = true, answer = null;
+  const rts = [];
+  function ask() {
+    if (i >= opt.rounds) return done();
+    i++; answer = opt.next(); qStart = now(); locked = false; opt.stats(i, pts);
+  }
+  function respond(key) {
+    if (locked) return;
+    locked = true;
+    const rt = now() - qStart, ok = key === answer;
+    if (ok) { correct++; rts.push(rt); pts += 100 + Math.round(Math.max(0, opt.limit - rt) / opt.limit * 100); sfx.ok(); }
+    else sfx.bad();
+    opt.feedback(ok, key === null); opt.stats(i, pts);
+    later(ask, ok ? 320 : 750);
+  }
+  function done() {
+    const avg = rts.length ? Math.round(rts.reduce((a, b) => a + b, 0) / rts.length) : 0, acc = correct / opt.rounds;
+    finish({ score: pts, big: pts, unit: '分', stars: acc >= .9 ? 3 : acc >= .7 ? 2 : acc >= .5 ? 1 : 0,
+      details: [['答对', `${correct} / ${opt.rounds}`], ['平均反应', avg ? avg + ' 毫秒' : '—']] });
+  }
+  loop(() => {
+    if (locked) return;
+    const el = now() - qStart;
+    opt.bar.style.transform = `scaleX(${Math.max(0, 1 - el / opt.limit)})`;
+    if (el >= opt.limit) respond(null);
+  });
+  ask();
+  return respond;
+}
+
+const COLORS = [{ k: '红', c: 'var(--red)' }, { k: '绿', c: 'var(--mint)' }, { k: '蓝', c: 'var(--blue)' }, { k: '黄', c: 'var(--sun)' }, { k: '粉', c: 'var(--pink)' }];
+const INKS = ['var(--ink)', 'var(--grape)', 'var(--blue)', 'var(--red)', 'var(--mint)', 'var(--tang)'];
+const EMOJI_PAIRS = [['🐱', '🐯'], ['🍎', '🍅'], ['😀', '😃'], ['🐶', '🐺'], ['🐻', '🐨'], ['🍊', '🍑'], ['🌞', '🌝'], ['🚗', '🚕'], ['🐟', '🐠'], ['🌲', '🌳'], ['🐔', '🐤'], ['🐭', '🐹'], ['🍪', '🍩'], ['⚽', '🏐'], ['🐰', '🐇'], ['🍓', '🍒']];
+const TEXT_PAIRS = [['b', 'd'], ['p', 'q'], ['6', '9'], ['M', 'W'], ['E', 'F'], ['O', 'Q'], ['日', '目'], ['大', '太'], ['人', '入'], ['土', '士'], ['已', '己'], ['未', '末'], ['田', '由'], ['千', '干'], ['8', 'B'], ['5', 'S'], ['王', '玉'], ['木', '本']];
+const DIRS = { L: { t: 'scaleX(-1)', o: 'R' }, R: { t: 'none', o: 'L' }, U: { t: 'rotate(-90deg)', o: 'D' }, D: { t: 'rotate(90deg)', o: 'U' } };
+const fishSvg = (d, c, cls = '') => `<span class="fslot ${cls}"><svg viewBox="0 0 64 40" style="transform:${DIRS[d].t}" aria-hidden="true"><path d="M22 20 L3 6 L8 20 L3 34 Z" fill="${c}" stroke="#1E2356" stroke-width="2" stroke-linejoin="round"/><ellipse cx="37" cy="20" rx="22" ry="14" fill="${c}" stroke="#1E2356" stroke-width="2"/><circle cx="48" cy="16" r="4.2" fill="#fff"/><circle cx="49.2" cy="16" r="2.1" fill="#1E2356"/><path d="M29 12 Q33 20 29 28" stroke="#fff" stroke-opacity=".6" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>`;
+
+/* 魔方：标准配色 白顶绿前红右。每个角块按 (顶, 右前, 左前) 顺时针列出 */
+const CUBE = { W: { n: '白', c: 'var(--card)' }, Y: { n: '黄', c: 'var(--sun)' }, R: { n: '红', c: 'var(--red)' }, O: { n: '橙', c: 'var(--orange)' }, B: { n: '蓝', c: 'var(--blue)' }, G: { n: '绿', c: 'var(--mint)' } };
+const OPP = { W: 'Y', Y: 'W', R: 'O', O: 'R', B: 'G', G: 'B' };
+const CORNERS = [['W', 'R', 'G'], ['W', 'G', 'O'], ['W', 'B', 'R'], ['W', 'O', 'B'], ['Y', 'G', 'R'], ['Y', 'O', 'G'], ['Y', 'R', 'B'], ['Y', 'B', 'O']];
+function cubeSvg(top, right, left, cls = '') {
+  const s = 56, P = (x, y, z) => [((x - y) * .866 * s).toFixed(1), ((x + y) * .5 * s - z * s).toFixed(1)].join(',');
+  const quad = (pts, k) => `<polygon points="${pts.map(p => P(...p)).join(' ')}" style="fill:${CUBE[k].c}"/>`;
+  let out = '';
+  for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) {
+    const a = i / 3, b = (i + 1) / 3, c = j / 3, d = (j + 1) / 3;
+    out += quad([[a, c, 1], [b, c, 1], [b, d, 1], [a, d, 1]], top)
+      + quad([[1, a, c], [1, b, c], [1, b, d], [1, a, d]], right)
+      + quad([[a, 1, c], [b, 1, c], [b, 1, d], [a, 1, d]], left);
+  }
+  return `<svg class="cubesvg ${cls}" viewBox="-52 -60 104 120" aria-hidden="true"><g style="stroke:var(--ink)" stroke-width="2.5" stroke-linejoin="round">${out}</g></svg>`;
+}
+const faceHtml = cells => `<div class="face">${cells.map(k => `<i style="background:${CUBE[k].c}"></i>`).join('')}</div>`;
+const rotCW = f => f.map((_, idx) => f[(2 - idx % 3) * 3 + Math.floor(idx / 3)]);
+const rotN = (f, n) => { for (let k = 0; k < n; k++) f = rotCW(f); return f; };
+const mirror = f => f.map((_, idx) => f[Math.floor(idx / 3) * 3 + 2 - idx % 3]);
+const animal = ms => ms < 280 ? '🐆 猎豹速度' : ms < 350 ? '🐇 兔子速度' : ms < 450 ? '🐕 小狗速度' : ms < 600 ? '🐈 小猫速度' : '🐢 乌龟速度';
+
+/* ---------- games ---------- */
+const GAMES = [
+  {
+    id: 'grid', name: '数字快找', icon: '🔢', color: '--sun', skill: '视觉搜索 · 专注力',
+    how: '从 1 开始，按顺序把数字一个个点掉，越快越好。',
+    levels: [{ label: '3×3', sub: '1 到 9', n: 3 }, { label: '4×4', sub: '1 到 16', n: 4 }, { label: '5×5', sub: '1 到 25', n: 5 },
+      { label: '5×5 倒数', sub: '25 到 1', n: 5, rev: true }, { label: '6×6', sub: '1 到 36', n: 6 }],
+    better: 'low', fmt: s => s.toFixed(1) + ' 秒',
+    hint: L => L.rev ? `从 <b>${L.n * L.n}</b> 开始<b>倒着</b>点到 1` : '从 <b>1</b> 开始按顺序点，点错不要紧，接着找',
+    start({ stage, level }) {
+      const n = level.n, total = n * n;
+      let k = 0, errs = 0;
+      const want = () => level.rev ? total - k : k + 1;
+      const board = document.createElement('div');
+      board.className = 'grid-board'; board.style.setProperty('--n', n);
+      shuffle(Array.from({ length: total }, (_, i) => i + 1)).forEach(v => {
+        const b = document.createElement('button');
+        b.className = 'cell'; b.textContent = v; b.style.color = pick(INKS);
+        b.addEventListener('pointerdown', e => {
+          e.preventDefault();
+          if (b.classList.contains('done')) return;
+          if (v === want()) {
+            b.classList.add('done'); sfx.ok(); k++;
+            if (k === total) {
+              const t = (now() - t0) / 1000, per = t / total;
+              let stars = per < 1.2 ? 3 : per < 2 ? 2 : 1;
+              if (errs >= 3) stars = Math.max(1, stars - 1);
+              finish({ score: +t.toFixed(1), big: t.toFixed(1), unit: '秒', stars,
+                details: [['数字', level.rev ? `${total} – 1` : `1 – ${total}`], ['点错', errs + ' 次'], ['平均每个', per.toFixed(2) + ' 秒']] });
+            }
+          } else { errs++; sfx.bad(); shake(b); }
+        });
+        board.appendChild(b);
+      });
+      stage.appendChild(board);
+      const t0 = now();
+      loop(() => setStats(`⏱ <b>${((now() - t0) / 1000).toFixed(1)}</b>`, `找 <b>${k < total ? want() : '✓'}</b>`));
+    }
+  },
+  {
+    id: 'color', name: '颜色陷阱', icon: '🎨', color: '--red', skill: '抗干扰 · 抑制冲动',
+    how: '屏幕上的字会骗人！比如用蓝色写的"绿"，要点的是蓝色块。',
+    levels: [
+      { label: '简单', sub: '3 种颜色', nc: 3, limit: 4000 },
+      { label: '标准', sub: '4 色 · 色块换位', nc: 4, limit: 2800, mix: true },
+      { label: '挑战', sub: '看颜色/看字 切换', nc: 4, limit: 3200, mix: true, rule: true },
+      { label: '大师', sub: '5 色 · 按钮上也有字', nc: 5, limit: 2600, mix: true, rule: true, words: true }],
+    better: 'high', fmt: s => s + ' 分',
+    hint: L => L.rule ? '按提示来：<b>看颜色</b>点字的颜色，<b>看字</b>点字写的那个颜色' : '别被字骗了！点<b>字的颜色</b>，不是字的意思',
+    start({ stage, level: L }) {
+      const cols = COLORS.slice(0, L.nc);
+      stage.innerHTML = `<div class="quiz"><div class="rule" id="rule">👀 点和<b>字的颜色</b>一样的块</div>
+        <div class="qcard" id="qcard"><span class="word" id="word"></span><span class="mark" id="mark"></span></div>
+        <div class="tbar"><i id="bar"></i></div><div class="cbtns n${L.nc}" id="cbtns"></div></div>`;
+      const word = $('#word'), card = $('#qcard'), rule = $('#rule'), btns = $('#cbtns'), mark = $('#mark');
+      let order = cols.map((_, i) => i);
+      const draw = () => { btns.innerHTML = order.map(i => `<button class="cb" data-k="${i}" style="--c:${cols[i].c}" aria-label="${cols[i].k}色">${L.words ? `<span>${cols[pick(order.filter(j => j !== i))].k}</span>` : ''}</button>`).join(''); };
+      draw();
+      btns.addEventListener('pointerdown', e => { const b = e.target.closest('.cb'); if (!b) return; e.preventDefault(); respond(+b.dataset.k); });
+      const respond = runQuiz({
+        rounds: 20, limit: L.limit, bar: $('#bar'),
+        next() {
+          const w = rnd(0, cols.length - 1);
+          let ink = w;
+          if (Math.random() > .2) while (ink === w) ink = rnd(0, cols.length - 1);
+          const r = L.rule && Math.random() < .5 ? 'word' : 'ink';
+          if (L.rule) { rule.className = 'rule ' + r; rule.innerHTML = r === 'ink' ? '👀 看<b>颜色</b>' : '📖 看<b>字</b>'; }
+          word.textContent = cols[w].k; word.style.color = cols[ink].c;
+          card.className = 'qcard pop'; mark.textContent = '';
+          if (L.mix) { order = shuffle(order); draw(); }
+          return r === 'ink' ? ink : w;
+        },
+        feedback(ok, timeout) { card.className = 'qcard ' + (ok ? 'right' : 'wrong'); mark.textContent = ok ? '✓ 对' : timeout ? '超时' : '✗ 错'; },
+        stats(i, pts) { setStats(`第 <b>${i}</b>/20`, `<b>${pts}</b> 分`); }
+      });
+    }
+  },
+  {
+    id: 'flash', name: '闪电一拍', icon: '⚡', color: '--mint', skill: '反应速度',
+    how: '红色时等着，一变绿马上拍！太早拍算抢跑。一共 5 次，看平均速度。',
+    levels: [{ label: '经典', sub: '变绿就拍' }, { label: '小陷阱', sub: '黄色别拍', trap: true },
+      { label: '高手', sub: '黄蓝都是陷阱 · 绿灯很短', trap: true, multi: true, window: 650 }],
+    better: 'low', fmt: s => s + ' 毫秒',
+    hint: L => L.multi ? '只有<b>绿色</b>能拍！黄色、蓝色都是陷阱，绿灯一闪就灭' : L.trap ?'变<b>绿</b>马上拍！<b>黄色</b>是陷阱，不能拍（电脑可按空格）' : '变<b>绿</b>马上拍！红色时别抢跑（电脑可按空格）',
+    start({ stage, level: L }) {
+      const N = 5, times = [];
+      let trial = 0, early = 0, trapped = 0, slow = 0, state = 'ready', tGo = 0, pend = [];
+      stage.innerHTML = `<button class="pad" id="pad"><span class="pad-big" id="padBig"></span><span class="pad-sub" id="padSub"></span></button><div class="dots" id="dots">${'<i></i>'.repeat(N)}</div>`;
+      const pad = $('#pad'), big = $('#padBig'), sub = $('#padSub');
+      const set = (s, b, t = '', x = '') => { state = s; pad.className = 'pad ' + s + (x ? ' ' + x : ''); big.innerHTML = b; sub.innerHTML = t; };
+      const clearPend = () => { pend.forEach(clearTimeout); pend = []; };
+      const stats = () => {
+        const avg = times.length ? Math.round(times.reduce((a, b) => a + b, 0) / times.length) + ' 毫秒' : '—';
+        setStats(`第 <b>${Math.min(trial + 1, N)}</b>/${N} 次`, `平均 <b>${avg}</b>`);
+      };
+      const waiting = () => set('wait', '等变绿…', '手准备好，别急');
+      const go = () => {
+        set('go', '拍！'); tGo = now();
+        if (L.window) pend.push(later(() => { if (state === 'go') { slow++; oops('慢了！', '绿灯只亮一下下'); } }, L.window));
+      };
+      const arm = () => {
+        waiting();
+        if (L.trap && Math.random() < (L.multi ? .7 : .55)) {
+          pend.push(later(() => {
+            const blue = L.multi && Math.random() < .5;
+            set('trap', '别拍！', blue ? '蓝色也是陷阱' : '黄色是陷阱', blue ? 'b' : '');
+            pend.push(later(() => { waiting(); pend.push(later(go, rnd(700, 1700))); }, 900));
+          }, rnd(800, 1800)));
+        } else pend.push(later(go, rnd(1300, 3500)));
+      };
+      const oops = (title, msg) => { clearPend(); sfx.bad(); set('oops', title, msg); pend.push(later(() => set('ready', '再试一次', '点一下开始'), 1100)); };
+      const hit = () => {
+        if (state === 'ready') return arm();
+        if (state === 'wait') { early++; return oops('太早啦！', '等它<b>变绿</b>再拍'); }
+        if (state === 'trap') { trapped++; return oops('中计啦！', L.multi ? '只有<b>绿色</b>能拍' : '<b>黄色</b>不能拍哦'); }
+        if (state === 'go') {
+          clearPend();
+          const rt = Math.round(now() - tGo);
+          times.push(rt); trial++; sfx.ok();
+          $('#dots').children[trial - 1].className = 'on';
+          stats();
+          set('show', `${rt}<small>毫秒</small>`, animal(rt));
+          if (trial >= N) later(done, 1000);
+          else pend.push(later(() => set('ready', `${rt}<small>毫秒</small>`, animal(rt) + ' · 点一下继续'), 600));
+        }
+      };
+      const done = () => {
+        const avg = Math.round(times.reduce((a, b) => a + b, 0) / N), best = Math.min(...times), slips = early + trapped + slow;
+        let stars = avg < 330 ? 3 : avg < 450 ? 2 : 1;
+        if (slips >= 3) stars = Math.max(1, stars - 1);
+        const details = [['最快一次', best + ' 毫秒'], ['抢跑', early + ' 次']];
+        if (L.trap) details.push(['中陷阱', trapped + ' 次']);
+        if (L.window) details.push(['太慢', slow + ' 次']);
+        finish({ score: avg, big: avg, unit: '毫秒', tag: animal(avg), stars, details });
+      };
+      pad.addEventListener('pointerdown', e => { e.preventDefault(); hit(); });
+      run.onKey = e => { if (e.code === 'Space') { e.preventDefault(); hit(); } };
+      set('ready', '点一下开始', `一共 ${N} 次`);
+      stats();
+    }
+  },
+  {
+    id: 'mole', name: '打地鼠', icon: '🐹', color: '--grass', skill: '反应速度 · 该停就停',
+    how: '小地鼠冒头就拍它！高级关卡会冒出炸弹，千万别碰。30 秒一局。',
+    levels: [
+      { label: '简单', sub: '只有地鼠', holes: 9, bomb: 0, gold: 0, spawn: [1000, 650], stay: [1400, 950], th: [24, 15] },
+      { label: '标准', sub: '小心炸弹', holes: 9, bomb: .22, gold: 0, spawn: [850, 500], stay: [1200, 750], th: [26, 16] },
+      { label: '快手', sub: '更快 · 金星 +3', holes: 12, bomb: .25, gold: .1, spawn: [700, 380], stay: [1000, 620], th: [36, 22] },
+      { label: '疯狂', sub: '超快 · 炸弹更多', holes: 12, bomb: .32, gold: .12, spawn: [560, 300], stay: [820, 470], th: [42, 26] }],
+    better: 'high', fmt: s => s + ' 分',
+    hint: L => L.bomb ? `拍地鼠 <b>+1</b>，碰炸弹 <b>−2</b>${L.gold ? '，金星 <b>+3</b>' : ''}` : '小地鼠冒头就拍！',
+    start({ stage, level: L }) {
+      const DUR = 30000, cols = L.holes === 12 ? 4 : 3;
+      stage.innerHTML = `<div class="field" id="field" style="--cols:${cols}">${'<div class="hole"><span class="critter"></span></div>'.repeat(L.holes)}</div>`;
+      const field = $('#field'), holes = [...field.children], st = holes.map(() => null);
+      let score = 0, hits = 0, bombs = 0, golds = 0, miss = 0;
+      const t0 = now(), lerp = (a, b, p) => a + (b - a) * p;
+      const hide = (i, whacked) => {
+        const s = st[i]; if (!s) return;
+        clearTimeout(s.tm); st[i] = null;
+        holes[i].classList.remove('up');
+        if (whacked) { holes[i].classList.add('whack'); later(() => holes[i].classList.remove('whack'), 220); }
+      };
+      const spawn = () => {
+        const p = Math.min(1, (now() - t0) / DUR);
+        const free = st.map((s, i) => s ? -1 : i).filter(i => i >= 0);
+        if (free.length) {
+          const i = pick(free), r = Math.random();
+          const type = r < L.gold ? 'gold' : r < L.gold + L.bomb ? 'bomb' : 'mole';
+          holes[i].firstElementChild.textContent = { mole: '🐹', bomb: '💣', gold: '🌟' }[type];
+          holes[i].classList.remove('whack'); holes[i].classList.add('up');
+          const stay = lerp(L.stay[0], L.stay[1], p) * (type === 'gold' ? .7 : 1);
+          st[i] = { type, tm: later(() => { if (st[i] && st[i].type === 'mole') miss++; hide(i); }, stay) };
+        }
+        later(spawn, lerp(L.spawn[0], L.spawn[1], p) * (.8 + Math.random() * .4));
+      };
+      holes.forEach((h, i) => h.addEventListener('pointerdown', e => {
+        e.preventDefault();
+        const s = st[i]; if (!s) return;
+        let d;
+        if (s.type === 'mole') { d = 1; hits++; sfx.ok(); }
+        else if (s.type === 'gold') { d = 3; golds++; sfx.ok(); tone(1568, .15, 'triangle', .12, .1); }
+        else { d = -2; bombs++; sfx.bad(); shake(field); }
+        score = Math.max(0, score + d);
+        const f = document.createElement('span');
+        f.className = 'float'; f.textContent = d > 0 ? '+' + d : d;
+        h.appendChild(f); setTimeout(() => f.remove(), 700);
+        hide(i, true);
+      }));
+      later(spawn, 300);
+      loop(() => {
+        const left = Math.max(0, DUR - (now() - t0));
+        setStats(`⏱ <b>${Math.ceil(left / 1000)}</b> 秒`, `<b>${score}</b> 分`);
+        if (left <= 0) {
+          const details = [['拍中地鼠', hits + ' 只']];
+          if (L.gold) details.push(['金星', golds + ' 颗']);
+          if (L.bomb) details.push(['碰到炸弹', bombs + ' 次']);
+          details.push(['漏掉', miss + ' 只']);
+          finish({ score, big: score, unit: '分', stars: score >= L.th[0] ? 3 : score >= L.th[1] ? 2 : score >= L.th[1] / 2 ? 1 : 0, details });
+          return false;
+        }
+      });
+    }
+  },
+  {
+    id: 'fish', name: '小鱼往哪游', icon: '🐟', color: '--blue', skill: '专注 · 不受干扰',
+    how: '只看最中间那条小鱼，它往左游就点左，往右游就点右。旁边的鱼会捣乱！',
+    levels: [
+      { label: '简单', sub: '只有一条鱼', limit: 3000 },
+      { label: '标准', sub: '鱼群捣乱', limit: 2500, flank: true },
+      { label: '挑战', sub: '红鱼要反着按', limit: 2800, flank: true, reverse: true },
+      { label: '大师', sub: '上下左右 · 红鱼反向', limit: 2800, flank: true, reverse: true, four: true }],
+    better: 'high', fmt: s => s + ' 分',
+    hint: L => (L.reverse ? '只看<b>中间</b>的鱼；<b>红鱼</b>要按反方向' : '只看<b>中间</b>那条鱼往哪边游') + '（电脑可按方向键）',
+    start({ stage, level: L }) {
+      const dirs = L.four ? ['L', 'R', 'U', 'D'] : ['L', 'R'];
+      stage.innerHTML = `<div class="quiz"><div class="rule" id="rule"></div>
+        <div class="qcard sea" id="qcard"><div class="school" id="school"></div><span class="mark" id="mark"></span></div>
+        <div class="tbar"><i id="bar"></i></div>
+        ${L.four
+          ? '<div class="dirbtns cross"><button class="db" data-k="U">↑</button><button class="db" data-k="L">←</button><button class="db" data-k="D">↓</button><button class="db" data-k="R">→</button></div>'
+          : '<div class="dirbtns"><button class="db" data-k="L">←<span>左</span></button><button class="db" data-k="R"><span>右</span>→</button></div>'}</div>`;
+      const card = $('#qcard'), school = $('#school'), rule = $('#rule'), mark = $('#mark');
+      stage.querySelector('.dirbtns').addEventListener('pointerdown', e => { const b = e.target.closest('.db'); if (!b) return; e.preventDefault(); respond(b.dataset.k); });
+      const respond = runQuiz({
+        rounds: 20, limit: L.limit, bar: $('#bar'),
+        next() {
+          const d = pick(dirs);
+          const fl = L.flank ? (Math.random() < .5 ? d : pick(dirs.filter(x => x !== d))) : null;
+          const red = L.reverse && Math.random() < .35, c = red ? '#EF3B36' : '#2D6BFF';
+          school.innerHTML = [0, 1, 2, 3, 4].map(p => p === 2 ? fishSvg(d, c, 'mid') : fl ? fishSvg(fl, c) : '<span class="bubble"></span>').join('');
+          rule.className = 'rule' + (red ? ' red' : '');
+          rule.innerHTML = red ? '红鱼：按<b>反方向</b>' : '中间的鱼往哪游？';
+          card.className = 'qcard sea pop'; mark.textContent = '';
+          return red ? DIRS[d].o : d;
+        },
+        feedback(ok, timeout) { card.className = 'qcard ' + (ok ? 'right' : 'wrong'); mark.textContent = ok ? '✓ 对' : timeout ? '超时' : '✗ 错'; },
+        stats(i, pts) { setStats(`第 <b>${i}</b>/20`, `<b>${pts}</b> 分`); }
+      });
+      const km = { ArrowLeft: 'L', ArrowRight: 'R', ArrowUp: 'U', ArrowDown: 'D' };
+      run.onKey = e => { const k = km[e.key]; if (k && dirs.includes(k)) { e.preventDefault(); respond(k); } };
+    }
+  },
+  {
+    id: 'odd', name: '找不同', icon: '🔍', color: '--grape', skill: '观察力 · 辨别力',
+    how: '一堆一样的图里藏着一个不一样的，快把它找出来！格子会越来越多，60 秒一局。',
+    levels: [{ label: '图案', sub: '动物和水果', set: 'emoji' }, { label: '字母汉字', sub: 'b/d · 日/目', set: 'text' }, { label: '混合', sub: '全都有', set: 'mix' },
+      { label: '高手', sub: '45 秒 · 格子涨得快', set: 'mix', dur: 45000, step: 2, max: 8 }],
+    better: 'high', fmt: s => s + ' 个',
+    hint: () => '找出<b>不一样</b>的那个，点错扣 2 秒',
+    start({ stage, level: L }) {
+      const DUR = L.dur || 60000, STEP = L.step || 3, MAX = L.max || 7, pool = L.set === 'emoji' ? EMOJI_PAIRS : L.set === 'text' ? TEXT_PAIRS : EMOJI_PAIRS.concat(TEXT_PAIRS);
+      let found = 0, wrong = 0, penalty = 0, maxN = 3, lock = false;
+      const board = document.createElement('div');
+      board.className = 'grid-board odd';
+      stage.appendChild(board);
+      const round = () => {
+        const n = Math.min(3 + Math.floor(found / STEP), MAX), pr = pick(pool), pair = Math.random() < .5 ? pr : [pr[1], pr[0]];
+        const odd = rnd(0, n * n - 1);
+        maxN = Math.max(maxN, n);
+        board.style.setProperty('--n', n);
+        board.classList.toggle('txt', TEXT_PAIRS.includes(pr));
+        board.innerHTML = Array.from({ length: n * n }, (_, i) => `<button class="cell" data-o="${i === odd ? 1 : 0}">${i === odd ? pair[1] : pair[0]}</button>`).join('');
+        lock = false;
+      };
+      board.addEventListener('pointerdown', e => {
+        const b = e.target.closest('.cell'); if (!b || lock) return;
+        e.preventDefault();
+        if (b.dataset.o === '1') { found++; lock = true; sfx.ok(); b.classList.add('hit'); later(round, 220); }
+        else { wrong++; penalty += 2000; sfx.bad(); shake(b); }
+      });
+      round();
+      const t0 = now();
+      loop(() => {
+        const left = Math.max(0, DUR - (now() - t0) - penalty);
+        setStats(`⏱ <b>${Math.ceil(left / 1000)}</b> 秒`, `找到 <b>${found}</b>`);
+        if (left <= 0) {
+          finish({ score: found, big: found, unit: '个', stars: found >= 18 ? 3 : found >= 11 ? 2 : found >= 5 ? 1 : 0,
+            details: [['点错', wrong + ' 次'], ['最多格子', `${maxN} × ${maxN}`]] });
+          return false;
+        }
+      });
+    }
+  },
+  {
+    id: 'cube', name: '魔方转转看', icon: cubeSvg('W', 'R', 'G'), color: '--orange', skill: '空间想象 · 魔方入门',
+    how: '学魔方先认配色：白对黄、红对橙、蓝对绿。然后在脑子里把魔方的一面转一转，选出转完的样子。',
+    levels: [
+      { label: '认配色', sub: '谁和谁是对面', mode: 'opp', limit: 5000, rounds: 15 },
+      { label: '转一面', sub: '顺/逆时针 · 3 选 1', mode: 'rot', limit: 8000, rounds: 12, opts: 3 },
+      { label: '挑战', sub: '连转两次 · 有镜像', mode: 'rot', limit: 10000, rounds: 12, opts: 4, two: true, mirror: true }],
+    better: 'high', fmt: s => s + ' 分',
+    hint: L => L.mode === 'opp' ? '记口诀：<b>白黄</b>相对，<b>红橙</b>相对，<b>蓝绿</b>相对' : '在脑子里转一转。<b>↻</b> 是顺时针，和钟表指针走的方向一样',
+    start({ stage, level: L }) {
+      const ROT = [{ t: '<b>↻ 顺时针</b> 转一下', n: 1 }, { t: '<b>↺ 逆时针</b> 转一下', n: 3 }, { t: '转<b>半圈</b>', n: 2 }];
+      const SHORT = { 1: '↻ 顺时针', 3: '↺ 逆时针', 2: '转半圈' };
+      const opts = L.mode === 'opp'
+        ? `<div class="cbtns n6" id="ans">${Object.keys(CUBE).map(k => `<button class="cb" data-k="${k}" style="--c:${CUBE[k].c}"><span>${CUBE[k].n}</span></button>`).join('')}</div>`
+        : `<div class="opts o${L.opts}" id="ans"></div>`;
+      stage.innerHTML = `<div class="quiz"><div class="rule" id="rule"></div>
+        <div class="qcard" id="qcard"><div id="qshow"></div><span class="mark" id="mark"></span></div>
+        <div class="tbar"><i id="bar"></i></div>${opts}</div>`;
+      const card = $('#qcard'), show = $('#qshow'), rule = $('#rule'), mark = $('#mark'), ans = $('#ans');
+      ans.addEventListener('pointerdown', e => { const b = e.target.closest('[data-k]'); if (!b) return; e.preventDefault(); respond(b.dataset.k); });
+      const nextOpp = () => {
+        const tri = pick(CORNERS), sh = rnd(0, 2), v = [0, 1, 2].map(i => tri[(i + sh) % 3]);
+        const q = pick(v);
+        show.innerHTML = cubeSvg(v[0], v[1], v[2]);
+        rule.innerHTML = `<b>${CUBE[q].n}色</b>的对面是什么颜色？`;
+        return OPP[q];
+      };
+      const nextRot = () => {
+        for (;;) {
+          const pal = shuffle(Object.keys(CUBE)).slice(0, 3);
+          const cells = Array.from({ length: 9 }, () => pick(pal));
+          const steps = L.two ? [pick(ROT), pick(ROT)] : [pick(ROT)];
+          const n = steps.reduce((a, s) => a + s.n, 0) % 4;
+          const right = rotN(cells, n);
+          const pool = [0, 1, 2, 3].filter(x => x !== n).map(x => rotN(cells, x));
+          if (L.mirror) pool.push(mirror(right), mirror(cells));
+          const seen = new Set([right.join('')]), wrong = [];
+          for (const f of shuffle(pool)) { const key = f.join(''); if (!seen.has(key)) { seen.add(key); wrong.push(f); } }
+          if (wrong.length < L.opts - 1) continue;
+          const list = shuffle([right, ...wrong.slice(0, L.opts - 1)]);
+          show.innerHTML = faceHtml(cells);
+          rule.innerHTML = L.two ? `先${SHORT[steps[0].n]}，再${SHORT[steps[1].n]}` : steps[0].t;
+          ans.innerHTML = list.map((f, i) => `<button class="ob" data-k="${i}" aria-label="选项 ${i + 1}">${faceHtml(f)}</button>`).join('');
+          return String(list.indexOf(right));
+        }
+      };
+      const respond = runQuiz({
+        rounds: L.rounds, limit: L.limit, bar: $('#bar'),
+        next() { card.className = 'qcard pop'; mark.textContent = ''; return L.mode === 'opp' ? nextOpp() : nextRot(); },
+        feedback(ok, timeout) { card.className = 'qcard ' + (ok ? 'right' : 'wrong'); mark.textContent = ok ? '✓ 对' : timeout ? '超时' : '✗ 错'; },
+        stats(i, pts) { setStats(`第 <b>${i}</b>/${L.rounds}`, `<b>${pts}</b> 分`); }
+      });
+    }
+  },
+  {
+    id: 'simon', name: '记忆闪光', icon: '💡', color: '--pink', skill: '记忆力 · 专注',
+    how: '色块会按顺序亮起来，记住顺序，再照着点一遍。每过一关多一个，有 2 次机会。',
+    levels: [
+      { label: '简单', sub: '4 块 · 慢', pads: 4, speed: 750, th: [7, 5] },
+      { label: '标准', sub: '4 块 · 快', pads: 4, speed: 480, th: [8, 5] },
+      { label: '挑战', sub: '6 块 · 快', pads: 6, speed: 500, th: [7, 5] },
+      { label: '倒着按', sub: '反着顺序点', pads: 4, speed: 600, rev: true, th: [6, 4] }],
+    better: 'high', fmt: s => s + ' 个',
+    hint: L => L.rev ? '记住顺序，然后<b>倒过来</b>点' : '先看，再按<b>同样的顺序</b>点',
+    start({ stage, level: L }) {
+      const pc = ['var(--red)', 'var(--mint)', 'var(--blue)', 'var(--sun)', 'var(--pink)', 'var(--grape)'], notes = [262, 330, 392, 523, 587, 698];
+      stage.innerHTML = `<div class="status" id="sstat"></div><div class="simon" style="--cols:${L.pads === 6 ? 3 : 2};--rows:2">${Array.from({ length: L.pads }, (_, i) => `<button class="sp" data-i="${i}" style="--pc:${pc[i]}" aria-label="色块 ${i + 1}"></button>`).join('')}</div>`;
+      const pads = [...stage.querySelectorAll('.sp')], status = $('#sstat');
+      let seq = [], pos = 0, lives = 2, best = 0, phase = 'show';
+      const stats = () => setStats(`长度 <b>${seq.length}</b>`, '❤️'.repeat(lives) + '🤍'.repeat(2 - lives));
+      const lite = (i, ms) => { pads[i].classList.add('lit'); tone(notes[i], ms / 1000, 'triangle', .14); later(() => pads[i].classList.remove('lit'), ms); };
+      const show = () => {
+        phase = 'show'; status.textContent = '看好了…'; stats();
+        let t = 600;
+        seq.forEach(i => { later(() => lite(i, L.speed * .6), t); t += L.speed; });
+        later(() => { phase = 'input'; pos = 0; status.textContent = L.rev ? '倒着点！' : '轮到你了！'; }, t);
+      };
+      const grow = () => { seq.push(rnd(0, L.pads - 1)); show(); };
+      const end = () => finish({ score: best, big: best, unit: '个', stars: best >= L.th[0] ? 3 : best >= L.th[1] ? 2 : best >= 3 ? 1 : 0,
+        details: [['记住最长', best + ' 个'], ['用掉机会', (2 - lives) + ' 次']] });
+      stage.querySelector('.simon').addEventListener('pointerdown', e => {
+        const b = e.target.closest('.sp'); if (!b || phase !== 'input') return;
+        e.preventDefault();
+        const i = +b.dataset.i, want = L.rev ? seq[seq.length - 1 - pos] : seq[pos];
+        if (i === want) {
+          lite(i, 180); pos++;
+          if (pos === seq.length) {
+            best = seq.length; phase = 'wait'; status.textContent = '✓ 记对了！'; reward();
+            if (seq.length >= 20) later(end, 600); else later(grow, 850);
+          }
+        } else {
+          lives--; sfx.bad(); shake(b); phase = 'wait'; stats();
+          if (lives <= 0) { status.textContent = '✗ 机会用完了'; later(end, 900); }
+          else { status.textContent = '✗ 再看一遍'; later(show, 1100); }
+        }
+      });
+      seq = [rnd(0, L.pads - 1)];
+      grow();
+    }
+  },
+  {
+    id: 'ear', name: '听音拍', icon: '👂', color: '--tang', skill: '听觉反应 · 忍住不拍',
+    how: '听到清脆的"叮"马上拍，听到低沉的"咚"不能拍。这个游戏一定会出声音，iPad 记得把音量调大、关掉静音。',
+    levels: [
+      { label: '简单', sub: '叮拍 · 咚不拍', win: 1400 },
+      { label: '标准', sub: '要拍得更快', win: 950 },
+      { label: '挑战', sub: '规则会反过来', win: 1100, flip: true }],
+    better: 'high', fmt: s => s + ' 分',
+    hint: L => L.flip ? '盯着上面的规则牌，每 5 题<b>换一次</b>规则！' : '<b>叮</b>就拍，<b>咚</b>别拍（电脑可按空格）',
+    start({ stage, level: L }) {
+      run.forceSound = true;
+      const N = 20, rts = [];
+      let i = 0, correct = 0, pts = 0, early = 0, state = 'demo', tSound = 0, isGo = false, goSound = 'ding';
+      stage.innerHTML = `<div class="rule" id="rule"></div><button class="pad listen" id="pad"><span class="pad-big" id="padBig">👂</span><span class="pad-sub" id="padSub"></span></button>`;
+      const pad = $('#pad'), big = $('#padBig'), sub = $('#padSub'), rule = $('#rule');
+      const ding = () => { tone(1568, .16, 'triangle', .28); tone(2093, .22, 'triangle', .18, .05); };
+      const dong = () => { tone(147, .45, 'sine', .5); tone(110, .45, 'sine', .35); };
+      const showRule = () => { rule.innerHTML = goSound === 'ding' ? '🔔 听到<b>叮</b>才拍' : '🥁 听到<b>咚</b>才拍'; };
+      const set = (c, b, t = '') => { pad.className = 'pad ' + c; big.innerHTML = b; sub.innerHTML = t; };
+      const stats = () => setStats(`第 <b>${Math.max(i, 1)}</b>/${N}`, `<b>${pts}</b> 分`);
+      const end = () => {
+        const avg = rts.length ? Math.round(rts.reduce((a, b) => a + b, 0) / rts.length) + ' 毫秒' : '—', acc = correct / N;
+        finish({ score: pts, big: pts, unit: '分', stars: acc >= .9 ? 3 : acc >= .7 ? 2 : acc >= .5 ? 1 : 0,
+          details: [['答对', `${correct} / ${N}`], ['平均反应', avg], ['抢拍', early + ' 次']] });
+      };
+      const next = () => {
+        if (i >= N) return end();
+        i++; stats();
+        if (L.flip && i > 1 && (i - 1) % 5 === 0) { goSound = goSound === 'ding' ? 'dong' : 'ding'; showRule(); shake(rule); }
+        state = 'wait'; set('listen', '👂', '仔细听…');
+        const id = i;
+        later(() => {
+          const s = Math.random() < .55 ? goSound : (goSound === 'ding' ? 'dong' : 'ding');
+          isGo = s === goSound; s === 'ding' ? ding() : dong(); tSound = now(); state = 'sound';
+          later(() => {
+            if (state !== 'sound' || i !== id) return;
+            state = 'over';
+            if (isGo) { streak = 0; set('wrong', '慢了', '要快点拍'); }
+            else { correct++; pts += 100; reward(); set('right', '✓', '忍住了！'); }
+            stats(); later(next, 750);
+          }, L.win);
+        }, rnd(900, 2300));
+      };
+      const hit = () => {
+        if (state === 'wait') { early++; shake(pad); return; }
+        if (state !== 'sound') return;
+        state = 'over';
+        const rt = now() - tSound;
+        if (isGo) { correct++; rts.push(rt); pts += 100 + Math.round(Math.max(0, L.win - rt) / L.win * 100); reward(); set('right', `${Math.round(rt)}<small>毫秒</small>`, '✓ 拍对了'); }
+        else { streak = 0; set('wrong', '✗', '这个声音不能拍'); }
+        stats(); later(next, 750);
+      };
+      pad.addEventListener('pointerdown', e => { e.preventDefault(); hit(); });
+      run.onKey = e => { if (e.code === 'Space') { e.preventDefault(); hit(); } };
+      showRule(); stats();
+      set('listen', '👂', '先听一听：这是<b>叮</b>');
+      later(ding, 300);
+      later(() => { set('listen', '👂', '这是<b>咚</b>'); dong(); }, 1700);
+      later(() => set('listen', '👂', '准备好了！'), 3100);
+      later(next, 3900);
+    }
+  },
+  {
+    id: 'catch', name: '接水果', icon: '🧺', color: '--sun',
+    skill: '手眼协调 · 预判',
+    how: '点哪条道，篮子就移到哪条道（也可以拖着走）。接住水果，躲开炸弹！40 秒一局。',
+    levels: [
+      { label: '简单', sub: '3 条道 · 没炸弹', lanes: 3, rock: 0, gold: 0, speed: [28, 45], gap: [1100, 750], th: [26, 18] },
+      { label: '标准', sub: '有炸弹 · 金星 +3', lanes: 3, rock: .3, gold: .08, speed: [35, 60], gap: [950, 600], th: [30, 20] },
+      { label: '挑战', sub: '4 条道 · 更快', lanes: 4, rock: .35, gold: .1, speed: [45, 85], gap: [800, 420], th: [38, 24] }],
+    better: 'high', fmt: s => s + ' 分',
+    hint: L => L.rock ? '接水果 <b>+1</b>，金星 <b>+3</b>，接到炸弹 <b>−2</b>' : '点一条道，篮子就过去（电脑可按 ← →）',
+    start({ stage, level: L }) {
+      const DUR = 40000, n = L.lanes, w = 100 / n, FRUITS = ['🍎', '🍌', '🍇', '🍓', '🍊', '🍉', '🍑'];
+      stage.innerHTML = `<div class="sky" id="sky">${Array.from({ length: n - 1 }, (_, k) => `<i class="lane" style="left:${(k + 1) * w}%"></i>`).join('')}<span class="basket" id="basket">🧺</span></div>`;
+      const sky = $('#sky'), basket = $('#basket');
+      let lane = Math.floor(n / 2), items = [], score = 0, got = 0, missed = 0, bombs = 0, nextSpawn = 0, dragging = false;
+      const place = () => { basket.style.left = lane * w + '%'; basket.style.width = w + '%'; };
+      const laneAt = x => { const r = sky.getBoundingClientRect(); return Math.max(0, Math.min(n - 1, Math.floor((x - r.left) / r.width * n))); };
+      place();
+      sky.addEventListener('pointerdown', e => { e.preventDefault(); dragging = true; lane = laneAt(e.clientX); place(); });
+      sky.addEventListener('pointermove', e => { if (dragging) { lane = laneAt(e.clientX); place(); } });
+      ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => sky.addEventListener(ev, () => { dragging = false; }));
+      run.onKey = e => {
+        if (e.key === 'ArrowLeft') { lane = Math.max(0, lane - 1); place(); }
+        else if (e.key === 'ArrowRight') { lane = Math.min(n - 1, lane + 1); place(); }
+      };
+      const t0 = now();
+      let last = t0;
+      loop(() => {
+        const t = now(), dt = Math.min(50, t - last), el = t - t0, p = Math.min(1, el / DUR), left = Math.max(0, DUR - el);
+        last = t;
+        if (t >= nextSpawn) {
+          const r = Math.random(), kind = r < L.rock ? 'bomb' : r < L.rock + L.gold ? 'gold' : 'fruit';
+          const it = { lane: rnd(0, n - 1), y: -6, kind, el: document.createElement('span') };
+          it.el.className = 'item'; it.el.textContent = kind === 'bomb' ? '💣' : kind === 'gold' ? '🌟' : pick(FRUITS);
+          it.el.style.left = it.lane * w + '%'; it.el.style.width = w + '%';
+          sky.appendChild(it.el); items.push(it);
+          nextSpawn = t + (L.gap[0] + (L.gap[1] - L.gap[0]) * p) * (.75 + Math.random() * .5);
+        }
+        const step = (L.speed[0] + (L.speed[1] - L.speed[0]) * p) * dt / 1000;
+        items.forEach(it => {
+          it.y += step; it.el.style.top = it.y + '%';
+          if (it.y >= 86 && it.y <= 95 && it.lane === lane) {
+            const d = it.kind === 'fruit' ? 1 : it.kind === 'gold' ? 3 : -2;
+            if (d > 0) { got++; sfx.ok(); } else { bombs++; sfx.bad(); shake(sky); }
+            score = Math.max(0, score + d);
+            const f = document.createElement('span');
+            f.className = 'float'; f.textContent = d > 0 ? '+' + d : d; f.style.left = (it.lane + .5) * w + '%';
+            sky.appendChild(f); setTimeout(() => f.remove(), 700);
+            it.el.remove(); it.gone = true;
+          } else if (it.y > 104) {
+            if (it.kind === 'fruit') missed++;
+            it.el.remove(); it.gone = true;
+          }
+        });
+        items = items.filter(it => !it.gone);
+        setStats(`⏱ <b>${Math.ceil(left / 1000)}</b> 秒`, `<b>${score}</b> 分`);
+        if (left <= 0) {
+          const details = [['接住', got + ' 个'], ['漏掉水果', missed + ' 个']];
+          if (L.rock) details.push(['接到炸弹', bombs + ' 次']);
+          finish({ score, big: score, unit: '分', stars: score >= L.th[0] ? 3 : score >= L.th[1] ? 2 : score >= L.th[1] / 2 ? 1 : 0, details });
+          return false;
+        }
+      });
+    }
+  },
+  {
+    id: 'freeze', name: '木头人', icon: '🚦', color: '--red', skill: '急停 · 控制力',
+    how: '绿灯时按住按钮往前走，一变红灯"木头人"就马上松手！松慢了会被抓，退后一段。',
+    levels: [
+      { label: '简单', sub: '松手时间宽', grace: 650, go: [1800, 3800], stop: [1300, 2200] },
+      { label: '标准', sub: '音乐会骗人', grace: 420, go: [1300, 3200], stop: [1200, 2000], fake: true },
+      { label: '挑战', sub: '红灯来得突然', grace: 260, go: [700, 2400], stop: [1000, 1800], fake: true }],
+    better: 'low', fmt: s => s.toFixed(1) + ' 秒',
+    hint: L => L.fake ? '要<b>看灯</b>！音乐停了不一定是红灯（电脑可按住空格）' : '绿灯按住走，<b>红灯马上松手</b>（电脑可按住空格）',
+    start({ stage, level: L }) {
+      stage.innerHTML = `<div class="light go" id="light">走！</div>
+        <div class="track" id="track"><span class="flagend">🏁</span><span class="runner" id="runner">🏃</span></div>
+        <button class="hold" id="hold">按住 走路</button>`;
+      const light = $('#light'), runner = $('#runner'), hold = $('#hold'), track = $('#track');
+      const RATE = 100 / 11000, MELODY = [523, 587, 659, 523, 659, 784, 659, 587];
+      let holding = false, phase = 'go', phaseEnd = 0, stopAt = 0, prog = 0, caught = 0, caughtThis = false, fakeUntil = 0, note = 0;
+      const setHold = v => { holding = v; hold.classList.toggle('on', v); };
+      hold.addEventListener('pointerdown', e => { e.preventDefault(); try { hold.setPointerCapture(e.pointerId); } catch (err) {} setHold(true); });
+      ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => hold.addEventListener(ev, () => setHold(false)));
+      hold.addEventListener('contextmenu', e => e.preventDefault());
+      run.onKey = e => { if (e.code === 'Space') { e.preventDefault(); setHold(true); } };
+      run.onKeyUp = e => { if (e.code === 'Space') setHold(false); };
+      const music = () => { if (phase === 'go' && now() > fakeUntil) tone(MELODY[note++ % MELODY.length], .16, 'triangle', .1); later(music, 230); };
+      const toGo = () => {
+        phase = 'go'; light.className = 'light go'; light.textContent = '走！';
+        const len = rnd(L.go[0], L.go[1]); phaseEnd = now() + len;
+        if (L.fake && len > 1200 && Math.random() < .5) later(() => { if (phase === 'go') fakeUntil = now() + 700; }, rnd(300, len - 900));
+      };
+      const toStop = () => {
+        phase = 'stop'; stopAt = now(); caughtThis = false;
+        light.className = 'light stop'; light.textContent = '木头人！';
+        phaseEnd = now() + rnd(L.stop[0], L.stop[1]);
+      };
+      toGo(); music();
+      const t0 = now();
+      let last = t0;
+      loop(() => {
+        const t = now(), dt = Math.min(50, t - last);
+        last = t;
+        if (t >= phaseEnd) phase === 'go' ? toStop() : toGo();
+        if (phase === 'go' && holding) {
+          const before = prog; prog = Math.min(100, prog + RATE * dt);
+          if (Math.floor(before / 25) < Math.floor(prog / 25) && prog < 100) { sparkle(); toast(`⭐ 走了 ${Math.floor(prog / 25) * 25}%`); }
+        }
+        if (phase === 'stop' && holding && !caughtThis && t - stopAt > L.grace) {
+          caughtThis = true; caught++; prog = Math.max(0, prog - 15);
+          sfx.bad(); shake(track); light.textContent = '抓到啦！';
+        }
+        runner.style.left = (7 + prog * .8) + '%';
+        setStats(`⏱ <b>${((t - t0) / 1000).toFixed(1)}</b>`, `被抓 <b>${caught}</b>`);
+        if (prog >= 100) {
+          const sec = (t - t0) / 1000, total = +(sec + caught * 3).toFixed(1);
+          finish({ score: total, big: total.toFixed(1), unit: '秒', stars: caught === 0 ? 3 : caught <= 2 ? 2 : 1,
+            details: [['走路用时', sec.toFixed(1) + ' 秒'], ['被抓到', `${caught} 次（每次 +3 秒）`]] });
+          return false;
+        }
+      });
+    }
+  }
+];
+
+/* ---------- screens ---------- */
+const starKey = (id, li) => `stars_${id}_${li}`;
+const MAX_STARS = GAMES.reduce((a, g) => a + g.levels.length * 3, 0);
+const TITLES = [[0, '🌱', '星星新手'], [10, '✨', '小火花'], [30, '⚡', '小闪电'], [60, '🌩️', '雷电侠'], [90, '👑', '闪电大王'], [MAX_STARS, '🌟', '满天星']];
+const gameStars = g => g.levels.reduce((a, _, li) => a + store.get(starKey(g.id, li), 0), 0);
+const totalStars = () => GAMES.reduce((a, g) => a + gameStars(g), 0);
+const titleOf = n => TITLES.filter(t => n >= t[0]).pop();
+const starRow = (n, max = 3) => '★'.repeat(n) + '☆'.repeat(max - n);
+function renderJar() {
+  const n = totalStars(), t = titleOf(n), nx = TITLES.find(x => x[0] > n);
+  $('#jar').innerHTML = `<div class="jar-count">⭐ ${n}<small> / ${MAX_STARS}</small></div>
+    <div class="jar-main"><div class="jar-title">${t[1]} ${t[2]}</div>
+    <div class="jar-bar"><i style="width:${(n / MAX_STARS * 100).toFixed(1)}%"></i></div>
+    <div class="jar-next">${nx ? `再拿 ${nx[0] - n} 颗星，升级为「${nx[2]}」${nx[1]}` : '全部星星都拿到了，太厉害了！'} · 每关最多 3 颗</div></div>`;
+}
+const home = $('#home'), play = $('#play'), stage = $('#stage'), ov = $('#ov'), panel = $('#panel');
+let cur = null, curLevel = 0;
+
+function renderHome() {
+  $('#cards').innerHTML = GAMES.map(g => {
+    const li = store.get('lv_' + g.id, 0), b = store.get(bestKey(g.id, li));
+    return `<button class="card" data-id="${g.id}"><span class="c-icon" style="--c:var(${g.color})">${g.icon}</span>
+      <span class="c-name">${g.name}</span><span class="c-skill">${g.skill}</span>
+      <span class="c-stars">⭐ ${gameStars(g)} / ${g.levels.length * 3}</span>
+      <span class="c-best">${b != null ? `最好 ${g.fmt(b)} · ${g.levels[li].label}` : '还没玩过'}</span></button>`;
+  }).join('');
+  renderJar();
+  $('#mute').textContent = muted ? '🔇 声音关' : '🔊 声音开';
+}
+
+function openGame(id) {
+  cur = GAMES.find(g => g.id === id);
+  curLevel = Math.min(store.get('lv_' + id, 0), cur.levels.length - 1);
+  $('#gTitle').textContent = cur.name;
+  stage.innerHTML = ''; setStats('', ''); $('#hint').innerHTML = '';
+  home.hidden = true; play.hidden = false;
+  showIntro();
+}
+
+function showIntro() {
+  const g = cur, b = store.get(bestKey(g.id, curLevel));
+  panel.className = 'panel';
+  panel.innerHTML = `<div class="p-icon" style="--c:var(${g.color})">${g.icon}</div><h2>${g.name}</h2>
+    <p class="how">${g.how}</p><span class="chip">练：${g.skill}</span>
+    <div class="levels">${g.levels.map((l, i) => `<button class="lv" data-i="${i}" aria-pressed="${i === curLevel}"><b>${l.label}</b><span>${l.sub}</span><em aria-label="${store.get(starKey(g.id, i), 0)} 颗星">${starRow(store.get(starKey(g.id, i), 0))}</em></button>`).join('')}</div>
+    <p class="best">${b != null ? `这一关最好成绩：${g.fmt(b)}` : '这一关还没有成绩'}</p>
+    <div class="row"><button class="btn" id="introBack">返回</button><button class="btn go" id="goBtn">开始！</button></div>`;
+  ov.hidden = false;
+  panel.querySelectorAll('.lv').forEach(el => el.onclick = () => { curLevel = +el.dataset.i; store.set('lv_' + g.id, curLevel); showIntro(); });
+  $('#goBtn').onclick = startGame;
+  $('#introBack').onclick = goHome;
+  $('#goBtn').focus({ preventScroll: true });
+}
+
+function startGame() {
+  ensureAudio();
+  newRun();
+  streak = 0;
+  stage.innerHTML = ''; setStats('', '');
+  const L = cur.levels[curLevel];
+  $('#hint').innerHTML = cur.hint(L);
+  panel.className = 'panel count'; ov.hidden = false;
+  const seq = ['3', '2', '1', '开始！'];
+  let k = 0;
+  const step = () => {
+    if (k < seq.length) {
+      panel.innerHTML = `<div class="cd">${seq[k]}</div>`;
+      k < 3 ? sfx.tick() : sfx.go();
+      k++;
+      later(step, k === seq.length ? 450 : 650);
+    } else {
+      ov.hidden = true;
+      cur.start({ stage, level: L });
+    }
+  };
+  step();
+}
+
+function finish(r) {
+  const g = cur, key = bestKey(g.id, curLevel), prev = store.get(key);
+  stopRun();
+  const better = prev == null || (g.better === 'low' ? r.score < prev : r.score > prev);
+  if (better) store.set(key, r.score);
+  const sk = starKey(g.id, curLevel), oldStars = store.get(sk, 0), oldTotal = totalStars();
+  const gained = Math.max(0, r.stars - oldStars);
+  if (gained) store.set(sk, r.stars);
+  const newTitle = titleOf(oldTotal + gained), levelUp = newTitle !== titleOf(oldTotal);
+  sfx.win();
+  if (r.stars === 3 || gained || (better && prev != null)) confetti(r.stars === 3 ? 40 : 24);
+  const details = r.details.slice();
+  if (!better) details.push(['最好成绩', g.fmt(prev)]);
+  panel.className = 'panel result';
+  panel.innerHTML = `<div class="stars">${[1, 2, 3].map(i => `<span class="${i <= r.stars ? 'on' : ''}" style="--d:${i * 140}ms">★</span>`).join('')}</div>
+    <h2>${['再试一次吧！', '继续加油！', '真不错！', '闪电高手！'][r.stars]}</h2>
+    <div class="big-num">${r.big}<small>${r.unit}</small></div>
+    ${r.tag ? `<div class="tag">${r.tag}</div>` : ''}
+    ${better ? `<div class="newbest">${prev == null ? '第一个成绩！' : '新纪录！'}</div>` : ''}
+    ${gained ? `<div class="gain">+${gained} 颗星星 ⭐ 共 ${oldTotal + gained} 颗</div>` : ''}
+    ${levelUp ? `<div class="levelup">升级啦！你现在是「${newTitle[2]}」${newTitle[1]}</div>` : ''}
+    <dl class="details">${details.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
+    <div class="row"><button class="btn" id="toHome">换个游戏</button><button class="btn go" id="again">再来一次</button></div>`;
+  ov.hidden = false;
+  $('#toHome').onclick = goHome;
+  $('#again').onclick = startGame;
+}
+
+function goHome() {
+  stopRun();
+  ov.hidden = true; play.hidden = true; home.hidden = false;
+  stage.innerHTML = '';
+  renderHome();
+}
+
+$('#cards').addEventListener('click', e => { const c = e.target.closest('.card'); if (c) openGame(c.dataset.id); });
+$('#back').onclick = goHome;
+$('#mute').onclick = () => { muted = !muted; store.set('muted', muted); renderHome(); if (!muted) sfx.ok(); };
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !play.hidden) return goHome();
+  if (run && run.onKey && ov.hidden) run.onKey(e);
+});
+document.addEventListener('keyup', e => { if (run && run.onKeyUp) run.onKeyUp(e); });
+renderHome();
+</script>

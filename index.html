@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f8f2" />
+    <meta
+      name="description"
+      content="小小游乐岛，14 款给好奇小朋友的浏览器游戏。解谜、探险、下棋，点开就能玩。"
+    />
+    <title>小小游乐岛 · 让好奇心自由生长</title>
+    <link rel="icon" href="/portal/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/portal/style.css" />
+    <script type="module" src="/portal/home.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#games">跳到游戏列表</a>
+    <header class="header wrap">
+      <a class="brand" href="/" aria-label="小小游乐岛首页"
+        ><span class="brand-icon">✳</span
+        ><span>小小游乐岛<small>LITTLE PLAY ISLAND</small></span></a
+      >
+      <nav aria-label="主导航">
+        <a class="nav-active" href="#games">发现游戏</a
+        ><a href="#about">关于小岛</a>
+      </nav>
+      <span class="header-note"><span></span>好奇心，已就位</span>
+    </header>
+    <main class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>✦</span> 给每一个爱探索的小朋友</p>
+          <h1 id="hero-title">
+            小小的你，<br />大大的<span class="curiosity"
+              >好奇心<svg viewBox="0 0 260 16" aria-hidden="true">
+                <path d="M4 11 Q130 -2 256 8" /></svg></span
+            >。
+          </h1>
+          <p class="hero-description">
+            在魔方里找规律，在星球间探险。<br />选一个喜欢的游戏，让今天多一点新发现。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#games">开始探索 <span>↗</span></a
+            ><button class="random-button" id="random-game">
+              <span aria-hidden="true">⚄</span> 随便玩一个
+            </button>
+          </div>
+          <div class="hero-meta">
+            <span class="mini-faces" aria-hidden="true"
+              ><i>☺</i><i>☺</i><i>☺</i></span
+            >
+            <p><strong>14 个小世界</strong><br />不用下载，点开就玩</p>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <span class="spark spark-one">✦</span
+          ><span class="spark spark-two">✳</span
+          ><span class="spark spark-three">✧</span>
+          <div class="art-sticker">今天，也有新发现！<span>↙</span></div>
+          <div class="hero-tile tile-cube" data-art="cube">
+            <span class="tile-caption">转动小脑袋</span>
+          </div>
+          <div class="hero-tile tile-space" data-art="space">
+            <span class="tile-caption">宇宙，我来啦！</span>
+          </div>
+          <div class="hero-tile tile-go" data-art="go">
+            <span class="tile-caption">下一步，有想法</span>
+          </div>
+          <div class="floating-badge"><span>✓</span> 快乐探索中</div>
+        </div>
+      </section>
+      <section class="collection" id="games" aria-labelledby="games-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">PICK YOUR NEXT ADVENTURE</p>
+            <h2 id="games-title">
+              今天，想玩点什么？<span class="count-badge">14</span>
+            </h2>
+          </div>
+          <label class="search"
+            ><svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="m16 16 5 5" /></svg
+            ><input
+              id="search"
+              type="search"
+              placeholder="找找你喜欢的游戏"
+              aria-label="搜索游戏"
+              autocomplete="off"
+          /></label>
+        </div>
+        <div class="filter-row">
+          <div class="filters" role="group" aria-label="游戏分类">
+            <button
+              class="filter active"
+              data-category="全部游戏"
+              aria-pressed="true"
+            >
+              全部游戏 <span>14</span></button
+            ><button
+              class="filter"
+              data-category="益智解谜"
+              aria-pressed="false"
+            >
+              ✳ 益智解谜</button
+            ><button
+              class="filter"
+              data-category="探索学习"
+              aria-pressed="false"
+            >
+              ✧ 探索学习</button
+            ><button
+              class="filter"
+              data-category="动作冒险"
+              aria-pressed="false"
+            >
+              ϟ 动作冒险</button
+            ><button
+              class="filter"
+              data-category="棋盘对战"
+              aria-pressed="false"
+            >
+              ▦ 棋盘对战
+            </button>
+          </div>
+          <span class="collection-note">每次玩一点，每天进步一点</span>
+        </div>
+        <p
+          class="sr-only"
+          id="result-count"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <div class="game-grid" id="game-grid"></div>
+        <div class="empty" id="empty" hidden>
+          <span aria-hidden="true">⌕</span>
+          <h3>还没找到这个小游戏</h3>
+          <p>试试“魔方”“坦克”或“拼音”，也可以看看全部游戏。</p>
+          <button id="reset-search" class="primary-button">查看全部游戏</button>
+        </div>
+        <noscript><p>请开启 JavaScript，以查看和运行游戏。</p></noscript>
+      </section>
+      <section class="about" id="about">
+        <span class="about-flower" aria-hidden="true">✳</span>
+        <div>
+          <h2>玩得开心，也让好奇心长大。</h2>
+          <p>
+            这里有解谜的成就感，也有探索的新发现。选喜欢的，慢慢来。<br />玩一会儿，记得让眼睛休息一下，也去看看窗外的世界。
+          </p>
+        </div>
+        <span class="about-note"
+          >小小探索 · 大大成长 <span aria-hidden="true">↗</span></span
+        >
+      </section>
+    </main>
+    <footer class="footer wrap">
+      <a class="footer-brand" href="/">✳ 小小游乐岛</a>
+      <p>给每一颗好奇的小脑袋。</p>
+      <a href="#hero-title">回到顶部 ↑</a>
+    </footer>
+  </body>
+</html>

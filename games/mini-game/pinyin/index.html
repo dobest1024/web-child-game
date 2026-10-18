@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>拼音小火车</title>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fff6e8;
+  --sun: #ffb830;
+  --coral: #ff6b6b;
+  --mint: #4ecdc4;
+  --sky: #45a3e5;
+  --grape: #9b6bdf;
+  --leaf: #7bc950;
+  --ink: #4a3728;
+  --shadow: 0 6px 0 rgba(74, 55, 40, .18);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: 'ZCOOL KuaiLe', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255, 184, 48, .15) 0 120px, transparent 120px),
+    radial-gradient(circle at 85% 15%, rgba(78, 205, 196, .15) 0 90px, transparent 90px),
+    radial-gradient(circle at 80% 85%, rgba(255, 107, 107, .12) 0 140px, transparent 140px),
+    radial-gradient(circle at 10% 80%, rgba(155, 107, 223, .12) 0 100px, transparent 100px);
+  user-select: none;
+}
+.screen { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; padding: 20px; overflow-y: auto; }
+.screen.active { display: flex; }
+
+/* ---------- 首页 ---------- */
+#home h1 {
+  font-size: clamp(40px, 9vw, 72px);
+  margin-top: 4vh;
+  color: var(--coral);
+  text-shadow: 3px 3px 0 #ffd9a0;
+  animation: bob 2.5s ease-in-out infinite;
+}
+@keyframes bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+#home .sub { font-size: 20px; margin: 6px 0 10px; color: #a08868; }
+#starTotal { font-size: 24px; background: #fff; border-radius: 30px; padding: 6px 22px; box-shadow: var(--shadow); margin-bottom: 18px; }
+.levels { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; max-width: 760px; }
+.level-btn {
+  width: 200px; min-height: 130px; border: none; border-radius: 24px;
+  font-family: inherit; font-size: 22px; color: #fff; cursor: pointer;
+  box-shadow: var(--shadow); padding: 14px; position: relative;
+  transition: transform .15s;
+}
+.level-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(74,55,40,.18); }
+.level-btn .num { font-size: 15px; opacity: .85; display: block; }
+.level-btn .stars { font-size: 18px; margin-top: 6px; display: block; letter-spacing: 2px; }
+.level-btn.locked { background: #cfc4b5 !important; cursor: default; }
+.level-btn.locked::after { content: "🔒"; font-size: 30px; position: absolute; right: 12px; bottom: 10px; }
+
+/* ---------- 游戏页 ---------- */
+#game { justify-content: flex-start; }
+.topbar { width: 100%; max-width: 700px; display: flex; align-items: center; justify-content: space-between; }
+.back-btn {
+  border: none; background: #fff; border-radius: 50%; width: 56px; height: 56px;
+  font-size: 26px; cursor: pointer; box-shadow: var(--shadow); font-family: inherit;
+}
+.dots { display: flex; gap: 10px; }
+.dot { width: 18px; height: 18px; border-radius: 50%; background: #e3d5c0; transition: background .3s, transform .3s; }
+.dot.done { background: var(--sun); transform: scale(1.15); }
+#prompt { font-size: 24px; margin: 3vh 0 1vh; color: #a08868; text-align: center; }
+#speakBtn {
+  border: none; cursor: pointer; font-family: inherit;
+  width: 110px; height: 110px; border-radius: 50%; font-size: 52px;
+  background: var(--sun); color: #fff; box-shadow: var(--shadow);
+  margin-bottom: 3vh; transition: transform .15s;
+}
+#speakBtn:active { transform: scale(.93); }
+#speakBtn.talking { animation: pulse .6s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { transform: scale(1) } 50% { transform: scale(1.08) } }
+#options { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; max-width: 720px; }
+.bubble {
+  border: none; cursor: pointer; font-family: inherit;
+  width: clamp(110px, 24vw, 160px); height: clamp(110px, 24vw, 160px);
+  border-radius: 50%; font-size: clamp(40px, 9vw, 60px); color: #fff;
+  box-shadow: var(--shadow); transition: transform .15s;
+  animation: float 3s ease-in-out infinite;
+}
+.bubble:nth-child(2) { animation-delay: .5s; }
+.bubble:nth-child(3) { animation-delay: 1s; }
+.bubble:nth-child(4) { animation-delay: 1.5s; }
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+.bubble:active { transform: scale(.93); }
+.bubble.pop { animation: pop .45s forwards; }
+@keyframes pop {
+  40% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+.bubble.shake { animation: shake .4s; }
+@keyframes shake {
+  0%,100% { transform: translateX(0) } 25% { transform: translateX(-12px) } 75% { transform: translateX(12px) }
+}
+#feedback { font-size: 30px; height: 44px; margin-top: 3vh; color: var(--coral); }
+
+/* ---------- 胜利页 ---------- */
+#win { justify-content: center; }
+#win .big { font-size: 50px; color: var(--coral); }
+#winStars { font-size: 64px; margin: 20px 0; letter-spacing: 8px; }
+#winStars span { display: inline-block; animation: starIn .5s backwards; }
+#winStars span:nth-child(2) { animation-delay: .3s; }
+#winStars span:nth-child(3) { animation-delay: .6s; }
+@keyframes starIn { from { transform: scale(0) rotate(-180deg); } to { transform: scale(1) rotate(0); } }
+.win-btn {
+  border: none; font-family: inherit; font-size: 26px; color: #fff;
+  background: var(--mint); border-radius: 30px; padding: 14px 44px;
+  cursor: pointer; box-shadow: var(--shadow); margin: 8px;
+}
+.confetti { position: fixed; top: -20px; font-size: 24px; animation: fall linear forwards; pointer-events: none; z-index: 99; }
+@keyframes fall { to { transform: translateY(110vh) rotate(720deg); } }
+</style>
+</head>
+<body>
+
+<!-- 首页 -->
+<div id="home" class="screen active">
+  <h1>🚂 拼音小火车</h1>
+  <div class="sub">点喇叭听一听，点泡泡选一选</div>
+  <div id="starTotal">⭐ 0</div>
+  <div class="levels" id="levels"></div>
+</div>
+
+<!-- 游戏页 -->
+<div id="game" class="screen">
+  <div class="topbar">
+    <button class="back-btn" onclick="showHome()">🏠</button>
+    <div class="dots" id="dots"></div>
+    <div style="width:56px"></div>
+  </div>
+  <div id="prompt">听一听，它是谁？</div>
+  <button id="speakBtn" onclick="speakCurrent()">🔊</button>
+  <div id="options"></div>
+  <div id="feedback"></div>
+</div>
+
+<!-- 胜利页 -->
+<div id="win" class="screen">
+  <div class="big">🎉 太棒了！</div>
+  <div id="winStars"></div>
+  <div>
+    <button class="win-btn" onclick="showHome()">回家</button>
+    <button class="win-btn" style="background:var(--sun)" id="nextBtn" onclick="nextLevel()">下一关 ▶</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+/* ================= 关卡数据 =================
+   say: 给 TTS 念的同音汉字（中文 TTS 直接念字母会念成英文）
+   show: 屏幕上显示的拼音字母 */
+const LEVELS = [
+  { name: '单韵母', color: 'var(--coral)', mode: 'pick',
+    items: [
+      { show: 'a', say: '啊' }, { show: 'o', say: '喔' }, { show: 'e', say: '鹅' },
+      { show: 'i', say: '衣' }, { show: 'u', say: '乌' }, { show: 'ü', say: '迂' },
+    ]},
+  { name: '声母一', color: 'var(--mint)', mode: 'pick',
+    items: [
+      { show: 'b', say: '玻' }, { show: 'p', say: '坡' }, { show: 'm', say: '摸' }, { show: 'f', say: '佛' },
+      { show: 'd', say: '得' }, { show: 't', say: '特' }, { show: 'n', say: '讷' }, { show: 'l', say: '勒' },
+    ]},
+  { name: '声母二', color: 'var(--sky)', mode: 'pick',
+    items: [
+      { show: 'g', say: '哥' }, { show: 'k', say: '科' }, { show: 'h', say: '喝' },
+      { show: 'j', say: '基' }, { show: 'q', say: '欺' }, { show: 'x', say: '希' },
+    ]},
+  { name: '声母三', color: 'var(--grape)', mode: 'pick',
+    items: [
+      { show: 'z', say: '资' }, { show: 'c', say: '雌' }, { show: 's', say: '思' },
+      { show: 'zh', say: '知' }, { show: 'ch', say: '吃' }, { show: 'sh', say: '诗' }, { show: 'r', say: '日' },
+    ]},
+  { name: '四个声调', color: 'var(--sun)', mode: 'tone',
+    groups: [
+      [ { show: 'mā', say: '妈' }, { show: 'má', say: '麻' }, { show: 'mǎ', say: '马' }, { show: 'mà', say: '骂' } ],
+      [ { show: 'yī', say: '医' }, { show: 'yí', say: '姨' }, { show: 'yǐ', say: '椅' }, { show: 'yì', say: '亿' } ],
+      [ { show: 'wū', say: '屋' }, { show: 'wú', say: '无' }, { show: 'wǔ', say: '五' }, { show: 'wù', say: '雾' } ],
+      [ { show: 'bā', say: '八' }, { show: 'bá', say: '拔' }, { show: 'bǎ', say: '把' }, { show: 'bà', say: '爸' } ],
+    ]},
+  { name: '拼一拼', color: 'var(--leaf)', mode: 'pick',
+    items: [
+      { show: 'bā', say: '八' }, { show: 'mǎ', say: '马' }, { show: 'dà', say: '大' }, { show: 'tǔ', say: '土' },
+      { show: 'mǐ', say: '米' }, { show: 'jī', say: '鸡' }, { show: 'qī', say: '七' }, { show: 'hé', say: '河' },
+    ]},
+];
+const QUESTIONS_PER_LEVEL = 5;
+const PRAISES = ['真棒', '太好了', '答对了', '你真聪明'];
+
+/* ================= 进度 ================= */
+let progress = JSON.parse(localStorage.getItem('pinyinProgress') || '{}'); // { 关卡序号: 星数 }
+function saveProgress() { localStorage.setItem('pinyinProgress', JSON.stringify(progress)); }
+function totalStars() { return Object.values(progress).reduce((a, b) => a + b, 0); }
+
+/* ================= 语音 ================= */
+let zhVoice = null;
+function pickVoice() {
+  const voices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('zh'));
+  zhVoice = voices.find(v => /ting|tian|xiao|mei/i.test(v.name)) || voices[0] || null;
+}
+speechSynthesis.onvoiceschanged = pickVoice;
+pickVoice();
+
+/* 注意：游戏流程不依赖语音事件推进——Chrome 的 speechSynthesis
+   在 cancel 后立即 speak 会偶发丢失 onend，导致卡关 */
+function speak(text, rate = 0.75) {
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'zh-CN';
+  if (zhVoice) u.voice = zhVoice;
+  u.rate = rate;
+  const btn = document.getElementById('speakBtn');
+  btn.classList.add('talking');
+  const stop = () => btn.classList.remove('talking');
+  u.onend = u.onerror = stop;
+  setTimeout(stop, 5000);
+  setTimeout(() => speechSynthesis.speak(u), 60);
+}
+
+/* ================= 游戏状态 ================= */
+let currentLevel = 0;
+let questions = [];   // 本关题目（pick: item 数组；tone: group 数组）
+let qIndex = 0;
+let wrongCount = 0;
+let answering = true;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ================= 页面切换 ================= */
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function showHome() {
+  speechSynthesis.cancel();
+  document.getElementById('starTotal').textContent = '⭐ ' + totalStars();
+  const box = document.getElementById('levels');
+  box.innerHTML = '';
+  LEVELS.forEach((lv, i) => {
+    const unlocked = i === 0 || progress[i - 1] > 0;
+    const btn = document.createElement('button');
+    btn.className = 'level-btn' + (unlocked ? '' : ' locked');
+    btn.style.background = lv.color;
+    const stars = progress[i] || 0;
+    btn.innerHTML = `<span class="num">第 ${i + 1} 关</span>${lv.name}
+      <span class="stars">${'⭐'.repeat(stars) || (unlocked ? '？' : '')}</span>`;
+    if (unlocked) btn.onclick = () => startLevel(i);
+    box.appendChild(btn);
+  });
+  show('home');
+}
+
+/* ================= 关卡流程 ================= */
+function startLevel(i) {
+  currentLevel = i;
+  const lv = LEVELS[i];
+  if (lv.mode === 'tone') {
+    questions = shuffle(lv.groups).slice(0, QUESTIONS_PER_LEVEL)
+      .concat(shuffle(lv.groups)).slice(0, QUESTIONS_PER_LEVEL);
+  } else {
+    questions = shuffle(lv.items).slice(0, QUESTIONS_PER_LEVEL);
+  }
+  qIndex = 0;
+  wrongCount = 0;
+  show('game');
+  renderQuestion();
+}
+
+function currentTarget() {
+  const q = questions[qIndex];
+  if (LEVELS[currentLevel].mode === 'tone') return q.target;
+  return q;
+}
+
+function renderQuestion() {
+  answering = true;
+  document.getElementById('feedback').textContent = '';
+  const dots = document.getElementById('dots');
+  dots.innerHTML = '';
+  for (let i = 0; i < questions.length; i++) {
+    dots.innerHTML += `<div class="dot${i < qIndex ? ' done' : ''}"></div>`;
+  }
+
+  const lv = LEVELS[currentLevel];
+  let options;
+  if (lv.mode === 'tone') {
+    const group = questions[qIndex];
+    questions[qIndex] = { target: group[Math.floor(Math.random() * 4)], options: group };
+    options = questions[qIndex].options; // 四声按顺序显示，帮助孩子对照调号
+  } else {
+    const target = questions[qIndex];
+    const others = shuffle(lv.items.filter(it => it.show !== target.show)).slice(0, 2);
+    options = shuffle([target, ...others]);
+  }
+
+  const box = document.getElementById('options');
+  box.innerHTML = '';
+  options.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'bubble';
+    b.style.background = lv.color;
+    b.textContent = opt.show;
+    b.onclick = () => choose(b, opt);
+    box.appendChild(b);
+  });
+
+  setTimeout(speakCurrent, 400);
+}
+
+function speakCurrent() {
+  speak(currentTarget().say);
+}
+
+function choose(btn, opt) {
+  if (!answering) return;
+  if (opt.show === currentTarget().show) {
+    answering = false;
+    btn.classList.add('pop');
+    confettiBurst(8);
+    speak(PRAISES[Math.floor(Math.random() * PRAISES.length)], 1);
+    setTimeout(() => {
+      qIndex++;
+      if (qIndex >= questions.length) finishLevel();
+      else renderQuestion();
+    }, 1400);
+  } else {
+    wrongCount++;
+    btn.classList.add('shake');
+    setTimeout(() => btn.classList.remove('shake'), 450);
+    document.getElementById('feedback').textContent = '再听一听 👂';
+    speak('再听一听。' + currentTarget().say, 0.7);
+  }
+}
+
+function finishLevel() {
+  const stars = wrongCount === 0 ? 3 : wrongCount <= 2 ? 2 : 1;
+  progress[currentLevel] = Math.max(progress[currentLevel] || 0, stars);
+  saveProgress();
+  document.getElementById('winStars').innerHTML =
+    Array.from({ length: stars }, () => '<span>⭐</span>').join('');
+  document.getElementById('nextBtn').style.display =
+    currentLevel + 1 < LEVELS.length ? '' : 'none';
+  show('win');
+  confettiBurst(30);
+  speak('太棒了！你得到了' + stars + '颗星星！', 0.9);
+}
+
+function nextLevel() {
+  startLevel(currentLevel + 1);
+}
+
+/* ================= 彩带 ================= */
+const CONFETTI = ['🎈', '⭐', '🌸', '🎀', '✨'];
+function confettiBurst(n) {
+  for (let i = 0; i < n; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti';
+    el.textContent = CONFETTI[Math.floor(Math.random() * CONFETTI.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = 1.5 + Math.random() * 1.5 + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3200);
+  }
+}
+
+showHome();
+</script>
+</body>
+</html>

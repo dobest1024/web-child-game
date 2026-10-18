@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>魔方小老师 🧊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#33302e;
+  --cream:#fff7e6;
+  --red:#ff5a5f;
+  --orange:#ff9f1c;
+  --yellow:#ffd500;
+  --green:#2ec463;
+  --blue:#3a86ff;
+  --pink:#ff70a6;
+  --purple:#9b5de5;
+  --card-shadow:6px 6px 0 rgba(51,48,46,.18);
+  --font:'ZCOOL KuaiLe','PingFang SC','Comic Sans MS',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--cream);
+  background-image:
+    radial-gradient(rgba(255,159,28,.16) 3px, transparent 3px),
+    radial-gradient(rgba(58,134,255,.12) 3px, transparent 3px);
+  background-size:64px 64px,64px 64px;
+  background-position:0 0,32px 32px;
+  min-height:100vh;
+  padding:18px;
+}
+header{text-align:center;margin-bottom:18px}
+h1{font-size:clamp(30px,5vw,48px);letter-spacing:4px}
+h1 .r1{color:var(--red)} h1 .r2{color:var(--orange)} h1 .r3{color:var(--green)}
+h1 .r4{color:var(--blue)} h1 .r5{color:var(--purple)}
+header p{font-size:18px;opacity:.75;margin-top:4px}
+
+.layout{
+  display:grid;
+  grid-template-columns:240px minmax(0,1fr);
+  gap:18px;
+  max-width:1100px;
+  margin:0 auto;
+  align-items:start;
+}
+@media (max-width:820px){.layout{grid-template-columns:1fr}}
+
+/* ---------- 步骤列表 ---------- */
+.steps{display:flex;flex-direction:column;gap:10px}
+@media (max-width:820px){.steps{flex-direction:row;flex-wrap:wrap}}
+.step-btn{
+  font-family:var(--font);
+  display:flex;align-items:center;gap:10px;
+  border:3px solid var(--ink);
+  border-radius:18px;
+  background:#fff;
+  padding:10px 14px;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:4px 4px 0 rgba(51,48,46,.18);
+  transition:transform .1s, box-shadow .1s;
+  text-align:left;
+}
+.step-btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 rgba(51,48,46,.22)}
+.step-btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 rgba(51,48,46,.2)}
+.step-btn .num{
+  flex:none;width:32px;height:32px;border-radius:50%;
+  border:3px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;background:var(--yellow);
+}
+.step-btn.active{background:var(--yellow)}
+.step-btn.active .num{background:#fff}
+.step-btn .star{margin-left:auto;font-size:18px}
+
+/* ---------- 舞台 ---------- */
+.stage-card,.lesson-card{
+  background:#fff;
+  border:3px solid var(--ink);
+  border-radius:26px;
+  box-shadow:var(--card-shadow);
+  padding:20px;
+}
+.stage-card{margin-bottom:18px}
+#banner{
+  text-align:center;
+  font-size:19px;
+  min-height:28px;
+  margin-bottom:4px;
+  color:var(--purple);
+}
+.scene{
+  height:300px;
+  display:flex;align-items:center;justify-content:center;
+  perspective:900px;
+  cursor:grab;
+  touch-action:none;
+  user-select:none;
+}
+.scene.grabbing{cursor:grabbing}
+.scene.grabbing .bob{animation-play-state:paused}
+#cube{transition:none}
+.scene.wiggle{animation:wiggle .4s}
+@keyframes wiggle{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-10px)}
+  50%{transform:translateX(10px)}
+  75%{transform:translateX(-6px)}
+}
+.bob{animation:bob 4s ease-in-out infinite;transform-style:preserve-3d}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+#cube{
+  width:0;height:0;
+  transform-style:preserve-3d;
+  transform:rotateX(-28deg) rotateY(-32deg);
+}
+#pivot{position:absolute;transform-style:preserve-3d}
+.cubie{position:absolute;width:0;height:0;transform-style:preserve-3d}
+.face{
+  position:absolute;
+  width:56px;height:56px;
+  margin-left:-28px;margin-top:-28px;
+  border-radius:10px;
+  border:3px solid #221f1d;
+  backface-visibility:hidden;
+}
+
+/* ---------- 转一转按钮 ---------- */
+.pad{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.move-btn,.act-btn{
+  font-family:var(--font);
+  border:3px solid var(--ink);
+  border-radius:14px;
+  background:#fff;
+  font-size:17px;
+  padding:8px 12px;
+  cursor:pointer;
+  box-shadow:3px 3px 0 rgba(51,48,46,.18);
+}
+.move-btn:active,.act-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(51,48,46,.2)}
+.act-btn{background:var(--pink);color:#fff}
+.act-btn.calm{background:var(--blue)}
+
+/* ---------- 课程卡 ---------- */
+.lesson-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.lesson-head .emoji{font-size:44px}
+.lesson-head h2{font-size:28px}
+.goal{
+  display:inline-block;
+  background:var(--yellow);
+  border:3px solid var(--ink);
+  border-radius:999px;
+  padding:4px 16px;
+  font-size:17px;
+  margin-bottom:12px;
+}
+.sect{margin-top:14px}
+.sect-name{
+  display:inline-block;
+  font-size:18px;
+  background:var(--blue);
+  color:#fff;
+  border:3px solid var(--ink);
+  border-radius:12px;
+  padding:2px 12px;
+  margin-bottom:8px;
+}
+.sect-name.pink{background:var(--pink)}
+.sect-name.green{background:var(--green)}
+.story p{font-size:19px;line-height:1.8;margin-bottom:6px}
+.story p::before{content:'⭐ '}
+
+/* 顶面图案示意 */
+.pics{display:flex;flex-wrap:wrap;gap:16px;margin-top:6px}
+.pic{text-align:center}
+.pic .grid{
+  display:grid;
+  grid-template-columns:repeat(3,26px);
+  gap:3px;
+  padding:6px;
+  background:#221f1d;
+  border-radius:10px;
+}
+.pic .cell{width:26px;height:26px;border-radius:6px}
+.pic .cap{font-size:15px;margin-top:4px;opacity:.8}
+
+.alg-block{
+  margin-top:12px;
+  border:3px solid var(--ink);
+  border-radius:18px;
+  padding:12px;
+  background:#fffdf5;
+}
+.alg-name{font-size:19px;margin-bottom:8px}
+.cards{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mcard{
+  border:3px solid var(--ink);
+  border-radius:14px;
+  background:#fff;
+  padding:8px 10px;
+  text-align:center;
+  min-width:64px;
+  box-shadow:3px 3px 0 rgba(51,48,46,.15);
+  transition:transform .15s, background .15s;
+}
+.mcard .big{font-size:20px}
+.mcard .small{font-size:13px;opacity:.55}
+.mcard.now{
+  background:var(--yellow);
+  transform:scale(1.12) rotate(-3deg);
+  animation:glow 1s ease-in-out infinite;
+}
+@keyframes glow{
+  0%,100%{box-shadow:3px 3px 0 rgba(51,48,46,.15)}
+  50%{box-shadow:0 0 16px 4px rgba(255,213,0,.9)}
+}
+.mcard.done{background:#d9f7e4;opacity:.7}
+.alg-btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.play-btn,.try-btn,.claim-btn{
+  font-family:var(--font);
+  border:3px solid var(--ink);
+  border-radius:14px;
+  color:#fff;
+  font-size:18px;
+  padding:9px 16px;
+  cursor:pointer;
+  box-shadow:3px 3px 0 rgba(51,48,46,.2);
+}
+.play-btn{background:var(--green)}
+.try-btn{background:var(--purple)}
+.claim-btn{background:var(--orange);margin-top:12px}
+.play-btn:active,.try-btn:active,.claim-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(51,48,46,.2)}
+.tip{
+  margin-top:16px;
+  background:#fff1f4;
+  border:3px dashed var(--pink);
+  border-radius:16px;
+  padding:10px 14px;
+  font-size:17px;
+}
+
+/* ---------- 鼓励气泡 / 彩带 ---------- */
+#toast{
+  position:fixed;left:50%;top:18%;
+  transform:translateX(-50%) scale(0);
+  background:var(--yellow);
+  border:3px solid var(--ink);
+  border-radius:999px;
+  padding:12px 28px;
+  font-size:26px;
+  box-shadow:var(--card-shadow);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1);
+  z-index:9;
+  pointer-events:none;
+}
+#toast.show{transform:translateX(-50%) scale(1)}
+.confetti{
+  position:fixed;
+  top:-30px;
+  font-size:26px;
+  z-index:8;
+  pointer-events:none;
+  animation:fall 2.2s ease-in forwards;
+}
+@keyframes fall{
+  0%{transform:translateY(0) rotate(0)}
+  100%{transform:translateY(110vh) rotate(540deg);opacity:.4}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1><span class="r1">魔</span><span class="r2">方</span><span class="r3">小</span><span class="r4">老</span><span class="r5">师</span> 🧊</h1>
+  <p>跟着我，一步一步，把魔方变得整整齐齐！每一关都能赢一颗星星 ⭐</p>
+  <p style="font-size:15px;margin-top:2px">🖐️ 用手指拖一拖魔方，可以翻过来看看每一面哦！</p>
+</header>
+
+<div class="layout">
+  <nav class="steps" id="steps"></nav>
+
+  <div>
+    <div class="stage-card">
+      <div id="banner"></div>
+      <div class="scene" id="scene"><div class="bob"><div id="cube"><div id="pivot"></div></div></div></div>
+      <div class="pad" id="pad"></div>
+      <div class="pad">
+        <button class="act-btn" id="scrambleBtn">🎲 打乱它</button>
+        <button class="act-btn calm" id="resetBtn">✨ 变整齐</button>
+        <button class="act-btn calm" id="resetViewBtn">👀 摆正</button>
+      </div>
+    </div>
+    <div class="lesson-card" id="lessonCard"></div>
+  </div>
+</div>
+
+<div id="toast">真棒！🎉</div>
+
+<script>
+/* ================= 3D 魔方 ================= */
+const S = 62;
+const DUR = 320;
+const cubeEl  = document.getElementById('cube');
+const pivotEl = document.getElementById('pivot');
+const sceneEl = document.getElementById('scene');
+
+const FACE_COLOR = {U:'#ffd500', D:'#ffffff', F:'#2ec463', B:'#3a86ff', L:'#ff9f1c', R:'#ff5a5f'};
+const INNER = '#2a2725';
+
+/* CSS 坐标：x 右、y 下、z 朝外。黄顶 白底 绿前 蓝后 橙左 红右（和教程"白底朝下"一致） */
+const MOVES = {
+  R:{axis:[1,0,0], ang: 90, sel:[0, 1], A:[[1,0,0],[0,0,-1],[0,1,0]]},
+  L:{axis:[1,0,0], ang:-90, sel:[0,-1], A:[[1,0,0],[0,0,1],[0,-1,0]]},
+  U:{axis:[0,1,0], ang:-90, sel:[1,-1], A:[[0,0,-1],[0,1,0],[1,0,0]]},
+  D:{axis:[0,1,0], ang: 90, sel:[1, 1], A:[[0,0,1],[0,1,0],[-1,0,0]]},
+  F:{axis:[0,0,1], ang: 90, sel:[2, 1], A:[[0,-1,0],[1,0,0],[0,0,1]]},
+  B:{axis:[0,0,1], ang:-90, sel:[2,-1], A:[[0,1,0],[-1,0,0],[0,0,1]]},
+};
+const I3 = [[1,0,0],[0,1,0],[0,0,1]];
+const mulVec = (A,p)=>A.map(r=>r[0]*p[0]+r[1]*p[1]+r[2]*p[2]);
+const mulMat = (A,B)=>A.map((r,i)=>B[0].map((_,j)=>r[0]*B[0][j]+r[1]*B[1][j]+r[2]*B[2][j]));
+const transpose = A=>A[0].map((_,j)=>A.map(r=>r[j]));
+
+let cubies = [];
+
+function buildCube(){
+  cubeEl.querySelectorAll('.cubie').forEach(e=>e.remove());
+  cubies = [];
+  const faceDefs = [
+    {key:'R', on:p=>p[0]=== 1, t:'rotateY(90deg) translateZ(31px)'},
+    {key:'L', on:p=>p[0]===-1, t:'rotateY(-90deg) translateZ(31px)'},
+    {key:'U', on:p=>p[1]===-1, t:'rotateX(90deg) translateZ(31px)'},
+    {key:'D', on:p=>p[1]=== 1, t:'rotateX(-90deg) translateZ(31px)'},
+    {key:'F', on:p=>p[2]=== 1, t:'translateZ(31px)'},
+    {key:'B', on:p=>p[2]===-1, t:'rotateY(180deg) translateZ(31px)'},
+  ];
+  for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++){
+    if(!x&&!y&&!z) continue;
+    const el = document.createElement('div');
+    el.className = 'cubie';
+    const pos = [x,y,z];
+    for(const f of faceDefs){
+      const d = document.createElement('div');
+      d.className = 'face';
+      d.style.transform = f.t;
+      d.style.background = f.on(pos) ? FACE_COLOR[f.key] : INNER;
+      el.appendChild(d);
+    }
+    const c = {pos, mat:I3, el};
+    setTransform(c);
+    cubeEl.appendChild(el);
+    cubies.push(c);
+  }
+}
+
+function setTransform(c){
+  const m = c.mat;
+  const m3d = [m[0][0],m[1][0],m[2][0],0, m[0][1],m[1][1],m[2][1],0, m[0][2],m[1][2],m[2][2],0, 0,0,0,1];
+  c.el.style.transform = `translate3d(${c.pos[0]*S}px,${c.pos[1]*S}px,${c.pos[2]*S}px) matrix3d(${m3d.join(',')})`;
+}
+
+function parseMove(name){
+  const def = MOVES[name[0]];
+  const prime = name.includes("'");
+  return {
+    A: prime ? transpose(def.A) : def.A,
+    axis: def.axis,
+    ang: prime ? -def.ang : def.ang,
+    sel: def.sel,
+  };
+}
+
+const invert = moves => moves.slice().reverse().map(m => m.includes("'") ? m[0] : m+"'");
+
+function applyInstant(moves){
+  for(const name of moves){
+    const {A, sel} = parseMove(name);
+    cubies.filter(c=>c.pos[sel[0]]===sel[1]).forEach(c=>{
+      c.pos = mulVec(A, c.pos);
+      c.mat = mulMat(A, c.mat);
+      setTransform(c);
+    });
+  }
+}
+
+/* ----- 转动队列 ----- */
+let queue = [], animating = false, onEachMove = null, onAllDone = null;
+
+function enqueue(moves, opts={}){
+  queue.push(...moves.map(m=>({m, fast:opts.fast})));
+  pump();
+}
+
+function pump(){
+  if(animating) return;
+  const item = queue.shift();
+  if(!item){
+    const cb = onAllDone; onAllDone = null; onEachMove = null;
+    if(cb) cb();
+    return;
+  }
+  animating = true;
+  if(onEachMove) onEachMove(item.m);
+  const {A, axis, ang, sel} = parseMove(item.m);
+  const movers = cubies.filter(c=>c.pos[sel[0]]===sel[1]);
+  movers.forEach(c=>pivotEl.appendChild(c.el));
+  pivotEl.style.transition = 'none';
+  pivotEl.style.transform = 'none';
+  pivotEl.offsetHeight;
+  const dur = item.fast ? 130 : DUR;
+  pivotEl.style.transition = `transform ${dur}ms ease`;
+  pivotEl.style.transform = `rotate3d(${axis.join(',')},${ang}deg)`;
+  setTimeout(()=>{
+    movers.forEach(c=>{
+      c.pos = mulVec(A, c.pos);
+      c.mat = mulMat(A, c.mat);
+      setTransform(c);
+      cubeEl.appendChild(c.el);
+    });
+    pivotEl.style.transition = 'none';
+    pivotEl.style.transform = 'none';
+    animating = false;
+    pump();
+  }, dur + 40);
+}
+
+/* ================= 拖一拖：模拟滚动 ================= */
+const DEFAULT_VIEW = {x:-28, y:-32};
+let viewX = DEFAULT_VIEW.x, viewY = DEFAULT_VIEW.y;
+let velX = 0, velY = 0;                       // 惯性速度（度/帧）
+let dragging = false, lastX = 0, lastY = 0, lastT = 0;
+let inertiaRAF = null;
+
+function applyView(){
+  viewX = Math.max(-89, Math.min(89, viewX));   // 上下别翻过头
+  cubeEl.style.transform = `rotateX(${viewX}deg) rotateY(${viewY}deg)`;
+}
+
+function stopInertia(){ cancelAnimationFrame(inertiaRAF); inertiaRAF = null; }
+
+function startInertia(){
+  stopInertia();
+  const step = ()=>{
+    if(dragging) return;
+    if(Math.abs(velX) < 0.04 && Math.abs(velY) < 0.04){ inertiaRAF = null; return; }
+    viewX += velX; viewY += velY;
+    applyView();
+    velX *= 0.93; velY *= 0.93;                 // 慢慢停下来
+    inertiaRAF = requestAnimationFrame(step);
+  };
+  inertiaRAF = requestAnimationFrame(step);
+}
+
+sceneEl.addEventListener('pointerdown', e=>{
+  dragging = true;
+  stopInertia();
+  velX = velY = 0;
+  lastX = e.clientX; lastY = e.clientY; lastT = performance.now();
+  sceneEl.classList.add('grabbing');
+  try{ sceneEl.setPointerCapture(e.pointerId); }catch(_){}
+});
+
+sceneEl.addEventListener('pointermove', e=>{
+  if(!dragging) return;
+  const now = performance.now();
+  const dx = e.clientX - lastX, dy = e.clientY - lastY;
+  const dt = Math.max(8, now - lastT);
+  viewY += dx * 0.5;
+  viewX -= dy * 0.5;
+  applyView();
+  velY = (dx * 0.5) / dt * 16;                  // 换算成每帧速度
+  velX = (-dy * 0.5) / dt * 16;
+  lastX = e.clientX; lastY = e.clientY; lastT = now;
+});
+
+function endDrag(){
+  if(!dragging) return;
+  dragging = false;
+  sceneEl.classList.remove('grabbing');
+  startInertia();                               // 松手后继续滚一会儿
+}
+sceneEl.addEventListener('pointerup', endDrag);
+sceneEl.addEventListener('pointercancel', endDrag);
+sceneEl.addEventListener('pointerleave', endDrag);
+
+function resetView(){
+  stopInertia();
+  velX = velY = 0;
+  viewX = DEFAULT_VIEW.x; viewY = DEFAULT_VIEW.y;
+  cubeEl.style.transition = 'transform .4s ease';
+  applyView();
+  setTimeout(()=>cubeEl.style.transition = 'none', 420);
+}
+sceneEl.addEventListener('dblclick', resetView);
+document.getElementById('resetViewBtn').onclick = resetView;
+
+applyView();
+
+/* ================= 课程内容 ================= */
+const LABEL = {
+  R :['右⬆️','右边往上'],  "R'":['右⬇️','右边往下'],
+  L :['左⬇️','左边往下'],  "L'":['左⬆️','左边往上'],
+  U :['顶⬅️','顶层向左'],  "U'":['顶➡️','顶层向右'],
+  D :['底➡️','底层向右'],  "D'":['底⬅️','底层向左'],
+  F :['前↻','前面顺时针'], "F'":['前↺','前面逆时针'],
+  B :['后↻','后面转'],     "B'":['后↺','后面转'],
+};
+
+/* 顶面示意图颜色 */
+const PIC_COLOR = {y:'#ffd500', w:'#ffffff', x:'#6b6661', g:'#2ec463', r:'#ff5a5f', o:'#ff9f1c', b:'#3a86ff'};
+
+const LESSONS = [
+  {
+    emoji:'🎨', title:'认识魔方', goal:'先和魔方做朋友！',
+    find:[
+      '魔方有 6 种颜色：白、黄、红、橙、蓝、绿，每种颜色 9 个小贴纸。',
+      '每一面正中间的小方块叫"中心块"，它永远不会跑！中心是什么颜色，这一面最后就是什么颜色。',
+      '白色中心的对面一定是黄色中心，红色对面是橙色，蓝色对面是绿色。',
+    ],
+    how:[
+      '转魔方有小口令：右边往上、顶层向左……每个按钮就是一句口令。',
+      '点下面的转动按钮，看看魔方每次怎么动，这就是我们以后要念的"魔法咒语"！',
+      '玩"我来试试"小游戏：照着发光的卡片按按钮，全按对就赢一颗星星！',
+    ],
+    pics:[],
+    algs:[{name:'🤸 热身操', moves:['R',"R'",'U',"U'",'F',"F'"]}],
+    tip:'随便玩！按"打乱它"再按"变整齐"，魔方永远不会坏。',
+  },
+  {
+    emoji:'🌼', title:'白色小花', goal:'拼一朵小白花！',
+    find:[
+      '拿起真魔方，让黄色中心块朝上——它是花心。',
+      '在魔方上找 4 个"白色小长条块"（两个颜色的块叫棱块），它们就是花瓣。',
+    ],
+    how:[
+      '一片一片来：找到一个白色棱块，慢慢把它转到黄色花心的旁边，白色朝上。',
+      '转的时候盯着已经到位的花瓣，如果它要被转走，先把顶层转一下让开位置。',
+      '4 片白花瓣围着黄花心，小白花开啦！这一步不用口诀，自己试，错了也没关系。',
+    ],
+    pics:[
+      {cap:'从上面看：小白花', grid:'xwxwywxwx'},
+    ],
+    algs:[],
+    claim:'🌼 我拼出小白花啦！',
+    tip:'找不到白色棱块？把魔方每一面都翻过来看看，它们一定藏在某个地方。',
+  },
+  {
+    emoji:'➕', title:'白色大十字', goal:'把花瓣变成白十字！',
+    find:[
+      '看一片白花瓣"侧面"的颜色（不是白色的那一面）。',
+      '转动顶层，让这个颜色和它正下方的中心块颜色一样：红对红、绿对绿。',
+    ],
+    how:[
+      '颜色对齐后，把这一面转两下（就是口诀里的"前面转两下"），白花瓣"咚"地降落到底下！',
+      '剩下的 3 片花瓣也一样：先对颜色，再转两下。',
+      '都做完后把魔方翻过来看底面：白色大十字完成！而且十字旁边的颜色都和中心块对齐。',
+    ],
+    pics:[
+      {cap:'翻过来看底面', grid:'xwxwwwxwx'},
+    ],
+    algs:[{name:'🪂 花瓣降落伞（对齐颜色后做）', moves:['F','F']}],
+    tip:'口诀只有两下，但要记住：一定要先对齐颜色再降落！',
+  },
+  {
+    emoji:'✨', title:'白色角块', goal:'拼好第一层！',
+    find:[
+      '把魔方翻过来：白色十字朝下拿好，以后都这样拿。',
+      '在顶层找一个带白色的角块（三个颜色的块叫角块）。',
+      '看它另外两个颜色：比如白红绿，它的家就在红色中心和绿色中心的中间、最底下那个角。',
+    ],
+    how:[
+      '转动顶层，把这个角块送到它家的"正上方"。',
+      '让它待在你右手边的前面，然后念"小电梯"口诀：右边下、底层左、右边上、底层右。',
+      '念完看一看：白色到底下了吗？没有就再念一遍！最多 5 遍一定成功。',
+      '4 个白色角块都送回家，第一层就拼好啦！',
+    ],
+    pics:[
+      {cap:'底面全白啦', grid:'wwwwwwwww'},
+    ],
+    algs:[{name:'🪄 小电梯口诀', moves:["R'","D'",'R','D']}],
+    tip:'口诀像坐电梯：下去、走一步、上来、走回来。多念几遍没关系！',
+  },
+  {
+    emoji:'🥪', title:'中间层', goal:'拼好中间一圈！',
+    find:[
+      '白色还是朝下。看顶层，找一个"完全不带黄色"的棱块。',
+      '转动顶层，让它侧面的颜色和中心块颜色一样，拼成一个小 T 字。',
+    ],
+    how:[
+      '现在看这个块"顶上"的颜色：',
+      '顶上的颜色和右边的中心块一样 → 它要去右边，念"去右边"口诀。',
+      '顶上的颜色和左边的中心块一样 → 它要去左边，念"去左边"口诀。',
+      '中间层有 4 个棱块，一个一个送回家。',
+      '如果顶层找不到不带黄色的块，可是中间层还有块站错位置：先用口诀把错的块"顶"出来，它就会跑到顶层啦。',
+    ],
+    pics:[],
+    algs:[
+      {name:'👉 去右边', moves:['U','R',"U'","R'","U'","F'",'U','F']},
+      {name:'👈 去左边', moves:["U'","L'",'U','L','U','F',"U'","F'"]},
+    ],
+    tip:'口诀有点长，让爸爸妈妈念，你来转，配合最棒！先玩几遍"我来试试"再上真魔方。',
+  },
+  {
+    emoji:'💛', title:'黄色十字', goal:'让顶上出现黄十字！',
+    find:[
+      '现在看顶面的黄色块（只看棱块，角块先不管），可能是 4 种样子：',
+      '只有一个点 → 随便念一遍口诀，会变成小拐弯。',
+      '小拐弯 → 把拐弯转到指向"左边和后面"（像示意图那样），念口诀变成一条线。',
+      '一条线 → 把线转成横的，念口诀，黄十字出现！',
+    ],
+    how:[
+      '口诀像开瓶盖：打开盖子，转一转，再盖回去。',
+      '记住顺序：点 → 拐弯 → 线 → 十字，最多念三遍就成功。',
+    ],
+    pics:[
+      {cap:'1️⃣ 点', grid:'xxxxyxxxx'},
+      {cap:'2️⃣ 小拐弯', grid:'xyxyyxxxx'},
+      {cap:'3️⃣ 一条线', grid:'xxxyyyxxx'},
+      {cap:'4️⃣ 黄十字！', grid:'xyxyyyxyx'},
+    ],
+    algs:[{name:'🍭 棒棒糖口诀', moves:['F','R','U',"R'","U'","F'"]}],
+    tip:'每次念口诀前，先把图案摆成示意图的方向，再开始念！',
+  },
+  {
+    emoji:'🐟', title:'黄色满面', goal:'让顶面全变黄！',
+    find:[
+      '有了黄十字，再看顶面的 4 个角。',
+      '找"小鱼"：黄十字 + 一个黄色的角，看起来像一条小鱼（那个黄角是鱼头）。',
+      '转动顶层（只转顶层！），让鱼头游到"左下角"。',
+    ],
+    how:[
+      '鱼头在左下角时，念小鱼口诀！',
+      '顶面没有小鱼？别急：随便念一遍口诀，小鱼就会游出来。',
+      '念完一遍还没全黄？再找小鱼、再摆到左下角、再念，最多三遍。',
+    ],
+    pics:[
+      {cap:'小鱼（鱼头在左下）', grid:'xyxyyyyyx'},
+      {cap:'顶面全黄！', grid:'yyyyyyyyy'},
+    ],
+    algs:[{name:'🐟 小鱼口诀', moves:['R','U',"R'",'U','R','U','U',"R'"]}],
+    tip:'小鱼口诀是最有名的魔方口诀，会了它你就是小高手！',
+  },
+  {
+    emoji:'🏆', title:'大功告成', goal:'最后两步，复原魔方！',
+    find:[
+      '第一件事：送角块回家。转转顶层，看看四个侧面，找一面"两个角颜色一样"的。',
+      '把这面朝向后面（远离你），念"换位口诀"。没有颜色一样的角？先随便念一遍。',
+      '角块都对好后：每个角的颜色都和侧面中心块对上了。',
+    ],
+    how:[
+      '第二件事：送棱块回家。找一面已经完全拼好的，把它朝向后面，念"回家口诀"。',
+      '没有完全拼好的面？先随便念一遍，就会出现。',
+      '念完不行就再念一次（最多两次），最后转一转顶层对齐——',
+      '哇！！魔方复原啦！！你成功啦！🎉🎉🎉',
+    ],
+    pics:[],
+    algs:[
+      {name:'🔄 换位口诀（角块）', moves:['U','R',"U'","L'",'U',"R'","U'",'L']},
+      {name:'🏠 回家口诀（棱块）', moves:['R',"U'",'R','U','R','U','R',"U'","R'","U'",'R','R']},
+    ],
+    tip:'坚持到这里的小朋友都是魔方小冠军！快让全家人看看你的魔方！',
+  },
+];
+
+/* ================= 星星进度 ================= */
+let stars = [];
+try{ stars = JSON.parse(localStorage.getItem('mofang-stars')||'[]'); }catch(e){ stars = []; }
+const saveStars = ()=>localStorage.setItem('mofang-stars', JSON.stringify(stars));
+
+/* ================= 界面 ================= */
+const stepsEl  = document.getElementById('steps');
+const lessonEl = document.getElementById('lessonCard');
+const bannerEl = document.getElementById('banner');
+let current = 0;
+let practice = null;   // {moves, idx, cards, lesson}
+
+LESSONS.forEach((l,i)=>{
+  const b = document.createElement('button');
+  b.className = 'step-btn';
+  b.innerHTML = `<span class="num">${i+1}</span><span>${l.emoji} ${l.title}</span><span class="star"></span>`;
+  b.onclick = ()=>showLesson(i);
+  stepsEl.appendChild(b);
+});
+
+function refreshStars(){
+  [...stepsEl.children].forEach((b,i)=>{
+    b.querySelector('.star').textContent = stars[i] ? '⭐' : '';
+  });
+}
+
+function cancelPractice(){
+  if(!practice) return;
+  practice.cards.forEach(c=>c.classList.remove('now','done'));
+  practice = null;
+  bannerEl.textContent = '';
+}
+
+function showLesson(i){
+  cancelPractice();
+  current = i;
+  [...stepsEl.children].forEach((b,j)=>b.classList.toggle('active', j===i));
+  const l = LESSONS[i];
+  lessonEl.innerHTML = `
+    <div class="lesson-head"><span class="emoji">${l.emoji}</span><h2>第 ${i+1} 步：${l.title}</h2></div>
+    <div class="goal">🎯 ${l.goal}</div>
+    <div class="sect"><span class="sect-name">🔍 找一找</span>
+      <div class="story">${l.find.map(s=>`<p>${s}</p>`).join('')}</div></div>
+    ${l.pics.length ? `<div class="pics">${l.pics.map(p=>`
+      <div class="pic"><div class="grid">${[...p.grid].map(ch=>`<div class="cell" style="background:${PIC_COLOR[ch]}"></div>`).join('')}</div><div class="cap">${p.cap}</div></div>`).join('')}</div>` : ''}
+    <div class="sect"><span class="sect-name pink">🙌 怎么做</span>
+      <div class="story">${l.how.map(s=>`<p>${s}</p>`).join('')}</div></div>
+    <div id="algs"></div>
+    <div class="tip">💡 ${l.tip}</div>
+  `;
+  const algsEl = lessonEl.querySelector('#algs');
+  l.algs.forEach(alg=>{
+    const block = document.createElement('div');
+    block.className = 'alg-block';
+    block.innerHTML = `<div class="alg-name">${alg.name}</div>`;
+    const row = document.createElement('div');
+    row.className = 'cards';
+    const cardEls = alg.moves.map(m=>{
+      const c = document.createElement('div');
+      c.className = 'mcard';
+      c.innerHTML = `<div class="big">${LABEL[m][0]}</div><div class="small">${LABEL[m][1]}</div>`;
+      row.appendChild(c);
+      return c;
+    });
+    block.appendChild(row);
+    const btns = document.createElement('div');
+    btns.className = 'alg-btns';
+    const play = document.createElement('button');
+    play.className = 'play-btn';
+    play.textContent = '▶️ 看演示';
+    play.onclick = ()=>demo(alg, cardEls);
+    const tryBtn = document.createElement('button');
+    tryBtn.className = 'try-btn';
+    tryBtn.textContent = '🎮 我来试试';
+    tryBtn.onclick = ()=>startPractice(i, alg, cardEls);
+    btns.appendChild(play);
+    btns.appendChild(tryBtn);
+    block.appendChild(btns);
+    algsEl.appendChild(block);
+  });
+  if(l.claim){
+    const claim = document.createElement('button');
+    claim.className = 'claim-btn';
+    claim.textContent = l.claim;
+    claim.onclick = ()=>winLesson(i, '小白花真漂亮！🌼');
+    lessonEl.querySelector('#algs').appendChild(claim);
+  }
+}
+
+/* ----- 看演示：魔方先变成"坏了一点"的样子，口诀把它修好 ----- */
+function demo(alg, cardEls){
+  if(animating || queue.length) return;
+  cancelPractice();
+  buildCube();
+  applyInstant(invert(alg.moves));
+  bannerEl.textContent = '👀 看好啦：念完口诀，魔方就被修好了！';
+  let idx = -1;
+  onEachMove = ()=>{
+    cardEls.forEach(c=>c.classList.remove('now'));
+    idx++;
+    if(cardEls[idx]) cardEls[idx].classList.add('now');
+  };
+  onAllDone = ()=>{
+    cardEls.forEach(c=>c.classList.remove('now'));
+    bannerEl.textContent = '';
+    toast('看到了吗？口诀把魔方修好啦！');
+  };
+  enqueue(alg.moves);
+}
+
+/* ----- 我来试试：小朋友照着卡片按按钮，亲手修好魔方 ----- */
+function startPractice(lessonIdx, alg, cardEls){
+  if(animating || queue.length) return;
+  cancelPractice();
+  buildCube();
+  applyInstant(invert(alg.moves));
+  practice = {moves:alg.moves, idx:0, cards:cardEls, lesson:lessonIdx};
+  cardEls.forEach(c=>c.classList.remove('now','done'));
+  cardEls[0].classList.add('now');
+  bannerEl.textContent = `🎮 魔方坏了一点点！照着发光的卡片按按钮，把它修好！（0/${alg.moves.length}）`;
+}
+
+function handlePad(m){
+  if(animating || queue.length) return;
+  if(!practice){ enqueue([m]); return; }
+  if(m === practice.moves[practice.idx]){
+    const i = practice.idx++;
+    practice.cards[i].classList.remove('now');
+    practice.cards[i].classList.add('done');
+    if(practice.idx >= practice.moves.length){
+      const li = practice.lesson;
+      practice = null;
+      onAllDone = ()=>{
+        bannerEl.textContent = '';
+        winLesson(li, '你亲手修好了魔方！🎉');
+      };
+      enqueue([m]);
+    }else{
+      practice.cards[practice.idx].classList.add('now');
+      bannerEl.textContent = `🎮 太对了！继续！（${practice.idx}/${practice.moves.length}）`;
+      enqueue([m]);
+    }
+  }else{
+    sceneEl.classList.remove('wiggle');
+    sceneEl.offsetHeight;
+    sceneEl.classList.add('wiggle');
+    toast('不是这个哦～按发光的卡片 💪');
+  }
+}
+
+function winLesson(i, msg){
+  stars[i] = true;
+  saveStars();
+  refreshStars();
+  toast(msg + ' 得到一颗星星 ⭐');
+  confetti();
+}
+
+function confetti(){
+  const em = ['🎉','⭐','🎈','✨','💛'];
+  for(let i=0;i<26;i++){
+    const s = document.createElement('span');
+    s.className = 'confetti';
+    s.textContent = em[i%em.length];
+    s.style.left = Math.random()*100+'vw';
+    s.style.animationDelay = (Math.random()*0.6)+'s';
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(), 3200);
+  }
+}
+
+/* ----- 转一转按钮 ----- */
+const PAD_MOVES = ['R',"R'",'L',"L'",'U',"U'",'D',"D'",'F',"F'"];
+const padEl = document.getElementById('pad');
+PAD_MOVES.forEach(m=>{
+  const b = document.createElement('button');
+  b.className = 'move-btn';
+  b.textContent = LABEL[m][0];
+  b.title = LABEL[m][1];
+  b.onclick = ()=>handlePad(m);
+  padEl.appendChild(b);
+});
+
+document.getElementById('scrambleBtn').onclick = ()=>{
+  if(animating || queue.length) return;
+  cancelPractice();
+  const names = Object.keys(MOVES);
+  const seq = [];
+  let last = '';
+  for(let i=0;i<14;i++){
+    let n;
+    do{ n = names[Math.floor(Math.random()*names.length)]; }while(n===last);
+    last = n;
+    seq.push(Math.random()<.5 ? n : n+"'");
+  }
+  enqueue(seq, {fast:true});
+};
+
+document.getElementById('resetBtn').onclick = ()=>{
+  if(animating || queue.length) return;
+  cancelPractice();
+  buildCube();
+  toast('魔方复原啦！✨');
+};
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast._h);
+  toast._h = setTimeout(()=>t.classList.remove('show'), 1900);
+}
+
+buildCube();
+refreshStars();
+showLesson(0);
+</script>
+</body>
+</html>

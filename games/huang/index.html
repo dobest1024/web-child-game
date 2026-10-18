@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#102826" />
+    <meta
+      name="description"
+      content="王冠峡谷，一场三分钟的策略对决。选卡、出兵、守护王冠。支持好友实时对战与单人练习。"
+    />
+    <title>王冠峡谷 · CROWN GORGE</title>
+    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="importmap">
+      { "imports": { "three": "/vendor/three.js" } }
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="王冠峡谷首页"
+          ><span class="brand-mark" data-crown></span
+          ><span>王冠峡谷<small>CROWN GORGE</small></span></a
+        >
+        <div class="top-center">
+          <span class="live-dot"></span> 每一步，都能改变战局
+        </div>
+        <div class="header-actions">
+          <button
+            id="quick-leave"
+            class="icon-button"
+            aria-label="退出当前房间"
+            hidden
+          >
+            ↩<span>退出</span></button
+          ><button
+            id="sound"
+            class="icon-button"
+            aria-label="打开音效"
+            aria-pressed="false"
+          >
+            ♪<span>音效关闭</span></button
+          ><button id="help" class="icon-button" aria-label="查看游戏玩法">
+            ?<span>玩法</span>
+          </button>
+        </div>
+      </header>
+      <main class="layout">
+        <aside class="sidebar left-panel">
+          <div class="eyebrow">THE ARENA IS YOURS</div>
+          <h1>小小战场，<br /><em>大有谋略。</em></h1>
+          <p class="intro">
+            集结你的队伍，跨越河谷。<br />用一场漂亮的对决，赢下王冠。
+          </p>
+          <div id="lobby-controls" class="lobby-controls">
+            <label for="player-name">你的称号 <span>最多 16 字</span></label>
+            <input
+              id="player-name"
+              aria-label="你的称号"
+              maxlength="16"
+              placeholder="无名骑士"
+              autocomplete="nickname"
+            />
+            <button id="practice" class="primary-button">
+              <span>开始练习</span><span>↗</span>
+            </button>
+            <button id="create" class="secondary-button">
+              <span>⚔</span> 创建好友对战
+            </button>
+            <div class="divider"><span>已有邀请？</span></div>
+            <form id="join-form" class="join-form">
+              <input
+                id="room-input"
+                aria-label="六位房间码"
+                maxlength="6"
+                placeholder="输入房间码"
+                autocomplete="off"
+              /><button type="submit" aria-label="加入房间">→</button>
+            </form>
+          </div>
+          <section id="room-panel" class="room-panel" hidden>
+            <div class="eyebrow" id="room-mode">好友对战</div>
+            <div class="room-code-row">
+              <span id="room-code"></span
+              ><button
+                id="copy-room"
+                title="复制邀请链接"
+                aria-label="复制邀请链接"
+              >
+                ⧉
+              </button>
+            </div>
+            <div id="seats" class="seats"></div>
+            <button id="ready" class="primary-button">准备战斗</button>
+            <button id="leave" class="text-button">退出房间</button>
+          </section>
+          <div class="lobby-footer">
+            <span class="tiny-shield">◇</span
+            ><span
+              >无需下载 · 即开即玩<br /><small>好友房间 / AI 练习</small></span
+            >
+          </div>
+          <div class="connection">
+            <span id="connection-dot" class="status-dot"></span
+            ><span id="connection-text">准备好迎接挑战了吗？</span
+            ><span id="ping"></span>
+          </div>
+        </aside>
+        <section class="battle-column" aria-label="竞技场">
+          <div class="arena-heading">
+            <div>
+              <span class="eyebrow">ARENA 01</span>
+              <h2>翡翠河谷 <span>EMERALD VALLEY</span></h2>
+            </div>
+            <span id="mode-badge" class="pill">自由练习</span>
+          </div>
+          <div class="battle-shell">
+            <div class="scoreboard">
+              <div class="player-tag enemy">
+                <span class="player-emblem" data-crown></span>
+                <div>
+                  <small>对手</small><strong id="enemy-name">霜叶骑士</strong>
+                </div>
+                <span class="score" id="enemy-score">0</span>
+              </div>
+              <div class="timer">
+                <strong id="timer">3:00</strong
+                ><small id="phase-label">等待开战</small>
+              </div>
+            </div>
+            <div id="arena" class="arena">
+              <div class="arena-vignette"></div>
+              <div class="arena-caption" id="arena-caption">
+                <span>为王冠而战</span
+                ><small>选择左侧模式，开启你的第一场对决</small>
+              </div>
+              <div id="countdown" class="countdown" hidden></div>
+              <div id="battle-notice" class="battle-notice" hidden></div>
+            </div>
+            <div class="own-score">
+              <span class="own-dot"></span
+              ><strong id="own-name">你的领地</strong
+              ><span id="own-score">♛ 0</span
+              ><span id="deploy-hint">选一张卡牌，再点击战场部署</span>
+            </div>
+            <div class="hand-panel">
+              <div class="hand-row">
+                <div id="hand" class="hand"></div>
+                <div class="next-card">
+                  <span>下一张</span>
+                  <div id="next-art"></div>
+                  <small id="next-name">爆破专家</small>
+                </div>
+              </div>
+              <div class="elixir-row">
+                <span class="elixir-icon">◆</span
+                ><strong id="elixir-number">5</strong>
+                <div class="elixir-track">
+                  <div id="elixir-fill"></div>
+                  <span></span>
+                </div>
+                <small id="elixir-label">圣水恢复中</small>
+              </div>
+            </div>
+          </div>
+          <div class="arena-bottom">
+            <span><i></i> 即时策略 · 3 分钟对决</span
+            ><span>1 — 4 选卡 <kbd>ESC</kbd> 取消</span>
+          </div>
+        </section>
+        <aside class="sidebar right-panel">
+          <div class="field-guide-title">
+            <span class="eyebrow">FIELD GUIDE</span><span>01 / 08</span>
+          </div>
+          <h2>你的出战卡组</h2>
+          <p class="muted">八张卡牌，无限种战术。</p>
+          <div id="deck" class="deck-grid"></div>
+          <section class="card-detail">
+            <div class="detail-label">
+              卡牌情报 <span id="detail-cost">3 圣水</span>
+            </div>
+            <h3 id="detail-name">铁卫</h3>
+            <p id="detail-role">近战 · 均衡</p>
+            <p id="detail-description">
+              可靠的前排战士。用他保护身后的远程部队。
+            </p>
+            <div class="card-stats">
+              <div>
+                <small id="stat-a-label">生命值</small
+                ><strong id="stat-a">1050</strong>
+              </div>
+              <div>
+                <small id="stat-b-label">伤害</small
+                ><strong id="stat-b">145</strong>
+              </div>
+            </div>
+          </section>
+          <div class="tip">
+            <span>✦</span>
+            <div>
+              <strong>骑士的小建议</strong>
+              <p>先让巨人吸引火力，再派游侠跟进。配合，比单打独斗更有力量。</p>
+            </div>
+          </div>
+          <div class="rules-strip">
+            <div><b>03:00</b><small>常规对决</small></div>
+            <div><b>×2</b><small>末分钟圣水</small></div>
+            <div><b>♛</b><small>摧毁主塔获胜</small></div>
+          </div>
+        </aside>
+      </main>
+      <footer class="page-footer">
+        <span>CROWN GORGE <b>·</b> 一起，打场好仗。</span
+        ><span>原创策略竞技场 · Built with Three.js</span>
+      </footer>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <dialog id="help-dialog">
+      <button class="dialog-close" aria-label="关闭玩法">×</button>
+      <div class="eyebrow">HOW TO PLAY</div>
+      <h2>三分钟，拿下王冠。</h2>
+      <ol>
+        <li>
+          <strong>选卡与部署</strong>
+          <p>
+            点击底部手牌，再点击己方半场。电脑可按 1–4 选卡，Esc
+            取消。法术可释放在任意位置。
+          </p>
+        </li>
+        <li>
+          <strong>组合你的进攻</strong>
+          <p>
+            部队自动行军，地面单位通过桥梁，飞行单位可越过河流。巨人只攻击塔，游侠可以对空。
+          </p>
+        </li>
+        <li>
+          <strong>合理分配圣水</strong>
+          <p>
+            圣水上限 10 点，每 2.8 秒恢复 1
+            点；最后一分钟及加时双倍恢复。使用一张牌后会轮入下一张。
+          </p>
+        </li>
+        <li>
+          <strong>赢下比赛</strong>
+          <p>
+            摧毁国王塔立即获胜。3 分钟后皇冠领先者胜；平分进入 60
+            秒加时，先取得皇冠优势者胜。仍相同则比较剩余塔总生命值。
+          </p>
+        </li>
+        <li>
+          <strong>邀请好友</strong>
+          <p>
+            创建房间，分享链接或六位房间码。两人准备后开战。意外断线有 30
+            秒重连时间，超时判负。
+          </p>
+        </li>
+      </ol>
+      <button class="primary-button dialog-close-button">明白了，出发！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <div class="result-crown" data-crown></div>
+      <div class="eyebrow" id="result-eyebrow">BATTLE COMPLETE</div>
+      <h2 id="result-title">战斗结束</h2>
+      <p id="result-reason"></p>
+      <div id="result-score" class="result-score"></div>
+      <button id="rematch" class="primary-button">再来一局</button
+      ><button id="result-leave" class="text-button">返回大厅</button>
+    </dialog>
+    <dialog id="leave-dialog">
+      <div class="eyebrow">LEAVE THE ARENA</div>
+      <h2>要离开战场吗？</h2>
+      <p>退出会判本局认输，比赛仍在继续。</p>
+      <button id="cancel-leave" class="primary-button">继续战斗</button
+      ><button id="confirm-leave" class="text-button">确认认输并退出</button>
+    </dialog>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

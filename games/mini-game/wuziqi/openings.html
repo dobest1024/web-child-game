@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五子棋小课堂 · 开局课</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html">⚫⚪ 五子棋<span>小课堂</span></a>
+  <a class="navlink" href="index.html">🏠 首页</a>
+  <a class="navlink" href="learn.html">📖 学规则</a>
+  <a class="navlink active" href="openings.html">🌅 开局课</a>
+  <a class="navlink" href="tactics.html">⚔️ 学战法</a>
+  <a class="navlink" href="mind.html">🧠 心理课</a>
+  <a class="navlink" href="play.html">🎮 来对弈</a>
+</nav>
+
+<div class="wrap">
+  <h1 class="page-title">开局课：<em>好的开始是成功的一半</em> 🌅</h1>
+  <p class="page-sub">前几步棋下得好，后面就轻松多啦！</p>
+
+  <section class="card" id="o-center">
+    <h2><span class="badge">1</span>第一颗棋子下中间</h2>
+    <p>棋盘正中间的那个点叫<strong>天元</strong>。第一颗棋子下在天元附近最棒，因为从中间出发，<strong>上下左右斜八个方向</strong>都能连线！</p>
+    <p>要是下在角落里，就只剩一两个方向能连了，棋子会很孤单。</p>
+    <div class="board-box">
+      <canvas class="board" id="o-board1"></canvas>
+      <div class="board-caption">绿圈在中间：八个方向都能长！红圈在角落：只有两三个方向，太挤啦。</div>
+    </div>
+    <div class="tip">记住口诀：<strong>“金角银边草肚皮”是围棋的，五子棋正好反过来——中间最宝贝！</strong></div>
+  </section>
+
+  <section class="card" id="o-near">
+    <h2><span class="badge">2</span>棋子要挨在一起下</h2>
+    <p>开局的前几步，自己的棋子要<strong>互相靠近</strong>，像好朋友手拉手。靠在一起的棋子以后才能连成线、摆出活三。</p>
+    <p>对手下棋的时候，你也别跑太远——在他附近落子，既能挡他，又能发展自己。</p>
+    <div class="board-box">
+      <canvas class="board" id="o-board2"></canvas>
+      <div class="board-caption" id="o-demo-caption">点按钮看看：好开局和坏开局长什么样？</div>
+      <div class="play-controls">
+        <button class="btn small green" onclick="demoOpen('good')">好开局 😊</button>
+        <button class="btn small" onclick="demoOpen('bad')">坏开局 😵</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="o-shape">
+    <h2><span class="badge">3</span>下出会拐弯的形状</h2>
+    <p>开局别把棋子排成一条直直的线——对手一眼就看穿啦！要下出<strong>拐弯的形状</strong>（像小山、像楼梯），这样以后能往好几个方向连线，对手防不胜防。</p>
+    <div class="board-box">
+      <canvas class="board" id="o-board3"></canvas>
+      <div class="board-caption">黑棋摆成了“小山”形：横着、竖着、斜着都有机会，这就是双三的种子！</div>
+    </div>
+  </section>
+
+  <section class="card" id="o-quiz">
+    <h2><span class="badge">⭐</span>开局小测验</h2>
+    <p>棋盘空空的，轮到黑棋下第一手。你觉得下哪里最好？点一点！</p>
+    <div class="board-box">
+      <canvas class="board" id="o-quiz-board"></canvas>
+      <div class="board-caption" id="o-quiz-caption"></div>
+      <button class="btn small blue" onclick="resetOQuiz()">再试一次 🔄</button>
+    </div>
+  </section>
+
+  <div class="pager">
+    <a class="btn blue" href="learn.html">⬅️ 上一课：学规则</a>
+    <a class="btn" href="tactics.html">下一课：学战法 ➡️</a>
+  </div>
+</div>
+
+<footer>⚫⚪ 五子棋小课堂 · 和小朋友一起快乐下棋</footer>
+
+<script src="js/board.js"></script>
+<script>
+// ---- 1. 中间 vs 角落 ----
+const b1 = new Board(document.getElementById("o-board1"), { size: 9, cell: 40 });
+b1.stones[4][4] = 1;
+b1.stones[0][0] = 1;
+b1.marks = [
+  { row: 4, col: 4, color: "#7bc950" },
+  { row: 0, col: 0, color: "#ff6b6b" },
+];
+b1.draw();
+// 给中心点画八个方向的小箭头线
+(function drawRays() {
+  const ctx = b1.ctx;
+  ctx.strokeStyle = "rgba(123,201,80,0.7)";
+  ctx.lineWidth = 3;
+  const x = b1.cx(4), y = b1.cy(4), len = 30;
+  for (const [dx, dy] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]) {
+    ctx.beginPath();
+    ctx.moveTo(x + dx * 18, y + dy * 18);
+    ctx.lineTo(x + dx * len, y + dy * len);
+    ctx.stroke();
+  }
+})();
+
+// ---- 2. 好开局 vs 坏开局 ----
+const b2 = new Board(document.getElementById("o-board2"), { size: 9, cell: 40 });
+const oDemoCaption = document.getElementById("o-demo-caption");
+const OPEN_DEMOS = {
+  good: {
+    text: "好开局：黑棋手拉手围在中间，白棋也跟得很紧。👍",
+    moves: [[4,4,1],[3,4,2],[4,3,1],[5,4,2],[3,3,1],[5,3,2],[5,5,1]],
+  },
+  bad: {
+    text: "坏开局：黑棋东一颗西一颗，谁也帮不上谁。👎",
+    moves: [[0,1,1],[4,4,2],[8,0,1],[4,3,2],[0,8,1],[4,5,2],[8,8,1]],
+  },
+};
+function demoOpen(kind) {
+  const demo = OPEN_DEMOS[kind];
+  oDemoCaption.textContent = "看演示……";
+  oDemoCaption.className = "board-caption";
+  b2.animate(demo.moves, 450, () => {
+    oDemoCaption.textContent = demo.text;
+    oDemoCaption.className = "board-caption " + (kind === "good" ? "good" : "bad");
+  });
+}
+
+// ---- 3. 拐弯的形状 ----
+const b3 = new Board(document.getElementById("o-board3"), { size: 9, cell: 40 });
+for (const [r, c] of [[4,3],[4,4],[3,4],[5,5]]) b3.stones[r][c] = 1;
+for (const [r, c] of [[3,3],[5,4]]) b3.stones[r][c] = 2;
+b3.draw();
+
+// ---- 4. 开局小测验：点中央 3x3 区域算对 ----
+const oQuizCaption = document.getElementById("o-quiz-caption");
+let oQuiz;
+function resetOQuiz() {
+  oQuiz.clear();
+  oQuizCaption.textContent = "提示：哪里的方向最多呀？";
+  oQuizCaption.className = "board-caption";
+}
+oQuiz = new Board(document.getElementById("o-quiz-board"), {
+  size: 9, cell: 40,
+  onClick(r, c) {
+    if (oQuiz.stones[r][c] !== 0) return;
+    oQuiz.set(r, c, 1);
+    if (r >= 3 && r <= 5 && c >= 3 && c <= 5) {
+      oQuiz.marks = [{ row: r, col: c, color: "#7bc950" }];
+      oQuizCaption.textContent = "太对了！下在中间，八方都是路！🌟";
+      oQuizCaption.className = "board-caption good";
+    } else {
+      oQuiz.marks = [{ row: 4, col: 4, color: "#ff6b6b" }];
+      oQuizCaption.textContent = "这里有点偏哦，下在红圈附近的中间地带更好！";
+      oQuizCaption.className = "board-caption bad";
+    }
+    oQuiz.draw();
+  },
+});
+resetOQuiz();
+</script>
+</body>
+</html>

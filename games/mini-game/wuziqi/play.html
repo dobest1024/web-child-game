@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五子棋小课堂 · 来对弈</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html">⚫⚪ 五子棋<span>小课堂</span></a>
+  <a class="navlink" href="index.html">🏠 首页</a>
+  <a class="navlink" href="learn.html">📖 学规则</a>
+  <a class="navlink" href="openings.html">🌅 开局课</a>
+  <a class="navlink" href="tactics.html">⚔️ 学战法</a>
+  <a class="navlink" href="mind.html">🧠 心理课</a>
+  <a class="navlink active" href="play.html">🎮 来对弈</a>
+</nav>
+
+<div class="wrap">
+  <h1 class="page-title">实战课：<em>挑战电脑棋手</em> 🎮</h1>
+  <p class="page-sub">你执黑棋先下。记得三个问题：我能赢吗？对手要干嘛？哪步最好？</p>
+
+  <section class="card">
+    <div class="play-controls">
+      <button class="btn small green" id="lv1" onclick="setLevel(1)">🐣 容易</button>
+      <button class="btn small blue" id="lv2" onclick="setLevel(2)">🐥 中等</button>
+      <button class="btn small" id="lv3" onclick="setLevel(3)">🦅 厉害</button>
+      <button class="btn small" style="background:var(--purple)" onclick="newGame()">重新开始 🔄</button>
+      <button class="btn small" style="background:var(--yellow);color:var(--ink)" onclick="undoMove()">悔棋 ↩️</button>
+      <button class="btn small" style="background:var(--wood-dark)" onclick="showHint()">提示 💡</button>
+    </div>
+    <div class="play-status" id="status">轮到你下啦！你是 ⚫ 黑棋</div>
+    <div class="board-box">
+      <canvas class="board" id="game"></canvas>
+    </div>
+  </section>
+</div>
+
+<footer>⚫⚪ 五子棋小课堂 · 和小朋友一起快乐下棋</footer>
+
+<script src="js/board.js"></script>
+<script src="js/ai.js"></script>
+<script>
+const HUMAN = 1, AI = 2;
+let level = 1;
+let gameOver = false;
+let busy = false; // 电脑思考中，禁止点击
+let history = []; // [{row, col, color}]，悔棋用
+
+const statusEl = document.getElementById("status");
+const board = new Board(document.getElementById("game"), {
+  size: 13, cell: 34,
+  onClick: humanMove,
+});
+
+function setLevel(lv) {
+  level = lv;
+  for (const id of ["lv1", "lv2", "lv3"]) {
+    document.getElementById(id).style.outline = "none";
+  }
+  document.getElementById("lv" + lv).style.outline = "4px solid var(--ink)";
+  newGame();
+}
+
+function newGame() {
+  board.clear();
+  gameOver = false;
+  busy = false;
+  history = [];
+  statusEl.innerHTML = "轮到你下啦！你是 ⚫ 黑棋";
+}
+
+function undoMove() {
+  if (busy || history.length === 0) return;
+  // 退掉电脑的回应和自己的那一步，回到自己落子前
+  while (history.length > 0 && history[history.length - 1].color === AI) {
+    const m = history.pop();
+    board.stones[m.row][m.col] = 0;
+  }
+  if (history.length > 0) {
+    const m = history.pop();
+    board.stones[m.row][m.col] = 0;
+  }
+  gameOver = false;
+  board.marks = [];
+  const last = history[history.length - 1];
+  board.lastMove = last ? { row: last.row, col: last.col } : null;
+  board.draw();
+  statusEl.innerHTML = "悔棋成功！再想想这步怎么下 🤔";
+}
+
+function showHint() {
+  if (busy || gameOver) return;
+  const hint = GomokuAI.pickMove(board.stones, HUMAN, 3);
+  if (!hint) return;
+  board.marks = [{ row: hint.row, col: hint.col, color: "#ffd166" }];
+  board.draw();
+  statusEl.innerHTML = "黄圈是个好位置，想想为什么？💡";
+}
+
+function markWinLine(row, col, color) {
+  // 找出获胜的五连并圈出来
+  for (const [dr, dc] of GomokuAI.DIRS) {
+    const line = [{ row, col }];
+    for (const sign of [1, -1]) {
+      let r = row + dr * sign, c = col + dc * sign;
+      while (r >= 0 && r < board.size && c >= 0 && c < board.size && board.stones[r][c] === color) {
+        line.push({ row: r, col: c });
+        r += dr * sign;
+        c += dc * sign;
+      }
+    }
+    if (line.length >= 5) {
+      board.marks = line.map((p) => ({ ...p, color: "#7bc950" }));
+      board.draw();
+      return;
+    }
+  }
+}
+
+function humanMove(r, c) {
+  if (gameOver || busy || board.stones[r][c] !== 0) return;
+  board.marks = []; // 清掉提示圈
+  board.set(r, c, HUMAN);
+  history.push({ row: r, col: c, color: HUMAN });
+  board.draw();
+  if (GomokuAI.checkWin(board.stones, r, c, HUMAN)) {
+    gameOver = true;
+    markWinLine(r, c, HUMAN);
+    statusEl.innerHTML = '<span class="win">你赢啦！五子连珠！🎉🏆</span>';
+    return;
+  }
+  busy = true;
+  statusEl.textContent = "电脑棋手思考中…… 🤔";
+  // 稍等一下再落子，让小朋友看清节奏
+  setTimeout(aiMove, 500);
+}
+
+function aiMove() {
+  const move = GomokuAI.pickMove(board.stones, AI, level);
+  busy = false;
+  if (!move) {
+    gameOver = true;
+    statusEl.textContent = "棋盘下满了，平局！🤝";
+    return;
+  }
+  board.set(move.row, move.col, AI);
+  history.push({ row: move.row, col: move.col, color: AI });
+  board.draw();
+  if (GomokuAI.checkWin(board.stones, move.row, move.col, AI)) {
+    gameOver = true;
+    markWinLine(move.row, move.col, AI);
+    statusEl.innerHTML = '<span class="lose">电脑赢了这盘。没关系，复盘一下，再来！💪</span>';
+    return;
+  }
+  statusEl.innerHTML = "轮到你下啦！你是 ⚫ 黑棋";
+}
+
+setLevel(1);
+</script>
+</body>
+</html>

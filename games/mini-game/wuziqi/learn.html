@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五子棋小课堂 · 学规则</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html">⚫⚪ 五子棋<span>小课堂</span></a>
+  <a class="navlink" href="index.html">🏠 首页</a>
+  <a class="navlink active" href="learn.html">📖 学规则</a>
+  <a class="navlink" href="openings.html">🌅 开局课</a>
+  <a class="navlink" href="tactics.html">⚔️ 学战法</a>
+  <a class="navlink" href="mind.html">🧠 心理课</a>
+  <a class="navlink" href="play.html">🎮 来对弈</a>
+</nav>
+
+<div class="wrap">
+  <h1 class="page-title">第一课：<em>学规则</em> 📖</h1>
+  <p class="page-sub">三分钟学会五子棋，比搭积木还简单！</p>
+
+  <section class="card" id="step-board">
+    <h2><span class="badge">1</span>认识棋盘和棋子</h2>
+    <p>五子棋的棋盘上画满了横线和竖线。棋子要下在<strong>线和线交叉的小点</strong>上，不是格子里哦！</p>
+    <p>棋子有两种颜色：⚫ 黑棋和 ⚪ 白棋。<strong>黑棋先下</strong>，然后你一步、我一步，轮流下。</p>
+    <div class="board-box">
+      <canvas class="board" id="board-intro"></canvas>
+      <div class="board-caption">点一点棋盘试试，棋子会落在交叉点上！</div>
+    </div>
+    <div class="tip">棋子下了就不能拿起来换地方啦，所以下之前要想一想。</div>
+  </section>
+
+  <section class="card" id="step-win">
+    <h2><span class="badge">2</span>五子连珠就是赢！</h2>
+    <p>谁先把自己的<strong>五颗棋子连成一条线</strong>，谁就赢了！连线有三种方法：</p>
+    <ul>
+      <li><strong>横着连</strong> ➡️ 像小火车排队</li>
+      <li><strong>竖着连</strong> ⬇️ 像糖葫芦串起来</li>
+      <li><strong>斜着连</strong> ↘️ 像滑滑梯一样斜斜的</li>
+    </ul>
+    <div class="board-box">
+      <canvas class="board" id="board-win"></canvas>
+      <div class="board-caption" id="win-caption">点下面的按钮看演示！</div>
+      <div class="play-controls">
+        <button class="btn small" onclick="demoWin('row')">横着连 ➡️</button>
+        <button class="btn small blue" onclick="demoWin('col')">竖着连 ⬇️</button>
+        <button class="btn small green" onclick="demoWin('diag')">斜着连 ↘️</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="step-defend">
+    <h2><span class="badge">3</span>学会挡住对手</h2>
+    <p>下棋不能只顾自己连线，还要看对手！如果对手已经连了<strong>三个</strong>或<strong>四个</strong>，你不挡住，下一步他就要赢啦！</p>
+    <div class="board-box">
+      <canvas class="board" id="board-defend"></canvas>
+      <div class="board-caption" id="defend-caption">白棋已经连了四个！黑棋该下在哪里挡住？点一点试试！</div>
+      <button class="btn small" onclick="resetDefend()">再试一次 🔄</button>
+    </div>
+    <div class="tip">记住口诀：<strong>“别人三个要注意，别人四个必须堵！”</strong></div>
+  </section>
+
+  <section class="card" id="step-count">
+    <h2><span class="badge">4</span>火眼金睛：数连子</h2>
+    <p>厉害的棋手每一步都会<strong>数一数</strong>：棋盘上最长的连子有几个？来练练你的眼力！</p>
+    <div class="board-box">
+      <canvas class="board" id="board-count"></canvas>
+      <div class="board-caption" id="count-caption">黑棋最长连了几个？（横、竖、斜都要看哦）</div>
+      <div class="play-controls">
+        <button class="btn small" onclick="answerCount(2)">2 个</button>
+        <button class="btn small blue" onclick="answerCount(3)">3 个</button>
+        <button class="btn small green" onclick="answerCount(4)">4 个</button>
+      </div>
+      <button class="btn small" style="background:var(--purple)" onclick="nextCount()">换一题 🎲</button>
+    </div>
+  </section>
+
+  <div class="pager">
+    <a class="btn blue" href="index.html">⬅️ 回首页</a>
+    <a class="btn" href="openings.html">下一课：开局课 ➡️</a>
+  </div>
+</div>
+
+<footer>⚫⚪ 五子棋小课堂 · 和小朋友一起快乐下棋</footer>
+
+<script src="js/board.js"></script>
+<script>
+// ---- 1. 自由点击的体验棋盘 ----
+let introTurn = 1;
+const introBoard = new Board(document.getElementById("board-intro"), {
+  size: 9, cell: 40,
+  onClick(r, c) {
+    if (introBoard.stones[r][c] !== 0) return;
+    introBoard.set(r, c, introTurn);
+    introTurn = introTurn === 1 ? 2 : 1;
+    introBoard.draw();
+  },
+});
+
+// ---- 2. 三种连五演示 ----
+const winBoard = new Board(document.getElementById("board-win"), { size: 9, cell: 40 });
+const winCaption = document.getElementById("win-caption");
+const DEMOS = {
+  row:  { name: "横着连", moves: [[4,2],[4,3],[4,4],[4,5],[4,6]] },
+  col:  { name: "竖着连", moves: [[2,4],[3,4],[4,4],[5,4],[6,4]] },
+  diag: { name: "斜着连", moves: [[2,2],[3,3],[4,4],[5,5],[6,6]] },
+};
+function demoWin(kind) {
+  const demo = DEMOS[kind];
+  winCaption.textContent = "看好了，黑棋开始" + demo.name + "……";
+  winCaption.className = "board-caption";
+  winBoard.animate(demo.moves.map(([r, c]) => [r, c, 1]), 500, () => {
+    winBoard.marks = demo.moves.map(([r, c]) => ({ row: r, col: c, color: "#7bc950" }));
+    winBoard.draw();
+    winCaption.textContent = "五子连珠！黑棋赢啦！🎉";
+    winCaption.className = "board-caption good";
+  });
+}
+
+// ---- 3. 防守小练习：白棋四连，黑棋必须堵 ----
+const defendCaption = document.getElementById("defend-caption");
+let defendBoard;
+function resetDefend() {
+  defendBoard.clear();
+  // 白棋在第 4 行连了 2~5 列共四个，只有 (4,1) 和 (4,6) 能挡
+  for (let c = 2; c <= 5; c++) defendBoard.set(4, c, 2);
+  defendBoard.set(2, 3, 1);
+  defendBoard.set(3, 5, 1);
+  defendBoard.lastMove = null;
+  defendBoard.draw();
+  defendCaption.textContent = "白棋已经连了四个！黑棋该下在哪里挡住？点一点试试！";
+  defendCaption.className = "board-caption";
+}
+defendBoard = new Board(document.getElementById("board-defend"), {
+  size: 9, cell: 40,
+  onClick(r, c) {
+    if (defendBoard.stones[r][c] !== 0) return;
+    defendBoard.set(r, c, 1);
+    if (r === 4 && (c === 1 || c === 6)) {
+      defendBoard.marks = [{ row: r, col: c, color: "#7bc950" }];
+      defendCaption.textContent = "太棒了！你挡住了白棋！👏";
+      defendCaption.className = "board-caption good";
+    } else {
+      defendBoard.marks = [{ row: 4, col: 1, color: "#ff6b6b" }, { row: 4, col: 6, color: "#ff6b6b" }];
+      defendCaption.textContent = "哎呀，白棋下一步就赢了！要堵在红圈的位置。";
+      defendCaption.className = "board-caption bad";
+    }
+    defendBoard.draw();
+  },
+});
+resetDefend();
+
+// ---- 4. 数连子小游戏 ----
+// 每题给出黑白棋摆法、正确答案和获胜连线位置
+const COUNT_PUZZLES = [
+  {
+    blacks: [[2,2],[3,3],[4,4],[6,2],[2,6]], whites: [[1,1],[5,5],[3,5]],
+    answer: 3, line: [[2,2],[3,3],[4,4]],
+  },
+  {
+    blacks: [[4,1],[4,2],[4,3],[4,4],[1,6],[6,6]], whites: [[3,2],[3,3],[5,4],[4,5]],
+    answer: 4, line: [[4,1],[4,2],[4,3],[4,4]],
+  },
+  {
+    blacks: [[2,3],[3,3],[6,1],[5,6],[1,5]], whites: [[4,3],[2,4],[5,2]],
+    answer: 2, line: [[2,3],[3,3]],
+  },
+];
+const countCaption = document.getElementById("count-caption");
+let countIdx = 0;
+const countBoard = new Board(document.getElementById("board-count"), { size: 9, cell: 40 });
+function loadCount() {
+  const p = COUNT_PUZZLES[countIdx];
+  countBoard.clear();
+  for (const [r, c] of p.blacks) countBoard.stones[r][c] = 1;
+  for (const [r, c] of p.whites) countBoard.stones[r][c] = 2;
+  countBoard.draw();
+  countCaption.textContent = "黑棋最长连了几个？（横、竖、斜都要看哦）";
+  countCaption.className = "board-caption";
+}
+function answerCount(n) {
+  const p = COUNT_PUZZLES[countIdx];
+  if (n === p.answer) {
+    countBoard.marks = p.line.map(([r, c]) => ({ row: r, col: c, color: "#7bc950" }));
+    countCaption.textContent = "答对啦！最长的连子就在绿圈里！🌟";
+    countCaption.className = "board-caption good";
+  } else {
+    countCaption.textContent = "再仔细看看，别忘了斜着的方向哦！";
+    countCaption.className = "board-caption bad";
+  }
+  countBoard.draw();
+}
+function nextCount() {
+  countIdx = (countIdx + 1) % COUNT_PUZZLES.length;
+  loadCount();
+}
+loadCount();
+</script>
+</body>
+</html>

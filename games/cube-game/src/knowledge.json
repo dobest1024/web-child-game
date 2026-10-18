@@ -1,0 +1,736 @@
+{
+  "version": 1,
+  "audience": "6–10 岁，先听短讲解，再选一项；答错只解释并允许重试，不扣星、不计时。",
+  "demonstrationPolicy": "puzzle/alg 供现有预设练习使用：以已复原状态加 alg 的逆序建立初始局面，再演示 alg。三阶白下、黄上、绿前。demoHint 明确观察对象；题目答案不依赖点击演示。题库用于建立判断能力，不代替完整操作课程。",
+  "topics": [
+    {
+      "id": "basics",
+      "title": "先认识魔方",
+      "goal": "分清中心、棱、角，认识整块，按提示拿稳。"
+    },
+    {
+      "id": "notation",
+      "title": "读懂动作小纸条",
+      "goal": "知道字母指哪层，分清方向、半圈和看模型。"
+    },
+    {
+      "id": "beginner-route",
+      "title": "一层一层盖起来",
+      "goal": "知道每一阶段的完成标准和下一步目标。"
+    },
+    {
+      "id": "recognition",
+      "title": "先认清，再动手",
+      "goal": "只看当前阶段需要的线索，核对拿法。"
+    },
+    {
+      "id": "debugging",
+      "title": "转错也能找回来",
+      "goal": "完成动作组再检查，学会撤回与重新识别。"
+    },
+    {
+      "id": "intuitive-f2l",
+      "title": "角棱伙伴一起回家",
+      "goal": "找对伙伴和槽位，先配对，再入槽，保护已完成部分。"
+    }
+  ],
+  "items": [
+    {
+      "id": "basics-piece-types",
+      "topic": "basics",
+      "title": "谁是棱块，谁是角块？",
+      "explanation": "三阶里，一种颜色的是中心块，两种颜色的是棱块，三种颜色的是角块。要看一整块有几种颜色，不能只数现在朝向你的那一小格。",
+      "question": "一块同时有白色和绿色，只有这两种颜色。它是什么？",
+      "choices": [
+        "角块",
+        "棱块",
+        "中心块"
+      ],
+      "answer": 1,
+      "wrongFeedback": [
+        "角块有三种颜色；这块只有两种，是棱块。",
+        null,
+        "中心块只有一种颜色；这块白、绿两色一起，是棱块。"
+      ],
+      "success": "找对了！白绿棱块是一整块，两种颜色会一起移动。",
+      "sourceIds": [
+        "jperm-beginner"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "F2",
+      "demoHint": "找白绿棱块，观察白色与绿色是否一起移动。",
+      "pieceColors": [
+        "W",
+        "G"
+      ],
+      "pieceLabel": "白绿棱块 · 两色在同一整块上"
+    },
+    {
+      "id": "basics-center-home",
+      "topic": "basics",
+      "title": "中心是颜色门牌",
+      "explanation": "在三阶上，我们用中心颜色认每一面的家。比如绿色中心告诉你这一面最终应该全绿。找白绿棱块的家时，要同时看白色和绿色两个中心。",
+      "question": "白绿棱块应该住在哪里？",
+      "choices": [
+        "看见白色空位就放进去",
+        "白色和红色中心之间",
+        "白色和绿色中心之间"
+      ],
+      "answer": 2,
+      "wrongFeedback": [
+        "只看白色可能把另一种颜色放错；还要对上绿色中心。",
+        "白绿棱块没有红色，不能住进白红之间。",
+        null
+      ],
+      "success": "对！两色棱块的家，要同时对上两个同色中心。",
+      "sourceIds": [
+        "jperm-beginner"
+      ],
+      "pieceColors": [
+        "W",
+        "G"
+      ],
+      "pieceLabel": "找家任务：白绿棱块"
+    },
+    {
+      "id": "basics-whole-piece",
+      "topic": "basics",
+      "title": "跟着整块找朋友",
+      "explanation": "白绿棱块转到后面时，绿色可能暂时看不见，但它仍和白色在同一块上。转层会搬动整块，不会把两种颜色分开。观察时要追踪这位完整的小伙伴。",
+      "question": "白绿棱块转走以后，白色和绿色会怎样？",
+      "choices": [
+        "仍在同一块上，一起移动",
+        "分开去两个不同位置",
+        "绿色变成另一种颜色"
+      ],
+      "answer": 0,
+      "wrongFeedback": [
+        null,
+        "魔方的一整块一起转，白绿两面不会分开。",
+        "转动改变位置和朝向，不会把绿色变成别的颜色。"
+      ],
+      "success": "是的！记住整块的颜色，比只盯一张贴纸更有用。",
+      "sourceIds": [
+        "jperm-beginner"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "F2",
+      "demoHint": "一直追踪同一颗白绿棱块，不要改盯另一格白色。",
+      "pieceColors": [
+        "W",
+        "G"
+      ],
+      "pieceLabel": "这两种颜色始终属于同一颗棱块"
+    },
+    {
+      "id": "basics-hold",
+      "topic": "basics",
+      "title": "先拿稳，再开始",
+      "explanation": "本站三阶练习先让白色中心朝下、黄色中心朝上、绿色中心朝自己。这样你说的前面和老师说的前面才一样。中途要改变整颗魔方的拿法时，先等老师说明。",
+      "question": "本关要求绿色中心朝自己，开始前应该怎么做？",
+      "choices": [
+        "哪面朝自己都一样",
+        "按提示拿好，再核对目标块",
+        "转到只看见白色的一面"
+      ],
+      "answer": 1,
+      "wrongFeedback": [
+        "拿法不同，前层和右层指的面也不同，不能随便开始。",
+        null,
+        "白色应朝下；这里还要让绿色中心朝自己。"
+      ],
+      "success": "拿稳啦！先对齐拿法，再做同一组动作。",
+      "sourceIds": [
+        "local-engine"
+      ]
+    },
+    {
+      "id": "notation-face-letters",
+      "topic": "notation",
+      "title": "字母说的是哪一层？",
+      "explanation": "动作纸条用六个字母认六层：U 顶、D 底、R 右、L 左、F 前、B 后。字母说的是这次转哪一层，不是让整颗魔方都跟着转。",
+      "question": "纸条写着 F，应该转哪里？",
+      "choices": [
+        "顶层",
+        "整颗魔方",
+        "前面这一层"
+      ],
+      "answer": 2,
+      "wrongFeedback": [
+        "顶层用 U 表示；F 表示前层。",
+        "F 只转前层，其他层不是一起跟着换拿法。",
+        null
+      ],
+      "success": "对，F 是前层。先认哪层，再认转动方向。",
+      "sourceIds": [
+        "jperm-notation"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "F",
+      "demoHint": "看哪些块属于前层，哪些块留在其他层。"
+    },
+    {
+      "id": "notation-prime",
+      "topic": "notation",
+      "title": "小撇号让方向反过来",
+      "explanation": "U 是顶层顺时针转四分之一圈，U 后面带小撇号就反过来。判断方向时，要想象自己正对顶面往下看，不是一直从绿色前面判断。",
+      "question": "U' 应该怎么转？",
+      "choices": [
+        "正对顶面看，逆时针转四分之一圈",
+        "正对顶面看，顺时针转四分之一圈",
+        "顶层转半圈"
+      ],
+      "answer": 0,
+      "wrongFeedback": [
+        null,
+        "没有小撇号的 U 才是顺时针；U 后有撇号要逆时针。",
+        "半圈写作 U2；小撇号只改变方向，不把角度变成半圈。"
+      ],
+      "success": "对！U' 是顶层逆时针四分之一圈。",
+      "sourceIds": [
+        "jperm-notation"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "U'",
+      "demoHint": "从上方观察，留意顶层只走四分之一圈。"
+    },
+    {
+      "id": "notation-half-turn",
+      "topic": "notation",
+      "title": "小数字 2 是半圈",
+      "explanation": "U2 表示顶层连续转两个四分之一圈，也就是半圈。它和 U' 不一样：一个改变转多少，一个改变转的方向。半圈从顺时针或逆时针转，最后位置一样。",
+      "question": "U2 和 U'，哪一句正确？",
+      "choices": [
+        "两个都是逆时针转一下",
+        "U2 转半圈，U' 逆时针转四分之一圈",
+        "U2 表示把整颗魔方翻过来"
+      ],
+      "answer": 1,
+      "wrongFeedback": [
+        "U2 的 2 表示半圈，不是逆时针的记号。",
+        null,
+        "U2 只转顶层；把整颗翻过来是改变拿法。"
+      ],
+      "success": "分清啦！先看有没有撇号，再看有没有数字 2。",
+      "sourceIds": [
+        "jperm-notation"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "U2",
+      "demoHint": "看顶层转到对面的位置；不是四分之一圈。"
+    },
+    {
+      "id": "notation-camera",
+      "topic": "notation",
+      "title": "看模型，不等于转层",
+      "explanation": "拖动画面可以看看背面和底面，这只是换个观察角度，色块之间的关系不变。本站真正的转层用动作按钮；拖完以后，R、U、F 仍按本关原来的方向。",
+      "question": "想把右层转一步，应该怎么做？",
+      "choices": [
+        "拖动画面，直到右面看不见",
+        "把手机倒过来",
+        "点右层动作按钮"
+      ],
+      "answer": 2,
+      "wrongFeedback": [
+        "拖动只是查看模型，不会执行右层动作。",
+        "转手机不会转动模型上的右层。",
+        null
+      ],
+      "success": "对！拖动用来观察，动作按钮用来转层。",
+      "sourceIds": [
+        "local-engine"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R",
+      "demoHint": "先看右层动作；拖动模型时比较色块关系有没有改变。"
+    },
+    {
+      "id": "route-cross-side",
+      "topic": "beginner-route",
+      "title": "十字还要看侧面",
+      "explanation": "底面出现白色十字还不够。每条白棱都有另一种颜色，它也要对准同色中心。四条白棱都对好，这个十字才是后面盖房子时可靠的地基。",
+      "question": "白色已经连成十字，接下来先检查什么？",
+      "choices": [
+        "四条白棱的侧色是否对上中心",
+        "顶面的角块是不是全黄",
+        "能不能转得再快一点"
+      ],
+      "answer": 0,
+      "wrongFeedback": [
+        null,
+        "黄角是后面的任务，现在先把白十字的侧色检查好。",
+        "速度不能告诉我们十字有没有放对位置，先查侧色。"
+      ],
+      "success": "对！白色朝下，四条侧色也要各自对齐。",
+      "sourceIds": [
+        "jperm-beginner"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "F2",
+      "demoHint": "做完后从四侧检查十字棱块的另一种颜色。"
+    },
+    {
+      "id": "route-layer-not-face",
+      "topic": "beginner-route",
+      "title": "第一层，不只是第一面",
+      "explanation": "白面拼好以后，还要看看它周围的四条小色带。角块和棱块的侧色都要对上各自中心。如果下面全白、旁边却乱着，就只拼好了一面，还没有完成第一层。",
+      "question": "底面全白，但旁边第一层的颜色混在一起，算完成第一层吗？",
+      "choices": [
+        "算，白色够九格就行",
+        "不算，还要把第一层四侧对齐",
+        "算，可以直接做黄色面"
+      ],
+      "answer": 1,
+      "wrongFeedback": [
+        "同一面的白色都对了，整块仍可能住错家，还要检查侧色。",
+        null,
+        "第一层侧色没对齐，先修好它，再做第二层。"
+      ],
+      "success": "记住了！第一层要照顾底面，也要照顾周围四侧。",
+      "sourceIds": [
+        "jperm-beginner"
+      ]
+    },
+    {
+      "id": "route-middle-edge",
+      "topic": "beginner-route",
+      "title": "第二层请谁回家？",
+      "explanation": "第一层做好后，找顶层不带黄色的棱块。先让它朝前的颜色对上前面中心，再看另一种颜色的家在左边还是右边，选择对应的插入动作。",
+      "question": "白色在下、第一层完整，现在第二层该优先找哪种块？",
+      "choices": [
+        "带黄色的角块",
+        "任意一颗白色角块",
+        "顶层不带黄色的棱块"
+      ],
+      "answer": 2,
+      "wrongFeedback": [
+        "黄角属于最后一层，不能拿它补第二层的棱块位置。",
+        "白角已经是第一层的一部分，第二层缺的是棱块。",
+        null
+      ],
+      "success": "对！先找不带黄的顶层棱块，再对侧色、选左或右。",
+      "sourceIds": [
+        "jperm-beginner"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "U R U' R' U' F' U F",
+      "demoHint": "这是向右插入的准备局面，注意目标是棱块。"
+    },
+    {
+      "id": "route-next-goal",
+      "topic": "beginner-route",
+      "title": "每过一站，换个目标",
+      "explanation": "这条路线先白十字、白角，再完成第二层；接着做黄十字和黄面，最后把顶层角块、棱块排好位置。每过一站都检查一次，完成了的目标就不用再重做。",
+      "question": "前两层完整，黄色面也做好了，但顶层侧面没排齐。下一步是什么？",
+      "choices": [
+        "观察顶层哪些块需要换位置",
+        "重新打乱白十字",
+        "继续随便做黄面公式"
+      ],
+      "answer": 0,
+      "wrongFeedback": [
+        null,
+        "白十字和前两层已经完成，要保护它们。",
+        "黄色朝向已经做好；继续套翻色公式可能把黄面打乱。"
+      ],
+      "success": "没错！颜色朝上之后，还要检查块是不是住在正确位置。",
+      "sourceIds": [
+        "cubeskills-4look"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R U R' U' R' F R2 U' R' U' R U R' F'",
+      "demoHint": "观察开局顶面已经全黄，但顶层侧色还没排齐。",
+      "caseId": "pll-t",
+      "caseCaption": "顶面已经全黄，但侧面还没有排齐"
+    },
+    {
+      "id": "recognition-yellow-edges",
+      "topic": "recognition",
+      "title": "黄十字只数棱块",
+      "explanation": "判断黄点、拐角还是横线时，先忽略四个角。只看黄色中心旁边的上、下、左、右四格，它们是顶层棱块。角落里多一格黄色，不会改变黄棱的分类。",
+      "question": "判断黄十字情况时，应该看哪几格？",
+      "choices": [
+        "顶面的四个角",
+        "黄色中心旁边的四条棱块",
+        "顶面所有黄色格加起来"
+      ],
+      "answer": 1,
+      "wrongFeedback": [
+        "四角属于下一步的黄角任务，现在只比较四条棱块。",
+        null,
+        "把黄角也加进来，容易把黄点或拐角认错。"
+      ],
+      "success": "观察范围选对了，找形状就简单多啦。",
+      "sourceIds": [
+        "cubeskills-4look"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "F R U R' U' F'",
+      "demoHint": "只看黄棱：左、右两格朝黄，横线横着摆。",
+      "caseId": "oll-line",
+      "caseCaption": "本例：只看中心旁的四条棱，黄色在左、右"
+    },
+    {
+      "id": "recognition-side-yellow",
+      "topic": "recognition",
+      "title": "像小鱼，也要看侧面",
+      "explanation": "同样只有一个黄角朝上，另外三个黄角朝向哪边也很重要。先找到顶面的黄角，再看侧边黄色，确认和识别图相同。看起来像小鱼，不代表拿起来就能套同一组动作。",
+      "question": "顶面看着像小鱼，开转前还要做什么？",
+      "choices": [
+        "闭眼做自己背过的公式",
+        "只数有几格黄色",
+        "核对黄角位置、侧面黄色和拿法"
+      ],
+      "answer": 2,
+      "wrongFeedback": [
+        "背熟不等于情况匹配，错误拿法会把公式用错。",
+        "只数黄色格数，不能知道黄角的具体朝向。",
+        null
+      ],
+      "success": "对！顶面与侧面一起看，才能认准这一条小鱼。",
+      "sourceIds": [
+        "cubeskills-4look"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R U R' U R U2 R'",
+      "demoHint": "本例左前角朝黄，右前角的黄色朝前；与反小鱼比较。",
+      "caseId": "oll-sune",
+      "caseCaption": "本例：左前黄角朝上，右前角黄色朝前"
+    },
+    {
+      "id": "recognition-headlights",
+      "topic": "recognition",
+      "title": "车灯看两端，不看中间",
+      "explanation": "做顶层角块换位时，看同一侧顶层最左和最右的角块色。两端同色就像一对车灯，中间那格可以不同。它帮助我们判断角块的关系，不等于这一整面已经完成。",
+      "question": "一侧顶层三格是红、橙、红，这一侧有车灯吗？",
+      "choices": [
+        "有，两端角块都是红色",
+        "没有，中间不是红色",
+        "只有中间为黄色才算"
+      ],
+      "answer": 0,
+      "wrongFeedback": [
+        null,
+        "车灯只比较两端角块；中间橙色是棱块，不影响判断。",
+        "黄色在中间与车灯无关；要看两端角块是否同色。"
+      ],
+      "success": "找到了！红、橙、红的两端同色，就是一对车灯。",
+      "sourceIds": [
+        "cubeskills-4look",
+        "local-engine"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R U R' U' R' F R2 U' R' U' R U R' F'",
+      "demoHint": "本例左面是红、橙、红；只比较两端角块。",
+      "caseId": "pll-t",
+      "caseCaption": "看左侧：红、橙、红；两端同色就是车灯"
+    },
+    {
+      "id": "recognition-skip-done",
+      "topic": "recognition",
+      "title": "已经好了，就向前走",
+      "explanation": "公式是帮我们完成一个目标的。如果目标已经完成，先检查，再进入下一站。比如四条黄棱已经朝上，就不用为了照顺序再做一次黄十字公式，应该继续观察黄角。",
+      "question": "黄十字已经做好，前两层也完整。应该怎样继续？",
+      "choices": [
+        "再做一遍黄十字公式才保险",
+        "跳过黄十字，观察四个黄角",
+        "把十字转乱，重新开始"
+      ],
+      "answer": 1,
+      "wrongFeedback": [
+        "不需要重做已完成的目标；多做一遍可能把黄棱又翻乱。",
+        null,
+        "已经完成的部分要保护，直接进入下一项观察。"
+      ],
+      "success": "对！先检查，已经完成的步骤可以跳过。",
+      "sourceIds": [
+        "cubeskills-4look"
+      ],
+      "caseId": "oll-sune",
+      "caseCaption": "黄十字已完成，接下来观察角块"
+    },
+    {
+      "id": "debug-finish-group",
+      "topic": "debugging",
+      "title": "先走完这一小组",
+      "explanation": "一组动作中途，下层可能暂时变乱，这是搬运色块经过的地方。先核对自己有没有漏步；如果都照着做了，就完成老师标出的这一整组，再检查结果，不要中途另找公式。",
+      "question": "动作做到一半，下面暂时乱了，且刚才没有漏步。怎么办？",
+      "choices": [
+        "马上打乱重来",
+        "换一个看起来更短的公式",
+        "按顺序做完当前动作组，再检查"
+      ],
+      "answer": 2,
+      "wrongFeedback": [
+        "中途看起来乱不一定是错误，不用立即重来。",
+        "半组动作还没有收好就换公式，会把路线接错。",
+        null
+      ],
+      "success": "对！看清当前组的结束位置，完成它再检查。",
+      "sourceIds": [
+        "jperm-beginner"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R U R' U' R' F R2 U' R' U' R U R' F'",
+      "demoHint": "中途下两层可能改变，整组结束后恢复。"
+    },
+    {
+      "id": "debug-undo",
+      "topic": "debugging",
+      "title": "转错一步，原路退回",
+      "explanation": "如果刚刚多转了一次 R，可以用 R' 把这一步退回；游戏里也可以点撤回。退回后重新核对拿法和下一步，别一着急又连转好几下。记清错在哪一步很有帮助。",
+      "question": "刚刚只多转了一次 R，怎样准确退回这一步？",
+      "choices": [
+        "做 R'，或点一次撤回",
+        "再做一次 R",
+        "随便转顶层直到好看"
+      ],
+      "answer": 0,
+      "wrongFeedback": [
+        null,
+        "再做一次 R 会合成右层半圈，不是退回一步。",
+        "随便转顶层不能抵消右层的错误，还会新增变化。"
+      ],
+      "success": "是的！R 和 R' 互相抵消，一次只处理一个错误。",
+      "sourceIds": [
+        "jperm-notation",
+        "local-engine"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R'",
+      "demoHint": "此演示从只转错一次 R 的状态开始，R' 将它退回。"
+    },
+    {
+      "id": "debug-not-universal",
+      "topic": "debugging",
+      "title": "同一个公式，不包办所有情况",
+      "explanation": "跟练成功，说明你会处理这次准备好的情况。换一颗乱序魔方，先看目标块在哪、颜色朝哪、前面是哪面。和练习不同，就要重新找匹配情况，不能一直重复同一个公式。",
+      "question": "换到一个不同局面，最可靠的第一步是什么？",
+      "choices": [
+        "把上一关公式一直重复",
+        "观察位置、朝向和拿法",
+        "先比一比谁转得快"
+      ],
+      "answer": 1,
+      "wrongFeedback": [
+        "一个公式只处理匹配的情况；重复不保证朝目标前进。",
+        null,
+        "速度不能帮我们选对情况，先看清楚才知道怎么转。"
+      ],
+      "success": "对！先认清情况，再选动作，才是在学复原。",
+      "sourceIds": [
+        "jperm-beginner",
+        "jperm-f2l"
+      ]
+    },
+    {
+      "id": "debug-final-check",
+      "topic": "debugging",
+      "title": "顶面全黄，还没一定到终点",
+      "explanation": "顶面全黄只说明黄色朝向一致。侧面的块还可能互相站错位置。最后把顶层对齐中心，再看六个面是不是各自同色；全部排好，才是完整复原。",
+      "question": "顶面九格都是黄色，但侧面仍杂色，这说明什么？",
+      "choices": [
+        "整颗魔方已经复原",
+        "魔方坏了，不能再转",
+        "黄面做好了，还要检查顶层位置"
+      ],
+      "answer": 2,
+      "wrongFeedback": [
+        "一个面同色不能证明其他五面完成，要继续看位置。",
+        "这是常见的顶层换位阶段，不说明魔方损坏。",
+        null
+      ],
+      "success": "对！把顶层位置排好、对齐中心，最后检查六面。",
+      "sourceIds": [
+        "cubeskills-4look"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R U' R U R U R U' R' U' R2",
+      "demoHint": "开局顶面全黄，但三个棱块还需要换座。",
+      "caseId": "pll-ua",
+      "caseCaption": "顶面全黄，三个棱块仍需换座"
+    },
+    {
+      "id": "f2l-partner-colors",
+      "topic": "intuitive-f2l",
+      "title": "给白角找对伙伴",
+      "explanation": "白角有三种颜色。先拿掉白色不看，剩下的两种颜色，就是它要找的棱块颜色。比如白绿橙角块找绿橙棱块，不能因为两块都带绿色，就把它们当成一对。",
+      "question": "白绿橙角块，应该找哪一颗棱块做伙伴？",
+      "choices": [
+        "绿橙棱块",
+        "绿红棱块",
+        "白绿棱块"
+      ],
+      "answer": 0,
+      "wrongFeedback": [
+        null,
+        "绿红虽然也有绿色，但红色不匹配，这两块不是一对。",
+        "白绿棱块属于白十字；角棱配对要找绿橙棱块。"
+      ],
+      "success": "伙伴找对了！角块除了白色以外的两色，要和棱块完全相同。",
+      "sourceIds": [
+        "jperm-f2l",
+        "cubeskills-f2l"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "U R U' R'",
+      "demoHint": "找到白绿橙角块和绿橙棱块，一起追踪它们。",
+      "pieceColors": [
+        "W",
+        "G",
+        "O"
+      ],
+      "pieceLabel": "找伙伴任务：白绿橙角块"
+    },
+    {
+      "id": "f2l-home-slot",
+      "topic": "intuitive-f2l",
+      "title": "两位伙伴住同一个槽",
+      "explanation": "白角和伙伴棱块最后上下相邻，住在两个侧面中心之间。绿橙这一对就去绿色和橙色中心之间。要看中心确定家，不是找一个看起来空着的位置就塞进去。",
+      "question": "白绿橙角块和绿橙棱块这一对，应该去哪里？",
+      "choices": [
+        "任意还没拼好的槽",
+        "绿色和橙色中心之间的槽",
+        "绿色和红色中心之间的槽"
+      ],
+      "answer": 1,
+      "wrongFeedback": [
+        "槽位有固定配色，空着也不一定是这对伙伴的家。",
+        null,
+        "这对伙伴没有红色，不能放在绿红中心之间。"
+      ],
+      "success": "对！根据两种侧色找槽位，才能一起回对的家。",
+      "sourceIds": [
+        "cubeskills-f2l"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "U R U' R'",
+      "demoHint": "在本站拿法里，绿橙的家是前右槽。",
+      "pieceColors": [
+        "W",
+        "G",
+        "O"
+      ],
+      "pieceLabel": "白绿橙角块",
+      "partnerColors": [
+        "G",
+        "O"
+      ],
+      "partnerLabel": "绿橙棱块"
+    },
+    {
+      "id": "f2l-pair-then-insert",
+      "topic": "intuitive-f2l",
+      "title": "先配好，再一起入槽",
+      "explanation": "找到正确伙伴以后，还要看它们的相对位置和朝向。两个颜色相配的块随便挨在一起，不一定能一起回家。先按示范把它们配好，再用入槽动作，把角块和棱块一起送回。",
+      "question": "为什么找到两个正确的块后，还要先观察它们怎么挨着？",
+      "choices": [
+        "因为每一对都必须背很长的公式",
+        "因为只把白角塞下去就够了",
+        "因为位置和朝向合适，才方便一起入槽"
+      ],
+      "answer": 2,
+      "wrongFeedback": [
+        "先理解如何配对和入槽，不需要一开始就背大量长公式。",
+        "F2L 要把角块与棱块一起完成；只塞白角还没完成这一对。",
+        null
+      ],
+      "success": "对！找对伙伴、摆成合适关系，再一起回家。",
+      "sourceIds": [
+        "jperm-f2l",
+        "cubeskills-f2l"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R U' R' U R U' R'",
+      "demoHint": "先做 R U' R' 请出并配好，再观察入槽前后的变化。",
+      "pieceColors": [
+        "W",
+        "G",
+        "O"
+      ],
+      "pieceLabel": "目标角块",
+      "partnerColors": [
+        "G",
+        "O"
+      ],
+      "partnerLabel": "目标棱块"
+    },
+    {
+      "id": "f2l-protect-and-check",
+      "topic": "intuitive-f2l",
+      "title": "新伙伴回家，老伙伴也要在",
+      "explanation": "F2L 一共有四对角棱伙伴。每送回一对，就检查白十字和已经拼好的伙伴是否仍在家。新一对暂时不好配，可以先停下来观察，别用随意转层把做好的部分弄丢。",
+      "question": "完成一对以后，应该检查哪一项？",
+      "choices": [
+        "这一对、白十字和先前完成的伙伴都正确",
+        "只要白色看着多就可以",
+        "只数这次用了几秒钟"
+      ],
+      "answer": 0,
+      "wrongFeedback": [
+        null,
+        "白色格子多不代表整块位置正确，还要查侧色与已完成的伙伴。",
+        "时间不是本关完成标准，先保证每一对和白十字正确。"
+      ],
+      "success": "稳稳地完成一对，再找下一对。四对都好，前两层就完成啦！",
+      "sourceIds": [
+        "jperm-f2l",
+        "cubeskills-f2l"
+      ],
+      "puzzle": "3x3x3",
+      "alg": "R U R' U R U' R'",
+      "demoHint": "这个白色朝上的例子先配对再入槽，结束后检查白十字与四对。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "jperm-beginner",
+      "title": "J Perm — How To Solve The 3x3 Rubik’s Cube",
+      "url": "https://jperm.net/3x3",
+      "usedFor": "棱角色数、按中心找家、十字侧色、第一层、第二层、完成整组动作与重新观察。路线题采用本站既有顺序，不照搬该页面末层顺序。"
+    },
+    {
+      "id": "jperm-notation",
+      "title": "J Perm — Move Notation",
+      "url": "https://jperm.net/3x3/moves",
+      "usedFor": "六面字母、正对该面判断顺逆、撇号、半圈及整颗旋转和转层的区别。"
+    },
+    {
+      "id": "jperm-f2l",
+      "title": "J Perm — Intuitive F2L",
+      "url": "https://jperm.net/3x3/cfop/f2l",
+      "usedFor": "优先理解配对与入槽，而非先背大量公式。"
+    },
+    {
+      "id": "cubeskills-f2l",
+      "title": "CubeSkills — F2L Algorithms",
+      "url": "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+      "usedFor": "基本入槽、先调整配对再插入，以及错误连接或块在槽中的情况分类。"
+    },
+    {
+      "id": "cubeskills-4look",
+      "title": "CubeSkills — 4 Look Last Layer",
+      "url": "https://www.cubeskills.com/uploads/pdf/tutorials/4-look-last-layer.pdf",
+      "usedFor": "黄棱/黄角分别处理，角块/棱块分别换位；末层方向和位置是不同目标。"
+    },
+    {
+      "id": "local-engine",
+      "title": "本地 cubing 引擎与当前关卡复算",
+      "url": null,
+      "usedFor": "三阶 z2 拿法、现有关卡示范公式和 F2L 配对检查点；演示均复算验证，不把可逆性测试当成通用求解证明。"
+    }
+  ],
+  "visualPolicy": {
+    "colorKeys": {
+      "W": "白",
+      "Y": "黄",
+      "G": "绿",
+      "B": "蓝",
+      "R": "红",
+      "O": "橙"
+    },
+    "pieces": "pieceColors 是同一整块的颜色，请用组合块图形/共用外框呈现，不画成能独立移动的贴纸。配文字色名，不能只靠颜色表达。partnerColors 若有，则是另一整块。",
+    "cases": "caseId 引用 src/cfop.js 已验证的准备局面。初始状态使用白下黄上绿前，加该关 alg 的逆序；顶视图下边为前面。caseCaption 指向实际要观察的位置。",
+    "quiz": "题目不依赖看见颜色才能答题：question/choices 保留完整文字线索。可选演示应允许暂停、单步与重新观察；答错留在本题，并播放对应解释。"
+  }
+}

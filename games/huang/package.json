@@ -1,0 +1,27 @@
+{
+  "name": "crown-gorge",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A real-time 3D browser card battler inspired by INKWAVE's web stack",
+  "scripts": {
+    "start": "node server/local.js",
+    "dev": "node --watch server/local.js",
+    "check": "node tools/check.js",
+    "test": "node --test tests/*.test.js",
+    "test:online": "node tools/test-online.js",
+    "build": "node tools/build.js",
+    "cf:dev": "npm run build && wrangler dev --ip 0.0.0.0",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "three": "0.186.1",
+    "ws": "8.22.0"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

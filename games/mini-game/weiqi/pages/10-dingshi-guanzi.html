@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第10课 · 定式与数地盘 | 围棋小课堂</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="../index.html">⚫⚪ 围棋小课堂</a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="01-renshi.html" class="active">从头学</a>
+      <a href="playground.html">练习场</a>
+      <a href="terms.html">小词典</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap lesson">
+  <div class="crumb"><a href="../index.html">首页</a> › 进阶篇 › 第10课</div>
+  <h1>🧩 第10课：定式与数地盘</h1>
+
+  <h2>一、定式：前人发明的「好棋套路」</h2>
+  <div class="story">
+    <span class="box-title">🐣 小故事</span>
+    在角上，黑白你来我往，慢慢人们发现：<b>有些下法双方都不吃亏，最公平、最好</b>。
+    大家就把这些好套路记下来，传给后人，叫做「<span class="term">定式</span>」。
+    定式就像「数学口诀表」，记住一些，下棋又快又稳！
+  </div>
+
+  <p>下面是一个角上常见的小套路：白棋来碰黑棋的角，黑挡、白长、黑也长……
+     最后双方都安顿好，黑得了角、白得了边，谁也不吃亏。</p>
+
+  <div class="goban" data-size="9"
+       data-stones="B:cc"
+       data-moves="W:cd B:dd W:ce B:dc"
+       data-caption="一个简单的角部小套路：① 白靠 ② 黑扳 ③ 白长 ④ 黑接。黑得角地，白得左边，双方满意。">
+  </div>
+
+  <div class="tip">
+    <span class="box-title">💡 学定式别死记</span>
+    小朋友刚开始，<b>记住一两个简单定式就够了</b>，更重要的是明白「为什么这样下」。
+    懂道理，比背一百个定式还有用！定式也不是非走不可，看情况灵活用。
+  </div>
+
+  <h2>二、一盘棋是怎么结束的？</h2>
+  <p>当双方的地盘都<b>分好了边界</b>、谁也占不到更多便宜时，大家就连续「停一手」，
+     这盘棋就<b>结束</b>了。接下来就要——<b>数地盘，比胜负！</b></p>
+
+  <h2>三、数地盘：数「目」</h2>
+  <p>你用棋子围住的<b>每一个空交叉点</b>，算作 <b>1 目</b>（1 分）。
+     把黑棋围的空点数一数，把白棋围的空点数一数，<b>谁的目多，谁就赢</b>！
+     （吃到的对方子，在一些规则里也要算进去，刚学的小朋友先学会数空点就好。）</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9"
+         data-stones="B:ca,cb,cc,bc,ac"
+         data-labels="1:aa 2:ba 3:ab 4:bb"
+         data-caption="黑棋在左下角围住了 4 个空点 = 4 目。">
+    </div>
+    <div class="goban" data-size="9"
+         data-stones="W:gg,fg,gf,hf,fh"
+         data-labels="1:hg 2:gh 3:hh"
+         data-caption="白棋在右上角围住了 3 个空点 = 3 目。4 目 &gt; 3 目，这块黑棋赢。">
+    </div>
+  </div>
+
+  <h2>四、收官：最后的「捡便宜」</h2>
+  <p>快结束时，两家地盘交界的地方，还有一些<b>小便宜</b>可以捡：
+     在边界上多挤进去一两手，就能多围一两目、或少丢一两目。这叫<span class="term">收官</span>。</p>
+  <p>别小看收官！很多棋就差<b>一两目</b>，认真收官，常常能<b>反败为胜</b>。</p>
+
+  <div class="goban" data-size="9"
+       data-stones="B:cd,dd,ed,fd W:cf,df,ef,ff" data-marks="△:ce ×:fe"
+       data-caption="边界上的小官子：黑棋抢先下△(ce)挡一手，就能多守住地、并少让白棋钻进来。">
+  </div>
+
+  <div class="note">
+    <span class="box-title">📝 记住</span>
+    1️⃣ 双方都停手 → 一盘棋结束。<br>
+    2️⃣ 数自己围住的空点（目），多的赢。<br>
+    3️⃣ 结束前别忘了<b>收官</b>，一两目也很重要！
+  </div>
+
+  <div class="quiz">
+    <div class="q">❓ 小测验：怎么知道一盘围棋谁赢了？</div>
+    <button class="opt">谁吃的子多谁赢</button>
+    <button class="opt" data-correct="1">数谁围住的空点（目）多，多的赢</button>
+    <button class="opt">谁的棋子好看谁赢</button>
+    <div class="fb" data-yes="答对啦！🎉 围棋比的是地盘大小（目数）。" data-no="再想想～ 围棋比的是『地盘』，也就是围住的空点数。"></div>
+  </div>
+
+  <div class="pager">
+    <a href="09-buju.html">← 上一课</a>
+    <a class="next" href="11-xinli.html">下一课：心理篇 →</a>
+  </div>
+</main>
+
+<footer class="site-footer">⚫⚪ 围棋小课堂 · 第10课 定式与数地盘</footer>
+<script src="../js/goban.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

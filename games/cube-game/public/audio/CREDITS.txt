@@ -1,0 +1,10 @@
+魔方小岛 — 中文语音
+
+Synthesized locally using the user's BaoCut IndexTTS 2.5 Q8 model and its zh-female preset.
+Reference recording: FLEURS © Google LLC, CC BY 4.0.
+https://huggingface.co/datasets/google/fleurs
+https://creativecommons.org/licenses/by/4.0/
+Reference clip: cmn_hans_cn / dev / 11138309825590803862.wav.
+BaoCut reference preprocessing: float WAV to 16-bit PCM; trimmed silence; normalized peak.
+Website modifications: newly synthesized narration, loudness normalization to -18 LUFS, 24 kHz mono MP3 encoding.
+No original speaker identity or endorsement is implied.

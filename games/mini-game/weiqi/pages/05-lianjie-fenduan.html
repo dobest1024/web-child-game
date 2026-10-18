@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第5课 · 连接与分断 | 围棋小课堂</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="../index.html">⚫⚪ 围棋小课堂</a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="01-renshi.html" class="active">从头学</a>
+      <a href="playground.html">练习场</a>
+      <a href="terms.html">小词典</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap lesson">
+  <div class="crumb"><a href="../index.html">首页</a> › 进阶篇 › 第5课</div>
+  <h1>🔗 第5课：连接与分断</h1>
+
+  <div class="story">
+    <span class="box-title">🐣 小故事</span>
+    一根筷子轻轻一掰就断，一把筷子捆在一起就掰不动。围棋也是这样：
+    <b>自己的棋连起来，又结实又安全；把对方的棋切开，他就变成一个个孤单的小可怜，容易被你欺负！</b>
+    这一课，就学「把自己连好、把对方断开」。
+  </div>
+
+  <h2>一、最牢的连接：手拉手</h2>
+  <p>两颗子<b>紧挨着</b>（上下或左右相邻），就变成一整块，谁也切不开。这是最结实的连接。</p>
+
+  <div class="goban" data-size="9" data-stones="B:ee,fe"
+       data-caption="黑棋手拉手，连成一块。白棋无论怎么下都切不开它们。">
+  </div>
+
+  <h2>二、有缝的地方叫「断点」</h2>
+  <p>如果两颗子只是<b>斜着</b>挨着（叫「<span class="term">尖</span>」），中间就有缝。这种缝叫<span class="term">断点</span>，对方可能想从缝里切进来。</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9" data-stones="B:ee,fd" data-marks="×:ed ×:fe"
+         data-caption="黑两子斜着挨着，两个红叉就是「断点」（缝）。">
+    </div>
+    <div class="goban" data-size="9" data-stones="B:ee,fd,fe W:ed" data-last="fe"
+         data-caption="白棋从一个断点切（下 ed），黑棋马上在另一个断点接上（fe），还是连成一块！">
+    </div>
+  </div>
+
+  <div class="tip">
+    <span class="box-title">💡 斜着的两子其实很安全</span>
+    虽然有两个断点，但对方切其中一个，你就接另一个——所以「尖」是很常用的好连接，又快又稳。
+  </div>
+
+  <h2>三、老虎嘴：虎口</h2>
+  <p>有一种特别神气的连接点，三颗子围着一个空点，张开像老虎的嘴巴，叫<span class="term">虎口</span>。
+     对方要是敢往老虎嘴里跳，立刻就只剩 1 口气，会被一口吃掉！所以这个空点又安全又厉害。</p>
+
+  <div class="goban" data-size="9" data-stones="B:de,fe,ef" data-marks="○:ee"
+       data-caption="圆圈处就是「虎口」。白棋若下进去就只剩 1 口气，会被黑棋吃掉，所以白棋不敢进。">
+  </div>
+
+  <h2>四、反过来：把对方切开（分断）</h2>
+  <p>当对方的棋有断点时，<b>抓紧切进去</b>！切开后对方变成两块孤棋，你就可以分别去攻击它们，
+     说不定还能吃掉一块。下图黑棋一手「断」，把白棋切成两个小可怜。</p>
+
+  <div class="diagrams">
+    <div class="goban" data-size="9" data-stones="W:ee,fd" data-marks="×:ed ×:fe"
+         data-caption="白棋两子斜着，有断点（红叉）。轮到黑棋，机会来了！">
+    </div>
+    <div class="goban" data-size="9" data-stones="W:ee,fd B:ed" data-last="ed"
+         data-caption="黑棋一手「断」，白棋被切成两块，各自孤单又没气，黑棋占大便宜！">
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="box-title">📝 三句口诀</span>
+    1️⃣ 自己的棋，<b>能连就连</b>，连起来最安全。<br>
+    2️⃣ 看到对方的<b>断点</b>，想想能不能切开。<br>
+    3️⃣ <b>切断是进攻，连接是防守</b>，两样都要会。
+  </div>
+
+  <div class="quiz">
+    <div class="q">❓ 小测验：为什么要把自己的棋子连起来？</div>
+    <button class="opt" data-correct="1">连起来气更多、更结实，不容易被吃</button>
+    <button class="opt">连起来可以走得更快</button>
+    <button class="opt">没有用，分开下更好</button>
+    <div class="fb" data-yes="答对啦！🎉 团结的棋最结实。" data-no="再想想～ 还记得第2课吗？连起来的棋气更多哦。"></div>
+  </div>
+
+  <div class="pager">
+    <a href="04-jinzhe-dajie.html">← 上一课</a>
+    <a class="next" href="06-zhengzi-menqia.html">下一课：吃子战法（一）→</a>
+  </div>
+</main>
+
+<footer class="site-footer">⚫⚪ 围棋小课堂 · 第5课 连接与分断</footer>
+<script src="../js/goban.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

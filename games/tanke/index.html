@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="author" content="周逸卿">
+<title>坦克大冒险</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+<div class="clouds"><i></i><i></i><i></i></div>
+<canvas id="game"></canvas>
+<div id="hudBtns">
+  <button class="ibtn" data-act="pause" title="暂停 (P)">⏸</button>
+  <button class="ibtn" id="btnMute" data-act="mute" title="声音 (M)">🔊</button>
+</div>
+<button id="btnSkip" class="btn blue" data-act="skipTut">跳过教学 ⏭</button>
+<div id="touchUI">
+  <div id="joyBase"><div id="joyKnob"></div></div>
+  <div id="skillBtn"><span>⚡</span></div>
+  <div id="fireBtn"><span>💥</span></div>
+</div>
+<div id="toast"></div>
+<div id="rotateTip"><div class="phone">📱</div><p>把平板横过来玩吧</p></div>
+
+<!-- 标题 -->
+<section id="scr-title" class="screen">
+  <div class="coins corner"></div>
+  <h1 class="logo"><span style="--c:#FF5D5D;--i:0">坦</span><span style="--c:#FFB82E;--i:1">克</span><span style="--c:#3DD68C;--i:2">大</span><span style="--c:#3EC1F3;--i:3">冒</span><span style="--c:#A97CFF;--i:4">险</span></h1>
+  <canvas id="tcv" width="1280" height="400"></canvas>
+  <button id="btnContinue" class="pill" data-act="continue">▶ 继续冒险</button>
+  <div class="row">
+    <button class="btn green big2" data-act="play1"><span>▶</span><small>1 人玩</small></button>
+    <button class="btn orange big2" data-act="play2"><span>👫</span><small>2 人玩</small></button>
+  </div>
+  <div class="row wrap">
+    <button class="btn blue sm" data-act="tutorial">🎓 新手教学</button>
+    <button class="btn blue sm" data-act="shop">🛒 商店</button>
+    <button class="btn blue sm" data-act="ach">🏅 成就</button>
+    <button class="btn blue sm" data-act="bosses">📖 Boss 图鉴</button>
+    <button class="btn blue sm" data-act="editor">🛠️ 关卡编辑器</button>
+    <button class="btn blue sm" data-act="help">❓ 说明</button>
+    <button class="btn gray sm" data-act="parent">👪 家长</button>
+  </div>
+  <div class="author">作者：周逸卿</div>
+</section>
+
+<!-- 说明 -->
+<section id="scr-help" class="screen">
+  <div class="panel">
+    <h2>怎么玩</h2>
+    <div class="keys">
+      <div class="kgroup"><h4>🙂 一个人玩</h4>
+        <div><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> 或 <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>开坦克</span></div>
+        <div><kbd class="wide">空格</kbd> 或 <kbd>J</kbd><span>发射</span>　<kbd>K</kbd><span>放大招</span></div>
+      </div>
+      <div class="kgroup"><h4>👫 两个人玩</h4>
+        <div><b class="p1">1P</b> <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 开 · <kbd>J</kbd> 发射 · <kbd>K</kbd> 大招</div>
+        <div><b class="p2">2P</b> <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> 开 · <kbd class="wide">回车</kbd> 发射 · <kbd class="wide">右Shift</kbd> 大招</div>
+      </div>
+      <div class="kgroup"><h4>📱 平板</h4><div>左手按住屏幕拖动开坦克，右手点屏幕发射，⚡ 按钮放大招</div></div>
+      <div class="kgroup"><h4>其他</h4><div><kbd>P</kbd><span>暂停</span>　<kbd>M</kbd><span>声音开关</span></div></div>
+    </div>
+    <p class="tip">🥚 保护好底下的<b>宝宝蛋</b>，打败所有坏机器人就过关！闪彩虹光的敌人会掉道具，打败敌人会掉金币，金币可以去商店买帽子和升级。</p>
+    <h3>新地形</h3>
+    <div class="terrain">
+      <div>📦 <b>木箱</b>：推着走，推进河里能填河，打 3 下会碎</div>
+      <div>🧊 <b>冰面</b>：开上去会滑</div>
+      <div>🔴 <b>弹簧</b>：开上去会弹起来，跳过障碍</div>
+      <div>🌀 <b>传送门</b>：从一个门进，另一个门出，子弹也能穿</div>
+      <div>💰 <b>金宝宝</b>：有时会出现，快抓住它，会掉很多宝贝</div>
+    </div>
+    <h3>神奇子弹（捡到后用 20 秒）</h3>
+    <div class="items" id="helpWeapons"></div>
+    <h3>好玩的道具</h3>
+    <div class="items" id="helpItems"></div>
+    <button class="btn" data-act="title">知道啦！</button>
+  </div>
+</section>
+
+<!-- 选坦克 -->
+<section id="scr-tanks" class="screen">
+  <div class="topbar"><button class="btn round blue" data-act="title">🏠</button><h2 id="tankTitle">选择你的坦克</h2><span class="hint" id="tankHint"></span></div>
+  <div id="tankGrid"></div>
+  <div id="diffRow"></div>
+</section>
+
+<!-- 选关 -->
+<section id="scr-levels" class="screen">
+  <div class="topbar"><button class="btn round blue" data-act="tanks">🚙</button><h2>选择关卡</h2><span class="pill static" id="lvMode"></span>
+    <button class="btn blue sm" data-act="tutorial">🎓 教学</button><span class="coins"></span></div>
+  <div id="lvWorlds"></div>
+  <div class="hint">😈 小 Boss　👑 大 Boss　🐲 终极 Boss　⭐ 收集　⏱️ 坚持　📦 推箱　🔓 营救　💰 金宝宝　🌙 夜晚　· Q / E 换世界</div>
+</section>
+
+<!-- 商店 -->
+<section id="scr-shop" class="screen">
+  <div class="topbar"><button class="btn round blue" data-act="title">🏠</button><h2>坦克商店</h2><span class="coins big"></span></div>
+  <div class="shop">
+    <div class="shop-left">
+      <canvas id="shopPreview" width="300" height="260"></canvas>
+      <div class="row"><button class="btn round blue sm2" data-act="shopPrev">◀</button><b id="shopTankName" class="stname"></b><button class="btn round blue sm2" data-act="shopNext">▶</button></div>
+      <p class="tip small">帽子、涂装、贴纸每辆坦克可以不一样<br>升级对所有坦克都有用</p>
+    </div>
+    <div class="shop-right">
+      <div class="row wrap" id="shopTabs"></div>
+      <div id="shopGrid"></div>
+    </div>
+  </div>
+  <div id="shopMsg"></div>
+</section>
+
+<!-- 成就 -->
+<section id="scr-ach" class="screen">
+  <div class="topbar"><button class="btn round blue" data-act="title">🏠</button><h2>我的成就</h2><span class="pill static" id="achCount"></span></div>
+  <div id="achGrid"></div>
+</section>
+
+<!-- Boss 图鉴 -->
+<section id="scr-bosses" class="screen">
+  <div class="topbar"><button class="btn round blue" data-act="title">🏠</button><h2>Boss 图鉴</h2><span class="pill static" id="bossCount"></span></div>
+  <div id="bossGrid"></div>
+</section>
+
+<!-- 家长 -->
+<section id="scr-parent" class="screen">
+  <div class="panel narrow">
+    <h2>👪 家长设置</h2>
+    <p id="parentStats" class="tip"></p>
+    <h3>存档码</h3>
+    <p class="tip small">进度存在这个浏览器里。换电脑、换浏览器前，先复制存档码，到新地方粘贴读取。</p>
+    <textarea id="saveCode" readonly rows="3"></textarea>
+    <button class="btn blue sm" data-act="copyCode">复制存档码</button>
+    <textarea id="loadCode" rows="3" placeholder="把存档码粘贴到这里"></textarea>
+    <button class="btn green sm" data-act="loadCode">读取存档</button>
+    <p id="parentMsg" class="tip"></p>
+    <h3>重置</h3>
+    <button class="btn red sm" id="btnReset" data-act="reset">重置全部进度</button>
+    <button class="btn" data-act="title">返回</button>
+  </div>
+</section>
+
+<!-- 编辑器 -->
+<section id="scr-editor" class="screen">
+  <div class="ed-wrap">
+    <div class="ed-left">
+      <div class="topbar"><button class="btn round blue sm2" data-act="title">🏠</button><h2>关卡编辑器</h2><span class="hint">点一点、拖一拖就能摆放</span></div>
+      <canvas id="edCanvas" width="1440" height="1056"></canvas>
+    </div>
+    <div class="ed-right">
+      <h4>我的关卡</h4><div class="row wrap" id="edSlots"></div>
+      <h4>画笔</h4><div class="ed-palette" id="edPalette"></div>
+      <h4>主题</h4><div class="row wrap" id="edThemes"></div>
+      <h4>敌人</h4><div id="edEnemies"></div>
+      <div class="row wrap">
+        <button class="btn green sm" data-act="edPlay">▶ 试玩</button>
+        <button class="btn sm" data-act="edSave">💾 保存</button>
+        <button class="btn blue sm" data-act="edShare">🔗 分享码</button>
+        <button class="btn gray sm" data-act="edClear">🧽 清空</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="edModal">
+    <div class="card">
+      <h3>关卡分享码</h3>
+      <p class="tip small">复制下面的码发给朋友；把朋友的码粘贴进来点“读取”。</p>
+      <textarea id="edCode" rows="4"></textarea>
+      <p id="edCodeMsg" class="tip small"></p>
+      <div class="row"><button class="btn blue sm" data-act="edCopy">复制</button><button class="btn green sm" data-act="edImport">读取</button><button class="btn gray sm" data-act="edClose">关闭</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 暂停 -->
+<section id="scr-pause" class="screen overlay">
+  <div class="card wide">
+    <h2>休息一下</h2>
+    <p id="pauseLevel" class="tip"></p>
+    <div class="row">
+      <button class="btn round blue" data-act="levels" title="退出">🏠</button>
+      <button class="btn round" data-act="retry" title="重新开始">↻</button>
+      <button class="btn green huge" data-act="resume" title="继续">▶</button>
+      <button class="btn gray sm" id="btnSkipPause" data-act="skip" title="先跳过这关">跳过这关 ↷</button>
+    </div>
+    <details class="guide"><summary>📖 道具图鉴（点开看看）</summary>
+      <div class="items" id="pauseWeapons"></div>
+      <div class="items" id="pauseItems"></div>
+    </details>
+  </div>
+</section>
+
+<!-- 过关 -->
+<section id="scr-win" class="screen overlay">
+  <div class="card">
+    <h2 id="winTitle" class="wint">过关啦！</h2>
+    <div id="winStars" class="stars"></div>
+    <div id="winCoins" class="coingain"></div>
+    <p id="winTip" class="tip"></p>
+    <p id="winExtra" class="tip extra"></p>
+    <div class="row">
+      <button class="btn round blue" data-act="levels" title="返回">🏠</button>
+      <button class="btn round" data-act="retry" title="再玩一次">↻</button>
+      <button class="btn green huge" data-act="next" title="下一关">▶</button>
+    </div>
+  </div>
+</section>
+
+<!-- 失败 -->
+<section id="scr-lose" class="screen overlay">
+  <div class="card">
+    <div id="loseEmoji" class="bigemoji">🐣💦</div>
+    <h2 id="loseTitle">宝宝蛋被打破啦</h2>
+    <p class="tip" id="loseHelp">别灰心！再来一次，敌人会变弱一点哦</p>
+    <p id="loseCoins" class="tip small"></p>
+    <div class="row">
+      <button class="btn round blue" data-act="levels" title="返回">🏠</button>
+      <button class="btn green huge" data-act="retry" title="再试一次">↻</button>
+      <button class="btn gray sm" id="btnSkipLv" data-act="skip" title="先跳过这关">先跳过 ↷</button>
+    </div>
+  </div>
+</section>
+
+<!-- 通关 -->
+<section id="scr-end" class="screen overlay">
+  <div class="card">
+    <div class="bigemoji bounce">🏆</div>
+    <h2 class="wint">你是坦克小英雄！</h2>
+    <p class="tip">打败了魔王机甲，全部 100 关都通过啦！</p>
+    <p id="endStars" class="tip"></p>
+    <p class="author">作者：周逸卿</p>
+    <button class="btn green" data-act="levels">再去玩玩</button>
+  </div>
+</section>
+
+<script src="js/data.js?v=5"></script>
+<script src="js/levels.js?v=5"></script>
+<script src="js/meta.js?v=5"></script>
+<script src="js/audio.js?v=5"></script>
+<script src="js/draw.js?v=5"></script>
+<script src="js/draw2.js?v=5"></script>
+<script src="js/game.js?v=5"></script>
+<script src="js/world.js?v=5"></script>
+<script src="js/boss.js?v=5"></script>
+<script src="js/tutorial.js?v=5"></script>
+<script src="js/editor.js?v=5"></script>
+<script src="js/main.js?v=5"></script>
+</body>
+</html>

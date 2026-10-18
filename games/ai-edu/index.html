@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#dff3ff">
+  <title>魔方小课堂</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='8' width='52' height='50' rx='14' fill='%23ff8a3d'/%3E%3Crect x='6' y='8' width='52' height='18' rx='12' fill='%23ffd23f'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.js" } }
+  </script>
+</head>
+<body>
+  <!-- 首页：魔方系列 -->
+  <section id="home" class="screen">
+    <header class="hero">
+      <svg class="mascot big" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="6" y="8" width="52" height="50" rx="14" fill="#ff8a3d"/>
+        <rect x="6" y="8" width="52" height="18" rx="12" fill="#ffd23f"/>
+        <circle cx="23" cy="36" r="6" fill="#fff"/><circle cx="41" cy="36" r="6" fill="#fff"/>
+        <circle cx="24" cy="37" r="3" fill="#2b2f4a"/><circle cx="42" cy="37" r="3" fill="#2b2f4a"/>
+        <path d="M25 47 Q32 53 39 47" stroke="#2b2f4a" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="15" cy="45" r="3.5" fill="#ff5d73" opacity=".6"/><circle cx="49" cy="45" r="3.5" fill="#ff5d73" opacity=".6"/>
+      </svg>
+      <h1>魔方小课堂</h1>
+      <p>和方方一起，一步一步学会玩魔方！</p>
+    </header>
+    <div id="cube-list" class="cube-list"></div>
+  </section>
+
+  <!-- 课程地图 -->
+  <section id="course" class="screen">
+    <header class="topbar">
+      <button id="btn-course-back" class="icon-btn" aria-label="返回">‹</button>
+      <h2>三阶魔方</h2>
+      <span class="spacer"></span>
+    </header>
+    <div class="course-body">
+      <div id="track-list"></div>
+      <details class="parent-note">
+        <summary>👨‍👩‍👧 家长看：为什么先学层先法，再学 CFOP？</summary>
+        <p>CFOP 是速拧选手的主流解法，但完整版要记 78 个公式，还需要较强的观察力，对 6–10 岁孩子来说门槛太高，容易挫败。</p>
+        <p>层先法把还原拆成 8 步（小白花 → 白十字 → 白角 → 第二层 → 黄十字 → 黄面 → 顶角 → 顶棱），每一步只有一个短公式，孩子通常 1–2 周就能独立复原，先建立成就感。</p>
+        <p>CFOP 本身就是在层先法基础上升级的：底部十字完全相同，之后再学「四步 CFOP」（10 个公式），最后进阶完整 CFOP，一路衔接，不走回头路。</p>
+        <p>游戏里的「咒语按钮」会自动执行公式，方便孩子先理解每一步在做什么；建议拿一个真魔方对照着练，把咒语变成手指记忆。</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 关卡 -->
+  <section id="play" class="screen">
+    <header class="topbar">
+      <button id="btn-play-back" class="icon-btn" aria-label="返回">‹</button>
+      <h2 id="play-title"></h2>
+      <button id="btn-sound" class="icon-btn" aria-label="声音">🔊</button>
+    </header>
+    <div id="step-dots" class="step-dots"></div>
+    <div class="play-body">
+      <div class="stage">
+        <div id="canvas-wrap"></div>
+        <button id="btn-reset-view" class="chip-btn">🎯 摆正</button>
+        <span class="drag-tip">拖动可以转着看</span>
+      </div>
+      <div class="panel">
+        <div class="mascot-row">
+          <svg class="mascot" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="6" y="8" width="52" height="50" rx="14" fill="#ff8a3d"/>
+            <rect x="6" y="8" width="52" height="18" rx="12" fill="#ffd23f"/>
+            <circle cx="23" cy="36" r="6" fill="#fff"/><circle cx="41" cy="36" r="6" fill="#fff"/>
+            <circle cx="24" cy="37" r="3" fill="#2b2f4a"/><circle cx="42" cy="37" r="3" fill="#2b2f4a"/>
+            <path d="M25 47 Q32 53 39 47" stroke="#2b2f4a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <p id="bubble" class="bubble"></p>
+          <button id="btn-say-again" class="icon-btn small" aria-label="再听一遍">🗣️</button>
+        </div>
+        <div id="task" class="task" hidden></div>
+        <div id="macros" class="macros" hidden></div>
+        <div id="pad" class="pad" hidden></div>
+        <div id="actions" class="actions"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="modal" class="modal">
+    <div class="modal-card">
+      <div id="modal-stars" class="modal-stars"></div>
+      <h3 id="modal-title"></h3>
+      <p id="modal-text"></p>
+      <div class="modal-btns">
+        <button id="modal-map" class="btn">🗺️ 地图</button>
+        <button id="modal-again" class="btn">🔁 再玩</button>
+        <button id="modal-next" class="btn primary">下一关 ▶</button>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+  <canvas id="confetti"></canvas>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

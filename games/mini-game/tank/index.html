@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🚜 小坦克大冒险</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    width: 100%; height: 100%; overflow: hidden;
+    background: #5ec5e8;
+    font-family: "Comic Sans MS", "PingFang SC", "Microsoft YaHei", sans-serif;
+    user-select: none; -webkit-user-select: none; touch-action: none;
+  }
+  #game { display: block; position: absolute; top: 0; left: 0; }
+
+  /* 顶部分数条 */
+  #hud {
+    position: absolute; top: 0; left: 0; right: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 16px; pointer-events: none; z-index: 5;
+    font-size: clamp(18px, 5vw, 30px); font-weight: bold;
+    color: #fff; text-shadow: 2px 2px 0 #00000055;
+  }
+  .pill {
+    background: #ffffff55; border: 3px solid #fff; border-radius: 30px;
+    padding: 4px 16px; backdrop-filter: blur(2px);
+  }
+
+  /* 触摸控制 */
+  #touch { position: absolute; inset: 0; z-index: 4; display: none; }
+  #stick {
+    position: absolute; left: 24px; bottom: 24px;
+    width: 150px; height: 150px; border-radius: 50%;
+    background: #ffffff44; border: 4px solid #ffffff99;
+  }
+  #knob {
+    position: absolute; left: 45px; top: 45px;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #ffffffcc; border: 4px solid #fff;
+    box-shadow: 0 4px 8px #00000033;
+  }
+  #fire {
+    position: absolute; right: 24px; bottom: 40px;
+    width: 110px; height: 110px; border-radius: 50%;
+    background: radial-gradient(#ff8a5b, #e74c3c);
+    border: 5px solid #fff; color: #fff;
+    font-size: 40px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 0 #b03a2e;
+  }
+  #fire:active { transform: translateY(4px); box-shadow: 0 2px 0 #b03a2e; }
+
+  /* 开始/结束遮罩 */
+  #overlay {
+    position: absolute; inset: 0; z-index: 10;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: #5ec5e8ee; text-align: center; padding: 20px;
+  }
+  #overlay h1 { font-size: clamp(32px, 9vw, 64px); color: #fff; text-shadow: 3px 3px 0 #2980b9; margin-bottom: 8px; }
+  #overlay p { font-size: clamp(16px, 4.5vw, 24px); color: #fff; margin: 6px 0; text-shadow: 1px 1px 0 #2980b9; }
+  #bigbtn {
+    margin-top: 24px; font-family: inherit; font-weight: bold;
+    font-size: clamp(24px, 7vw, 40px); color: #fff; cursor: pointer;
+    background: linear-gradient(#ffd24a, #f39c12);
+    border: 5px solid #fff; border-radius: 40px; padding: 14px 50px;
+    box-shadow: 0 8px 0 #d98a0b; transition: transform .1s;
+  }
+  #bigbtn:active { transform: translateY(5px); box-shadow: 0 3px 0 #d98a0b; }
+  .hint { font-size: clamp(14px, 3.8vw, 20px); opacity: .9; margin-top: 18px; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud">
+  <div class="pill">⭐ <span id="score">0</span></div>
+  <div class="pill">❤️ <span id="lives">3</span></div>
+  <div class="pill">第 <span id="level">1</span> 关</div>
+</div>
+
+<div id="touch">
+  <div id="stick"><div id="knob"></div></div>
+  <div id="fire">💥</div>
+</div>
+
+<div id="overlay">
+  <h1>🚜 小坦克大冒险</h1>
+  <p>打掉敌人坦克，吃 ⭐ 星星和道具！</p>
+  <p>⚡加速 🔱散弹 🛡️护盾 ❤️加命 ❄️冰冻 💣炸弹</p>
+  <p>第3关有👑BOSS：绕到它身后打🎯软肋，伤害翻倍！</p>
+  <button id="bigbtn">▶ 开始玩</button>
+  <div class="hint" id="hint">电脑：方向键移动，空格开炮</div>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+  let W = 0, H = 0;
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ---------- 音效 (Web Audio，无需文件) ----------
+  let actx = null;
+  function beep(freq, dur, type = 'square', vol = 0.15) {
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = type; o.frequency.value = freq;
+      g.gain.value = vol;
+      o.connect(g); g.connect(actx.destination);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + dur);
+      o.stop(actx.currentTime + dur);
+    } catch (e) {}
+  }
+  const sndShoot = () => beep(520, 0.12, 'square', 0.12);
+  const sndBoom = () => { beep(180, 0.25, 'sawtooth', 0.18); beep(90, 0.3, 'sawtooth', 0.12); };
+  const sndStar = () => { beep(700, 0.1, 'sine', 0.2); setTimeout(() => beep(1000, 0.12, 'sine', 0.2), 90); };
+  const sndHurt = () => beep(120, 0.4, 'triangle', 0.2);
+
+  // ---------- 游戏状态 ----------
+  let state = 'menu'; // menu, play, over
+  const player = {};
+  let bullets = [], enemyBullets = [], enemies = [], stars = [], puffs = [], items = [];
+  let boss = null;
+  let score = 0, lives = 3, level = 1;
+  let keys = {};
+  let lastShot = 0;
+  const COLORS = ['#e74c3c', '#9b59b6', '#27ae60', '#e67e22', '#16a085', '#d35400'];
+
+  // 道具类型
+  const ITEMS = {
+    speed:  { emoji: '⚡', color: '#f1c40f' },
+    spread: { emoji: '🔱', color: '#3498db' },
+    shield: { emoji: '🛡️', color: '#2ecc71' },
+    life:   { emoji: '❤️', color: '#e74c3c' },
+    freeze: { emoji: '❄️', color: '#5dade2' },
+    bomb:   { emoji: '💣', color: '#566573' }
+  };
+
+  let freezeT = 0; // 全场冰冻计时
+
+  function resetPlayer() {
+    player.x = W / 2; player.y = H - 120;
+    player.r = 26; player.dir = -Math.PI / 2; // 朝上
+    player.baseSpeed = 4.2; player.speed = 4.2; player.cool = 0; player.flash = 0;
+    player.speedT = 0; player.spreadT = 0; player.shieldT = 0;
+  }
+
+  function startGame() {
+    score = 0; lives = 3; level = 1;
+    bullets = []; enemyBullets = []; enemies = []; stars = []; puffs = []; items = [];
+    boss = null;
+    freezeT = 0;
+    resetPlayer();
+    spawnLevel();
+    state = 'play';
+    document.getElementById('overlay').style.display = 'none';
+    updateHUD();
+    if (isTouch) document.getElementById('touch').style.display = 'block';
+    // 解锁音频
+    beep(660, 0.08, 'sine', 0.1);
+  }
+
+  function spawnLevel() {
+    enemies = [];
+    boss = null;
+    if (level % 3 === 0) {
+      // BOSS 关
+      spawnBoss();
+      for (let i = 0; i < 2; i++) spawnEnemy();
+    } else {
+      const n = 2 + level; // 难度随关卡上升
+      for (let i = 0; i < n; i++) spawnEnemy();
+    }
+    for (let i = 0; i < 3; i++) spawnStar();
+  }
+
+  function spawnBoss() {
+    boss = {
+      x: W / 2, y: 110, r: 60,
+      color: '#8e44ad',
+      vx: 1.6 + level * 0.15,
+      maxHp: 9 + level * 2,
+      hp: 9 + level * 2,
+      cool: 60, flash: 0, weakFlash: 0
+    };
+  }
+
+  function maybeDropItem(x, y) {
+    if (Math.random() > 0.32) return; // 约 1/3 几率掉落
+    const keys = Object.keys(ITEMS);
+    // 命少时更容易掉爱心
+    let type = keys[Math.floor(Math.random() * keys.length)];
+    if (lives <= 1 && Math.random() < 0.5) type = 'life';
+    items.push({ x, y, type, t: Math.random() * Math.PI * 2, life: 600 });
+  }
+
+  function spawnEnemy() {
+    const margin = 40;
+    enemies.push({
+      x: margin + Math.random() * (W - margin * 2),
+      y: 60 + Math.random() * (H * 0.4),
+      r: 24,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      vx: (Math.random() < 0.5 ? -1 : 1) * (0.8 + level * 0.25),
+      vy: (Math.random() < 0.5 ? -1 : 1) * (0.5 + level * 0.15),
+      cool: Math.random() * 120,
+      hp: 1
+    });
+  }
+
+  function spawnStar() {
+    stars.push({
+      x: 40 + Math.random() * (W - 80),
+      y: 80 + Math.random() * (H * 0.55),
+      t: Math.random() * Math.PI * 2
+    });
+  }
+
+  function updateHUD() {
+    document.getElementById('score').textContent = score;
+    document.getElementById('lives').textContent = lives;
+    document.getElementById('level').textContent = level;
+  }
+
+  // ---------- 输入 ----------
+  window.addEventListener('keydown', e => {
+    keys[e.key] = true;
+    if ([' ', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) e.preventDefault();
+    if (e.key === ' ' && state === 'play') tryShoot();
+    if ((e.key === 'Enter' || e.key === ' ') && state !== 'play') startGame();
+  });
+  window.addEventListener('keyup', e => { keys[e.key] = false; });
+
+  document.getElementById('bigbtn').addEventListener('click', startGame);
+
+  // 触摸摇杆
+  let stickActive = false, stickId = null;
+  let moveX = 0, moveY = 0;
+  const stickEl = document.getElementById('stick');
+  const knobEl = document.getElementById('knob');
+  const R = 75; // 摇杆半径
+
+  function stickStart(e) {
+    const t = e.changedTouches[0];
+    stickActive = true; stickId = t.identifier;
+    stickMove(e);
+  }
+  function stickMove(e) {
+    if (!stickActive) return;
+    let t = null;
+    for (const ct of e.changedTouches) if (ct.identifier === stickId) t = ct;
+    if (!t) return;
+    const rect = stickEl.getBoundingClientRect();
+    let dx = t.clientX - (rect.left + R);
+    let dy = t.clientY - (rect.top + R);
+    const d = Math.hypot(dx, dy);
+    const max = R - 30;
+    if (d > max) { dx = dx / d * max; dy = dy / d * max; }
+    knobEl.style.left = (45 + dx) + 'px';
+    knobEl.style.top = (45 + dy) + 'px';
+    const dd = Math.hypot(dx, dy);
+    if (dd > 12) { moveX = dx / max; moveY = dy / max; }
+    else { moveX = 0; moveY = 0; }
+  }
+  function stickEnd(e) {
+    for (const ct of e.changedTouches) if (ct.identifier === stickId) {
+      stickActive = false; moveX = 0; moveY = 0;
+      knobEl.style.left = '45px'; knobEl.style.top = '45px';
+    }
+  }
+  stickEl.addEventListener('touchstart', e => { e.preventDefault(); stickStart(e); }, { passive: false });
+  stickEl.addEventListener('touchmove', e => { e.preventDefault(); stickMove(e); }, { passive: false });
+  stickEl.addEventListener('touchend', stickEnd);
+  stickEl.addEventListener('touchcancel', stickEnd);
+
+  // 发射键 (按住连发)
+  let fireHeld = false;
+  const fireEl = document.getElementById('fire');
+  fireEl.addEventListener('touchstart', e => { e.preventDefault(); fireHeld = true; tryShoot(); }, { passive: false });
+  fireEl.addEventListener('touchend', e => { e.preventDefault(); fireHeld = false; });
+  fireEl.addEventListener('touchcancel', () => { fireHeld = false; });
+
+  function tryShoot() {
+    if (state !== 'play' || player.cool > 0) return;
+    player.cool = player.spreadT > 0 ? 12 : 14;
+    const sx = player.x + Math.cos(player.dir) * player.r;
+    const sy = player.y + Math.sin(player.dir) * player.r;
+    const angs = player.spreadT > 0 ? [-0.28, 0, 0.28] : [0];
+    for (const da of angs) {
+      const a = player.dir + da;
+      bullets.push({ x: sx, y: sy, vx: Math.cos(a) * 9, vy: Math.sin(a) * 9 });
+    }
+    sndShoot();
+  }
+
+  // ---------- 更新 ----------
+  function update() {
+    if (state !== 'play') return;
+
+    // 玩家移动
+    let dx = 0, dy = 0;
+    if (keys['ArrowLeft'] || keys['a']) dx -= 1;
+    if (keys['ArrowRight'] || keys['d']) dx += 1;
+    if (keys['ArrowUp'] || keys['w']) dy -= 1;
+    if (keys['ArrowDown'] || keys['s']) dy += 1;
+    dx += moveX; dy += moveY;
+    const len = Math.hypot(dx, dy);
+    if (len > 0.15) {
+      const nx = dx / len, ny = dy / len;
+      player.x += nx * player.speed * Math.min(len, 1);
+      player.y += ny * player.speed * Math.min(len, 1);
+      player.dir = Math.atan2(ny, nx); // 炮口朝移动方向
+    }
+    player.x = Math.max(player.r, Math.min(W - player.r, player.x));
+    player.y = Math.max(player.r + 50, Math.min(H - player.r, player.y));
+    if (player.cool > 0) player.cool--;
+    if (player.flash > 0) player.flash--;
+    // 道具计时
+    if (player.speedT > 0) player.speedT--;
+    if (player.spreadT > 0) player.spreadT--;
+    if (player.shieldT > 0) player.shieldT--;
+    player.speed = player.baseSpeed * (player.speedT > 0 ? 1.7 : 1);
+
+    // 手机按住连发
+    if (fireHeld) tryShoot();
+
+    // 玩家子弹
+    for (let i = bullets.length - 1; i >= 0; i--) {
+      const b = bullets[i];
+      b.x += b.vx; b.y += b.vy;
+      if (b.x < -20 || b.x > W + 20 || b.y < -20 || b.y > H + 20) { bullets.splice(i, 1); continue; }
+      for (let j = enemies.length - 1; j >= 0; j--) {
+        const en = enemies[j];
+        if (Math.hypot(b.x - en.x, b.y - en.y) < en.r + 6) {
+          bullets.splice(i, 1);
+          enemies.splice(j, 1);
+          score += 10;
+          makePuff(en.x, en.y, en.color);
+          maybeDropItem(en.x, en.y);
+          sndBoom();
+          updateHUD();
+          break;
+        }
+      }
+      // 打中 BOSS
+      if (boss && bullets[i] && Math.hypot(b.x - boss.x, b.y - boss.y) < boss.r) {
+        bullets.splice(i, 1);
+        // 软肋：BOSS 身后的弱点，打中伤害大增
+        const ang = Math.atan2(player.y - boss.y, player.x - boss.x);
+        const wx = boss.x - Math.cos(ang) * boss.r * 0.78;
+        const wy = boss.y - Math.sin(ang) * boss.r * 0.78;
+        const hitWeak = Math.hypot(b.x - wx, b.y - wy) < boss.r * 0.42;
+        boss.hp -= hitWeak ? 4 : 1;
+        boss.flash = 6;
+        if (hitWeak) {
+          boss.weakFlash = 10;
+          makePuff(wx, wy, '#ffe14a');
+          makePuff(wx, wy, '#ff5e5e');
+          sndStar();
+        } else {
+          makePuff(b.x, b.y, boss.color);
+        }
+        sndBoom();
+        if (boss.hp <= 0) {
+          score += 200;
+          for (let k = 0; k < 5; k++) makePuff(boss.x + (Math.random() - 0.5) * boss.r * 2, boss.y + (Math.random() - 0.5) * boss.r * 2, COLORS[k]);
+          items.push({ x: boss.x, y: boss.y, type: 'life', t: 0, life: 600 });
+          boss = null;
+        }
+        updateHUD();
+      }
+    }
+
+    // 冰冻计时
+    if (freezeT > 0) freezeT--;
+
+    // BOSS 移动与开炮
+    if (boss) {
+      if (boss.flash > 0) boss.flash--;
+      if (boss.weakFlash > 0) boss.weakFlash--;
+      if (freezeT <= 0) {
+      boss.x += boss.vx;
+      if (boss.x < boss.r || boss.x > W - boss.r) boss.vx *= -1;
+      boss.x = Math.max(boss.r, Math.min(W - boss.r, boss.x));
+      boss.cool--;
+      if (boss.cool <= 0) {
+        boss.cool = 75;
+        const base = Math.atan2(player.y - boss.y, player.x - boss.x);
+        for (const da of [-0.4, -0.13, 0.13, 0.4]) {
+          enemyBullets.push({ x: boss.x, y: boss.y + boss.r * 0.5, vx: Math.cos(base + da) * 3.4, vy: Math.sin(base + da) * 3.4 });
+        }
+      }
+      }
+    }
+
+    // 敌人移动 + 开炮（冰冻时静止）
+    if (freezeT <= 0)
+    for (const en of enemies) {
+      en.x += en.vx; en.y += en.vy;
+      if (en.x < en.r || en.x > W - en.r) en.vx *= -1;
+      if (en.y < en.r + 50 || en.y > H * 0.6) en.vy *= -1;
+      en.x = Math.max(en.r, Math.min(W - en.r, en.x));
+      en.cool--;
+      if (en.cool <= 0) {
+        en.cool = 90 + Math.random() * 80 - level * 5;
+        const a = Math.atan2(player.y - en.y, player.x - en.x);
+        enemyBullets.push({ x: en.x, y: en.y, vx: Math.cos(a) * 3.2, vy: Math.sin(a) * 3.2 });
+      }
+    }
+
+    // 敌人子弹
+    for (let i = enemyBullets.length - 1; i >= 0; i--) {
+      const b = enemyBullets[i];
+      b.x += b.vx; b.y += b.vy;
+      if (b.x < -20 || b.x > W + 20 || b.y < -20 || b.y > H + 20) { enemyBullets.splice(i, 1); continue; }
+      if (Math.hypot(b.x - player.x, b.y - player.y) < player.r) {
+        enemyBullets.splice(i, 1);
+        if (player.shieldT > 0) { makePuff(b.x, b.y, '#2ecc71'); }
+        else if (player.flash <= 0) hurt();
+      }
+    }
+
+    // 撞到敌人也受伤
+    if (player.flash <= 0 && player.shieldT <= 0) {
+      for (const en of enemies) {
+        if (Math.hypot(en.x - player.x, en.y - player.y) < en.r + player.r - 6) {
+          hurt(); break;
+        }
+      }
+      if (boss && Math.hypot(boss.x - player.x, boss.y - player.y) < boss.r + player.r - 10) hurt();
+    }
+
+    // 吃道具
+    for (let i = items.length - 1; i >= 0; i--) {
+      const it = items[i]; it.t += 0.12; it.life--;
+      if (it.life <= 0) { items.splice(i, 1); continue; }
+      if (Math.hypot(it.x - player.x, it.y - player.y) < player.r + 18) {
+        items.splice(i, 1);
+        applyItem(it.type);
+      }
+    }
+
+    // 吃星星
+    for (let i = stars.length - 1; i >= 0; i--) {
+      const s = stars[i]; s.t += 0.1;
+      if (Math.hypot(s.x - player.x, s.y - player.y) < player.r + 14) {
+        stars.splice(i, 1);
+        score += 30;
+        sndStar();
+        updateHUD();
+        spawnStar();
+      }
+    }
+
+    // 烟花粒子
+    for (let i = puffs.length - 1; i >= 0; i--) {
+      const p = puffs[i];
+      p.x += p.vx; p.y += p.vy; p.vy += 0.15; p.life--;
+      if (p.life <= 0) puffs.splice(i, 1);
+    }
+
+    // 过关：敌人和 BOSS 都清光
+    if (enemies.length === 0 && !boss) {
+      level++;
+      player.flash = 60;
+      updateHUD();
+      spawnLevel();
+    }
+  }
+
+  function applyItem(type) {
+    sndStar();
+    if (type === 'speed') player.speedT = 480;
+    else if (type === 'spread') player.spreadT = 480;
+    else if (type === 'shield') player.shieldT = 420;
+    else if (type === 'life') { lives++; }
+    else if (type === 'freeze') { freezeT = 360; beep(300, 0.3, 'sine', 0.18); }
+    else if (type === 'bomb') {
+      // 炸弹：清掉所有小敌人，并对 BOSS 造成伤害
+      for (let k = enemies.length - 1; k >= 0; k--) {
+        const en = enemies[k];
+        makePuff(en.x, en.y, en.color);
+        score += 10;
+        enemies.splice(k, 1);
+      }
+      if (boss) { boss.hp -= 4; boss.flash = 6; makePuff(boss.x, boss.y, boss.color); }
+      sndBoom();
+      if (boss && boss.hp <= 0) {
+        score += 200;
+        for (let k = 0; k < 5; k++) makePuff(boss.x + (Math.random() - 0.5) * boss.r * 2, boss.y + (Math.random() - 0.5) * boss.r * 2, COLORS[k]);
+        boss = null;
+      }
+    }
+    updateHUD();
+  }
+
+  function hurt() {
+    lives--;
+    player.flash = 90; // 无敌闪烁
+    sndHurt();
+    updateHUD();
+    if (lives <= 0) gameOver();
+  }
+
+  function makePuff(x, y, color) {
+    for (let i = 0; i < 16; i++) {
+      const a = Math.random() * Math.PI * 2, sp = 1 + Math.random() * 4;
+      puffs.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 24 + Math.random() * 16, color });
+    }
+  }
+
+  function gameOver() {
+    state = 'over';
+    document.getElementById('touch').style.display = 'none';
+    const ov = document.getElementById('overlay');
+    ov.style.display = 'flex';
+    ov.querySelector('h1').textContent = '🎉 玩得真棒！';
+    const ps = ov.querySelectorAll('p');
+    ps[0].textContent = '你一共得了 ' + score + ' 分！';
+    ps[1].textContent = '到第 ' + level + ' 关啦~';
+    document.getElementById('bigbtn').textContent = '▶ 再玩一次';
+  }
+
+  // ---------- 绘制 ----------
+  function drawTank(x, y, r, dir, color, tread) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(dir + Math.PI / 2); // 模型默认朝上
+    // 履带
+    ctx.fillStyle = '#333';
+    ctx.fillRect(-r, -r, r * 0.4, r * 2);
+    ctx.fillRect(r * 0.6, -r, r * 0.4, r * 2);
+    ctx.fillStyle = '#555';
+    const step = (tread % 8);
+    for (let i = -r + step; i < r; i += 8) {
+      ctx.fillRect(-r, i, r * 0.4, 3);
+      ctx.fillRect(r * 0.6, i, r * 0.4, 3);
+    }
+    // 车身
+    ctx.fillStyle = color;
+    roundRect(-r * 0.6, -r * 0.8, r * 1.2, r * 1.6, 7);
+    ctx.fill();
+    // 炮塔
+    ctx.fillStyle = shade(color, -20);
+    ctx.beginPath(); ctx.arc(0, 0, r * 0.5, 0, Math.PI * 2); ctx.fill();
+    // 炮管
+    ctx.fillStyle = '#2c3e50';
+    ctx.fillRect(-3, -r * 1.4, 6, r * 0.9);
+    ctx.restore();
+  }
+
+  function drawEyes(x, y, r) {
+    // 给敌人加可爱眼睛
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(x - 6, y - 2, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(x + 6, y - 2, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#000';
+    ctx.beginPath(); ctx.arc(x - 6, y - 1, 2.5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(x + 6, y - 1, 2.5, 0, Math.PI * 2); ctx.fill();
+  }
+
+  function drawFrost(x, y, r) {
+    // 冰冻覆盖层
+    ctx.save();
+    ctx.globalAlpha = 0.55;
+    ctx.fillStyle = '#cdeeff';
+    ctx.beginPath(); ctx.arc(x, y, r + 4, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 0.9;
+    ctx.font = (r * 1.1) + 'px serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('❄️', x, y);
+    ctx.restore();
+  }
+
+  function roundRect(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function shade(hex, amt) {
+    let c = hex.replace('#', '');
+    let r = parseInt(c.substr(0, 2), 16) + amt;
+    let g = parseInt(c.substr(2, 2), 16) + amt;
+    let b = parseInt(c.substr(4, 2), 16) + amt;
+    r = Math.max(0, Math.min(255, r)); g = Math.max(0, Math.min(255, g)); b = Math.max(0, Math.min(255, b));
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  }
+
+  function drawStar(x, y, r, rot) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
+    ctx.fillStyle = '#ffd24a'; ctx.strokeStyle = '#f39c12'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++) {
+      ctx.lineTo(Math.cos((18 + i * 72) * Math.PI / 180) * r, -Math.sin((18 + i * 72) * Math.PI / 180) * r);
+      ctx.lineTo(Math.cos((54 + i * 72) * Math.PI / 180) * r * 0.5, -Math.sin((54 + i * 72) * Math.PI / 180) * r * 0.5);
+    }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+
+  let treadFrame = 0;
+  function render() {
+    // 草地背景
+    ctx.fillStyle = '#7ec850';
+    ctx.fillRect(0, 0, W, H);
+    // 草地条纹
+    ctx.fillStyle = '#74bd48';
+    for (let i = 0; i < H; i += 80) ctx.fillRect(0, i, W, 40);
+    // 几朵小花装饰
+    ctx.fillStyle = '#ffffff66';
+    for (let i = 0; i < W; i += 130) {
+      ctx.beginPath(); ctx.arc(i + 40, 70 + (i % 90), 4, 0, Math.PI * 2); ctx.fill();
+    }
+
+    treadFrame++;
+
+    // 星星
+    for (const s of stars) drawStar(s.x, s.y, 16, s.t * 0.3);
+
+    // 道具
+    for (const it of items) {
+      const blink = it.life < 120 && Math.floor(it.life / 8) % 2 === 0;
+      if (blink) continue;
+      const yy = it.y + Math.sin(it.t) * 4;
+      ctx.fillStyle = ITEMS[it.type].color + 'cc';
+      ctx.beginPath(); ctx.arc(it.x, yy, 18, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.stroke();
+      ctx.font = '22px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(ITEMS[it.type].emoji, it.x, yy + 1);
+    }
+
+    // BOSS
+    if (boss) {
+      const bang = Math.atan2(player.y - boss.y, player.x - boss.x);
+      if (!(boss.flash > 0 && Math.floor(boss.flash / 2) % 2 === 0)) {
+        drawTank(boss.x, boss.y, boss.r, bang, boss.color, treadFrame);
+        drawEyes(boss.x, boss.y - 6, boss.r);
+        // 王冠
+        ctx.font = '34px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('👑', boss.x, boss.y - boss.r - 6);
+      }
+      // 软肋：身后的发光弱点，打中伤害大增
+      const wx = boss.x - Math.cos(bang) * boss.r * 0.78;
+      const wy = boss.y - Math.sin(bang) * boss.r * 0.78;
+      const wr = boss.r * 0.42;
+      const pulse = boss.weakFlash > 0 ? 1.35 : (1 + Math.sin(treadFrame * 0.2) * 0.12);
+      ctx.save();
+      ctx.globalAlpha = 0.9;
+      const grd = ctx.createRadialGradient(wx, wy, 2, wx, wy, wr * pulse);
+      grd.addColorStop(0, '#fff3b0');
+      grd.addColorStop(0.5, '#ff5e5e');
+      grd.addColorStop(1, '#ff5e5e00');
+      ctx.fillStyle = grd;
+      ctx.beginPath(); ctx.arc(wx, wy, wr * pulse, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.font = (wr * 1.1) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('🎯', wx, wy + 1);
+      ctx.restore();
+      // 血条
+      const bw = Math.min(W - 80, 360), bx = (W - bw) / 2, by = 54;
+      ctx.fillStyle = '#00000044'; roundRect(bx - 3, by - 3, bw + 6, 22, 11); ctx.fill();
+      ctx.fillStyle = '#e74c3c'; roundRect(bx, by, bw * (boss.hp / boss.maxHp), 16, 8); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 16px sans-serif';
+      ctx.fillText('👑 BOSS', W / 2, by + 8);
+    }
+
+    // 玩家
+    if (!(player.flash > 0 && Math.floor(player.flash / 6) % 2 === 0)) {
+      drawTank(player.x, player.y, player.r, player.dir, '#2e86de', treadFrame);
+    }
+    // 护盾光圈
+    if (player.shieldT > 0) {
+      const blink = player.shieldT < 90 && Math.floor(player.shieldT / 6) % 2 === 0;
+      if (!blink) {
+        ctx.strokeStyle = '#2ecc71'; ctx.lineWidth = 4;
+        ctx.globalAlpha = 0.8;
+        ctx.beginPath(); ctx.arc(player.x, player.y, player.r + 12, 0, Math.PI * 2); ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    // 敌人
+    for (const en of enemies) {
+      drawTank(en.x, en.y, en.r, Math.atan2(player.y - en.y, player.x - en.x), en.color, treadFrame);
+      drawEyes(en.x, en.y, en.r);
+      if (freezeT > 0) drawFrost(en.x, en.y, en.r);
+    }
+    if (boss && freezeT > 0) drawFrost(boss.x, boss.y, boss.r);
+
+    // 冰冻时的全屏冷色调
+    if (freezeT > 0) {
+      const blink = freezeT < 60 && Math.floor(freezeT / 6) % 2 === 0;
+      if (!blink) {
+        ctx.fillStyle = '#aee0ff22';
+        ctx.fillRect(0, 0, W, H);
+      }
+    }
+
+    // 子弹
+    ctx.fillStyle = '#f1c40f';
+    for (const b of bullets) { ctx.beginPath(); ctx.arc(b.x, b.y, 6, 0, Math.PI * 2); ctx.fill(); }
+    ctx.fillStyle = '#e74c3c';
+    for (const b of enemyBullets) { ctx.beginPath(); ctx.arc(b.x, b.y, 6, 0, Math.PI * 2); ctx.fill(); }
+
+    // 烟花粒子
+    for (const p of puffs) {
+      ctx.globalAlpha = Math.max(0, p.life / 40);
+      ctx.fillStyle = p.color;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 5, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function loop() {
+    update();
+    if (state === 'play' || state === 'over') render();
+    requestAnimationFrame(loop);
+  }
+
+  // 触摸提示文案
+  if (isTouch) document.getElementById('hint').textContent = '手机：左下摇杆移动，右下按钮开炮';
+
+  loop();
+})();
+</script>
+</body>
+</html>
