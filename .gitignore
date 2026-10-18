@@ -6,4 +6,6 @@ artifacts/
 .env*
 .openai/
 .wrangler/
+.edgeone/
+/web-child-game.zip
 *.log

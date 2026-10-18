@@ -26,7 +26,7 @@ HOST=127.0.0.1 npm start        # 大厅仅供本机访问
 
 王冠峡谷内部服务使用自动分配的空闲端口，游戏通过大厅同源 HTTP / WebSocket 代理连接。
 邀请链接也会回到大厅的游戏页。对局存于内存，重启服务会结束进行中的对局。
-完整合集需 Node 服务，不能仅用静态文件服务器运行。
+好友联机版需要 Node 服务；静态预览版的王冠峡谷仅开放单人 AI 练习。
 
 ## 游戏清单
 
@@ -76,3 +76,17 @@ TEST_URL=http://127.0.0.1:8780 npm run test:online
 `/ws` 的 WebSocket Upgrade；公网建议使用 HTTPS。进程管理器应运行 `node server/start.mjs`，
 在发布阶段先执行 `npm run setup` 和 `npm run build`。
 本仓库推送不代表已经部署公网游戏站点。
+
+### EdgeOne 静态预览
+
+```sh
+npm run setup
+npm run build:static
+PAGES_SOURCE=skills edgeone makers deploy dist --anonymous --site global --json
+```
+
+`dist/` 包含大厅和全部 14 个游戏入口，可直接托管。王冠峡谷在浏览器内运行原有
+对战规则，支持 AI 出兵、出牌、投降和再战；预览隐藏好友房间，不提供联机。
+`npm start` 仍使用原来的服务端联机版本。`edgeone.json` 配置源码构建，生成目录不提交。
+免登录预览链接有效期为 60 分钟；如需保存项目，请按发布结果中的链接登录认领。
+`.edgeone/` 保存部署凭据，已加入忽略规则，不要上传或提交。
