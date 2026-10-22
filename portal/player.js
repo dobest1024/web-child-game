@@ -1,4 +1,4 @@
-import { games } from './games.js';
+import { games, rememberGame } from './games.js';
 const params = new URLSearchParams(location.search);
 const game = games.find((item) => item.id === params.get('game'));
 const status = document.querySelector('#player-status');
@@ -54,6 +54,7 @@ if (!game) {
     frame.title = game.title;
     frame.allow = 'autoplay; fullscreen';
     frame.addEventListener('load', () => {
+      rememberGame(game.id);
       status.hidden = true;
       frame.focus();
     });

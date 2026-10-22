@@ -3,6 +3,7 @@ export const games = [
     id: 'cube',
     title: '魔方小岛',
     subtitle: '转一转，让每一面都找到自己的颜色。',
+    series: '魔方系列',
     category: '益智解谜',
     tags: '魔方 三阶 二阶 空间 语音',
     path: '/cube-game/',
@@ -15,6 +16,7 @@ export const games = [
     id: 'tanke',
     title: '坦克大冒险',
     subtitle: '驾驶你的小坦克，守护基地，勇闯关卡！',
+    series: '坦克系列',
     category: '动作冒险',
     tags: '坦克 战斗 闯关 双人',
     path: '/tanke/',
@@ -114,7 +116,7 @@ export const games = [
     category: '棋盘对战',
     tags: '五子棋 棋盘 连线',
     path: '/mini-game/wuziqi/',
-    art: 'go',
+    art: 'gomoku',
     color: 'yellow',
     label: '连成五子',
     note: '五子棋 · 策略练习',
@@ -135,10 +137,11 @@ export const games = [
     id: 'cube-class',
     title: '魔方小课堂',
     subtitle: '观察、转动、试一试，一步步完成魔方复原。',
+    series: '魔方系列',
     category: '益智解谜',
     tags: '魔方 三阶 课堂 教程',
     path: '/ai-edu/',
-    art: 'cube',
+    art: 'classroom',
     color: 'yellow',
     label: '一步一步来',
     note: '魔方 · 分步课堂',
@@ -147,10 +150,11 @@ export const games = [
     id: 'cube-teacher',
     title: '魔方小老师',
     subtitle: '跟着小老师，把转动魔方的秘密学起来。',
+    series: '魔方系列',
     category: '益智解谜',
     tags: '魔方 教学 入门',
     path: '/mini-game/mofang/',
-    art: 'cube',
+    art: 'teacher',
     color: 'blue',
     label: '魔方入门',
     note: '魔方 · 基础教学',
@@ -159,10 +163,11 @@ export const games = [
     id: 'mini-tank',
     title: '小坦克大冒险',
     subtitle: '小小坦克准备就绪，下一场冒险等你出发。',
+    series: '坦克系列',
     category: '动作冒险',
     tags: '坦克 操作 闯关',
     path: '/mini-game/tank/',
-    art: 'tank',
+    art: 'toytank',
     color: 'mint',
     label: '小坦克出动',
     note: '动作 · 趣味挑战',
@@ -171,3 +176,23 @@ export const games = [
 
 export const gameLink = (game) =>
   `/play.html?game=${encodeURIComponent(game.id)}`;
+
+const recentKey = 'lpi:recent';
+export function recentGames() {
+  try {
+    const ids = JSON.parse(localStorage.getItem(recentKey) || '[]');
+    return ids.map((id) => games.find((game) => game.id === id)).filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+export function rememberGame(id) {
+  try {
+    const ids = recentGames()
+      .map((game) => game.id)
+      .filter((item) => item !== id);
+    localStorage.setItem(recentKey, JSON.stringify([id, ...ids].slice(0, 4)));
+  } catch {
+    // 隐私模式下无法保存，不影响游戏
+  }
+}

@@ -1076,3 +1076,177 @@ svg {
     transition: none !important;
   }
 }
+
+/* 大厅优化：分组、系列标签、继续玩、更大的文字 */
+.game-grid {
+  display: block;
+}
+.group-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 23px;
+}
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 19px;
+  margin: 34px 0 16px;
+  color: var(--green);
+}
+.group-title:first-child {
+  margin-top: 4px;
+}
+.group-title:after {
+  content: "";
+  flex: 1;
+  border-top: 1px dashed #d6ddcc;
+}
+.series-tag {
+  font-style: normal;
+  background: #e8eddf;
+  color: #4f6e57;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-weight: 700;
+}
+.recent {
+  margin: 22px 0 0;
+}
+.recent h3 {
+  font-size: 15px;
+  margin: 0 0 10px;
+  color: #5b705f;
+}
+.recent-list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.recent-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  padding: 6px 16px 6px 8px;
+  border-radius: 14px;
+  border: 1px solid #e3e6db;
+  font-weight: 700;
+  font-size: 15px;
+  min-height: 56px;
+  transition: transform 0.2s;
+}
+.recent-item:hover {
+  transform: translateY(-2px);
+}
+.recent-item .game-art {
+  width: 52px;
+  height: 42px;
+}
+.hero {
+  min-height: 420px;
+  padding: 18px 0 32px;
+}
+.hero-description {
+  font-size: 17px;
+}
+.eyebrow {
+  font-size: 12px;
+}
+.section-heading .eyebrow {
+  font-size: 11px;
+}
+.search input {
+  font-size: 15px;
+  height: 24px;
+}
+.filter {
+  font-size: 15px;
+}
+.filter span {
+  font-size: 12px;
+}
+.collection-note {
+  font-size: 13px;
+}
+.card-label {
+  font-size: 12px;
+}
+.card-title h3 {
+  font-size: 20px;
+}
+.card-body > p {
+  font-size: 14px;
+  color: #6d7b69;
+}
+.card-bottom {
+  font-size: 13px;
+  color: #6d7b69;
+}
+.play-word {
+  font-size: 14px;
+}
+.about p,
+.about-note {
+  font-size: 14px;
+}
+@media (max-width: 1050px) {
+  .group-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .group-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .group-title {
+    font-size: 17px;
+    margin-top: 24px;
+  }
+  .hero {
+    display: block;
+    min-height: 0;
+    padding: 10px 0 18px;
+  }
+  .hero-art,
+  .hero-meta {
+    display: none;
+  }
+  .hero h1 {
+    font-size: 34px;
+    margin: 10px 0 12px;
+  }
+  .hero-description {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .card-title h3 {
+    font-size: 16px;
+  }
+  .card-body > p {
+    font-size: 13px;
+    min-height: 0;
+  }
+  .card-bottom {
+    font-size: 12px;
+  }
+  .card-label {
+    font-size: 11px;
+  }
+  .play-word {
+    font-size: 13px;
+  }
+  .filter {
+    font-size: 14px;
+  }
+  .about p {
+    font-size: 13px;
+  }
+}
+@media (max-width: 380px) {
+  .group-grid {
+    gap: 10px;
+  }
+}
