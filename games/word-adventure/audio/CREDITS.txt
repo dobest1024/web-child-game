@@ -1,0 +1,408 @@
+单词大冒险 · 发音来源
+
+原有启蒙单词和字母读音是真人录音，来自 Wikimedia Commons（含 Lingua Libre 项目）。
+处理：裁掉首尾静音、统一音量、转成单声道 mp3（按 CC BY-SA 的要求，处理后的文件同样以 CC BY-SA 共享）。
+
+words/red.mp3  ←  File:En-us-red.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-red.ogg
+words/green.mp3  ←  File:En-us-green.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-green.ogg
+words/yellow.mp3  ←  File:En-us-yellow.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-yellow.ogg
+words/blue.mp3  ←  File:En-us-blue.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-blue.ogg
+words/black.mp3  ←  File:LL-Q1860 (eng)-Grendelkhan-black.wav  |  Speaker: Grendelkhan / Recorder: Grendelkhan  |  CC0  |  https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-black.wav
+words/white.mp3  ←  File:En-us-white.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-white.ogg
+words/one.mp3  ←  File:En-us-one.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-one.ogg
+words/two.mp3  ←  File:En-us-two.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-two.ogg
+words/three.mp3  ←  File:En-us-three.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-three.ogg
+words/four.mp3  ←  File:En-us-four.ogg  |  Dvortygirl  |  Public domain  |  https://commons.wikimedia.org/wiki/File:En-us-four.ogg
+words/five.mp3  ←  File:En-us-five.ogg  |  Dvortygirl  |  Public domain  |  https://commons.wikimedia.org/wiki/File:En-us-five.ogg
+words/six.mp3  ←  File:En-us-six.ogg  |  TheDaveRoss  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-six.ogg
+words/seven.mp3  ←  File:En-us-seven.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-seven.ogg
+words/eight.mp3  ←  File:En-us-eight.ogg  |  recorded by TheDaveRoss  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-eight.ogg
+words/nine.mp3  ←  File:En-us-nine.ogg  |  TheDaveRoss  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-nine.ogg
+words/ten.mp3  ←  File:En-us-ten.ogg  |  TheDaveRoss  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-ten.ogg
+words/cat.mp3  ←  File:En-us-cat.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-cat.ogg
+words/dog.mp3  ←  File:En-us-dog.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-dog.ogg
+words/pig.mp3  ←  File:En-us-pig.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-pig.ogg
+words/duck.mp3  ←  File:En-us-duck.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-duck.ogg
+words/fish.mp3  ←  File:En-us-fish.ogg  |  Dvortygirl  |  Public domain  |  https://commons.wikimedia.org/wiki/File:En-us-fish.ogg
+words/bird.mp3  ←  File:En-us-bird.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-bird.ogg
+words/panda.mp3  ←  File:En-us-panda.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-panda.ogg
+words/monkey.mp3  ←  File:En-us-monkey.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-monkey.ogg
+words/tiger.mp3  ←  File:En-us-tiger.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-tiger.ogg
+words/elephant.mp3  ←  File:En-us-elephant.ogg  |  未署名  |  Public domain  |  https://commons.wikimedia.org/wiki/File:En-us-elephant.ogg
+words/rabbit.mp3  ←  File:En-us-rabbit.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-rabbit.ogg
+words/bear.mp3  ←  File:En-us-bear.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-bear.ogg
+words/apple.mp3  ←  File:En-us-apple.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-apple.ogg
+words/banana.mp3  ←  File:En-us-banana.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-banana.ogg
+words/orange.mp3  ←  File:LL-Q1860 (eng)-Grendelkhan-orange.wav  |  Speaker: Grendelkhan / Recorder: Grendelkhan  |  CC0  |  https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-orange.wav
+words/pear.mp3  ←  File:En-us-pear.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-pear.ogg
+words/grape.mp3  ←  File:En-us-grape.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-grape.ogg
+words/watermelon.mp3  ←  File:En-us-watermelon.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-watermelon.ogg
+words/strawberry.mp3  ←  File:En-us-strawberry.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-strawberry.ogg
+words/eye.mp3  ←  File:En-us-eye.ogg  |  Muke  |  Public domain  |  https://commons.wikimedia.org/wiki/File:En-us-eye.ogg
+words/ear.mp3  ←  File:En-us-ear.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-ear.ogg
+words/nose.mp3  ←  File:En-us-nose.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-nose.ogg
+words/mouth.mp3  ←  File:En-us-mouth.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-mouth.ogg
+words/hand.mp3  ←  File:En-us-hand.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-hand.ogg
+words/foot.mp3  ←  File:En-us-foot.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-foot.ogg
+words/mom.mp3  ←  File:En-us-mom.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-mom.ogg
+words/dad.mp3  ←  File:En-us-dad.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-dad.ogg
+words/baby.mp3  ←  File:En-us-baby.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-baby.ogg
+words/grandma.mp3  ←  File:LL-Q1860 (eng)-Grendelkhan-grandma.wav  |  Speaker: Grendelkhan / Recorder: Grendelkhan  |  CC0  |  https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-grandma.wav
+words/grandpa.mp3  ←  File:LL-Q1860 (eng)-Grendelkhan-grandpa.wav  |  Speaker: Grendelkhan / Recorder: Grendelkhan  |  CC0  |  https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-grandpa.wav
+words/sun.mp3  ←  File:En-us-Sun.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-Sun.ogg
+words/bus.mp3  ←  File:En-us-bus.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-bus.ogg
+words/fox.mp3  ←  File:En-us-fox.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-fox.ogg
+words/bed.mp3  ←  File:En-us-bed.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-bed.ogg
+words/hat.mp3  ←  File:En-us-hat.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-hat.ogg
+letters/a.mp3  ←  File:En-us-a.ogg  |  Xnux  |  Public domain  |  https://commons.wikimedia.org/wiki/File:En-us-a.ogg
+letters/b.mp3  ←  File:En-us-b.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-b.ogg
+letters/c.mp3  ←  File:En-us-c.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-c.ogg
+letters/d.mp3  ←  File:En-us-d.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-d.ogg
+letters/e.mp3  ←  File:En-us-e.ogg  |  Logictheo  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-e.ogg
+letters/f.mp3  ←  File:En-us-f.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-f.ogg
+letters/g.mp3  ←  File:En-us-g.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-g.ogg
+letters/h.mp3  ←  File:En-us-h.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-h.ogg
+letters/i.mp3  ←  File:En-us-i.ogg  |  Geoff Sebastian (Geoff Sebastian)  |  Public domain  |  https://commons.wikimedia.org/wiki/File:En-us-i.ogg
+letters/j.mp3  ←  File:En-us-j.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-j.ogg
+letters/k.mp3  ←  File:En-us-k.ogg  |  Neskaya  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-k.ogg
+letters/l.mp3  ←  File:En-us-L.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-L.ogg
+letters/m.mp3  ←  File:En-us-m.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-m.ogg
+letters/n.mp3  ←  File:En-us-n.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-n.ogg
+letters/o.mp3  ←  File:En-us-o.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-o.ogg
+letters/p.mp3  ←  File:En-us-p.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-p.ogg
+letters/q.mp3  ←  File:En-us-q.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-q.ogg
+letters/r.mp3  ←  File:En-us-r.ogg  |  Logictheo  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-r.ogg
+letters/s.mp3  ←  File:En-us-s.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-s.ogg
+letters/t.mp3  ←  File:En-us-t.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-t.ogg
+letters/u.mp3  ←  File:En-us-u.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-u.ogg
+letters/v.mp3  ←  File:En-us-v.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-v.ogg
+letters/w.mp3  ←  File:En-us-w.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-w.ogg
+letters/x.mp3  ←  File:En-us-x.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-x.ogg
+letters/y.mp3  ←  File:En-us-y.ogg  |  Twocs  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-y.ogg
+letters/z.mp3  ←  File:En-us-z.ogg  |  Dvortygirl  |  CC BY-SA 3.0  |  https://commons.wikimedia.org/wiki/File:En-us-z.ogg
+
+新增二至六年级单词：本机 Qwen3-TTS 合成（ryan，seed 11），不是新增真人录音。
+words/book.mp3 | Qwen3-TTS local synthesis
+words/pen.mp3 | Qwen3-TTS local synthesis
+words/pencil.mp3 | Qwen3-TTS local synthesis
+words/ruler.mp3 | Qwen3-TTS local synthesis
+words/eraser.mp3 | Qwen3-TTS local synthesis
+words/bag.mp3 | Qwen3-TTS local synthesis
+words/desk.mp3 | Qwen3-TTS local synthesis
+words/chair.mp3 | Qwen3-TTS local synthesis
+words/rice.mp3 | Qwen3-TTS local synthesis
+words/bread.mp3 | Qwen3-TTS local synthesis
+words/milk.mp3 | Qwen3-TTS local synthesis
+words/water.mp3 | Qwen3-TTS local synthesis
+words/egg.mp3 | Qwen3-TTS local synthesis
+words/cake.mp3 | Qwen3-TTS local synthesis
+words/juice.mp3 | Qwen3-TTS local synthesis
+words/tea.mp3 | Qwen3-TTS local synthesis
+words/door.mp3 | Qwen3-TTS local synthesis
+words/window.mp3 | Qwen3-TTS local synthesis
+words/room.mp3 | Qwen3-TTS local synthesis
+words/table.mp3 | Qwen3-TTS local synthesis
+words/sofa.mp3 | Qwen3-TTS local synthesis
+words/clock.mp3 | Qwen3-TTS local synthesis
+words/lamp.mp3 | Qwen3-TTS local synthesis
+words/floor.mp3 | Qwen3-TTS local synthesis
+words/run.mp3 | Qwen3-TTS local synthesis
+words/walk.mp3 | Qwen3-TTS local synthesis
+words/jump.mp3 | Qwen3-TTS local synthesis
+words/swim.mp3 | Qwen3-TTS local synthesis
+words/sing.mp3 | Qwen3-TTS local synthesis
+words/dance.mp3 | Qwen3-TTS local synthesis
+words/read.mp3 | Qwen3-TTS local synthesis
+words/write.mp3 | Qwen3-TTS local synthesis
+words/happy.mp3 | Qwen3-TTS local synthesis
+words/sad.mp3 | Qwen3-TTS local synthesis
+words/angry.mp3 | Qwen3-TTS local synthesis
+words/hungry.mp3 | Qwen3-TTS local synthesis
+words/thirsty.mp3 | Qwen3-TTS local synthesis
+words/tired.mp3 | Qwen3-TTS local synthesis
+words/cold.mp3 | Qwen3-TTS local synthesis
+words/hot.mp3 | Qwen3-TTS local synthesis
+words/big.mp3 | Qwen3-TTS local synthesis
+words/small.mp3 | Qwen3-TTS local synthesis
+words/tall.mp3 | Qwen3-TTS local synthesis
+words/short.mp3 | Qwen3-TTS local synthesis
+words/long.mp3 | Qwen3-TTS local synthesis
+words/old.mp3 | Qwen3-TTS local synthesis
+words/new.mp3 | Qwen3-TTS local synthesis
+words/young.mp3 | Qwen3-TTS local synthesis
+words/shirt.mp3 | Qwen3-TTS local synthesis
+words/coat.mp3 | Qwen3-TTS local synthesis
+words/dress.mp3 | Qwen3-TTS local synthesis
+words/skirt.mp3 | Qwen3-TTS local synthesis
+words/shoe.mp3 | Qwen3-TTS local synthesis
+words/sock.mp3 | Qwen3-TTS local synthesis
+words/cap.mp3 | Qwen3-TTS local synthesis
+words/sweater.mp3 | Qwen3-TTS local synthesis
+words/teacher.mp3 | Qwen3-TTS local synthesis
+words/student.mp3 | Qwen3-TTS local synthesis
+words/friend.mp3 | Qwen3-TTS local synthesis
+words/mother.mp3 | Qwen3-TTS local synthesis
+words/father.mp3 | Qwen3-TTS local synthesis
+words/brother.mp3 | Qwen3-TTS local synthesis
+words/sister.mp3 | Qwen3-TTS local synthesis
+words/child.mp3 | Qwen3-TTS local synthesis
+words/school.mp3 | Qwen3-TTS local synthesis
+words/classroom.mp3 | Qwen3-TTS local synthesis
+words/lesson.mp3 | Qwen3-TTS local synthesis
+words/homework.mp3 | Qwen3-TTS local synthesis
+words/notebook.mp3 | Qwen3-TTS local synthesis
+words/computer.mp3 | Qwen3-TTS local synthesis
+words/picture.mp3 | Qwen3-TTS local synthesis
+words/blackboard.mp3 | Qwen3-TTS local synthesis
+words/eleven.mp3 | Qwen3-TTS local synthesis
+words/twelve.mp3 | Qwen3-TTS local synthesis
+words/thirteen.mp3 | Qwen3-TTS local synthesis
+words/fourteen.mp3 | Qwen3-TTS local synthesis
+words/fifteen.mp3 | Qwen3-TTS local synthesis
+words/sixteen.mp3 | Qwen3-TTS local synthesis
+words/twenty.mp3 | Qwen3-TTS local synthesis
+words/thirty.mp3 | Qwen3-TTS local synthesis
+words/breakfast.mp3 | Qwen3-TTS local synthesis
+words/lunch.mp3 | Qwen3-TTS local synthesis
+words/dinner.mp3 | Qwen3-TTS local synthesis
+words/chicken.mp3 | Qwen3-TTS local synthesis
+words/beef.mp3 | Qwen3-TTS local synthesis
+words/soup.mp3 | Qwen3-TTS local synthesis
+words/noodle.mp3 | Qwen3-TTS local synthesis
+words/potato.mp3 | Qwen3-TTS local synthesis
+words/sunny.mp3 | Qwen3-TTS local synthesis
+words/rainy.mp3 | Qwen3-TTS local synthesis
+words/cloudy.mp3 | Qwen3-TTS local synthesis
+words/windy.mp3 | Qwen3-TTS local synthesis
+words/snowy.mp3 | Qwen3-TTS local synthesis
+words/warm.mp3 | Qwen3-TTS local synthesis
+words/cool.mp3 | Qwen3-TTS local synthesis
+words/weather.mp3 | Qwen3-TTS local synthesis
+words/monday.mp3 | Qwen3-TTS local synthesis
+words/tuesday.mp3 | Qwen3-TTS local synthesis
+words/wednesday.mp3 | Qwen3-TTS local synthesis
+words/thursday.mp3 | Qwen3-TTS local synthesis
+words/friday.mp3 | Qwen3-TTS local synthesis
+words/saturday.mp3 | Qwen3-TTS local synthesis
+words/sunday.mp3 | Qwen3-TTS local synthesis
+words/week.mp3 | Qwen3-TTS local synthesis
+words/football.mp3 | Qwen3-TTS local synthesis
+words/basketball.mp3 | Qwen3-TTS local synthesis
+words/tennis.mp3 | Qwen3-TTS local synthesis
+words/sport.mp3 | Qwen3-TTS local synthesis
+words/game.mp3 | Qwen3-TTS local synthesis
+words/ball.mp3 | Qwen3-TTS local synthesis
+words/play.mp3 | Qwen3-TTS local synthesis
+words/ride.mp3 | Qwen3-TTS local synthesis
+words/park.mp3 | Qwen3-TTS local synthesis
+words/zoo.mp3 | Qwen3-TTS local synthesis
+words/library.mp3 | Qwen3-TTS local synthesis
+words/shop.mp3 | Qwen3-TTS local synthesis
+words/hospital.mp3 | Qwen3-TTS local synthesis
+words/farm.mp3 | Qwen3-TTS local synthesis
+words/house.mp3 | Qwen3-TTS local synthesis
+words/garden.mp3 | Qwen3-TTS local synthesis
+words/in.mp3 | Qwen3-TTS local synthesis
+words/on.mp3 | Qwen3-TTS local synthesis
+words/under.mp3 | Qwen3-TTS local synthesis
+words/behind.mp3 | Qwen3-TTS local synthesis
+words/near.mp3 | Qwen3-TTS local synthesis
+words/beside.mp3 | Qwen3-TTS local synthesis
+words/between.mp3 | Qwen3-TTS local synthesis
+words/front.mp3 | Qwen3-TTS local synthesis
+words/chinese.mp3 | Qwen3-TTS local synthesis
+words/english.mp3 | Qwen3-TTS local synthesis
+words/maths.mp3 | Qwen3-TTS local synthesis
+words/science.mp3 | Qwen3-TTS local synthesis
+words/music.mp3 | Qwen3-TTS local synthesis
+words/art.mp3 | Qwen3-TTS local synthesis
+words/history.mp3 | Qwen3-TTS local synthesis
+words/subject.mp3 | Qwen3-TTS local synthesis
+words/doctor.mp3 | Qwen3-TTS local synthesis
+words/nurse.mp3 | Qwen3-TTS local synthesis
+words/farmer.mp3 | Qwen3-TTS local synthesis
+words/driver.mp3 | Qwen3-TTS local synthesis
+words/cook.mp3 | Qwen3-TTS local synthesis
+words/worker.mp3 | Qwen3-TTS local synthesis
+words/singer.mp3 | Qwen3-TTS local synthesis
+words/pilot.mp3 | Qwen3-TTS local synthesis
+words/train.mp3 | Qwen3-TTS local synthesis
+words/plane.mp3 | Qwen3-TTS local synthesis
+words/bike.mp3 | Qwen3-TTS local synthesis
+words/boat.mp3 | Qwen3-TTS local synthesis
+words/ship.mp3 | Qwen3-TTS local synthesis
+words/taxi.mp3 | Qwen3-TTS local synthesis
+words/subway.mp3 | Qwen3-TTS local synthesis
+words/car.mp3 | Qwen3-TTS local synthesis
+words/city.mp3 | Qwen3-TTS local synthesis
+words/street.mp3 | Qwen3-TTS local synthesis
+words/road.mp3 | Qwen3-TTS local synthesis
+words/station.mp3 | Qwen3-TTS local synthesis
+words/cinema.mp3 | Qwen3-TTS local synthesis
+words/museum.mp3 | Qwen3-TTS local synthesis
+words/hotel.mp3 | Qwen3-TTS local synthesis
+words/supermarket.mp3 | Qwen3-TTS local synthesis
+words/buy.mp3 | Qwen3-TTS local synthesis
+words/sell.mp3 | Qwen3-TTS local synthesis
+words/money.mp3 | Qwen3-TTS local synthesis
+words/price.mp3 | Qwen3-TTS local synthesis
+words/cheap.mp3 | Qwen3-TTS local synthesis
+words/expensive.mp3 | Qwen3-TTS local synthesis
+words/yuan.mp3 | Qwen3-TTS local synthesis
+words/dollar.mp3 | Qwen3-TTS local synthesis
+words/morning.mp3 | Qwen3-TTS local synthesis
+words/afternoon.mp3 | Qwen3-TTS local synthesis
+words/evening.mp3 | Qwen3-TTS local synthesis
+words/night.mp3 | Qwen3-TTS local synthesis
+words/today.mp3 | Qwen3-TTS local synthesis
+words/tomorrow.mp3 | Qwen3-TTS local synthesis
+words/yesterday.mp3 | Qwen3-TTS local synthesis
+words/weekend.mp3 | Qwen3-TTS local synthesis
+words/river.mp3 | Qwen3-TTS local synthesis
+words/lake.mp3 | Qwen3-TTS local synthesis
+words/mountain.mp3 | Qwen3-TTS local synthesis
+words/forest.mp3 | Qwen3-TTS local synthesis
+words/tree.mp3 | Qwen3-TTS local synthesis
+words/flower.mp3 | Qwen3-TTS local synthesis
+words/grass.mp3 | Qwen3-TTS local synthesis
+words/leaf.mp3 | Qwen3-TTS local synthesis
+words/head.mp3 | Qwen3-TTS local synthesis
+words/face.mp3 | Qwen3-TTS local synthesis
+words/arm.mp3 | Qwen3-TTS local synthesis
+words/leg.mp3 | Qwen3-TTS local synthesis
+words/tooth.mp3 | Qwen3-TTS local synthesis
+words/back.mp3 | Qwen3-TTS local synthesis
+words/heart.mp3 | Qwen3-TTS local synthesis
+words/healthy.mp3 | Qwen3-TTS local synthesis
+words/january.mp3 | Qwen3-TTS local synthesis
+words/february.mp3 | Qwen3-TTS local synthesis
+words/march.mp3 | Qwen3-TTS local synthesis
+words/april.mp3 | Qwen3-TTS local synthesis
+words/may.mp3 | Qwen3-TTS local synthesis
+words/june.mp3 | Qwen3-TTS local synthesis
+words/july.mp3 | Qwen3-TTS local synthesis
+words/august.mp3 | Qwen3-TTS local synthesis
+words/september.mp3 | Qwen3-TTS local synthesis
+words/october.mp3 | Qwen3-TTS local synthesis
+words/november.mp3 | Qwen3-TTS local synthesis
+words/december.mp3 | Qwen3-TTS local synthesis
+words/spring.mp3 | Qwen3-TTS local synthesis
+words/summer.mp3 | Qwen3-TTS local synthesis
+words/autumn.mp3 | Qwen3-TTS local synthesis
+words/winter.mp3 | Qwen3-TTS local synthesis
+words/season.mp3 | Qwen3-TTS local synthesis
+words/year.mp3 | Qwen3-TTS local synthesis
+words/holiday.mp3 | Qwen3-TTS local synthesis
+words/birthday.mp3 | Qwen3-TTS local synthesis
+words/speak.mp3 | Qwen3-TTS local synthesis
+words/listen.mp3 | Qwen3-TTS local synthesis
+words/learn.mp3 | Qwen3-TTS local synthesis
+words/teach.mp3 | Qwen3-TTS local synthesis
+words/draw.mp3 | Qwen3-TTS local synthesis
+words/paint.mp3 | Qwen3-TTS local synthesis
+words/climb.mp3 | Qwen3-TTS local synthesis
+words/skate.mp3 | Qwen3-TTS local synthesis
+words/kind.mp3 | Qwen3-TTS local synthesis
+words/polite.mp3 | Qwen3-TTS local synthesis
+words/clever.mp3 | Qwen3-TTS local synthesis
+words/helpful.mp3 | Qwen3-TTS local synthesis
+words/shy.mp3 | Qwen3-TTS local synthesis
+words/quiet.mp3 | Qwen3-TTS local synthesis
+words/funny.mp3 | Qwen3-TTS local synthesis
+words/strict.mp3 | Qwen3-TTS local synthesis
+words/travel.mp3 | Qwen3-TTS local synthesis
+words/visit.mp3 | Qwen3-TTS local synthesis
+words/trip.mp3 | Qwen3-TTS local synthesis
+words/ticket.mp3 | Qwen3-TTS local synthesis
+words/map.mp3 | Qwen3-TTS local synthesis
+words/airport.mp3 | Qwen3-TTS local synthesis
+words/beach.mp3 | Qwen3-TTS local synthesis
+words/island.mp3 | Qwen3-TTS local synthesis
+words/clean.mp3 | Qwen3-TTS local synthesis
+words/wash.mp3 | Qwen3-TTS local synthesis
+words/brush.mp3 | Qwen3-TTS local synthesis
+words/finish.mp3 | Qwen3-TTS local synthesis
+words/start.mp3 | Qwen3-TTS local synthesis
+words/wait.mp3 | Qwen3-TTS local synthesis
+words/open.mp3 | Qwen3-TTS local synthesis
+words/close.mp3 | Qwen3-TTS local synthesis
+words/always.mp3 | Qwen3-TTS local synthesis
+words/usually.mp3 | Qwen3-TTS local synthesis
+words/often.mp3 | Qwen3-TTS local synthesis
+words/sometimes.mp3 | Qwen3-TTS local synthesis
+words/never.mp3 | Qwen3-TTS local synthesis
+words/early.mp3 | Qwen3-TTS local synthesis
+words/late.mp3 | Qwen3-TTS local synthesis
+words/again.mp3 | Qwen3-TTS local synthesis
+words/earth.mp3 | Qwen3-TTS local synthesis
+words/world.mp3 | Qwen3-TTS local synthesis
+words/plant.mp3 | Qwen3-TTS local synthesis
+words/animal.mp3 | Qwen3-TTS local synthesis
+words/air.mp3 | Qwen3-TTS local synthesis
+words/ocean.mp3 | Qwen3-TTS local synthesis
+words/rubbish.mp3 | Qwen3-TTS local synthesis
+words/recycle.mp3 | Qwen3-TTS local synthesis
+words/bigger.mp3 | Qwen3-TTS local synthesis
+words/smaller.mp3 | Qwen3-TTS local synthesis
+words/taller.mp3 | Qwen3-TTS local synthesis
+words/shorter.mp3 | Qwen3-TTS local synthesis
+words/older.mp3 | Qwen3-TTS local synthesis
+words/younger.mp3 | Qwen3-TTS local synthesis
+words/heavier.mp3 | Qwen3-TTS local synthesis
+words/stronger.mp3 | Qwen3-TTS local synthesis
+words/went.mp3 | Qwen3-TTS local synthesis
+words/saw.mp3 | Qwen3-TTS local synthesis
+words/ate.mp3 | Qwen3-TTS local synthesis
+words/drank.mp3 | Qwen3-TTS local synthesis
+words/bought.mp3 | Qwen3-TTS local synthesis
+words/took.mp3 | Qwen3-TTS local synthesis
+words/had.mp3 | Qwen3-TTS local synthesis
+words/did.mp3 | Qwen3-TTS local synthesis
+words/plan.mp3 | Qwen3-TTS local synthesis
+words/future.mp3 | Qwen3-TTS local synthesis
+words/dream.mp3 | Qwen3-TTS local synthesis
+words/hope.mp3 | Qwen3-TTS local synthesis
+words/decide.mp3 | Qwen3-TTS local synthesis
+words/become.mp3 | Qwen3-TTS local synthesis
+words/study.mp3 | Qwen3-TTS local synthesis
+words/practise.mp3 | Qwen3-TTS local synthesis
+words/excited.mp3 | Qwen3-TTS local synthesis
+words/worried.mp3 | Qwen3-TTS local synthesis
+words/afraid.mp3 | Qwen3-TTS local synthesis
+words/proud.mp3 | Qwen3-TTS local synthesis
+words/bored.mp3 | Qwen3-TTS local synthesis
+words/surprised.mp3 | Qwen3-TTS local synthesis
+words/nervous.mp3 | Qwen3-TTS local synthesis
+words/calm.mp3 | Qwen3-TTS local synthesis
+words/question.mp3 | Qwen3-TTS local synthesis
+words/answer.mp3 | Qwen3-TTS local synthesis
+words/message.mp3 | Qwen3-TTS local synthesis
+words/letter.mp3 | Qwen3-TTS local synthesis
+words/email.mp3 | Qwen3-TTS local synthesis
+words/story.mp3 | Qwen3-TTS local synthesis
+words/explain.mp3 | Qwen3-TTS local synthesis
+words/understand.mp3 | Qwen3-TTS local synthesis
+words/country.mp3 | Qwen3-TTS local synthesis
+words/village.mp3 | Qwen3-TTS local synthesis
+words/people.mp3 | Qwen3-TTS local synthesis
+words/family.mp3 | Qwen3-TTS local synthesis
+words/neighbour.mp3 | Qwen3-TTS local synthesis
+words/visitor.mp3 | Qwen3-TTS local synthesis
+words/rule.mp3 | Qwen3-TTS local synthesis
+words/safety.mp3 | Qwen3-TTS local synthesis
+words/save.mp3 | Qwen3-TTS local synthesis
+words/waste.mp3 | Qwen3-TTS local synthesis
+words/protect.mp3 | Qwen3-TTS local synthesis
+words/energy.mp3 | Qwen3-TTS local synthesis
+words/electricity.mp3 | Qwen3-TTS local synthesis
+words/plastic.mp3 | Qwen3-TTS local synthesis
+words/paper.mp3 | Qwen3-TTS local synthesis
+words/pollution.mp3 | Qwen3-TTS local synthesis
+words/because.mp3 | Qwen3-TTS local synthesis
+words/before.mp3 | Qwen3-TTS local synthesis
+words/after.mp3 | Qwen3-TTS local synthesis
+words/different.mp3 | Qwen3-TTS local synthesis
+words/important.mp3 | Qwen3-TTS local synthesis
+words/interesting.mp3 | Qwen3-TTS local synthesis
+words/difficult.mp3 | Qwen3-TTS local synthesis
+words/easy.mp3 | Qwen3-TTS local synthesis

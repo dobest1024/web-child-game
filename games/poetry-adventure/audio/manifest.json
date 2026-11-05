@@ -1,0 +1,2198 @@
+[
+ {
+  "id": "yonge-0",
+  "text": "《咏鹅》，骆宾王。",
+  "file": "lines/yonge-0.mp3",
+  "seed": 61,
+  "voiced": 1.85
+ },
+ {
+  "id": "yonge-1",
+  "text": "鹅，鹅，鹅，",
+  "file": "lines/yonge-1.mp3",
+  "seed": 3,
+  "voiced": 1.22
+ },
+ {
+  "id": "yonge-2",
+  "text": "曲项向天歌。",
+  "file": "lines/yonge-2.mp3",
+  "seed": 3,
+  "voiced": 1.84
+ },
+ {
+  "id": "yonge-3",
+  "text": "白毛浮绿水，",
+  "file": "lines/yonge-3.mp3",
+  "seed": 3,
+  "voiced": 1.76
+ },
+ {
+  "id": "yonge-4",
+  "text": "红掌拨清波。",
+  "file": "lines/yonge-4.mp3",
+  "seed": 3,
+  "voiced": 1.92
+ },
+ {
+  "id": "jiangnan-0",
+  "text": "《江南》，汉乐府。",
+  "file": "lines/jiangnan-0.mp3",
+  "seed": 29,
+  "voiced": 1.73
+ },
+ {
+  "id": "jiangnan-1",
+  "text": "江南可采莲，",
+  "file": "lines/jiangnan-1.mp3",
+  "seed": 3,
+  "voiced": 1.76
+ },
+ {
+  "id": "jiangnan-2",
+  "text": "莲叶何田田。",
+  "file": "lines/jiangnan-2.mp3",
+  "seed": 3,
+  "voiced": 1.6
+ },
+ {
+  "id": "jiangnan-3",
+  "text": "鱼戏莲叶间。",
+  "file": "lines/jiangnan-3.mp3",
+  "seed": 29,
+  "voiced": 2.24
+ },
+ {
+  "id": "jiangnan-4",
+  "text": "鱼戏莲叶东，",
+  "file": "lines/jiangnan-4.mp3",
+  "seed": 61,
+  "voiced": 1.84
+ },
+ {
+  "id": "jiangnan-5",
+  "text": "鱼戏莲叶西，",
+  "file": "lines/jiangnan-5.mp3",
+  "seed": 83,
+  "voiced": 1.6
+ },
+ {
+  "id": "jiangnan-6",
+  "text": "鱼戏莲叶南，",
+  "file": "lines/jiangnan-6.mp3",
+  "seed": 29,
+  "voiced": 1.76
+ },
+ {
+  "id": "jiangnan-7",
+  "text": "鱼戏莲叶北。",
+  "file": "lines/jiangnan-7.mp3",
+  "seed": 29,
+  "voiced": 1.44
+ },
+ {
+  "id": "hua-0",
+  "text": "《画》，王维。",
+  "file": "lines/hua-0.mp3",
+  "seed": 29,
+  "voiced": 1.08
+ },
+ {
+  "id": "hua-1",
+  "text": "远看山有色，",
+  "file": "lines/hua-1.mp3",
+  "seed": 47,
+  "voiced": 1.84
+ },
+ {
+  "id": "hua-2",
+  "text": "近听水无声。",
+  "file": "lines/hua-2.mp3",
+  "seed": 29,
+  "voiced": 1.84
+ },
+ {
+  "id": "hua-3",
+  "text": "春去花还在，",
+  "file": "lines/hua-3.mp3",
+  "seed": 11,
+  "voiced": 1.76
+ },
+ {
+  "id": "hua-4",
+  "text": "人来鸟不惊。",
+  "file": "lines/hua-4.mp3",
+  "seed": 47,
+  "voiced": 1.68
+ },
+ {
+  "id": "minnong-0",
+  "text": "《悯农》，李绅。",
+  "file": "lines/minnong-0.mp3",
+  "seed": 11,
+  "voiced": 1.45
+ },
+ {
+  "id": "minnong-1",
+  "text": "锄禾日当午，",
+  "file": "lines/minnong-1.mp3",
+  "seed": 3,
+  "voiced": 1.92
+ },
+ {
+  "id": "minnong-2",
+  "text": "汗滴禾下土。",
+  "file": "lines/minnong-2.mp3",
+  "seed": 61,
+  "voiced": 1.6
+ },
+ {
+  "id": "minnong-3",
+  "text": "谁知盘中餐，",
+  "file": "lines/minnong-3.mp3",
+  "seed": 61,
+  "voiced": 1.68
+ },
+ {
+  "id": "minnong-4",
+  "text": "粒粒皆辛苦。",
+  "file": "lines/minnong-4.mp3",
+  "seed": 3,
+  "voiced": 1.76
+ },
+ {
+  "id": "gulangyue-0",
+  "text": "《古朗月行》，李白。",
+  "file": "lines/gulangyue-0.mp3",
+  "seed": 47,
+  "voiced": 2.14
+ },
+ {
+  "id": "gulangyue-1",
+  "text": "小时不识月，",
+  "file": "lines/gulangyue-1.mp3",
+  "seed": 47,
+  "voiced": 1.76
+ },
+ {
+  "id": "gulangyue-2",
+  "text": "呼作白玉盘。",
+  "file": "lines/gulangyue-2.mp3",
+  "seed": 61,
+  "voiced": 1.76
+ },
+ {
+  "id": "gulangyue-3",
+  "text": "又疑瑶台镜，",
+  "file": "lines/gulangyue-3.mp3",
+  "seed": 61,
+  "voiced": 1.52
+ },
+ {
+  "id": "gulangyue-4",
+  "text": "飞在青云端。",
+  "file": "lines/gulangyue-4.mp3",
+  "seed": 61,
+  "voiced": 2.0
+ },
+ {
+  "id": "feng-0",
+  "text": "《风》，李峤。",
+  "file": "lines/feng-0.mp3",
+  "seed": 11,
+  "voiced": 1.11
+ },
+ {
+  "id": "feng-1",
+  "text": "解落三秋叶，",
+  "file": "lines/feng-1.mp3",
+  "seed": 11,
+  "voiced": 1.76
+ },
+ {
+  "id": "feng-2",
+  "text": "能开二月花。",
+  "file": "lines/feng-2.mp3",
+  "seed": 11,
+  "voiced": 1.92
+ },
+ {
+  "id": "feng-3",
+  "text": "过江千尺浪，",
+  "file": "lines/feng-3.mp3",
+  "seed": 29,
+  "voiced": 1.68
+ },
+ {
+  "id": "feng-4",
+  "text": "入竹万竿斜。",
+  "file": "lines/feng-4.mp3",
+  "seed": 47,
+  "voiced": 1.84
+ },
+ {
+  "id": "chunxiao-0",
+  "text": "《春晓》，孟浩然。",
+  "file": "lines/chunxiao-0.mp3",
+  "seed": 29,
+  "voiced": 1.66
+ },
+ {
+  "id": "chunxiao-1",
+  "text": "春眠不觉晓，",
+  "file": "lines/chunxiao-1.mp3",
+  "seed": 83,
+  "voiced": 1.68
+ },
+ {
+  "id": "chunxiao-2",
+  "text": "处处闻啼鸟。",
+  "file": "lines/chunxiao-2.mp3",
+  "seed": 11,
+  "voiced": 1.76
+ },
+ {
+  "id": "chunxiao-3",
+  "text": "夜来风雨声，",
+  "file": "lines/chunxiao-3.mp3",
+  "seed": 47,
+  "voiced": 1.92
+ },
+ {
+  "id": "chunxiao-4",
+  "text": "花落知多少。",
+  "file": "lines/chunxiao-4.mp3",
+  "seed": 47,
+  "voiced": 1.88
+ },
+ {
+  "id": "zengwanglun-0",
+  "text": "《赠汪伦》，李白。",
+  "file": "lines/zengwanglun-0.mp3",
+  "seed": 47,
+  "voiced": 1.76
+ },
+ {
+  "id": "zengwanglun-1",
+  "text": "李白乘舟将欲行，",
+  "file": "lines/zengwanglun-1.mp3",
+  "seed": 83,
+  "voiced": 2.48
+ },
+ {
+  "id": "zengwanglun-2",
+  "text": "忽闻岸上踏歌声。",
+  "file": "lines/zengwanglun-2.mp3",
+  "seed": 11,
+  "voiced": 2.5
+ },
+ {
+  "id": "zengwanglun-3",
+  "text": "桃花潭水深千尺，",
+  "file": "lines/zengwanglun-3.mp3",
+  "seed": 61,
+  "voiced": 2.48
+ },
+ {
+  "id": "zengwanglun-4",
+  "text": "不及汪伦送我情。",
+  "file": "lines/zengwanglun-4.mp3",
+  "seed": 11,
+  "voiced": 2.73
+ },
+ {
+  "id": "jingyesi-0",
+  "text": "《静夜思》，李白。",
+  "file": "lines/jingyesi-0.mp3",
+  "seed": 61,
+  "voiced": 1.79
+ },
+ {
+  "id": "jingyesi-1",
+  "text": "床前明月光，",
+  "file": "lines/jingyesi-1.mp3",
+  "seed": 11,
+  "voiced": 1.84
+ },
+ {
+  "id": "jingyesi-2",
+  "text": "疑是地上霜。",
+  "file": "lines/jingyesi-2.mp3",
+  "seed": 29,
+  "voiced": 1.92
+ },
+ {
+  "id": "jingyesi-3",
+  "text": "举头望明月，",
+  "file": "lines/jingyesi-3.mp3",
+  "seed": 3,
+  "voiced": 1.84
+ },
+ {
+  "id": "jingyesi-4",
+  "text": "低头思故乡。",
+  "file": "lines/jingyesi-4.mp3",
+  "seed": 83,
+  "voiced": 1.76
+ },
+ {
+  "id": "xunyinzhe-0",
+  "text": "《寻隐者不遇》，贾岛。",
+  "file": "lines/xunyinzhe-0.mp3",
+  "seed": 29,
+  "voiced": 2.51
+ },
+ {
+  "id": "xunyinzhe-1",
+  "text": "松下问童子，",
+  "file": "lines/xunyinzhe-1.mp3",
+  "seed": 61,
+  "voiced": 1.76
+ },
+ {
+  "id": "xunyinzhe-2",
+  "text": "言师采药去。",
+  "file": "lines/xunyinzhe-2.mp3",
+  "seed": 83,
+  "voiced": 1.84
+ },
+ {
+  "id": "xunyinzhe-3",
+  "text": "只在此山中，",
+  "file": "lines/xunyinzhe-3.mp3",
+  "seed": 47,
+  "voiced": 1.68
+ },
+ {
+  "id": "xunyinzhe-4",
+  "text": "云深不知处。",
+  "file": "lines/xunyinzhe-4.mp3",
+  "seed": 3,
+  "voiced": 1.84
+ },
+ {
+  "id": "chishang-0",
+  "text": "《池上》，白居易。",
+  "file": "lines/chishang-0.mp3",
+  "seed": 61,
+  "voiced": 1.71
+ },
+ {
+  "id": "chishang-1",
+  "text": "小娃撑小艇，",
+  "file": "lines/chishang-1.mp3",
+  "seed": 29,
+  "voiced": 1.84
+ },
+ {
+  "id": "chishang-2",
+  "text": "偷采白莲回。",
+  "file": "lines/chishang-2.mp3",
+  "seed": 61,
+  "voiced": 1.76
+ },
+ {
+  "id": "chishang-3",
+  "text": "不解藏踪迹，",
+  "file": "lines/chishang-3.mp3",
+  "seed": 61,
+  "voiced": 1.84
+ },
+ {
+  "id": "chishang-4",
+  "text": "浮萍一道开。",
+  "file": "lines/chishang-4.mp3",
+  "seed": 61,
+  "voiced": 1.76
+ },
+ {
+  "id": "xiaochi-0",
+  "text": "《小池》，杨万里。",
+  "file": "lines/xiaochi-0.mp3",
+  "seed": 47,
+  "voiced": 1.82
+ },
+ {
+  "id": "xiaochi-1",
+  "text": "泉眼无声惜细流，",
+  "file": "lines/xiaochi-1.mp3",
+  "seed": 61,
+  "voiced": 2.52
+ },
+ {
+  "id": "xiaochi-2",
+  "text": "树阴照水爱晴柔。",
+  "file": "lines/xiaochi-2.mp3",
+  "seed": 3,
+  "voiced": 2.57
+ },
+ {
+  "id": "xiaochi-3",
+  "text": "小荷才露尖尖角，",
+  "file": "lines/xiaochi-3.mp3",
+  "seed": 29,
+  "voiced": 2.4
+ },
+ {
+  "id": "xiaochi-4",
+  "text": "早有蜻蜓立上头。",
+  "file": "lines/xiaochi-4.mp3",
+  "seed": 29,
+  "voiced": 2.32
+ },
+ {
+  "id": "huaji-0",
+  "text": "《画鸡》，唐寅。",
+  "file": "lines/huaji-0.mp3",
+  "seed": 11,
+  "voiced": 1.53
+ },
+ {
+  "id": "huaji-1",
+  "text": "头上红冠不用裁，",
+  "file": "lines/huaji-1.mp3",
+  "seed": 3,
+  "voiced": 2.24
+ },
+ {
+  "id": "huaji-2",
+  "text": "满身雪白走将来。",
+  "file": "lines/huaji-2.mp3",
+  "seed": 3,
+  "voiced": 2.48
+ },
+ {
+  "id": "huaji-3",
+  "text": "平生不敢轻言语，",
+  "file": "lines/huaji-3.mp3",
+  "seed": 11,
+  "voiced": 2.56
+ },
+ {
+  "id": "huaji-4",
+  "text": "一叫千门万户开。",
+  "file": "lines/huaji-4.mp3",
+  "seed": 29,
+  "voiced": 2.63
+ },
+ {
+  "id": "g2p1-1",
+  "text": "草长莺飞二月天，",
+  "file": "lines/g2p1-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 3.58825
+ },
+ {
+  "id": "g2p1-2",
+  "text": "拂堤杨柳醉春烟。",
+  "file": "lines/g2p1-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 3.692208
+ },
+ {
+  "id": "g2p1-3",
+  "text": "儿童散学归来早，",
+  "file": "lines/g2p1-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 2.175208
+ },
+ {
+  "id": "g2p1-4",
+  "text": "忙趁东风放纸鸢。",
+  "file": "lines/g2p1-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 3.745958
+ },
+ {
+  "id": "g2p2-1",
+  "text": "碧玉妆成一树高，",
+  "file": "lines/g2p2-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 3.322958
+ },
+ {
+  "id": "g2p2-2",
+  "text": "万条垂下绿丝绦。",
+  "file": "lines/g2p2-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 3.706042
+ },
+ {
+  "id": "g2p2-3",
+  "text": "不知细叶谁裁出，",
+  "file": "lines/g2p2-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 2.761958
+ },
+ {
+  "id": "g2p2-4",
+  "text": "二月春风似剪刀。",
+  "file": "lines/g2p2-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 3.8565
+ },
+ {
+  "id": "g2p3-1",
+  "text": "白日依山尽，",
+  "file": "lines/g2p3-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 1.394125
+ },
+ {
+  "id": "g2p3-2",
+  "text": "黄河入海流。",
+  "file": "lines/g2p3-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 1.797083
+ },
+ {
+  "id": "g2p3-3",
+  "text": "欲穷千里目，",
+  "file": "lines/g2p3-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 1.940292
+ },
+ {
+  "id": "g2p3-4",
+  "text": "更上一层楼。",
+  "file": "lines/g2p3-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 2.000042
+ },
+ {
+  "id": "g2p4-1",
+  "text": "日照香炉生紫烟，",
+  "file": "lines/g2p4-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 2.428958
+ },
+ {
+  "id": "g2p4-2",
+  "text": "遥看瀑布挂前川。",
+  "file": "lines/g2p4-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 2.332417
+ },
+ {
+  "id": "g2p4-3",
+  "text": "飞流直下三千尺，",
+  "file": "lines/g2p4-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 4.581583
+ },
+ {
+  "id": "g2p4-4",
+  "text": "疑是银河落九天。",
+  "file": "lines/g2p4-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 3.40425
+ },
+ {
+  "id": "g2p5-1",
+  "text": "危楼高百尺，",
+  "file": "lines/g2p5-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 1.675
+ },
+ {
+  "id": "g2p5-2",
+  "text": "手可摘星辰。",
+  "file": "lines/g2p5-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 1.99175
+ },
+ {
+  "id": "g2p5-3",
+  "text": "不敢高声语，",
+  "file": "lines/g2p5-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 1.241417
+ },
+ {
+  "id": "g2p5-4",
+  "text": "恐惊天上人。",
+  "file": "lines/g2p5-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 3,
+  "seconds": 1.616125
+ },
+ {
+  "id": "g2p6-1",
+  "text": "敕勒川，",
+  "file": "lines/g2p6-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 0.909417
+ },
+ {
+  "id": "g2p6-2",
+  "text": "阴山下。",
+  "file": "lines/g2p6-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.054917
+ },
+ {
+  "id": "g2p6-3",
+  "text": "天似穹庐，",
+  "file": "lines/g2p6-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.933875
+ },
+ {
+  "id": "g2p6-4",
+  "text": "笼盖四野。",
+  "file": "lines/g2p6-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.418208
+ },
+ {
+  "id": "g2p6-5",
+  "text": "天苍苍，",
+  "file": "lines/g2p6-5.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.162083
+ },
+ {
+  "id": "g2p6-6",
+  "text": "野茫茫。",
+  "file": "lines/g2p6-6.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.7185
+ },
+ {
+  "id": "g2p6-7",
+  "text": "风吹草低见牛羊。",
+  "file": "lines/g2p6-7.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.189542
+ },
+ {
+  "id": "g2p7-1",
+  "text": "毕竟西湖六月中，",
+  "file": "lines/g2p7-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.307667
+ },
+ {
+  "id": "g2p7-2",
+  "text": "风光不与四时同。",
+  "file": "lines/g2p7-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.49375
+ },
+ {
+  "id": "g2p7-3",
+  "text": "接天莲叶无穷碧，",
+  "file": "lines/g2p7-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.273375
+ },
+ {
+  "id": "g2p7-4",
+  "text": "映日荷花别样红。",
+  "file": "lines/g2p7-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.945625
+ },
+ {
+  "id": "g2p8-1",
+  "text": "两个黄鹂鸣翠柳，",
+  "file": "lines/g2p8-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.549458
+ },
+ {
+  "id": "g2p8-2",
+  "text": "一行白鹭上青天。",
+  "file": "lines/g2p8-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.121917
+ },
+ {
+  "id": "g2p8-3",
+  "text": "窗含西岭千秋雪，",
+  "file": "lines/g2p8-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.17575
+ },
+ {
+  "id": "g2p8-4",
+  "text": "门泊东吴万里船。",
+  "file": "lines/g2p8-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.392292
+ },
+ {
+  "id": "g2p9-1",
+  "text": "春种一粒粟，",
+  "file": "lines/g2p9-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.225958
+ },
+ {
+  "id": "g2p9-2",
+  "text": "秋收万颗子。",
+  "file": "lines/g2p9-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.014333
+ },
+ {
+  "id": "g2p9-3",
+  "text": "四海无闲田，",
+  "file": "lines/g2p9-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.714792
+ },
+ {
+  "id": "g2p9-4",
+  "text": "农夫犹饿死。",
+  "file": "lines/g2p9-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 7.8745
+ },
+ {
+  "id": "g2p10-1",
+  "text": "月黑见渔灯，",
+  "file": "lines/g2p10-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.183292
+ },
+ {
+  "id": "g2p10-2",
+  "text": "孤光一点萤。",
+  "file": "lines/g2p10-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.727667
+ },
+ {
+  "id": "g2p10-3",
+  "text": "微微风簇浪，",
+  "file": "lines/g2p10-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 8.785958
+ },
+ {
+  "id": "g2p10-4",
+  "text": "散作满河星。",
+  "file": "lines/g2p10-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.784167
+ },
+ {
+  "id": "g3p1-1",
+  "text": "远上寒山石径斜，",
+  "file": "lines/g3p1-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.187375
+ },
+ {
+  "id": "g3p1-2",
+  "text": "白云生处有人家。",
+  "file": "lines/g3p1-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.833958
+ },
+ {
+  "id": "g3p1-3",
+  "text": "停车坐爱枫林晚，",
+  "file": "lines/g3p1-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.714125
+ },
+ {
+  "id": "g3p1-4",
+  "text": "霜叶红于二月花。",
+  "file": "lines/g3p1-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.8405
+ },
+ {
+  "id": "g3p2-1",
+  "text": "荷尽已无擎雨盖，",
+  "file": "lines/g3p2-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.149875
+ },
+ {
+  "id": "g3p2-2",
+  "text": "菊残犹有傲霜枝。",
+  "file": "lines/g3p2-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.067875
+ },
+ {
+  "id": "g3p2-3",
+  "text": "一年好景君须记，",
+  "file": "lines/g3p2-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.053583
+ },
+ {
+  "id": "g3p2-4",
+  "text": "最是橙黄橘绿时。",
+  "file": "lines/g3p2-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.508292
+ },
+ {
+  "id": "g3p3-1",
+  "text": "萧萧梧叶送寒声，",
+  "file": "lines/g3p3-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.023875
+ },
+ {
+  "id": "g3p3-2",
+  "text": "江上秋风动客情。",
+  "file": "lines/g3p3-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.926958
+ },
+ {
+  "id": "g3p3-3",
+  "text": "知有儿童挑促织，",
+  "file": "lines/g3p3-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.888125
+ },
+ {
+  "id": "g3p3-4",
+  "text": "夜深篱落一灯明。",
+  "file": "lines/g3p3-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.966
+ },
+ {
+  "id": "g3p4-1",
+  "text": "天门中断楚江开，",
+  "file": "lines/g3p4-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.6455
+ },
+ {
+  "id": "g3p4-2",
+  "text": "碧水东流至此回。",
+  "file": "lines/g3p4-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.169958
+ },
+ {
+  "id": "g3p4-3",
+  "text": "两岸青山相对出，",
+  "file": "lines/g3p4-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.646292
+ },
+ {
+  "id": "g3p4-4",
+  "text": "孤帆一片日边来。",
+  "file": "lines/g3p4-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.097167
+ },
+ {
+  "id": "g3p5-1",
+  "text": "水光潋滟晴方好，",
+  "file": "lines/g3p5-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.437333
+ },
+ {
+  "id": "g3p5-2",
+  "text": "山色空蒙雨亦奇。",
+  "file": "lines/g3p5-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 5.258583
+ },
+ {
+  "id": "g3p5-3",
+  "text": "欲把西湖比西子，",
+  "file": "lines/g3p5-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.4165
+ },
+ {
+  "id": "g3p5-4",
+  "text": "淡妆浓抹总相宜。",
+  "file": "lines/g3p5-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 5.916625
+ },
+ {
+  "id": "g3p6-1",
+  "text": "湖光秋月两相和，",
+  "file": "lines/g3p6-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.998
+ },
+ {
+  "id": "g3p6-2",
+  "text": "潭面无风镜未磨。",
+  "file": "lines/g3p6-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.569083
+ },
+ {
+  "id": "g3p6-3",
+  "text": "遥望洞庭山水翠，",
+  "file": "lines/g3p6-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.313958
+ },
+ {
+  "id": "g3p6-4",
+  "text": "白银盘里一青螺。",
+  "file": "lines/g3p6-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.803917
+ },
+ {
+  "id": "g3p7-1",
+  "text": "迟日江山丽，",
+  "file": "lines/g3p7-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.70075
+ },
+ {
+  "id": "g3p7-2",
+  "text": "春风花草香。",
+  "file": "lines/g3p7-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.433958
+ },
+ {
+  "id": "g3p7-3",
+  "text": "泥融飞燕子，",
+  "file": "lines/g3p7-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 5.746583
+ },
+ {
+  "id": "g3p7-4",
+  "text": "沙暖睡鸳鸯。",
+  "file": "lines/g3p7-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.074917
+ },
+ {
+  "id": "g3p8-1",
+  "text": "竹外桃花三两枝，",
+  "file": "lines/g3p8-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.818083
+ },
+ {
+  "id": "g3p8-2",
+  "text": "春江水暖鸭先知。",
+  "file": "lines/g3p8-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.043208
+ },
+ {
+  "id": "g3p8-3",
+  "text": "蒌蒿满地芦芽短，",
+  "file": "lines/g3p8-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.054458
+ },
+ {
+  "id": "g3p8-4",
+  "text": "正是河豚欲上时。",
+  "file": "lines/g3p8-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.511542
+ },
+ {
+  "id": "g3p9-1",
+  "text": "爆竹声中一岁除，",
+  "file": "lines/g3p9-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.643875
+ },
+ {
+  "id": "g3p9-2",
+  "text": "春风送暖入屠苏。",
+  "file": "lines/g3p9-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.983333
+ },
+ {
+  "id": "g3p9-3",
+  "text": "千门万户曈曈日，",
+  "file": "lines/g3p9-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.12525
+ },
+ {
+  "id": "g3p9-4",
+  "text": "总把新桃换旧符。",
+  "file": "lines/g3p9-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.815667
+ },
+ {
+  "id": "g3p10-1",
+  "text": "独在异乡为异客，",
+  "file": "lines/g3p10-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.752333
+ },
+ {
+  "id": "g3p10-2",
+  "text": "每逢佳节倍思亲。",
+  "file": "lines/g3p10-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.463458
+ },
+ {
+  "id": "g3p10-3",
+  "text": "遥知兄弟登高处，",
+  "file": "lines/g3p10-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.552833
+ },
+ {
+  "id": "g3p10-4",
+  "text": "遍插茱萸少一人。",
+  "file": "lines/g3p10-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.897958
+ },
+ {
+  "id": "g4p1-1",
+  "text": "一道残阳铺水中，",
+  "file": "lines/g4p1-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.748917
+ },
+ {
+  "id": "g4p1-2",
+  "text": "半江瑟瑟半江红。",
+  "file": "lines/g4p1-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.2105
+ },
+ {
+  "id": "g4p1-3",
+  "text": "可怜九月初三夜，",
+  "file": "lines/g4p1-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.645292
+ },
+ {
+  "id": "g4p1-4",
+  "text": "露似真珠月似弓。",
+  "file": "lines/g4p1-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.676
+ },
+ {
+  "id": "g4p2-1",
+  "text": "横看成岭侧成峰，",
+  "file": "lines/g4p2-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.01325
+ },
+ {
+  "id": "g4p2-2",
+  "text": "远近高低各不同。",
+  "file": "lines/g4p2-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.832292
+ },
+ {
+  "id": "g4p2-3",
+  "text": "不识庐山真面目，",
+  "file": "lines/g4p2-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.085542
+ },
+ {
+  "id": "g4p2-4",
+  "text": "只缘身在此山中。",
+  "file": "lines/g4p2-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.169667
+ },
+ {
+  "id": "g4p3-1",
+  "text": "梅雪争春未肯降，",
+  "file": "lines/g4p3-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.177958
+ },
+ {
+  "id": "g4p3-2",
+  "text": "骚人搁笔费评章。",
+  "file": "lines/g4p3-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.945958
+ },
+ {
+  "id": "g4p3-3",
+  "text": "梅须逊雪三分白，",
+  "file": "lines/g4p3-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.50725
+ },
+ {
+  "id": "g4p3-4",
+  "text": "雪却输梅一段香。",
+  "file": "lines/g4p3-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.203458
+ },
+ {
+  "id": "g4p4-1",
+  "text": "秦时明月汉时关，",
+  "file": "lines/g4p4-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.627042
+ },
+ {
+  "id": "g4p4-2",
+  "text": "万里长征人未还。",
+  "file": "lines/g4p4-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.096083
+ },
+ {
+  "id": "g4p4-3",
+  "text": "但使龙城飞将在，",
+  "file": "lines/g4p4-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.965625
+ },
+ {
+  "id": "g4p4-4",
+  "text": "不教胡马度阴山。",
+  "file": "lines/g4p4-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.454875
+ },
+ {
+  "id": "g4p5-1",
+  "text": "葡萄美酒夜光杯，",
+  "file": "lines/g4p5-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.231708
+ },
+ {
+  "id": "g4p5-2",
+  "text": "欲饮琵琶马上催。",
+  "file": "lines/g4p5-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.762375
+ },
+ {
+  "id": "g4p5-3",
+  "text": "醉卧沙场君莫笑，",
+  "file": "lines/g4p5-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.8755
+ },
+ {
+  "id": "g4p5-4",
+  "text": "古来征战几人回？",
+  "file": "lines/g4p5-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.002333
+ },
+ {
+  "id": "g4p6-1",
+  "text": "生当作人杰，",
+  "file": "lines/g4p6-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.841917
+ },
+ {
+  "id": "g4p6-2",
+  "text": "死亦为鬼雄。",
+  "file": "lines/g4p6-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.259083
+ },
+ {
+  "id": "g4p6-3",
+  "text": "至今思项羽，",
+  "file": "lines/g4p6-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.33675
+ },
+ {
+  "id": "g4p6-4",
+  "text": "不肯过江东。",
+  "file": "lines/g4p6-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.653333
+ },
+ {
+  "id": "g4p7-1",
+  "text": "篱落疏疏一径深，",
+  "file": "lines/g4p7-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.403917
+ },
+ {
+  "id": "g4p7-2",
+  "text": "树头新绿未成阴。",
+  "file": "lines/g4p7-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.71125
+ },
+ {
+  "id": "g4p7-3",
+  "text": "儿童急走追黄蝶，",
+  "file": "lines/g4p7-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.377958
+ },
+ {
+  "id": "g4p7-4",
+  "text": "飞入菜花无处寻。",
+  "file": "lines/g4p7-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.730583
+ },
+ {
+  "id": "g4p8-1",
+  "text": "梅子金黄杏子肥，",
+  "file": "lines/g4p8-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.152208
+ },
+ {
+  "id": "g4p8-2",
+  "text": "麦花雪白菜花稀。",
+  "file": "lines/g4p8-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.935
+ },
+ {
+  "id": "g4p8-3",
+  "text": "日长篱落无人过，",
+  "file": "lines/g4p8-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.777792
+ },
+ {
+  "id": "g4p8-4",
+  "text": "惟有蜻蜓蛱蝶飞。",
+  "file": "lines/g4p8-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.954708
+ },
+ {
+  "id": "g4p9-1",
+  "text": "寒雨连江夜入吴，",
+  "file": "lines/g4p9-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.620583
+ },
+ {
+  "id": "g4p9-2",
+  "text": "平明送客楚山孤。",
+  "file": "lines/g4p9-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 5.785958
+ },
+ {
+  "id": "g4p9-3",
+  "text": "洛阳亲友如相问，",
+  "file": "lines/g4p9-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.395208
+ },
+ {
+  "id": "g4p9-4",
+  "text": "一片冰心在玉壶。",
+  "file": "lines/g4p9-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.212458
+ },
+ {
+  "id": "g4p10-1",
+  "text": "我家洗砚池头树，",
+  "file": "lines/g4p10-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.014333
+ },
+ {
+  "id": "g4p10-2",
+  "text": "朵朵花开淡墨痕。",
+  "file": "lines/g4p10-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.393792
+ },
+ {
+  "id": "g4p10-3",
+  "text": "不要人夸好颜色，",
+  "file": "lines/g4p10-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.801958
+ },
+ {
+  "id": "g4p10-4",
+  "text": "只留清气满乾坤。",
+  "file": "lines/g4p10-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.496042
+ },
+ {
+  "id": "g5p1-1",
+  "text": "死去元知万事空，",
+  "file": "lines/g5p1-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.991792
+ },
+ {
+  "id": "g5p1-2",
+  "text": "但悲不见九州同。",
+  "file": "lines/g5p1-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.198125
+ },
+ {
+  "id": "g5p1-3",
+  "text": "王师北定中原日，",
+  "file": "lines/g5p1-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.758208
+ },
+ {
+  "id": "g5p1-4",
+  "text": "家祭无忘告乃翁。",
+  "file": "lines/g5p1-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.412125
+ },
+ {
+  "id": "g5p2-1",
+  "text": "山外青山楼外楼，",
+  "file": "lines/g5p2-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.589208
+ },
+ {
+  "id": "g5p2-2",
+  "text": "西湖歌舞几时休？",
+  "file": "lines/g5p2-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.524
+ },
+ {
+  "id": "g5p2-3",
+  "text": "暖风熏得游人醉，",
+  "file": "lines/g5p2-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.163542
+ },
+ {
+  "id": "g5p2-4",
+  "text": "直把杭州作汴州。",
+  "file": "lines/g5p2-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.652458
+ },
+ {
+  "id": "g5p3-1",
+  "text": "九州生气恃风雷，",
+  "file": "lines/g5p3-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.423417
+ },
+ {
+  "id": "g5p3-2",
+  "text": "万马齐喑究可哀。",
+  "file": "lines/g5p3-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.310083
+ },
+ {
+  "id": "g5p3-3",
+  "text": "我劝天公重抖擞，",
+  "file": "lines/g5p3-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.433083
+ },
+ {
+  "id": "g5p3-4",
+  "text": "不拘一格降人材。",
+  "file": "lines/g5p3-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.506583
+ },
+ {
+  "id": "g5p4-1",
+  "text": "空山新雨后，",
+  "file": "lines/g5p4-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.281958
+ },
+ {
+  "id": "g5p4-2",
+  "text": "天气晚来秋。",
+  "file": "lines/g5p4-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.41525
+ },
+ {
+  "id": "g5p4-3",
+  "text": "明月松间照，",
+  "file": "lines/g5p4-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.438
+ },
+ {
+  "id": "g5p4-4",
+  "text": "清泉石上流。",
+  "file": "lines/g5p4-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.701083
+ },
+ {
+  "id": "g5p4-5",
+  "text": "竹喧归浣女，",
+  "file": "lines/g5p4-5.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.270458
+ },
+ {
+  "id": "g5p4-6",
+  "text": "莲动下渔舟。",
+  "file": "lines/g5p4-6.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.565083
+ },
+ {
+  "id": "g5p4-7",
+  "text": "随意春芳歇，",
+  "file": "lines/g5p4-7.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.825667
+ },
+ {
+  "id": "g5p4-8",
+  "text": "王孙自可留。",
+  "file": "lines/g5p4-8.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.716667
+ },
+ {
+  "id": "g5p5-1",
+  "text": "月落乌啼霜满天，",
+  "file": "lines/g5p5-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.29525
+ },
+ {
+  "id": "g5p5-2",
+  "text": "江枫渔火对愁眠。",
+  "file": "lines/g5p5-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.1505
+ },
+ {
+  "id": "g5p5-3",
+  "text": "姑苏城外寒山寺，",
+  "file": "lines/g5p5-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.847792
+ },
+ {
+  "id": "g5p5-4",
+  "text": "夜半钟声到客船。",
+  "file": "lines/g5p5-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.500333
+ },
+ {
+  "id": "g5p6-1",
+  "text": "昼出耘田夜绩麻，",
+  "file": "lines/g5p6-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.569958
+ },
+ {
+  "id": "g5p6-2",
+  "text": "村庄儿女各当家。",
+  "file": "lines/g5p6-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.587583
+ },
+ {
+  "id": "g5p6-3",
+  "text": "童孙未解供耕织，",
+  "file": "lines/g5p6-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.758417
+ },
+ {
+  "id": "g5p6-4",
+  "text": "也傍桑阴学种瓜。",
+  "file": "lines/g5p6-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.561875
+ },
+ {
+  "id": "g5p7-1",
+  "text": "稚子金盆脱晓冰，",
+  "file": "lines/g5p7-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.578
+ },
+ {
+  "id": "g5p7-2",
+  "text": "彩丝穿取当银钲。",
+  "file": "lines/g5p7-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.919875
+ },
+ {
+  "id": "g5p7-3",
+  "text": "敲成玉磬穿林响，",
+  "file": "lines/g5p7-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.387458
+ },
+ {
+  "id": "g5p7-4",
+  "text": "忽作玻璃碎地声。",
+  "file": "lines/g5p7-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.489958
+ },
+ {
+  "id": "g5p8-1",
+  "text": "草满池塘水满陂，",
+  "file": "lines/g5p8-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.012083
+ },
+ {
+  "id": "g5p8-2",
+  "text": "山衔落日浸寒漪。",
+  "file": "lines/g5p8-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.011125
+ },
+ {
+  "id": "g5p8-3",
+  "text": "牧童归去横牛背，",
+  "file": "lines/g5p8-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.126667
+ },
+ {
+  "id": "g5p8-4",
+  "text": "短笛无腔信口吹。",
+  "file": "lines/g5p8-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 7.151125
+ },
+ {
+  "id": "g5p9-1",
+  "text": "故人西辞黄鹤楼，",
+  "file": "lines/g5p9-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.615167
+ },
+ {
+  "id": "g5p9-2",
+  "text": "烟花三月下扬州。",
+  "file": "lines/g5p9-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.347875
+ },
+ {
+  "id": "g5p9-3",
+  "text": "孤帆远影碧空尽，",
+  "file": "lines/g5p9-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.029917
+ },
+ {
+  "id": "g5p9-4",
+  "text": "唯见长江天际流。",
+  "file": "lines/g5p9-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.100875
+ },
+ {
+  "id": "g5p10-1",
+  "text": "三万里河东入海，",
+  "file": "lines/g5p10-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.801
+ },
+ {
+  "id": "g5p10-2",
+  "text": "五千仞岳上摩天。",
+  "file": "lines/g5p10-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.846333
+ },
+ {
+  "id": "g5p10-3",
+  "text": "遗民泪尽胡尘里，",
+  "file": "lines/g5p10-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.12375
+ },
+ {
+  "id": "g5p10-4",
+  "text": "南望王师又一年。",
+  "file": "lines/g5p10-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.34825
+ },
+ {
+  "id": "g6p1-1",
+  "text": "移舟泊烟渚，",
+  "file": "lines/g6p1-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.826708
+ },
+ {
+  "id": "g6p1-2",
+  "text": "日暮客愁新。",
+  "file": "lines/g6p1-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.521958
+ },
+ {
+  "id": "g6p1-3",
+  "text": "野旷天低树，",
+  "file": "lines/g6p1-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.081167
+ },
+ {
+  "id": "g6p1-4",
+  "text": "江清月近人。",
+  "file": "lines/g6p1-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.252167
+ },
+ {
+  "id": "g6p2-1",
+  "text": "黑云翻墨未遮山，",
+  "file": "lines/g6p2-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.382917
+ },
+ {
+  "id": "g6p2-2",
+  "text": "白雨跳珠乱入船。",
+  "file": "lines/g6p2-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.580333
+ },
+ {
+  "id": "g6p2-3",
+  "text": "卷地风来忽吹散，",
+  "file": "lines/g6p2-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.6635
+ },
+ {
+  "id": "g6p2-4",
+  "text": "望湖楼下水如天。",
+  "file": "lines/g6p2-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.319292
+ },
+ {
+  "id": "g6p3-1",
+  "text": "明月别枝惊鹊，",
+  "file": "lines/g6p3-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.094583
+ },
+ {
+  "id": "g6p3-2",
+  "text": "清风半夜鸣蝉。",
+  "file": "lines/g6p3-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.860417
+ },
+ {
+  "id": "g6p3-3",
+  "text": "稻花香里说丰年，",
+  "file": "lines/g6p3-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.854292
+ },
+ {
+  "id": "g6p3-4",
+  "text": "听取蛙声一片。",
+  "file": "lines/g6p3-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.825958
+ },
+ {
+  "id": "g6p3-5",
+  "text": "七八个星天外，",
+  "file": "lines/g6p3-5.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.254333
+ },
+ {
+  "id": "g6p3-6",
+  "text": "两三点雨山前。",
+  "file": "lines/g6p3-6.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.371042
+ },
+ {
+  "id": "g6p3-7",
+  "text": "旧时茅店社林边，",
+  "file": "lines/g6p3-7.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.651625
+ },
+ {
+  "id": "g6p3-8",
+  "text": "路转溪桥忽见。",
+  "file": "lines/g6p3-8.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.429375
+ },
+ {
+  "id": "g6p4-1",
+  "text": "九曲黄河万里沙，",
+  "file": "lines/g6p4-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.573667
+ },
+ {
+  "id": "g6p4-2",
+  "text": "浪淘风簸自天涯。",
+  "file": "lines/g6p4-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.002542
+ },
+ {
+  "id": "g6p4-3",
+  "text": "如今直上银河去，",
+  "file": "lines/g6p4-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.25
+ },
+ {
+  "id": "g6p4-4",
+  "text": "同到牵牛织女家。",
+  "file": "lines/g6p4-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.109625
+ },
+ {
+  "id": "g6p5-1",
+  "text": "千里莺啼绿映红，",
+  "file": "lines/g6p5-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.318583
+ },
+ {
+  "id": "g6p5-2",
+  "text": "水村山郭酒旗风。",
+  "file": "lines/g6p5-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.513042
+ },
+ {
+  "id": "g6p5-3",
+  "text": "南朝四百八十寺，",
+  "file": "lines/g6p5-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.413917
+ },
+ {
+  "id": "g6p5-4",
+  "text": "多少楼台烟雨中。",
+  "file": "lines/g6p5-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.705958
+ },
+ {
+  "id": "g6p6-1",
+  "text": "茅檐长扫净无苔，",
+  "file": "lines/g6p6-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.833958
+ },
+ {
+  "id": "g6p6-2",
+  "text": "花木成畦手自栽。",
+  "file": "lines/g6p6-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.797667
+ },
+ {
+  "id": "g6p6-3",
+  "text": "一水护田将绿绕，",
+  "file": "lines/g6p6-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.998458
+ },
+ {
+  "id": "g6p6-4",
+  "text": "两山排闼送青来。",
+  "file": "lines/g6p6-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.782375
+ },
+ {
+  "id": "g6p7-1",
+  "text": "大漠沙如雪，",
+  "file": "lines/g6p7-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.835458
+ },
+ {
+  "id": "g6p7-2",
+  "text": "燕山月似钩。",
+  "file": "lines/g6p7-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 4.303292
+ },
+ {
+  "id": "g6p7-3",
+  "text": "何当金络脑，",
+  "file": "lines/g6p7-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.473958
+ },
+ {
+  "id": "g6p7-4",
+  "text": "快走踏清秋。",
+  "file": "lines/g6p7-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.318542
+ },
+ {
+  "id": "g6p8-1",
+  "text": "千锤万凿出深山，",
+  "file": "lines/g6p8-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.90325
+ },
+ {
+  "id": "g6p8-2",
+  "text": "烈火焚烧若等闲。",
+  "file": "lines/g6p8-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.116583
+ },
+ {
+  "id": "g6p8-3",
+  "text": "粉骨碎身浑不怕，",
+  "file": "lines/g6p8-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.08825
+ },
+ {
+  "id": "g6p8-4",
+  "text": "要留清白在人间。",
+  "file": "lines/g6p8-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.939083
+ },
+ {
+  "id": "g6p9-1",
+  "text": "咬定青山不放松，",
+  "file": "lines/g6p9-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 5.242542
+ },
+ {
+  "id": "g6p9-2",
+  "text": "立根原在破岩中。",
+  "file": "lines/g6p9-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 3.252042
+ },
+ {
+  "id": "g6p9-3",
+  "text": "千磨万击还坚劲，",
+  "file": "lines/g6p9-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.196167
+ },
+ {
+  "id": "g6p9-4",
+  "text": "任尔东西南北风。",
+  "file": "lines/g6p9-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 6.784458
+ },
+ {
+  "id": "g6p10-1",
+  "text": "好雨知时节，",
+  "file": "lines/g6p10-1.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.485917
+ },
+ {
+  "id": "g6p10-2",
+  "text": "当春乃发生。",
+  "file": "lines/g6p10-2.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.158917
+ },
+ {
+  "id": "g6p10-3",
+  "text": "随风潜入夜，",
+  "file": "lines/g6p10-3.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.322875
+ },
+ {
+  "id": "g6p10-4",
+  "text": "润物细无声。",
+  "file": "lines/g6p10-4.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.858458
+ },
+ {
+  "id": "g6p10-5",
+  "text": "野径云俱黑，",
+  "file": "lines/g6p10-5.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.579625
+ },
+ {
+  "id": "g6p10-6",
+  "text": "江船火独明。",
+  "file": "lines/g6p10-6.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.649667
+ },
+ {
+  "id": "g6p10-7",
+  "text": "晓看红湿处，",
+  "file": "lines/g6p10-7.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 2.4545
+ },
+ {
+  "id": "g6p10-8",
+  "text": "花重锦官城。",
+  "file": "lines/g6p10-8.mp3",
+  "source": "Qwen3-TTS local synthesis",
+  "seed": 11,
+  "seconds": 1.675458
+ }
+]

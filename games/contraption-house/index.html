@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#4b6b57" />
+    <title>奇妙机关屋 · 叮当小工坊</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <a class="brand" href="/" target="_top" aria-label="返回游戏大厅"
+          ><span class="brand-icon">⚙</span
+          ><span>奇妙机关屋<small>叮当小工坊 · 让小想法动起来</small></span></a
+        >
+        <div class="header-actions">
+          <button id="sound" aria-pressed="true">♫ 音效开</button
+          ><button id="help" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="intro">
+        <div>
+          <p class="eyebrow" id="chapter"></p>
+          <h1 id="title"></h1>
+          <p id="story"></p>
+        </div>
+        <button id="map">🗺 工坊地图 <b id="progress">0 / 12</b></button>
+      </section>
+      <div class="layout">
+        <section class="workshop">
+          <div class="board-header">
+            <span id="theme-name"></span><span>想一想 · 搭一搭 · 试一试</span>
+          </div>
+          <div class="board" id="board">
+            <svg id="scene" viewBox="0 0 840 520" aria-hidden="true"></svg
+            ><svg id="animation" viewBox="0 0 840 520" aria-hidden="true"></svg>
+            <div id="sockets" aria-label="机关插槽"></div>
+          </div>
+          <div class="board-footer">
+            <span id="caption">先选一个工具，再点空插槽。</span
+            ><span>小球 → 多米诺 → 铃铛</span>
+          </div>
+          <div class="controls">
+            <div>
+              <button id="reset">↶ 回到起点</button
+              ><button id="slow" aria-pressed="false">◷ 慢镜头</button
+              ><button id="step">▷ 演示一段</button>
+            </div>
+            <button id="run" class="primary">小球出发！ ▶</button>
+          </div>
+          <div class="radio">
+            <div id="mascot"></div>
+            <div>
+              <b>松松的工坊笔记</b>
+              <p id="status" role="status" aria-live="polite">
+                先选一个工具，再放进工作台的圆形插槽。
+              </p>
+            </div>
+          </div>
+        </section>
+        <aside>
+          <section class="toolbox">
+            <p class="eyebrow">给小球一点帮助</p>
+            <h2>我的机关工具箱</h2>
+            <div id="tools"></div>
+            <div class="direction">
+              <span>放置方向</span
+              ><button id="direction" aria-label="切换放置方向">向右 →</button>
+            </div>
+            <p id="tool-description"></p>
+            <div class="selection">
+              <span id="selection-label">未选中插槽</span>
+              <div>
+                <button id="rotate" disabled>⇄ 换方向</button
+                ><button id="remove" disabled>⌫ 收起来</button>
+              </div>
+            </div>
+          </section>
+          <section class="mission">
+            <p class="eyebrow">这次的小挑战</p>
+            <div>
+              <span>🔔 让铃铛响起来</span><b id="goal-state">等待出发</b>
+            </div>
+            <div><span>⭐ 收集途中星星</span><b id="star-state">0 / 1</b></div>
+            <div><span>🧰 巧用机关</span><b id="budget"></b></div>
+            <p>敲响铃铛就能过关。收齐星星、少用机关，各得一颗额外星星。</p>
+          </section>
+          <button class="hint" id="hint">☀ 看看小提示</button>
+          <p class="note">没有倒计时。走错了，换个机关再试！</p>
+        </aside>
+      </div>
+      <footer>
+        原创小机关 · 快乐大实验 <span>触屏、鼠标和键盘都能玩</span>
+      </footer>
+    </main>
+    <dialog id="map-dialog" class="map-dialog">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">12 场叮叮当当的小实验</p>
+          <h2>下一站，去哪个工坊？</h2>
+        </div>
+        <button data-close aria-label="关闭地图">✕</button>
+      </div>
+      <div id="levels"></div>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-head">
+        <h2>小机关，大本领</h2>
+        <button data-close aria-label="关闭说明">✕</button>
+      </div>
+      <ol>
+        <li>
+          <b>先选工具，再点插槽。</b
+          >斜坡向旁边滚下一层，弹簧向旁边跳上一层，平桥平着滚，风扇平着吹得更远。
+        </li>
+        <li>
+          <b>看下一站的高低和远近。</b
+          >每种工具的移动距离固定，所以能预测小球落在哪里。
+        </li>
+        <li>
+          <b>让机关接住小球。</b
+          >点「小球出发」观察连锁反应，点「演示一段」逐段检查。
+        </li>
+        <li>
+          <b>随时修改。</b
+          >先选中已放好的机关，再换方向或收起来。选择别的工具后点同一插槽，可以替换。
+        </li>
+      </ol>
+      <p class="note">
+        键盘：Tab 选工具与插槽，回车放置；插槽上按左右键换焦点，Delete
+        收起机关，R 换方向。系统减少动态效果时会停止装饰动画。
+      </p>
+      <button class="primary" data-close>收到，开始搭！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <div id="result-art"></div>
+      <p class="eyebrow">叮咚！你的机关成功了</p>
+      <h2>小小发明家，做到了！</h2>
+      <div id="result-stars"></div>
+      <p id="result-text"></p>
+      <div class="result-actions">
+        <button id="retry">再试另一种搭法</button
+        ><button id="next" class="primary">下一间工坊 ➜</button>
+      </div>
+    </dialog>
+  </body>
+</html>

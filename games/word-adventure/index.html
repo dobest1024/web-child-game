@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>单词大冒险</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🔤%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="title" class="screen active">
+  <div class="title-card">
+    <div class="title-mascot" aria-hidden="true">🍎🐱🔤</div>
+    <h1>单词大冒险</h1>
+    <p class="title-sub">戳泡泡、喂小蛇、翻卡片，听发音学英语</p>
+    <button id="start" class="big-btn">开始冒险 ▶</button>
+    <div class="grade-pick" role="group" aria-label="选择年级">
+      <span>我上</span>
+      <div id="grades"></div>
+    </div>
+    <div class="title-links">
+      <button id="open-book" class="link-btn">📖 单词图鉴</button>
+      <button id="open-credits" class="link-btn">ℹ️ 关于</button>
+    </div>
+  </div>
+</section>
+
+<section id="map" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="title" aria-label="返回">←</button>
+    <h2 id="world-title">英语启蒙岛</h2>
+    <span class="coins">🪙 <b id="map-coins">0</b></span>
+  </header>
+  <div id="levels" class="level-path"></div>
+</section>
+
+<section id="play" class="screen">
+  <canvas id="canvas" aria-label="游戏画面"></canvas>
+  <p class="rotate-tip">📱 横过来玩，画面更大哦</p>
+  <div class="hud-btns">
+    <button id="replay" class="icon-btn round" aria-label="再听一遍">🔊</button>
+    <button id="pause" class="icon-btn round" aria-label="暂停">⏸</button>
+  </div>
+  <div id="intro" class="overlay">
+    <div class="panel">
+      <p class="level-no" id="intro-no">第 1 关</p>
+      <h2 id="intro-name"></h2>
+      <p id="intro-text"></p>
+      <button id="go" class="big-btn">出发！</button>
+    </div>
+  </div>
+  <div id="paused" class="overlay" hidden>
+    <div class="panel">
+      <h2>休息一下</h2>
+      <button id="resume" class="big-btn">继续</button>
+      <button id="restart" class="mid-btn">重新开始</button>
+      <button class="mid-btn" data-go="map">回地图</button>
+    </div>
+  </div>
+  <div id="result" class="overlay" hidden>
+    <div class="panel">
+      <h2 id="result-title"></h2>
+      <p id="result-stars" class="stars"></p>
+      <p id="result-text"></p>
+      <button id="result-listen" class="mid-btn" hidden>🔊 再听听</button>
+      <button id="result-next" class="big-btn"></button>
+      <button id="result-again" class="mid-btn">再玩一次</button>
+      <button id="result-skip" class="mid-btn" hidden>先跳过这关</button>
+      <button class="mid-btn" data-go="map">回地图</button>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="title" aria-label="返回">←</button>
+    <h2>单词图鉴</h2>
+    <span class="coins" id="book-count"></span>
+  </header>
+  <p class="book-tip">学会的单词会亮起来，点一点就能听。</p>
+  <div id="cards" class="book"></div>
+</section>
+
+<div id="credits" class="overlay" hidden>
+  <div class="panel credits">
+    <h2>关于</h2>
+    <p>一年级原有单词和字母采用真人录音，来自
+      <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>
+      和 Lingua Libre：Dvortygirl、Twocs、TheDaveRoss、Logictheo、Neskaya
+      （<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.zh-hans" target="_blank" rel="noopener">CC BY-SA 3.0</a>），
+      Grendelkhan（CC0），以及 Muke、Xnux、Geoff Sebastian 等人放入公有领域的录音。</p>
+    <p>录音裁掉了首尾静音、统一了音量，处理后的文件同样按 CC BY-SA 共享，逐个文件的出处见 audio/CREDITS.txt。</p>
+    <p>新增二至六年级单词采用本机 Qwen3-TTS 合成语音（Ryan），来源与生成方式记录在 audio/manifest.json。原有启蒙词表曾对照 Cambridge Dictionary 核对；新增词表为主题拓展。画面和玩法为本游戏原创。</p>
+    <button id="close-credits" class="mid-btn">知道啦</button>
+  </div>
+</div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="js/words.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/save.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/art.js"></script>
+<script src="js/game.js"></script>
+<script src="js/mode-bubble.js"></script>
+<script src="js/mode-snake.js"></script>
+<script src="js/mode-match.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

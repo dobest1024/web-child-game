@@ -1,0 +1,6 @@
+字音和组词录音来自 audio-cmn 开放数据项目
+https://github.com/hugolpz/audio-cmn
+字音录音：Chen Wang（64k/syllabs/cmn-<拼音><声调>.mp3）、Yue Tan（64k/hsk/cmn-<字>.mp3）
+组词录音：Yue Tan（64k/hsk/cmn-<词>.mp3）
+协议：CC BY-SA（署名-相同方式共享）
+文件未做修改，按本游戏的命名改为 zi-<字的码位>.mp3、ci-<词的码位>.mp3；每个文件的来源和录音人见 manifest.json。

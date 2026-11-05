@@ -1,0 +1,5 @@
+拼音音节录音来自 audio-cmn 开放数据项目
+https://github.com/hugolpz/audio-cmn
+录音：Chen Wang
+协议：CC BY-SA（署名-相同方式共享）
+文件取自 64k/syllabs/cmn-<拼音><声调>.mp3，未做修改，按本游戏的命名改为 <拼音><声调>.mp3。

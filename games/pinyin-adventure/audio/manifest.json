@@ -1,0 +1,1234 @@
+[
+  {
+    "id": "a1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-a1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/a1.mp3"
+  },
+  {
+    "id": "a2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-a2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/a2.mp3"
+  },
+  {
+    "id": "a3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-a3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/a3.mp3"
+  },
+  {
+    "id": "a4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-a4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/a4.mp3"
+  },
+  {
+    "id": "ai1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ai1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ai1.mp3"
+  },
+  {
+    "id": "an1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-an1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/an1.mp3"
+  },
+  {
+    "id": "ang1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ang1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ang1.mp3"
+  },
+  {
+    "id": "ao1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ao1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ao1.mp3"
+  },
+  {
+    "id": "ban4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ban4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ban4.mp3"
+  },
+  {
+    "id": "bao2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-bao2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/bao2.mp3"
+  },
+  {
+    "id": "bei3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-bei3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/bei3.mp3"
+  },
+  {
+    "id": "bian4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-bian4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/bian4.mp3"
+  },
+  {
+    "id": "bin1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-bin1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/bin1.mp3"
+  },
+  {
+    "id": "bo1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-bo1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/bo1.mp3"
+  },
+  {
+    "id": "bo2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-bo2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/bo2.mp3"
+  },
+  {
+    "id": "bo4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-bo4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/bo4.mp3"
+  },
+  {
+    "id": "can1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-can1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/can1.mp3"
+  },
+  {
+    "id": "cang2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-cang2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/cang2.mp3"
+  },
+  {
+    "id": "cao1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-cao1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/cao1.mp3"
+  },
+  {
+    "id": "cao3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-cao3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/cao3.mp3"
+  },
+  {
+    "id": "cen1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-cen1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/cen1.mp3"
+  },
+  {
+    "id": "chai1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chai1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chai1.mp3"
+  },
+  {
+    "id": "chang2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chang2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chang2.mp3"
+  },
+  {
+    "id": "chao2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chao2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chao2.mp3"
+  },
+  {
+    "id": "cheng2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-cheng2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/cheng2.mp3"
+  },
+  {
+    "id": "chi1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chi1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chi1.mp3"
+  },
+  {
+    "id": "chi4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chi4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chi4.mp3"
+  },
+  {
+    "id": "chong1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chong1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chong1.mp3"
+  },
+  {
+    "id": "chong2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chong2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chong2.mp3"
+  },
+  {
+    "id": "chu3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chu3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chu3.mp3"
+  },
+  {
+    "id": "chu4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chu4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chu4.mp3"
+  },
+  {
+    "id": "chun1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-chun1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/chun1.mp3"
+  },
+  {
+    "id": "ci1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ci1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ci1.mp3"
+  },
+  {
+    "id": "de1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-de1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/de1.mp3"
+  },
+  {
+    "id": "diao4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-diao4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/diao4.mp3"
+  },
+  {
+    "id": "du2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-du2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/du2.mp3"
+  },
+  {
+    "id": "e1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-e1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/e1.mp3"
+  },
+  {
+    "id": "e2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-e2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/e2.mp3"
+  },
+  {
+    "id": "e3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-e3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/e3.mp3"
+  },
+  {
+    "id": "e4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-e4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/e4.mp3"
+  },
+  {
+    "id": "ei1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ei1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ei1.mp3"
+  },
+  {
+    "id": "en1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-en1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/en1.mp3"
+  },
+  {
+    "id": "eng1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-eng1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/eng1.mp3"
+  },
+  {
+    "id": "er2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-er2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/er2.mp3"
+  },
+  {
+    "id": "fen1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-fen1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/fen1.mp3"
+  },
+  {
+    "id": "feng1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-feng1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/feng1.mp3"
+  },
+  {
+    "id": "fo1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-fo1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/fo1.mp3"
+  },
+  {
+    "id": "fu4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-fu4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/fu4.mp3"
+  },
+  {
+    "id": "ge1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ge1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ge1.mp3"
+  },
+  {
+    "id": "gong1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-gong1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/gong1.mp3"
+  },
+  {
+    "id": "gong4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-gong4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/gong4.mp3"
+  },
+  {
+    "id": "guan1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-guan1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/guan1.mp3"
+  },
+  {
+    "id": "guan4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-guan4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/guan4.mp3"
+  },
+  {
+    "id": "guang3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-guang3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/guang3.mp3"
+  },
+  {
+    "id": "guo2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-guo2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/guo2.mp3"
+  },
+  {
+    "id": "hang2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-hang2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/hang2.mp3"
+  },
+  {
+    "id": "he1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-he1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/he1.mp3"
+  },
+  {
+    "id": "hong1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-hong1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/hong1.mp3"
+  },
+  {
+    "id": "hu2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-hu2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/hu2.mp3"
+  },
+  {
+    "id": "hu3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-hu3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/hu3.mp3"
+  },
+  {
+    "id": "hua1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-hua1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/hua1.mp3"
+  },
+  {
+    "id": "hui4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-hui4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/hui4.mp3"
+  },
+  {
+    "id": "ji1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ji1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ji1.mp3"
+  },
+  {
+    "id": "ji3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ji3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ji3.mp3"
+  },
+  {
+    "id": "jia1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jia1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jia1.mp3"
+  },
+  {
+    "id": "jia3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jia3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jia3.mp3"
+  },
+  {
+    "id": "jia4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jia4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jia4.mp3"
+  },
+  {
+    "id": "jiang4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jiang4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jiang4.mp3"
+  },
+  {
+    "id": "jiao3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jiao3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jiao3.mp3"
+  },
+  {
+    "id": "jie3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jie3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jie3.mp3"
+  },
+  {
+    "id": "jie4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jie4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jie4.mp3"
+  },
+  {
+    "id": "jing1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jing1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jing1.mp3"
+  },
+  {
+    "id": "jue2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-jue2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/jue2.mp3"
+  },
+  {
+    "id": "ke1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ke1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ke1.mp3"
+  },
+  {
+    "id": "kong1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-kong1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/kong1.mp3"
+  },
+  {
+    "id": "la4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-la4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/la4.mp3"
+  },
+  {
+    "id": "lang2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-lang2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/lang2.mp3"
+  },
+  {
+    "id": "lao4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-lao4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/lao4.mp3"
+  },
+  {
+    "id": "le1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-le1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/le1.mp3"
+  },
+  {
+    "id": "le4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-le4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/le4.mp3"
+  },
+  {
+    "id": "lin2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-lin2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/lin2.mp3"
+  },
+  {
+    "id": "ling2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ling2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ling2.mp3"
+  },
+  {
+    "id": "liu2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-liu2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/liu2.mp3"
+  },
+  {
+    "id": "luo4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-luo4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/luo4.mp3"
+  },
+  {
+    "id": "ma1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ma1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ma1.mp3"
+  },
+  {
+    "id": "ma2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ma2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ma2.mp3"
+  },
+  {
+    "id": "ma3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ma3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ma3.mp3"
+  },
+  {
+    "id": "ma4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ma4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ma4.mp3"
+  },
+  {
+    "id": "ming2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ming2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ming2.mp3"
+  },
+  {
+    "id": "mo1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-mo1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/mo1.mp3"
+  },
+  {
+    "id": "mo2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-mo2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/mo2.mp3"
+  },
+  {
+    "id": "mu2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-mu2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/mu2.mp3"
+  },
+  {
+    "id": "ne1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ne1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ne1.mp3"
+  },
+  {
+    "id": "nen4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-nen4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/nen4.mp3"
+  },
+  {
+    "id": "niang4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-niang4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/niang4.mp3"
+  },
+  {
+    "id": "o1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-o1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/o1.mp3"
+  },
+  {
+    "id": "o2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-o2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/o2.mp3"
+  },
+  {
+    "id": "o3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-o3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/o3.mp3"
+  },
+  {
+    "id": "o4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-o4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/o4.mp3"
+  },
+  {
+    "id": "ou1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ou1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ou1.mp3"
+  },
+  {
+    "id": "pian2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-pian2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/pian2.mp3"
+  },
+  {
+    "id": "po1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-po1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/po1.mp3"
+  },
+  {
+    "id": "qi1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-qi1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/qi1.mp3"
+  },
+  {
+    "id": "qiang2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-qiang2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/qiang2.mp3"
+  },
+  {
+    "id": "qiang3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-qiang3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/qiang3.mp3"
+  },
+  {
+    "id": "qie4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-qie4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/qie4.mp3"
+  },
+  {
+    "id": "qiu1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-qiu1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/qiu1.mp3"
+  },
+  {
+    "id": "que4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-que4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/que4.mp3"
+  },
+  {
+    "id": "ri1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ri1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ri1.mp3"
+  },
+  {
+    "id": "sai1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-sai1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/sai1.mp3"
+  },
+  {
+    "id": "sai4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-sai4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/sai4.mp3"
+  },
+  {
+    "id": "se4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-se4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/se4.mp3"
+  },
+  {
+    "id": "shen1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-shen1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/shen1.mp3"
+  },
+  {
+    "id": "sheng3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-sheng3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/sheng3.mp3"
+  },
+  {
+    "id": "shi1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-shi1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/shi1.mp3"
+  },
+  {
+    "id": "shi2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-shi2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/shi2.mp3"
+  },
+  {
+    "id": "shi4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-shi4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/shi4.mp3"
+  },
+  {
+    "id": "shu4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-shu4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/shu4.mp3"
+  },
+  {
+    "id": "shui3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-shui3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/shui3.mp3"
+  },
+  {
+    "id": "si1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-si1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/si1.mp3"
+  },
+  {
+    "id": "si4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-si4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/si4.mp3"
+  },
+  {
+    "id": "te1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-te1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/te1.mp3"
+  },
+  {
+    "id": "tian1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-tian1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/tian1.mp3"
+  },
+  {
+    "id": "tiao2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-tiao2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/tiao2.mp3"
+  },
+  {
+    "id": "wei1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-wei1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/wei1.mp3"
+  },
+  {
+    "id": "wen1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-wen1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/wen1.mp3"
+  },
+  {
+    "id": "wu1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-wu1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/wu1.mp3"
+  },
+  {
+    "id": "wu2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-wu2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/wu2.mp3"
+  },
+  {
+    "id": "wu3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-wu3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/wu3.mp3"
+  },
+  {
+    "id": "wu4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-wu4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/wu4.mp3"
+  },
+  {
+    "id": "xi1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xi1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xi1.mp3"
+  },
+  {
+    "id": "xi4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xi4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xi4.mp3"
+  },
+  {
+    "id": "xia4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xia4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xia4.mp3"
+  },
+  {
+    "id": "xiao3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xiao3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xiao3.mp3"
+  },
+  {
+    "id": "xiao4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xiao4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xiao4.mp3"
+  },
+  {
+    "id": "xie4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xie4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xie4.mp3"
+  },
+  {
+    "id": "xing1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xing1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xing1.mp3"
+  },
+  {
+    "id": "xing2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xing2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xing2.mp3"
+  },
+  {
+    "id": "xing3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xing3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xing3.mp3"
+  },
+  {
+    "id": "xue2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-xue2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/xue2.mp3"
+  },
+  {
+    "id": "ye1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ye1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ye1.mp3"
+  },
+  {
+    "id": "yi1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yi1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yi1.mp3"
+  },
+  {
+    "id": "yi2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yi2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yi2.mp3"
+  },
+  {
+    "id": "yi3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yi3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yi3.mp3"
+  },
+  {
+    "id": "yi4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yi4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yi4.mp3"
+  },
+  {
+    "id": "yin1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yin1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yin1.mp3"
+  },
+  {
+    "id": "ying1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-ying1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/ying1.mp3"
+  },
+  {
+    "id": "yong3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yong3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yong3.mp3"
+  },
+  {
+    "id": "yong4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yong4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yong4.mp3"
+  },
+  {
+    "id": "you1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-you1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/you1.mp3"
+  },
+  {
+    "id": "yu1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yu1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yu1.mp3"
+  },
+  {
+    "id": "yu2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yu2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yu2.mp3"
+  },
+  {
+    "id": "yu3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yu3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yu3.mp3"
+  },
+  {
+    "id": "yu4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yu4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yu4.mp3"
+  },
+  {
+    "id": "yuan1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yuan1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yuan1.mp3"
+  },
+  {
+    "id": "yue1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yue1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yue1.mp3"
+  },
+  {
+    "id": "yue4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yue4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yue4.mp3"
+  },
+  {
+    "id": "yun1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-yun1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/yun1.mp3"
+  },
+  {
+    "id": "zai3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zai3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zai3.mp3"
+  },
+  {
+    "id": "zai4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zai4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zai4.mp3"
+  },
+  {
+    "id": "zan4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zan4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zan4.mp3"
+  },
+  {
+    "id": "zao4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zao4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zao4.mp3"
+  },
+  {
+    "id": "zhan3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhan3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhan3.mp3"
+  },
+  {
+    "id": "zhang3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhang3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhang3.mp3"
+  },
+  {
+    "id": "zhao1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhao1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhao1.mp3"
+  },
+  {
+    "id": "zhen1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhen1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhen1.mp3"
+  },
+  {
+    "id": "zheng1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zheng1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zheng1.mp3"
+  },
+  {
+    "id": "zhi1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhi1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhi1.mp3"
+  },
+  {
+    "id": "zhong4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhong4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhong4.mp3"
+  },
+  {
+    "id": "zhu2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhu2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhu2.mp3"
+  },
+  {
+    "id": "zhu4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhu4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhu4.mp3"
+  },
+  {
+    "id": "zhuan3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhuan3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhuan3.mp3"
+  },
+  {
+    "id": "zhuan4",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhuan4.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhuan4.mp3"
+  },
+  {
+    "id": "zhuo2",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zhuo2.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zhuo2.mp3"
+  },
+  {
+    "id": "zi1",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zi1.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zi1.mp3"
+  },
+  {
+    "id": "zu3",
+    "source": "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/syllabs/cmn-zu3.mp3",
+    "speaker": "Chen Wang",
+    "license": "CC BY-SA",
+    "file": "syl/zu3.mp3"
+  }
+]

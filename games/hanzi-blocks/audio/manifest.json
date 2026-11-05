@@ -1,0 +1,1583 @@
+[
+ {
+  "text": "明",
+  "py": "míng",
+  "file": "audio/zi-660e.mp3",
+  "source": "64k/syllabs/cmn-ming2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "明天",
+  "file": "audio/ci-660e-5929.mp3",
+  "source": "64k/hsk/cmn-明天.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "林",
+  "py": "lín",
+  "file": "audio/zi-6797.mp3",
+  "source": "64k/syllabs/cmn-lin2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "树林",
+  "file": "audio/ci-6811-6797.mp3",
+  "source": "64k/hsk/cmn-树林.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "从",
+  "py": "cóng",
+  "file": "audio/zi-4ece.mp3",
+  "source": "64k/hsk/cmn-从.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "从前",
+  "file": "audio/ci-4ece-524d.mp3",
+  "source": "64k/hsk/cmn-从前.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "尖",
+  "py": "jiān",
+  "file": "audio/zi-5c16.mp3",
+  "source": "64k/hsk/cmn-尖.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "尘",
+  "py": "chén",
+  "file": "audio/zi-5c18.mp3",
+  "source": "64k/syllabs/cmn-chen2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "尘土",
+  "file": "audio/ci-5c18-571f.mp3",
+  "source": "64k/hsk/cmn-尘土.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "早",
+  "py": "zǎo",
+  "file": "audio/zi-65e9.mp3",
+  "source": "64k/hsk/cmn-早.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "男",
+  "py": "nán",
+  "file": "audio/zi-7537.mp3",
+  "source": "64k/hsk/cmn-男.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "好",
+  "py": "hǎo",
+  "file": "audio/zi-597d.mp3",
+  "source": "64k/syllabs/cmn-hao3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "妈",
+  "py": "mā",
+  "file": "audio/zi-5988.mp3",
+  "source": "64k/syllabs/cmn-ma1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "妈妈",
+  "file": "audio/ci-5988-5988.mp3",
+  "source": "64k/hsk/cmn-妈妈.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "姓",
+  "py": "xìng",
+  "file": "audio/zi-59d3.mp3",
+  "source": "64k/hsk/cmn-姓.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "姓名",
+  "file": "audio/ci-59d3-540d.mp3",
+  "source": "64k/hsk/cmn-姓名.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "李",
+  "py": "lǐ",
+  "file": "audio/zi-674e.mp3",
+  "source": "64k/syllabs/cmn-li3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "张",
+  "py": "zhāng",
+  "file": "audio/zi-5f20.mp3",
+  "source": "64k/hsk/cmn-张.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "吴",
+  "py": "wú",
+  "file": "audio/zi-5434.mp3",
+  "source": "64k/syllabs/cmn-wu2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "古",
+  "py": "gǔ",
+  "file": "audio/zi-53e4.mp3",
+  "source": "64k/hsk/cmn-古.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "古人",
+  "file": "audio/ci-53e4-4eba.mp3",
+  "source": "64k/hsk/cmn-古人.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "清",
+  "py": "qīng",
+  "file": "audio/zi-6e05.mp3",
+  "source": "64k/hsk/cmn-清.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "晴",
+  "py": "qíng",
+  "file": "audio/zi-6674.mp3",
+  "source": "64k/hsk/cmn-晴.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "晴天",
+  "file": "audio/ci-6674-5929.mp3",
+  "source": "64k/hsk/cmn-晴天.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "情",
+  "py": "qíng",
+  "file": "audio/zi-60c5.mp3",
+  "source": "64k/hsk/cmn-情.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "心情",
+  "file": "audio/ci-5fc3-60c5.mp3",
+  "source": "64k/hsk/cmn-心情.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "请",
+  "py": "qǐng",
+  "file": "audio/zi-8bf7.mp3",
+  "source": "64k/hsk/cmn-请.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "他",
+  "py": "tā",
+  "file": "audio/zi-4ed6.mp3",
+  "source": "64k/hsk/cmn-他.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "他们",
+  "file": "audio/ci-4ed6-4eec.mp3",
+  "source": "64k/hsk/cmn-他们.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "地",
+  "py": "dì",
+  "file": "audio/zi-5730.mp3",
+  "source": "64k/syllabs/cmn-di4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "土地",
+  "file": "audio/ci-571f-5730.mp3",
+  "source": "64k/hsk/cmn-土地.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "池",
+  "py": "chí",
+  "file": "audio/zi-6c60.mp3",
+  "source": "64k/hsk/cmn-池.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "河",
+  "py": "hé",
+  "file": "audio/zi-6cb3.mp3",
+  "source": "64k/hsk/cmn-河.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "哥",
+  "py": "gē",
+  "file": "audio/zi-54e5.mp3",
+  "source": "64k/syllabs/cmn-ge1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "哥哥",
+  "file": "audio/ci-54e5-54e5.mp3",
+  "source": "64k/hsk/cmn-哥哥.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "伙",
+  "py": "huǒ",
+  "file": "audio/zi-4f19.mp3",
+  "source": "64k/hsk/cmn-伙.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "伙伴",
+  "file": "audio/ci-4f19-4f34.mp3",
+  "source": "64k/hsk/cmn-伙伴.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "伴",
+  "py": "bàn",
+  "file": "audio/zi-4f34.mp3",
+  "source": "64k/hsk/cmn-伴.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "同伴",
+  "file": "audio/ci-540c-4f34.mp3",
+  "source": "64k/hsk/cmn-同伴.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "住",
+  "py": "zhù",
+  "file": "audio/zi-4f4f.mp3",
+  "source": "64k/hsk/cmn-住.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "秋",
+  "py": "qiū",
+  "file": "audio/zi-79cb.mp3",
+  "source": "64k/hsk/cmn-秋.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "秋天",
+  "file": "audio/ci-79cb-5929.mp3",
+  "source": "64k/hsk/cmn-秋天.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "动",
+  "py": "dòng",
+  "file": "audio/zi-52a8.mp3",
+  "source": "64k/hsk/cmn-动.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "动物",
+  "file": "audio/ci-52a8-7269.mp3",
+  "source": "64k/hsk/cmn-动物.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "加",
+  "py": "jiā",
+  "file": "audio/zi-52a0.mp3",
+  "source": "64k/hsk/cmn-加.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "江",
+  "py": "jiāng",
+  "file": "audio/zi-6c5f.mp3",
+  "source": "64k/hsk/cmn-江.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "红",
+  "py": "hóng",
+  "file": "audio/zi-7ea2.mp3",
+  "source": "64k/syllabs/cmn-hong2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "字",
+  "py": "zì",
+  "file": "audio/zi-5b57.mp3",
+  "source": "64k/hsk/cmn-字.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "爸",
+  "py": "bà",
+  "file": "audio/zi-7238.mp3",
+  "source": "64k/syllabs/cmn-ba4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "爸爸",
+  "file": "audio/ci-7238-7238.mp3",
+  "source": "64k/hsk/cmn-爸爸.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "枝",
+  "py": "zhī",
+  "file": "audio/zi-679d.mp3",
+  "source": "64k/syllabs/cmn-zhi1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "桥",
+  "py": "qiáo",
+  "file": "audio/zi-6865.mp3",
+  "source": "64k/syllabs/cmn-qiao2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "杨",
+  "py": "yáng",
+  "file": "audio/zi-6768.mp3",
+  "source": "64k/syllabs/cmn-yang2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "杨树",
+  "file": "audio/ci-6768-6811.mp3",
+  "source": "64k/hsk/cmn-杨树.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "松",
+  "py": "sōng",
+  "file": "audio/zi-677e.mp3",
+  "source": "64k/syllabs/cmn-song1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "松树",
+  "file": "audio/ci-677e-6811.mp3",
+  "source": "64k/hsk/cmn-松树.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "柏",
+  "py": "bǎi",
+  "file": "audio/zi-67cf.mp3",
+  "source": "64k/syllabs/cmn-bai3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "柏树",
+  "file": "audio/ci-67cf-6811.mp3",
+  "source": "64k/hsk/cmn-柏树.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "桐",
+  "py": "tóng",
+  "file": "audio/zi-6850.mp3",
+  "source": "64k/syllabs/cmn-tong2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "梧桐",
+  "file": "audio/ci-68a7-6850.mp3",
+  "source": "64k/hsk/cmn-梧桐.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "棉",
+  "py": "mián",
+  "file": "audio/zi-68c9.mp3",
+  "source": "64k/syllabs/cmn-mian2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "棉花",
+  "file": "audio/ci-68c9-82b1.mp3",
+  "source": "64k/hsk/cmn-棉花.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "桃",
+  "py": "táo",
+  "file": "audio/zi-6843.mp3",
+  "source": "64k/syllabs/cmn-tao2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "柳",
+  "py": "liǔ",
+  "file": "audio/zi-67f3.mp3",
+  "source": "64k/syllabs/cmn-liu3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "柳树",
+  "file": "audio/ci-67f3-6811.mp3",
+  "source": "64k/hsk/cmn-柳树.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "铜",
+  "py": "tóng",
+  "file": "audio/zi-94dc.mp3",
+  "source": "64k/syllabs/cmn-tong2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "铁",
+  "py": "tiě",
+  "file": "audio/zi-94c1.mp3",
+  "source": "64k/syllabs/cmn-tie3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "铁路",
+  "file": "audio/ci-94c1-8def.mp3",
+  "source": "64k/hsk/cmn-铁路.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "灯",
+  "py": "dēng",
+  "file": "audio/zi-706f.mp3",
+  "source": "64k/syllabs/cmn-deng1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "坡",
+  "py": "pō",
+  "file": "audio/zi-5761.mp3",
+  "source": "64k/syllabs/cmn-po1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "城",
+  "py": "chéng",
+  "file": "audio/zi-57ce.mp3",
+  "source": "64k/syllabs/cmn-cheng2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "城市",
+  "file": "audio/ci-57ce-5e02.mp3",
+  "source": "64k/hsk/cmn-城市.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "坏",
+  "py": "huài",
+  "file": "audio/zi-574f.mp3",
+  "source": "64k/syllabs/cmn-huai4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "快",
+  "py": "kuài",
+  "file": "audio/zi-5feb.mp3",
+  "source": "64k/syllabs/cmn-kuai4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "快乐",
+  "file": "audio/ci-5feb-4e50.mp3",
+  "source": "64k/hsk/cmn-快乐.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "忙",
+  "py": "máng",
+  "file": "audio/zi-5fd9.mp3",
+  "source": "64k/syllabs/cmn-mang2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "帮忙",
+  "file": "audio/ci-5e2e-5fd9.mp3",
+  "source": "64k/hsk/cmn-帮忙.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "忘",
+  "py": "wàng",
+  "file": "audio/zi-5fd8.mp3",
+  "source": "64k/syllabs/cmn-wang4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "忘记",
+  "file": "audio/ci-5fd8-8bb0.mp3",
+  "source": "64k/hsk/cmn-忘记.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "念",
+  "py": "niàn",
+  "file": "audio/zi-5ff5.mp3",
+  "source": "64k/syllabs/cmn-nian4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "思念",
+  "file": "audio/ci-601d-5ff5.mp3",
+  "source": "64k/hsk/cmn-思念.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "思",
+  "py": "sī",
+  "file": "audio/zi-601d.mp3",
+  "source": "64k/syllabs/cmn-si1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "思考",
+  "file": "audio/ci-601d-8003.mp3",
+  "source": "64k/hsk/cmn-思考.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "苗",
+  "py": "miáo",
+  "file": "audio/zi-82d7.mp3",
+  "source": "64k/syllabs/cmn-miao2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "禾苗",
+  "file": "audio/ci-79be-82d7.mp3",
+  "source": "64k/hsk/cmn-禾苗.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "草",
+  "py": "cǎo",
+  "file": "audio/zi-8349.mp3",
+  "source": "64k/syllabs/cmn-cao3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "花",
+  "py": "huā",
+  "file": "audio/zi-82b1.mp3",
+  "source": "64k/syllabs/cmn-hua1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "花朵",
+  "file": "audio/ci-82b1-6735.mp3",
+  "source": "64k/hsk/cmn-花朵.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "苦",
+  "py": "kǔ",
+  "file": "audio/zi-82e6.mp3",
+  "source": "64k/syllabs/cmn-ku3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "辛苦",
+  "file": "audio/ci-8f9b-82e6.mp3",
+  "source": "64k/hsk/cmn-辛苦.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "诗",
+  "py": "shī",
+  "file": "audio/zi-8bd7.mp3",
+  "source": "64k/syllabs/cmn-shi1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "语",
+  "py": "yǔ",
+  "file": "audio/zi-8bed.mp3",
+  "source": "64k/syllabs/cmn-yu3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "语言",
+  "file": "audio/ci-8bed-8a00.mp3",
+  "source": "64k/hsk/cmn-语言.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "词",
+  "py": "cí",
+  "file": "audio/zi-8bcd.mp3",
+  "source": "64k/syllabs/cmn-ci2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "诚",
+  "py": "chéng",
+  "file": "audio/zi-8bda.mp3",
+  "source": "64k/syllabs/cmn-cheng2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "诚实",
+  "file": "audio/ci-8bda-5b9e.mp3",
+  "source": "64k/hsk/cmn-诚实.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "读",
+  "py": "dú",
+  "file": "audio/zi-8bfb.mp3",
+  "source": "64k/syllabs/cmn-du2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "读书",
+  "file": "audio/ci-8bfb-4e66.mp3",
+  "source": "64k/hsk/cmn-读书.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "诉",
+  "py": "sù",
+  "file": "audio/zi-8bc9.mp3",
+  "source": "64k/syllabs/cmn-su4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "告诉",
+  "file": "audio/ci-544a-8bc9.mp3",
+  "source": "64k/hsk/cmn-告诉.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "海",
+  "py": "hǎi",
+  "file": "audio/zi-6d77.mp3",
+  "source": "64k/syllabs/cmn-hai3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "海洋",
+  "file": "audio/ci-6d77-6d0b.mp3",
+  "source": "64k/hsk/cmn-海洋.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "洋",
+  "py": "yáng",
+  "file": "audio/zi-6d0b.mp3",
+  "source": "64k/syllabs/cmn-yang2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "湖",
+  "py": "hú",
+  "file": "audio/zi-6e56.mp3",
+  "source": "64k/syllabs/cmn-hu2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "流",
+  "py": "liú",
+  "file": "audio/zi-6d41.mp3",
+  "source": "64k/syllabs/cmn-liu2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "流动",
+  "file": "audio/ci-6d41-52a8.mp3",
+  "source": "64k/hsk/cmn-流动.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "泳",
+  "py": "yǒng",
+  "file": "audio/zi-6cf3.mp3",
+  "source": "64k/syllabs/cmn-yong3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "游泳",
+  "file": "audio/ci-6e38-6cf3.mp3",
+  "source": "64k/hsk/cmn-游泳.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "消",
+  "py": "xiāo",
+  "file": "audio/zi-6d88.mp3",
+  "source": "64k/syllabs/cmn-xiao1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "消失",
+  "file": "audio/ci-6d88-5931.mp3",
+  "source": "64k/hsk/cmn-消失.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "珠",
+  "py": "zhū",
+  "file": "audio/zi-73e0.mp3",
+  "source": "64k/syllabs/cmn-zhu1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "珍珠",
+  "file": "audio/ci-73cd-73e0.mp3",
+  "source": "64k/hsk/cmn-珍珠.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "球",
+  "py": "qiú",
+  "file": "audio/zi-7403.mp3",
+  "source": "64k/syllabs/cmn-qiu2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "足球",
+  "file": "audio/ci-8db3-7403.mp3",
+  "source": "64k/hsk/cmn-足球.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "理",
+  "py": "lǐ",
+  "file": "audio/zi-7406.mp3",
+  "source": "64k/syllabs/cmn-li3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "道理",
+  "file": "audio/ci-9053-7406.mp3",
+  "source": "64k/hsk/cmn-道理.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "现",
+  "py": "xiàn",
+  "file": "audio/zi-73b0.mp3",
+  "source": "64k/syllabs/cmn-xian4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "现在",
+  "file": "audio/ci-73b0-5728.mp3",
+  "source": "64k/hsk/cmn-现在.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "砍",
+  "py": "kǎn",
+  "file": "audio/zi-780d.mp3",
+  "source": "64k/syllabs/cmn-kan3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "破",
+  "py": "pò",
+  "file": "audio/zi-7834.mp3",
+  "source": "64k/syllabs/cmn-po4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "破旧",
+  "file": "audio/ci-7834-65e7.mp3",
+  "source": "64k/hsk/cmn-破旧.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "码",
+  "py": "mǎ",
+  "file": "audio/zi-7801.mp3",
+  "source": "64k/syllabs/cmn-ma3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "号码",
+  "file": "audio/ci-53f7-7801.mp3",
+  "source": "64k/hsk/cmn-号码.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "计",
+  "py": "jì",
+  "file": "audio/zi-8ba1.mp3",
+  "source": "64k/syllabs/cmn-ji4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "计算",
+  "file": "audio/ci-8ba1-7b97.mp3",
+  "source": "64k/hsk/cmn-计算.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "时",
+  "py": "shí",
+  "file": "audio/zi-65f6.mp3",
+  "source": "64k/syllabs/cmn-shi2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "时间",
+  "file": "audio/ci-65f6-95f4.mp3",
+  "source": "64k/hsk/cmn-时间.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "持",
+  "py": "chí",
+  "file": "audio/zi-6301.mp3",
+  "source": "64k/syllabs/cmn-chi2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "坚持",
+  "file": "audio/ci-575a-6301.mp3",
+  "source": "64k/hsk/cmn-坚持.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "待",
+  "py": "dài",
+  "file": "audio/zi-5f85.mp3",
+  "source": "64k/syllabs/cmn-dai4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "等待",
+  "file": "audio/ci-7b49-5f85.mp3",
+  "source": "64k/hsk/cmn-等待.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "侍",
+  "py": "shì",
+  "file": "audio/zi-4f8d.mp3",
+  "source": "64k/syllabs/cmn-shi4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "捕",
+  "py": "bǔ",
+  "file": "audio/zi-6355.mp3",
+  "source": "64k/syllabs/cmn-bu3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "捕捉",
+  "file": "audio/ci-6355-6349.mp3",
+  "source": "64k/hsk/cmn-捕捉.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "铺",
+  "py": "pū",
+  "file": "audio/zi-94fa.mp3",
+  "source": "64k/syllabs/cmn-pu1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "辅",
+  "py": "fǔ",
+  "file": "audio/zi-8f85.mp3",
+  "source": "64k/syllabs/cmn-fu3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "辅助",
+  "file": "audio/ci-8f85-52a9.mp3",
+  "source": "64k/hsk/cmn-辅助.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "脯",
+  "py": "fǔ",
+  "file": "audio/zi-812f.mp3",
+  "source": "64k/syllabs/cmn-fu3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "睛",
+  "py": "jīng",
+  "file": "audio/zi-775b.mp3",
+  "source": "64k/syllabs/cmn-jing1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "眼睛",
+  "file": "audio/ci-773c-775b.mp3",
+  "source": "64k/hsk/cmn-眼睛.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "精",
+  "py": "jīng",
+  "file": "audio/zi-7cbe.mp3",
+  "source": "64k/syllabs/cmn-jing1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "精神",
+  "file": "audio/ci-7cbe-795e.mp3",
+  "source": "64k/hsk/cmn-精神.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "静",
+  "py": "jìng",
+  "file": "audio/zi-9759.mp3",
+  "source": "64k/syllabs/cmn-jing4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "安静",
+  "file": "audio/ci-5b89-9759.mp3",
+  "source": "64k/hsk/cmn-安静.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "伸",
+  "py": "shēn",
+  "file": "audio/zi-4f38.mp3",
+  "source": "64k/syllabs/cmn-shen1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "伸手",
+  "file": "audio/ci-4f38-624b.mp3",
+  "source": "64k/hsk/cmn-伸手.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "神",
+  "py": "shén",
+  "file": "audio/zi-795e.mp3",
+  "source": "64k/syllabs/cmn-shen2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "神奇",
+  "file": "audio/ci-795e-5947.mp3",
+  "source": "64k/hsk/cmn-神奇.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "审",
+  "py": "shěn",
+  "file": "audio/zi-5ba1.mp3",
+  "source": "64k/syllabs/cmn-shen3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "审查",
+  "file": "audio/ci-5ba1-67e5.mp3",
+  "source": "64k/hsk/cmn-审查.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "棵",
+  "py": "kē",
+  "file": "audio/zi-68f5.mp3",
+  "source": "64k/syllabs/cmn-ke1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "颗",
+  "py": "kē",
+  "file": "audio/zi-9897.mp3",
+  "source": "64k/syllabs/cmn-ke1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "颗粒",
+  "file": "audio/ci-9897-7c92.mp3",
+  "source": "64k/hsk/cmn-颗粒.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "课",
+  "py": "kè",
+  "file": "audio/zi-8bfe.mp3",
+  "source": "64k/syllabs/cmn-ke4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "上课",
+  "file": "audio/ci-4e0a-8bfe.mp3",
+  "source": "64k/hsk/cmn-上课.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "裸",
+  "py": "luǒ",
+  "file": "audio/zi-88f8.mp3",
+  "source": "64k/syllabs/cmn-luo3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "惯",
+  "py": "guàn",
+  "file": "audio/zi-60ef.mp3",
+  "source": "64k/syllabs/cmn-guan4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "习惯",
+  "file": "audio/ci-4e60-60ef.mp3",
+  "source": "64k/hsk/cmn-习惯.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "贯",
+  "py": "guàn",
+  "file": "audio/zi-8d2f.mp3",
+  "source": "64k/syllabs/cmn-guan4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "货",
+  "py": "huò",
+  "file": "audio/zi-8d27.mp3",
+  "source": "64k/syllabs/cmn-huo4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "货物",
+  "file": "audio/ci-8d27-7269.mp3",
+  "source": "64k/hsk/cmn-货物.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "贺",
+  "py": "hè",
+  "file": "audio/zi-8d3a.mp3",
+  "source": "64k/syllabs/cmn-he4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "祝贺",
+  "file": "audio/ci-795d-8d3a.mp3",
+  "source": "64k/hsk/cmn-祝贺.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "贷",
+  "py": "dài",
+  "file": "audio/zi-8d37.mp3",
+  "source": "64k/syllabs/cmn-dai4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "袋",
+  "py": "dài",
+  "file": "audio/zi-888b.mp3",
+  "source": "64k/syllabs/cmn-dai4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "口袋",
+  "file": "audio/ci-53e3-888b.mp3",
+  "source": "64k/hsk/cmn-口袋.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "架",
+  "py": "jià",
+  "file": "audio/zi-67b6.mp3",
+  "source": "64k/syllabs/cmn-jia4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "书架",
+  "file": "audio/ci-4e66-67b6.mp3",
+  "source": "64k/hsk/cmn-书架.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "驾",
+  "py": "jià",
+  "file": "audio/zi-9a7e.mp3",
+  "source": "64k/syllabs/cmn-jia4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "驾驶",
+  "file": "audio/ci-9a7e-9a76.mp3",
+  "source": "64k/hsk/cmn-驾驶.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "燥",
+  "py": "zào",
+  "file": "audio/zi-71e5.mp3",
+  "source": "64k/syllabs/cmn-zao4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "干燥",
+  "file": "audio/ci-5e72-71e5.mp3",
+  "source": "64k/hsk/cmn-干燥.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "躁",
+  "py": "zào",
+  "file": "audio/zi-8e81.mp3",
+  "source": "64k/syllabs/cmn-zao4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "急躁",
+  "file": "audio/ci-6025-8e81.mp3",
+  "source": "64k/hsk/cmn-急躁.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "操",
+  "py": "cāo",
+  "file": "audio/zi-64cd.mp3",
+  "source": "64k/syllabs/cmn-cao1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "噪",
+  "py": "zào",
+  "file": "audio/zi-566a.mp3",
+  "source": "64k/syllabs/cmn-zao4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "噪音",
+  "file": "audio/ci-566a-97f3.mp3",
+  "source": "64k/hsk/cmn-噪音.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "谦",
+  "py": "qiān",
+  "file": "audio/zi-8c26.mp3",
+  "source": "64k/syllabs/cmn-qian1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "谦虚",
+  "file": "audio/ci-8c26-865a.mp3",
+  "source": "64k/hsk/cmn-谦虚.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "嫌",
+  "py": "xián",
+  "file": "audio/zi-5acc.mp3",
+  "source": "64k/syllabs/cmn-xian2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "谣",
+  "py": "yáo",
+  "file": "audio/zi-8c23.mp3",
+  "source": "64k/syllabs/cmn-yao2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "摇",
+  "py": "yáo",
+  "file": "audio/zi-6447.mp3",
+  "source": "64k/syllabs/cmn-yao2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "瑶",
+  "py": "yáo",
+  "file": "audio/zi-7476.mp3",
+  "source": "64k/syllabs/cmn-yao2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "慕",
+  "py": "mù",
+  "file": "audio/zi-6155.mp3",
+  "source": "64k/syllabs/cmn-mu4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "羡慕",
+  "file": "audio/ci-7fa1-6155.mp3",
+  "source": "64k/hsk/cmn-羡慕.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "幕",
+  "py": "mù",
+  "file": "audio/zi-5e55.mp3",
+  "source": "64k/syllabs/cmn-mu4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "开幕",
+  "file": "audio/ci-5f00-5e55.mp3",
+  "source": "64k/hsk/cmn-开幕.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "墓",
+  "py": "mù",
+  "file": "audio/zi-5893.mp3",
+  "source": "64k/syllabs/cmn-mu4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "暮",
+  "py": "mù",
+  "file": "audio/zi-66ae.mp3",
+  "source": "64k/syllabs/cmn-mu4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "慢",
+  "py": "màn",
+  "file": "audio/zi-6162.mp3",
+  "source": "64k/syllabs/cmn-man4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "漫",
+  "py": "màn",
+  "file": "audio/zi-6f2b.mp3",
+  "source": "64k/syllabs/cmn-man4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "浪漫",
+  "file": "audio/ci-6d6a-6f2b.mp3",
+  "source": "64k/hsk/cmn-浪漫.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "蔓",
+  "py": "màn",
+  "file": "audio/zi-8513.mp3",
+  "source": "64k/syllabs/cmn-man4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "蔓延",
+  "file": "audio/ci-8513-5ef6.mp3",
+  "source": "64k/hsk/cmn-蔓延.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "援",
+  "py": "yuán",
+  "file": "audio/zi-63f4.mp3",
+  "source": "64k/syllabs/cmn-yuan2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "支援",
+  "file": "audio/ci-652f-63f4.mp3",
+  "source": "64k/hsk/cmn-支援.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "暖",
+  "py": "nuǎn",
+  "file": "audio/zi-6696.mp3",
+  "source": "64k/syllabs/cmn-nuan3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "温暖",
+  "file": "audio/ci-6e29-6696.mp3",
+  "source": "64k/hsk/cmn-温暖.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "缓",
+  "py": "huǎn",
+  "file": "audio/zi-7f13.mp3",
+  "source": "64k/syllabs/cmn-huan3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "缓慢",
+  "file": "audio/ci-7f13-6162.mp3",
+  "source": "64k/hsk/cmn-缓慢.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "缘",
+  "py": "yuán",
+  "file": "audio/zi-7f18.mp3",
+  "source": "64k/syllabs/cmn-yuan2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "喙",
+  "py": "huì",
+  "file": "audio/zi-5599.mp3",
+  "source": "64k/syllabs/cmn-hui4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "锻",
+  "py": "duàn",
+  "file": "audio/zi-953b.mp3",
+  "source": "64k/syllabs/cmn-duan4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "锻炼",
+  "file": "audio/ci-953b-70bc.mp3",
+  "source": "64k/hsk/cmn-锻炼.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "缎",
+  "py": "duàn",
+  "file": "audio/zi-7f0e.mp3",
+  "source": "64k/syllabs/cmn-duan4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "毅",
+  "py": "yì",
+  "file": "audio/zi-6bc5.mp3",
+  "source": "64k/syllabs/cmn-yi4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "毅力",
+  "file": "audio/ci-6bc5-529b.mp3",
+  "source": "64k/hsk/cmn-毅力.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "谅",
+  "py": "liàng",
+  "file": "audio/zi-8c05.mp3",
+  "source": "64k/syllabs/cmn-liang4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "原谅",
+  "file": "audio/ci-539f-8c05.mp3",
+  "source": "64k/hsk/cmn-原谅.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "凉",
+  "py": "liáng",
+  "file": "audio/zi-51c9.mp3",
+  "source": "64k/syllabs/cmn-liang2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "晾",
+  "py": "liàng",
+  "file": "audio/zi-667e.mp3",
+  "source": "64k/syllabs/cmn-liang4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "谊",
+  "py": "yì",
+  "file": "audio/zi-8c0a.mp3",
+  "source": "64k/syllabs/cmn-yi4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "友谊",
+  "file": "audio/ci-53cb-8c0a.mp3",
+  "source": "64k/hsk/cmn-友谊.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "誊",
+  "py": "téng",
+  "file": "audio/zi-8a8a.mp3",
+  "source": "64k/syllabs/cmn-teng2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "誉",
+  "py": "yù",
+  "file": "audio/zi-8a89.mp3",
+  "source": "64k/syllabs/cmn-yu4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "荣誉",
+  "file": "audio/ci-8363-8a89.mp3",
+  "source": "64k/hsk/cmn-荣誉.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "警",
+  "py": "jǐng",
+  "file": "audio/zi-8b66.mp3",
+  "source": "64k/syllabs/cmn-jing3.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "警察",
+  "file": "audio/ci-8b66-5bdf.mp3",
+  "source": "64k/hsk/cmn-警察.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "尊",
+  "py": "zūn",
+  "file": "audio/zi-5c0a.mp3",
+  "source": "64k/syllabs/cmn-zun1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "尊重",
+  "file": "audio/ci-5c0a-91cd.mp3",
+  "source": "64k/hsk/cmn-尊重.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "瞻",
+  "py": "zhān",
+  "file": "audio/zi-77bb.mp3",
+  "source": "64k/syllabs/cmn-zhan1.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "瞻仰",
+  "file": "audio/ci-77bb-4ef0.mp3",
+  "source": "64k/hsk/cmn-瞻仰.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "檐",
+  "py": "yán",
+  "file": "audio/zi-6a90.mp3",
+  "source": "64k/syllabs/cmn-yan2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "蟹",
+  "py": "xiè",
+  "file": "audio/zi-87f9.mp3",
+  "source": "64k/syllabs/cmn-xie4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "融",
+  "py": "róng",
+  "file": "audio/zi-878d.mp3",
+  "source": "64k/syllabs/cmn-rong2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "融化",
+  "file": "audio/ci-878d-5316.mp3",
+  "source": "64k/hsk/cmn-融化.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "籍",
+  "py": "jí",
+  "file": "audio/zi-7c4d.mp3",
+  "source": "64k/syllabs/cmn-ji2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "书籍",
+  "file": "audio/ci-4e66-7c4d.mp3",
+  "source": "64k/hsk/cmn-书籍.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "藉",
+  "py": "jí",
+  "file": "audio/zi-85c9.mp3",
+  "source": "64k/syllabs/cmn-ji2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "糊",
+  "py": "hú",
+  "file": "audio/zi-7cca.mp3",
+  "source": "64k/syllabs/cmn-hu2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "模糊",
+  "file": "audio/ci-6a21-7cca.mp3",
+  "source": "64k/hsk/cmn-模糊.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "蝴",
+  "py": "hú",
+  "file": "audio/zi-8774.mp3",
+  "source": "64k/syllabs/cmn-hu2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "蝴蝶",
+  "file": "audio/ci-8774-8776.mp3",
+  "source": "64k/hsk/cmn-蝴蝶.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "燃",
+  "py": "rán",
+  "file": "audio/zi-71c3.mp3",
+  "source": "64k/syllabs/cmn-ran2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "燃烧",
+  "file": "audio/ci-71c3-70e7.mp3",
+  "source": "64k/hsk/cmn-燃烧.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "然",
+  "py": "rán",
+  "file": "audio/zi-7136.mp3",
+  "source": "64k/syllabs/cmn-ran2.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "自然",
+  "file": "audio/ci-81ea-7136.mp3",
+  "source": "64k/hsk/cmn-自然.mp3",
+  "speaker": "Yue Tan"
+ },
+ {
+  "text": "惧",
+  "py": "jù",
+  "file": "audio/zi-60e7.mp3",
+  "source": "64k/syllabs/cmn-jv4.mp3",
+  "speaker": "Chen Wang"
+ },
+ {
+  "text": "俱",
+  "py": "jù",
+  "file": "audio/zi-4ff1.mp3",
+  "source": "64k/syllabs/cmn-jv4.mp3",
+  "speaker": "Chen Wang"
+ }
+]

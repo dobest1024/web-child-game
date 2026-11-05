@@ -1,0 +1,2 @@
+诗句朗读：用本机 BaoCut 自带的 Qwen3-TTS 1.7B CustomVoice（音色 vivian）合成，生成脚本 tools/gen_audio.py。
+电脑合成，个别多音字可能读得不准，以课本和老师为准。清单见 manifest.json。

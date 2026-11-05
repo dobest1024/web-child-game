@@ -1,0 +1,3858 @@
+[
+ {
+  "id": "words/red",
+  "source": "File:En-us-red.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-red.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.52
+ },
+ {
+  "id": "words/green",
+  "source": "File:En-us-green.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-green.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.82
+ },
+ {
+  "id": "words/yellow",
+  "source": "File:En-us-yellow.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-yellow.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.54
+ },
+ {
+  "id": "words/blue",
+  "source": "File:En-us-blue.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-blue.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.68
+ },
+ {
+  "id": "words/black",
+  "source": "File:LL-Q1860 (eng)-Grendelkhan-black.wav",
+  "page": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-black.wav",
+  "license": "CC0",
+  "artist": "Speaker: Grendelkhan / Recorder: Grendelkhan",
+  "seconds": 0.39
+ },
+ {
+  "id": "words/white",
+  "source": "File:En-us-white.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-white.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.79
+ },
+ {
+  "id": "words/one",
+  "source": "File:En-us-one.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-one.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.53
+ },
+ {
+  "id": "words/two",
+  "source": "File:En-us-two.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-two.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.43
+ },
+ {
+  "id": "words/three",
+  "source": "File:En-us-three.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-three.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.74
+ },
+ {
+  "id": "words/four",
+  "source": "File:En-us-four.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-four.ogg",
+  "license": "Public domain",
+  "artist": "Dvortygirl",
+  "seconds": 0.53
+ },
+ {
+  "id": "words/five",
+  "source": "File:En-us-five.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-five.ogg",
+  "license": "Public domain",
+  "artist": "Dvortygirl",
+  "seconds": 0.68
+ },
+ {
+  "id": "words/six",
+  "source": "File:En-us-six.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-six.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "TheDaveRoss",
+  "seconds": 0.76
+ },
+ {
+  "id": "words/seven",
+  "source": "File:En-us-seven.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-seven.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.59
+ },
+ {
+  "id": "words/eight",
+  "source": "File:En-us-eight.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-eight.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "recorded by TheDaveRoss",
+  "seconds": 0.62
+ },
+ {
+  "id": "words/nine",
+  "source": "File:En-us-nine.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-nine.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "TheDaveRoss",
+  "seconds": 0.83
+ },
+ {
+  "id": "words/ten",
+  "source": "File:En-us-ten.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-ten.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "TheDaveRoss",
+  "seconds": 0.63
+ },
+ {
+  "id": "words/cat",
+  "source": "File:En-us-cat.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-cat.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.62
+ },
+ {
+  "id": "words/dog",
+  "source": "File:En-us-dog.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-dog.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.73
+ },
+ {
+  "id": "words/pig",
+  "source": "File:En-us-pig.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-pig.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.66
+ },
+ {
+  "id": "words/duck",
+  "source": "File:En-us-duck.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-duck.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.82
+ },
+ {
+  "id": "words/fish",
+  "source": "File:En-us-fish.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-fish.ogg",
+  "license": "Public domain",
+  "artist": "Dvortygirl",
+  "seconds": 0.67
+ },
+ {
+  "id": "words/bird",
+  "source": "File:En-us-bird.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-bird.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.61
+ },
+ {
+  "id": "words/panda",
+  "source": "File:En-us-panda.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-panda.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 1.09
+ },
+ {
+  "id": "words/monkey",
+  "source": "File:En-us-monkey.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-monkey.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.66
+ },
+ {
+  "id": "words/tiger",
+  "source": "File:En-us-tiger.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-tiger.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 1.04
+ },
+ {
+  "id": "words/elephant",
+  "source": "File:En-us-elephant.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-elephant.ogg",
+  "license": "Public domain",
+  "artist": "未署名",
+  "seconds": 1.06
+ },
+ {
+  "id": "words/rabbit",
+  "source": "File:En-us-rabbit.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-rabbit.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.57
+ },
+ {
+  "id": "words/bear",
+  "source": "File:En-us-bear.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-bear.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.77
+ },
+ {
+  "id": "words/apple",
+  "source": "File:En-us-apple.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-apple.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.65
+ },
+ {
+  "id": "words/banana",
+  "source": "File:En-us-banana.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-banana.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.64
+ },
+ {
+  "id": "words/orange",
+  "source": "File:LL-Q1860 (eng)-Grendelkhan-orange.wav",
+  "page": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-orange.wav",
+  "license": "CC0",
+  "artist": "Speaker: Grendelkhan / Recorder: Grendelkhan",
+  "seconds": 0.54
+ },
+ {
+  "id": "words/pear",
+  "source": "File:En-us-pear.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-pear.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.58
+ },
+ {
+  "id": "words/grape",
+  "source": "File:En-us-grape.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-grape.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.79
+ },
+ {
+  "id": "words/watermelon",
+  "source": "File:En-us-watermelon.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-watermelon.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.77
+ },
+ {
+  "id": "words/strawberry",
+  "source": "File:En-us-strawberry.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-strawberry.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.83
+ },
+ {
+  "id": "words/eye",
+  "source": "File:En-us-eye.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-eye.ogg",
+  "license": "Public domain",
+  "artist": "Muke",
+  "seconds": 0.98
+ },
+ {
+  "id": "words/ear",
+  "source": "File:En-us-ear.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-ear.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.56
+ },
+ {
+  "id": "words/nose",
+  "source": "File:En-us-nose.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-nose.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.69
+ },
+ {
+  "id": "words/mouth",
+  "source": "File:En-us-mouth.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-mouth.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.71
+ },
+ {
+  "id": "words/hand",
+  "source": "File:En-us-hand.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-hand.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 1.52
+ },
+ {
+  "id": "words/foot",
+  "source": "File:En-us-foot.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-foot.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.76
+ },
+ {
+  "id": "words/mom",
+  "source": "File:En-us-mom.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-mom.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.65
+ },
+ {
+  "id": "words/dad",
+  "source": "File:En-us-dad.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-dad.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.64
+ },
+ {
+  "id": "words/baby",
+  "source": "File:En-us-baby.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-baby.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.6
+ },
+ {
+  "id": "words/grandma",
+  "source": "File:LL-Q1860 (eng)-Grendelkhan-grandma.wav",
+  "page": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-grandma.wav",
+  "license": "CC0",
+  "artist": "Speaker: Grendelkhan / Recorder: Grendelkhan",
+  "seconds": 0.55
+ },
+ {
+  "id": "words/grandpa",
+  "source": "File:LL-Q1860 (eng)-Grendelkhan-grandpa.wav",
+  "page": "https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-grandpa.wav",
+  "license": "CC0",
+  "artist": "Speaker: Grendelkhan / Recorder: Grendelkhan",
+  "seconds": 0.6
+ },
+ {
+  "id": "words/sun",
+  "source": "File:En-us-Sun.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-Sun.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.89
+ },
+ {
+  "id": "words/bus",
+  "source": "File:En-us-bus.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-bus.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 1.15
+ },
+ {
+  "id": "words/fox",
+  "source": "File:En-us-fox.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-fox.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.88
+ },
+ {
+  "id": "words/bed",
+  "source": "File:En-us-bed.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-bed.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.76
+ },
+ {
+  "id": "words/hat",
+  "source": "File:En-us-hat.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-hat.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.77
+ },
+ {
+  "id": "letters/a",
+  "source": "File:En-us-a.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-a.ogg",
+  "license": "Public domain",
+  "artist": "Xnux",
+  "seconds": 0.65
+ },
+ {
+  "id": "letters/b",
+  "source": "File:En-us-b.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-b.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.98
+ },
+ {
+  "id": "letters/c",
+  "source": "File:En-us-c.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-c.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.77
+ },
+ {
+  "id": "letters/d",
+  "source": "File:En-us-d.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-d.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.63
+ },
+ {
+  "id": "letters/e",
+  "source": "File:En-us-e.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-e.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Logictheo",
+  "seconds": 0.6
+ },
+ {
+  "id": "letters/f",
+  "source": "File:En-us-f.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-f.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.73
+ },
+ {
+  "id": "letters/g",
+  "source": "File:En-us-g.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-g.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.7
+ },
+ {
+  "id": "letters/h",
+  "source": "File:En-us-h.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-h.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.82
+ },
+ {
+  "id": "letters/i",
+  "source": "File:En-us-i.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-i.ogg",
+  "license": "Public domain",
+  "artist": "Geoff Sebastian (Geoff Sebastian)",
+  "seconds": 0.99
+ },
+ {
+  "id": "letters/j",
+  "source": "File:En-us-j.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-j.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.6
+ },
+ {
+  "id": "letters/k",
+  "source": "File:En-us-k.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-k.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Neskaya",
+  "seconds": 1.35
+ },
+ {
+  "id": "letters/l",
+  "source": "File:En-us-L.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-L.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.59
+ },
+ {
+  "id": "letters/m",
+  "source": "File:En-us-m.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-m.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.94
+ },
+ {
+  "id": "letters/n",
+  "source": "File:En-us-n.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-n.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 1.0
+ },
+ {
+  "id": "letters/o",
+  "source": "File:En-us-o.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-o.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.81
+ },
+ {
+  "id": "letters/p",
+  "source": "File:En-us-p.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-p.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.4
+ },
+ {
+  "id": "letters/q",
+  "source": "File:En-us-q.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-q.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.78
+ },
+ {
+  "id": "letters/r",
+  "source": "File:En-us-r.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-r.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Logictheo",
+  "seconds": 0.74
+ },
+ {
+  "id": "letters/s",
+  "source": "File:En-us-s.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-s.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.77
+ },
+ {
+  "id": "letters/t",
+  "source": "File:En-us-t.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-t.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.72
+ },
+ {
+  "id": "letters/u",
+  "source": "File:En-us-u.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-u.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.77
+ },
+ {
+  "id": "letters/v",
+  "source": "File:En-us-v.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-v.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.84
+ },
+ {
+  "id": "letters/w",
+  "source": "File:En-us-w.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-w.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.77
+ },
+ {
+  "id": "letters/x",
+  "source": "File:En-us-x.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-x.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.86
+ },
+ {
+  "id": "letters/y",
+  "source": "File:En-us-y.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-y.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Twocs",
+  "seconds": 0.78
+ },
+ {
+  "id": "letters/z",
+  "source": "File:En-us-z.ogg",
+  "page": "https://commons.wikimedia.org/wiki/File:En-us-z.ogg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Dvortygirl",
+  "seconds": 0.74
+ },
+ {
+  "id": "words/book",
+  "text": "book",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.516292
+ },
+ {
+  "id": "words/pen",
+  "text": "pen",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.437583
+ },
+ {
+  "id": "words/pencil",
+  "text": "pencil",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.798542
+ },
+ {
+  "id": "words/ruler",
+  "text": "ruler",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.209958
+ },
+ {
+  "id": "words/eraser",
+  "text": "eraser",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.232875
+ },
+ {
+  "id": "words/bag",
+  "text": "bag",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.581583
+ },
+ {
+  "id": "words/desk",
+  "text": "desk",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.016583
+ },
+ {
+  "id": "words/chair",
+  "text": "chair",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.653042
+ },
+ {
+  "id": "words/rice",
+  "text": "rice",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.922125
+ },
+ {
+  "id": "words/bread",
+  "text": "bread",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.378708
+ },
+ {
+  "id": "words/milk",
+  "text": "milk",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.9795
+ },
+ {
+  "id": "words/water",
+  "text": "water",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.742875
+ },
+ {
+  "id": "words/egg",
+  "text": "egg",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.588292
+ },
+ {
+  "id": "words/cake",
+  "text": "cake",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.789625
+ },
+ {
+  "id": "words/juice",
+  "text": "juice",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.794292
+ },
+ {
+  "id": "words/tea",
+  "text": "tea",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.245792
+ },
+ {
+  "id": "words/door",
+  "text": "door",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.585792
+ },
+ {
+  "id": "words/window",
+  "text": "window",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.828875
+ },
+ {
+  "id": "words/room",
+  "text": "room",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.905958
+ },
+ {
+  "id": "words/table",
+  "text": "table",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.847958
+ },
+ {
+  "id": "words/sofa",
+  "text": "sofa",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.694042
+ },
+ {
+  "id": "words/clock",
+  "text": "clock",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.454833
+ },
+ {
+  "id": "words/lamp",
+  "text": "lamp",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.57775
+ },
+ {
+  "id": "words/floor",
+  "text": "floor",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.750417
+ },
+ {
+  "id": "words/run",
+  "text": "run",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.340292
+ },
+ {
+  "id": "words/walk",
+  "text": "walk",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.159833
+ },
+ {
+  "id": "words/jump",
+  "text": "jump",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.32225
+ },
+ {
+  "id": "words/swim",
+  "text": "swim",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.322375
+ },
+ {
+  "id": "words/sing",
+  "text": "sing",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.613917
+ },
+ {
+  "id": "words/dance",
+  "text": "dance",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.762667
+ },
+ {
+  "id": "words/read",
+  "text": "read",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.288542
+ },
+ {
+  "id": "words/write",
+  "text": "write",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.061167
+ },
+ {
+  "id": "words/happy",
+  "text": "happy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.775667
+ },
+ {
+  "id": "words/sad",
+  "text": "sad",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.722083
+ },
+ {
+  "id": "words/angry",
+  "text": "angry",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.059583
+ },
+ {
+  "id": "words/hungry",
+  "text": "hungry",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.824917
+ },
+ {
+  "id": "words/thirsty",
+  "text": "thirsty",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.644042
+ },
+ {
+  "id": "words/tired",
+  "text": "tired",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.737958
+ },
+ {
+  "id": "words/cold",
+  "text": "cold",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.502667
+ },
+ {
+  "id": "words/hot",
+  "text": "hot",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.937958
+ },
+ {
+  "id": "words/big",
+  "text": "big",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.950667
+ },
+ {
+  "id": "words/small",
+  "text": "small",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.281958
+ },
+ {
+  "id": "words/tall",
+  "text": "tall",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.334375
+ },
+ {
+  "id": "words/short",
+  "text": "short",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.865958
+ },
+ {
+  "id": "words/long",
+  "text": "long",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.824833
+ },
+ {
+  "id": "words/old",
+  "text": "old",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.922458
+ },
+ {
+  "id": "words/new",
+  "text": "new",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.11725
+ },
+ {
+  "id": "words/young",
+  "text": "young",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.921083
+ },
+ {
+  "id": "words/shirt",
+  "text": "shirt",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.387542
+ },
+ {
+  "id": "words/coat",
+  "text": "coat",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.387125
+ },
+ {
+  "id": "words/dress",
+  "text": "dress",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.578667
+ },
+ {
+  "id": "words/skirt",
+  "text": "skirt",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.578042
+ },
+ {
+  "id": "words/shoe",
+  "text": "shoe",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.571333
+ },
+ {
+  "id": "words/sock",
+  "text": "sock",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.508125
+ },
+ {
+  "id": "words/cap",
+  "text": "cap",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.333958
+ },
+ {
+  "id": "words/sweater",
+  "text": "sweater",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.306917
+ },
+ {
+  "id": "words/teacher",
+  "text": "teacher",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.488042
+ },
+ {
+  "id": "words/student",
+  "text": "student",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.429042
+ },
+ {
+  "id": "words/friend",
+  "text": "friend",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.581917
+ },
+ {
+  "id": "words/mother",
+  "text": "mother",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.541167
+ },
+ {
+  "id": "words/father",
+  "text": "father",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.642375
+ },
+ {
+  "id": "words/brother",
+  "text": "brother",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.394417
+ },
+ {
+  "id": "words/sister",
+  "text": "sister",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.56
+ },
+ {
+  "id": "words/child",
+  "text": "child",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.447167
+ },
+ {
+  "id": "words/school",
+  "text": "school",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.494042
+ },
+ {
+  "id": "words/classroom",
+  "text": "classroom",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.359458
+ },
+ {
+  "id": "words/lesson",
+  "text": "lesson",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.867583
+ },
+ {
+  "id": "words/homework",
+  "text": "homework",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.465667
+ },
+ {
+  "id": "words/notebook",
+  "text": "notebook",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.586708
+ },
+ {
+  "id": "words/computer",
+  "text": "computer",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.97375
+ },
+ {
+  "id": "words/picture",
+  "text": "picture",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.693833
+ },
+ {
+  "id": "words/blackboard",
+  "text": "blackboard",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.805708
+ },
+ {
+  "id": "words/eleven",
+  "text": "eleven",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.94575
+ },
+ {
+  "id": "words/twelve",
+  "text": "twelve",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.92225
+ },
+ {
+  "id": "words/thirteen",
+  "text": "thirteen",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.615458
+ },
+ {
+  "id": "words/fourteen",
+  "text": "fourteen",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.242792
+ },
+ {
+  "id": "words/fifteen",
+  "text": "fifteen",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.33475
+ },
+ {
+  "id": "words/sixteen",
+  "text": "sixteen",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.928042
+ },
+ {
+  "id": "words/twenty",
+  "text": "twenty",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.416208
+ },
+ {
+  "id": "words/thirty",
+  "text": "thirty",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.472417
+ },
+ {
+  "id": "words/breakfast",
+  "text": "breakfast",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.402292
+ },
+ {
+  "id": "words/lunch",
+  "text": "lunch",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.721958
+ },
+ {
+  "id": "words/dinner",
+  "text": "dinner",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.582125
+ },
+ {
+  "id": "words/chicken",
+  "text": "chicken",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.533208
+ },
+ {
+  "id": "words/beef",
+  "text": "beef",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.580875
+ },
+ {
+  "id": "words/soup",
+  "text": "soup",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.0615
+ },
+ {
+  "id": "words/noodle",
+  "text": "noodle",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.673458
+ },
+ {
+  "id": "words/potato",
+  "text": "potato",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.867708
+ },
+ {
+  "id": "words/sunny",
+  "text": "sunny",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.510417
+ },
+ {
+  "id": "words/rainy",
+  "text": "rainy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.90125
+ },
+ {
+  "id": "words/cloudy",
+  "text": "cloudy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.274583
+ },
+ {
+  "id": "words/windy",
+  "text": "windy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.686417
+ },
+ {
+  "id": "words/snowy",
+  "text": "snowy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.729292
+ },
+ {
+  "id": "words/warm",
+  "text": "warm",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.106708
+ },
+ {
+  "id": "words/cool",
+  "text": "cool",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.622708
+ },
+ {
+  "id": "words/weather",
+  "text": "weather",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.336167
+ },
+ {
+  "id": "words/monday",
+  "text": "Monday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.848583
+ },
+ {
+  "id": "words/tuesday",
+  "text": "Tuesday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.817042
+ },
+ {
+  "id": "words/wednesday",
+  "text": "Wednesday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.8195
+ },
+ {
+  "id": "words/thursday",
+  "text": "Thursday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.820417
+ },
+ {
+  "id": "words/friday",
+  "text": "Friday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.820375
+ },
+ {
+  "id": "words/saturday",
+  "text": "Saturday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.673958
+ },
+ {
+  "id": "words/sunday",
+  "text": "Sunday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.014292
+ },
+ {
+  "id": "words/week",
+  "text": "week",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.343833
+ },
+ {
+  "id": "words/football",
+  "text": "football",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.776875
+ },
+ {
+  "id": "words/basketball",
+  "text": "basketball",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.573667
+ },
+ {
+  "id": "words/tennis",
+  "text": "tennis",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.757125
+ },
+ {
+  "id": "words/sport",
+  "text": "sport",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.428083
+ },
+ {
+  "id": "words/game",
+  "text": "game",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.669708
+ },
+ {
+  "id": "words/ball",
+  "text": "ball",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.679542
+ },
+ {
+  "id": "words/play",
+  "text": "play",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.056875
+ },
+ {
+  "id": "words/ride",
+  "text": "ride",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.66725
+ },
+ {
+  "id": "words/park",
+  "text": "park",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.581333
+ },
+ {
+  "id": "words/zoo",
+  "text": "zoo",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.234875
+ },
+ {
+  "id": "words/library",
+  "text": "library",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.801958
+ },
+ {
+  "id": "words/shop",
+  "text": "shop",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.780708
+ },
+ {
+  "id": "words/hospital",
+  "text": "hospital",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.812417
+ },
+ {
+  "id": "words/farm",
+  "text": "farm",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.577667
+ },
+ {
+  "id": "words/house",
+  "text": "house",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.5965
+ },
+ {
+  "id": "words/garden",
+  "text": "garden",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.584958
+ },
+ {
+  "id": "words/in",
+  "text": "in",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.563333
+ },
+ {
+  "id": "words/on",
+  "text": "on",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.2165
+ },
+ {
+  "id": "words/under",
+  "text": "under",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.867083
+ },
+ {
+  "id": "words/behind",
+  "text": "behind",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.672833
+ },
+ {
+  "id": "words/near",
+  "text": "near",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.925
+ },
+ {
+  "id": "words/beside",
+  "text": "beside",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.732583
+ },
+ {
+  "id": "words/between",
+  "text": "between",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.284083
+ },
+ {
+  "id": "words/front",
+  "text": "front",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.509708
+ },
+ {
+  "id": "words/chinese",
+  "text": "Chinese",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.5755
+ },
+ {
+  "id": "words/english",
+  "text": "English",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.961958
+ },
+ {
+  "id": "words/maths",
+  "text": "maths",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.603583
+ },
+ {
+  "id": "words/science",
+  "text": "science",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.525458
+ },
+ {
+  "id": "words/music",
+  "text": "music",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.585375
+ },
+ {
+  "id": "words/art",
+  "text": "art",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.469125
+ },
+ {
+  "id": "words/history",
+  "text": "history",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.682083
+ },
+ {
+  "id": "words/subject",
+  "text": "subject",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.225958
+ },
+ {
+  "id": "words/doctor",
+  "text": "doctor",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.8315
+ },
+ {
+  "id": "words/nurse",
+  "text": "nurse",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.14725
+ },
+ {
+  "id": "words/farmer",
+  "text": "farmer",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.539125
+ },
+ {
+  "id": "words/driver",
+  "text": "driver",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.010083
+ },
+ {
+  "id": "words/cook",
+  "text": "cook",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.842583
+ },
+ {
+  "id": "words/worker",
+  "text": "worker",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.786708
+ },
+ {
+  "id": "words/singer",
+  "text": "singer",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.794208
+ },
+ {
+  "id": "words/pilot",
+  "text": "pilot",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.582125
+ },
+ {
+  "id": "words/train",
+  "text": "train",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.811833
+ },
+ {
+  "id": "words/plane",
+  "text": "plane",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.33125
+ },
+ {
+  "id": "words/bike",
+  "text": "bike",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.092875
+ },
+ {
+  "id": "words/boat",
+  "text": "boat",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.140875
+ },
+ {
+  "id": "words/ship",
+  "text": "ship",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.340167
+ },
+ {
+  "id": "words/taxi",
+  "text": "taxi",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.677667
+ },
+ {
+  "id": "words/subway",
+  "text": "subway",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.0465
+ },
+ {
+  "id": "words/car",
+  "text": "car",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.570833
+ },
+ {
+  "id": "words/city",
+  "text": "city",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.645292
+ },
+ {
+  "id": "words/street",
+  "text": "street",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.579708
+ },
+ {
+  "id": "words/road",
+  "text": "road",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.255125
+ },
+ {
+  "id": "words/station",
+  "text": "station",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.017333
+ },
+ {
+  "id": "words/cinema",
+  "text": "cinema",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.5865
+ },
+ {
+  "id": "words/museum",
+  "text": "museum",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.1335
+ },
+ {
+  "id": "words/hotel",
+  "text": "hotel",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.70725
+ },
+ {
+  "id": "words/supermarket",
+  "text": "supermarket",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.900625
+ },
+ {
+  "id": "words/buy",
+  "text": "buy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.663208
+ },
+ {
+  "id": "words/sell",
+  "text": "sell",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.274875
+ },
+ {
+  "id": "words/money",
+  "text": "money",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.065958
+ },
+ {
+  "id": "words/price",
+  "text": "price",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.65225
+ },
+ {
+  "id": "words/cheap",
+  "text": "cheap",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.269083
+ },
+ {
+  "id": "words/expensive",
+  "text": "expensive",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.277292
+ },
+ {
+  "id": "words/yuan",
+  "text": "yuan",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.060583
+ },
+ {
+  "id": "words/dollar",
+  "text": "dollar",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.516958
+ },
+ {
+  "id": "words/morning",
+  "text": "morning",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.222833
+ },
+ {
+  "id": "words/afternoon",
+  "text": "afternoon",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.806
+ },
+ {
+  "id": "words/evening",
+  "text": "evening",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.781458
+ },
+ {
+  "id": "words/night",
+  "text": "night",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.638042
+ },
+ {
+  "id": "words/today",
+  "text": "today",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.177958
+ },
+ {
+  "id": "words/tomorrow",
+  "text": "tomorrow",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.472875
+ },
+ {
+  "id": "words/yesterday",
+  "text": "yesterday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.181292
+ },
+ {
+  "id": "words/weekend",
+  "text": "weekend",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.8875
+ },
+ {
+  "id": "words/river",
+  "text": "river",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.895292
+ },
+ {
+  "id": "words/lake",
+  "text": "lake",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.853917
+ },
+ {
+  "id": "words/mountain",
+  "text": "mountain",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.351375
+ },
+ {
+  "id": "words/forest",
+  "text": "forest",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.055917
+ },
+ {
+  "id": "words/tree",
+  "text": "tree",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.022708
+ },
+ {
+  "id": "words/flower",
+  "text": "flower",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.175333
+ },
+ {
+  "id": "words/grass",
+  "text": "grass",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.686833
+ },
+ {
+  "id": "words/leaf",
+  "text": "leaf",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.007667
+ },
+ {
+  "id": "words/head",
+  "text": "head",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.57075
+ },
+ {
+  "id": "words/face",
+  "text": "face",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.640083
+ },
+ {
+  "id": "words/arm",
+  "text": "arm",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.571042
+ },
+ {
+  "id": "words/leg",
+  "text": "leg",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.089958
+ },
+ {
+  "id": "words/tooth",
+  "text": "tooth",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.468958
+ },
+ {
+  "id": "words/back",
+  "text": "back",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.415208
+ },
+ {
+  "id": "words/heart",
+  "text": "heart",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.581333
+ },
+ {
+  "id": "words/healthy",
+  "text": "healthy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.745958
+ },
+ {
+  "id": "words/january",
+  "text": "January",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.32175
+ },
+ {
+  "id": "words/february",
+  "text": "February",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.963417
+ },
+ {
+  "id": "words/march",
+  "text": "March",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.635583
+ },
+ {
+  "id": "words/april",
+  "text": "April",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.88675
+ },
+ {
+  "id": "words/may",
+  "text": "May",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.852125
+ },
+ {
+  "id": "words/june",
+  "text": "June",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.391958
+ },
+ {
+  "id": "words/july",
+  "text": "July",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.1555
+ },
+ {
+  "id": "words/august",
+  "text": "August",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.902542
+ },
+ {
+  "id": "words/september",
+  "text": "September",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.122083
+ },
+ {
+  "id": "words/october",
+  "text": "October",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.982792
+ },
+ {
+  "id": "words/november",
+  "text": "November",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.22325
+ },
+ {
+  "id": "words/december",
+  "text": "December",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.000375
+ },
+ {
+  "id": "words/spring",
+  "text": "spring",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.973583
+ },
+ {
+  "id": "words/summer",
+  "text": "summer",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.751458
+ },
+ {
+  "id": "words/autumn",
+  "text": "autumn",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.425958
+ },
+ {
+  "id": "words/winter",
+  "text": "winter",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.582
+ },
+ {
+  "id": "words/season",
+  "text": "season",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.939917
+ },
+ {
+  "id": "words/year",
+  "text": "year",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.677542
+ },
+ {
+  "id": "words/holiday",
+  "text": "holiday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.622042
+ },
+ {
+  "id": "words/birthday",
+  "text": "birthday",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.835417
+ },
+ {
+  "id": "words/speak",
+  "text": "speak",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.6465
+ },
+ {
+  "id": "words/listen",
+  "text": "listen",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.580375
+ },
+ {
+  "id": "words/learn",
+  "text": "learn",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.396125
+ },
+ {
+  "id": "words/teach",
+  "text": "teach",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.353958
+ },
+ {
+  "id": "words/draw",
+  "text": "draw",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.453208
+ },
+ {
+  "id": "words/paint",
+  "text": "paint",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.572917
+ },
+ {
+  "id": "words/climb",
+  "text": "climb",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.733333
+ },
+ {
+  "id": "words/skate",
+  "text": "skate",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.806583
+ },
+ {
+  "id": "words/kind",
+  "text": "kind",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.764583
+ },
+ {
+  "id": "words/polite",
+  "text": "polite",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.62275
+ },
+ {
+  "id": "words/clever",
+  "text": "clever",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.087375
+ },
+ {
+  "id": "words/helpful",
+  "text": "helpful",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.583708
+ },
+ {
+  "id": "words/shy",
+  "text": "shy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.576
+ },
+ {
+  "id": "words/quiet",
+  "text": "quiet",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.566792
+ },
+ {
+  "id": "words/funny",
+  "text": "funny",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.971792
+ },
+ {
+  "id": "words/strict",
+  "text": "strict",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.31925
+ },
+ {
+  "id": "words/travel",
+  "text": "travel",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.627083
+ },
+ {
+  "id": "words/visit",
+  "text": "visit",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.63025
+ },
+ {
+  "id": "words/trip",
+  "text": "trip",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.633958
+ },
+ {
+  "id": "words/ticket",
+  "text": "ticket",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.225
+ },
+ {
+  "id": "words/map",
+  "text": "map",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.985417
+ },
+ {
+  "id": "words/airport",
+  "text": "airport",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.953333
+ },
+ {
+  "id": "words/beach",
+  "text": "beach",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.570333
+ },
+ {
+  "id": "words/island",
+  "text": "island",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.513958
+ },
+ {
+  "id": "words/clean",
+  "text": "clean",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.384333
+ },
+ {
+  "id": "words/wash",
+  "text": "wash",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.703292
+ },
+ {
+  "id": "words/brush",
+  "text": "brush",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.189083
+ },
+ {
+  "id": "words/finish",
+  "text": "finish",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.542792
+ },
+ {
+  "id": "words/start",
+  "text": "start",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.259125
+ },
+ {
+  "id": "words/wait",
+  "text": "wait",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.669333
+ },
+ {
+  "id": "words/open",
+  "text": "open",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.342167
+ },
+ {
+  "id": "words/close",
+  "text": "close",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.719792
+ },
+ {
+  "id": "words/always",
+  "text": "always",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.097792
+ },
+ {
+  "id": "words/usually",
+  "text": "usually",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.380875
+ },
+ {
+  "id": "words/often",
+  "text": "often",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.2105
+ },
+ {
+  "id": "words/sometimes",
+  "text": "sometimes",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.842417
+ },
+ {
+  "id": "words/never",
+  "text": "never",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.458
+ },
+ {
+  "id": "words/early",
+  "text": "early",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.885708
+ },
+ {
+  "id": "words/late",
+  "text": "late",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 4.788542
+ },
+ {
+  "id": "words/again",
+  "text": "again",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.992667
+ },
+ {
+  "id": "words/earth",
+  "text": "earth",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.579333
+ },
+ {
+  "id": "words/world",
+  "text": "world",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.636042
+ },
+ {
+  "id": "words/plant",
+  "text": "plant",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.578292
+ },
+ {
+  "id": "words/animal",
+  "text": "animal",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.733708
+ },
+ {
+  "id": "words/air",
+  "text": "air",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.742
+ },
+ {
+  "id": "words/ocean",
+  "text": "ocean",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.726
+ },
+ {
+  "id": "words/rubbish",
+  "text": "rubbish",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.830458
+ },
+ {
+  "id": "words/recycle",
+  "text": "recycle",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.8985
+ },
+ {
+  "id": "words/bigger",
+  "text": "bigger",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.873958
+ },
+ {
+  "id": "words/smaller",
+  "text": "smaller",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.241417
+ },
+ {
+  "id": "words/taller",
+  "text": "taller",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.760417
+ },
+ {
+  "id": "words/shorter",
+  "text": "shorter",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.274667
+ },
+ {
+  "id": "words/older",
+  "text": "older",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.941708
+ },
+ {
+  "id": "words/younger",
+  "text": "younger",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.586417
+ },
+ {
+  "id": "words/heavier",
+  "text": "heavier",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.363208
+ },
+ {
+  "id": "words/stronger",
+  "text": "stronger",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.869208
+ },
+ {
+  "id": "words/went",
+  "text": "went",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.882833
+ },
+ {
+  "id": "words/saw",
+  "text": "saw",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.825375
+ },
+ {
+  "id": "words/ate",
+  "text": "ate",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.579167
+ },
+ {
+  "id": "words/drank",
+  "text": "drank",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.4025
+ },
+ {
+  "id": "words/bought",
+  "text": "bought",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.492708
+ },
+ {
+  "id": "words/took",
+  "text": "took",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.822833
+ },
+ {
+  "id": "words/had",
+  "text": "had",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.869958
+ },
+ {
+  "id": "words/did",
+  "text": "did",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.584875
+ },
+ {
+  "id": "words/plan",
+  "text": "plan",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.441458
+ },
+ {
+  "id": "words/future",
+  "text": "future",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.72275
+ },
+ {
+  "id": "words/dream",
+  "text": "dream",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.7255
+ },
+ {
+  "id": "words/hope",
+  "text": "hope",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.443625
+ },
+ {
+  "id": "words/decide",
+  "text": "decide",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.98125
+ },
+ {
+  "id": "words/become",
+  "text": "become",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.662083
+ },
+ {
+  "id": "words/study",
+  "text": "study",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.416
+ },
+ {
+  "id": "words/practise",
+  "text": "practise",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.023292
+ },
+ {
+  "id": "words/excited",
+  "text": "excited",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.529958
+ },
+ {
+  "id": "words/worried",
+  "text": "worried",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.500625
+ },
+ {
+  "id": "words/afraid",
+  "text": "afraid",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.574292
+ },
+ {
+  "id": "words/proud",
+  "text": "proud",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.536167
+ },
+ {
+  "id": "words/bored",
+  "text": "bored",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.987667
+ },
+ {
+  "id": "words/surprised",
+  "text": "surprised",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.584958
+ },
+ {
+  "id": "words/nervous",
+  "text": "nervous",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.218875
+ },
+ {
+  "id": "words/calm",
+  "text": "calm",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.466625
+ },
+ {
+  "id": "words/question",
+  "text": "question",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.6
+ },
+ {
+  "id": "words/answer",
+  "text": "answer",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.766042
+ },
+ {
+  "id": "words/message",
+  "text": "message",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.670458
+ },
+ {
+  "id": "words/letter",
+  "text": "letter",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.924125
+ },
+ {
+  "id": "words/email",
+  "text": "email",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.688375
+ },
+ {
+  "id": "words/story",
+  "text": "story",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.583167
+ },
+ {
+  "id": "words/explain",
+  "text": "explain",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.627542
+ },
+ {
+  "id": "words/understand",
+  "text": "understand",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.582375
+ },
+ {
+  "id": "words/country",
+  "text": "country",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.836708
+ },
+ {
+  "id": "words/village",
+  "text": "village",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.56825
+ },
+ {
+  "id": "words/people",
+  "text": "people",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.057958
+ },
+ {
+  "id": "words/family",
+  "text": "family",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.572625
+ },
+ {
+  "id": "words/neighbour",
+  "text": "neighbour",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.602917
+ },
+ {
+  "id": "words/visitor",
+  "text": "visitor",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.780833
+ },
+ {
+  "id": "words/rule",
+  "text": "rule",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.755917
+ },
+ {
+  "id": "words/safety",
+  "text": "safety",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.954542
+ },
+ {
+  "id": "words/save",
+  "text": "save",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.014542
+ },
+ {
+  "id": "words/waste",
+  "text": "waste",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.74825
+ },
+ {
+  "id": "words/protect",
+  "text": "protect",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.853042
+ },
+ {
+  "id": "words/energy",
+  "text": "energy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.71175
+ },
+ {
+  "id": "words/electricity",
+  "text": "electricity",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.212792
+ },
+ {
+  "id": "words/plastic",
+  "text": "plastic",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.875333
+ },
+ {
+  "id": "words/paper",
+  "text": "paper",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.575458
+ },
+ {
+  "id": "words/pollution",
+  "text": "pollution",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.379417
+ },
+ {
+  "id": "words/because",
+  "text": "because",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 2.268583
+ },
+ {
+  "id": "words/before",
+  "text": "before",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.118833
+ },
+ {
+  "id": "words/after",
+  "text": "after",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 5.524792
+ },
+ {
+  "id": "words/different",
+  "text": "different",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 3.309708
+ },
+ {
+  "id": "words/important",
+  "text": "important",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.4005
+ },
+ {
+  "id": "words/interesting",
+  "text": "interesting",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 1.112792
+ },
+ {
+  "id": "words/difficult",
+  "text": "difficult",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.913958
+ },
+ {
+  "id": "words/easy",
+  "text": "easy",
+  "source": "Qwen3-TTS local synthesis",
+  "synthesized": true,
+  "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "speaker": "ryan",
+  "seed": 11,
+  "seconds": 0.697958
+ }
+]

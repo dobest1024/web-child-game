@@ -10,3 +10,9 @@ artifacts/
 .edgeone/
 /web-child-game.zip
 *.log
+
+# Tencent Cloud EdgeOne
+.env
+.edgeone/*
+.tef_dist/*
+  

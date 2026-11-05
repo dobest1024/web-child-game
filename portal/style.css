@@ -1078,6 +1078,9 @@ svg {
 }
 
 /* 大厅优化：分组、系列标签、继续玩、更大的文字 */
+.hero {
+  overflow-x: clip;
+}
 .game-grid {
   display: block;
 }

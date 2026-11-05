@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#315e47" />
+    <title>小小铁路工程师 · 森林旅行社</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a href="/" target="_top" class="brand" aria-label="返回游戏大厅"
+          ><span class="brand-icon">🚂</span
+          ><span
+            >小小铁路工程师<small
+              >森林旅行社 · 每一段路，都是小冒险</small
+            ></span
+          ></a
+        >
+        <div class="top-actions">
+          <button id="sound" aria-pressed="true" aria-label="关闭声音">
+            ♫ 声音开</button
+          ><label class="volume-control" title="音量"
+            >♪<input
+              id="volume"
+              type="range"
+              min="0"
+              max="100"
+              value="45"
+              aria-label="音效音量"
+          /></label>
+          <button id="help" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="heading">
+        <div>
+          <p class="eyebrow" id="chapter">第一章 / 春日森林</p>
+          <h1 id="title">第一声汽笛</h1>
+          <p id="story"></p>
+        </div>
+        <button class="map-button" id="open-map">
+          <span>🗺️</span> 旅行地图 <b id="progress">0 / 18</b>
+        </button>
+      </section>
+      <div class="workspace">
+        <section class="play-area" aria-label="铁路建造区">
+          <div class="board-header">
+            <span id="location">🌿 春日森林</span
+            ><span class="weather" id="weather">晴 · 适合出发的一天</span>
+          </div>
+          <div class="board" id="board">
+            <svg id="scene" viewBox="0 0 800 600" aria-hidden="true"></svg>
+            <div
+              id="cells"
+              class="cells"
+              role="group"
+              aria-label="铁路地图，方向键移动，空格或回车铺轨"
+            ></div>
+          </div>
+          <div class="board-caption">
+            <span
+              ><i class="dot"></i>
+              <span id="caption">点亮着的邻格，接着铺铁路</span></span
+            ><span>起点 → 朋友 → 终点</span>
+          </div>
+        </section>
+        <aside class="sidebar">
+          <section class="conductor">
+            <div id="guide-art"></div>
+            <div>
+              <small>列车长 松松</small>
+              <p id="guide">嗨，小工程师！帮朋友们铺一条通往车站的路吧。</p>
+            </div>
+          </section>
+          <section class="mission card">
+            <p class="eyebrow">这一站的小任务</p>
+            <h2>带朋友去旅行</h2>
+            <div id="passengers"></div>
+            <div class="goal-row">
+              <span>🚩 抵达红屋顶车站</span><b id="destination">等待连接</b>
+            </div>
+            <div class="goal-row">
+              <span>⭐ 带上星星纪念章</span><b id="token-status">0 / 1</b>
+            </div>
+            <div class="budget">
+              <span>已铺 <strong id="used">0</strong> 格</span
+              ><span id="budget">巧手目标 ≤ 7 格</span>
+            </div>
+            <p class="soft-note">
+              接齐朋友就能过关。收集纪念章、巧用轨道，各得一颗额外星星。
+            </p>
+          </section>
+          <section class="editor card" id="editor" hidden>
+            <p class="eyebrow">你的世界，你来设计</p>
+            <div id="palette" class="palette"></div>
+            <label
+              >风景
+              <select id="theme">
+                <option value="0">春日森林</option>
+                <option value="1">糖果海湾</option>
+                <option value="2">星光雪山</option>
+              </select></label
+            ><button id="save">保存我的铁路</button
+            ><small id="save-status">保存在这台设备的浏览器里</small>
+          </section>
+          <section class="hint-card">
+            <span>💡</span>
+            <p id="tip">
+              可以点击，也可以按住拖动。点已经铺好的轨道，就能退回那里。
+            </p>
+          </section>
+          <button class="free-button" id="free-mode">
+            ✦ 自由建造 · 设计自己的铁路
+          </button>
+        </aside>
+      </div>
+      <footer class="controls">
+        <div class="edit-actions">
+          <button id="undo" title="撤回一格（Backspace）">
+            ↶ <span>撤一格</span></button
+          ><button id="reset">↺ <span>重新铺</span></button
+          ><button id="hint">☀ <span>小提示</span></button>
+        </div>
+        <div class="drive-actions">
+          <button id="speed" aria-label="切换火车速度">1×</button
+          ><button id="go" class="primary">出发喽！ <span>➜</span></button>
+        </div>
+      </footer>
+      <p class="status" id="status" role="status" aria-live="polite">
+        从绿色起点旁边开始铺轨吧！
+      </p>
+    </main>
+    <dialog id="map-dialog" class="map-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">收集旅途中的每一份快乐</p>
+          <h2>我们的铁路旅行</h2>
+        </div>
+        <button data-close aria-label="关闭旅行地图">✕</button>
+      </div>
+      <div id="level-list"></div>
+      <p class="soft-note">
+        所有关卡都可以自由选择。星星会自动保存在当前浏览器。
+      </p>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>第一天当小工程师</h2>
+        <button data-close aria-label="关闭玩法说明">✕</button>
+      </div>
+      <ol class="instructions">
+        <li><b>从绿色起点出发</b>点击相邻格子，或按住拖动，轨道会自动转弯。</li>
+        <li><b>接上每一位朋友</b>把轨道铺到小动物脚下，再连到红屋顶终点。</li>
+        <li><b>按下「出发喽」</b>看火车接客、过桥、驶进车站！</li>
+        <li>
+          <b>想改就改</b
+          >点旧轨道退回那里，也可以撤一格。水面和树木不能铺轨，木桥可以。
+        </li>
+      </ol>
+      <p class="soft-note">
+        键盘：Tab 进入地图，方向键移动焦点，空格 / 回车铺轨，Backspace
+        撤回。没有倒计时，慢慢想就好。
+      </p>
+      <button class="primary" data-close>知道啦，出发！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <div id="result-art"></div>
+      <p class="eyebrow">又一段美好的旅程</p>
+      <h2 id="result-title">大家都到站啦！</h2>
+      <div class="result-stars" id="result-stars"></div>
+      <p id="result-text"></p>
+      <div id="rewards"></div>
+      <div class="result-actions">
+        <button id="replay">再试一条路线</button
+        ><button id="next" class="primary">下一站 ➜</button>
+      </div>
+    </dialog>
+  </body>
+</html>

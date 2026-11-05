@@ -31,9 +31,9 @@ test('unified game gateway', async (t) => {
   });
 
   await t.test(
-    'all 14 game entries open, including the built cube game',
+    'all 26 game entries open, including the built cube game',
     async () => {
-      assert.equal(games.length, 14);
+      assert.equal(games.length, 26);
       assert.equal(new Set(games.map((game) => game.id)).size, games.length);
       for (const game of games) {
         const response = await fetch(`${base}${game.path}`);
@@ -47,6 +47,57 @@ test('unified game gateway', async (t) => {
       }
     },
   );
+  await t.test('railway modules and styles are public, missing assets return 404', async () => {
+    for (const asset of ['game.js', 'engine.js', 'levels.js', 'art.js', 'style.css', 'audio.js']) {
+      const response = await fetch(`${base}/little-railway/${asset}`);
+      assert.equal(response.status, 200, asset);
+      assert.match(response.headers.get('content-type'), asset.endsWith('.css') ? /text\/css/ : /javascript/);
+    }
+    assert.equal((await fetch(`${base}/little-railway/missing.js`)).status, 404);
+    assert.equal((await fetch(`${base}/little-railway/`, { method: 'POST' })).status, 405);
+  });
+  await t.test('robot rescue assets are served with correct MIME types and safe errors', async () => {
+    for (const asset of ['game.js', 'engine.js', 'levels.js', 'art.js', 'audio.js', 'style.css']) {
+      const response = await fetch(`${base}/robot-rescue/${asset}`);
+      assert.equal(response.status, 200, asset);
+      assert.match(response.headers.get('content-type'), asset.endsWith('.css') ? /text\/css/ : /javascript/);
+    }
+    assert.equal((await fetch(`${base}/robot-rescue/missing.js`)).status, 404);
+    assert.equal((await fetch(`${base}/robot-rescue/`, { method: 'POST' })).status, 405);
+  });
+  await t.test('new cooperative and puzzle games expose their entry assets and reject missing paths', async () => {
+    for (const game of ['contraption-house', 'water-rescue', 'icefire-delivery', 'potion-shop']) {
+      const response = await fetch(`${base}/${game}/`);
+      assert.equal(response.status, 200, game);
+      const html = await response.text();
+      const assets = [...html.matchAll(/(?:src|href)=["']([^"']+\.(?:js|css))["']/g)].map((match) => match[1]);
+      assert.ok(assets.length >= 2, `${game} must link its logic and styles`);
+      for (const asset of assets) {
+        const url = new URL(asset, `${base}/${game}/`);
+        assert.equal(url.origin, base, `${game} assets are self-contained`);
+        const served = await fetch(url);
+        assert.equal(served.status, 200, `${game}: ${asset}`);
+        assert.match(served.headers.get('content-type'), asset.endsWith('.css') ? /text\/css/ : /javascript/);
+      }
+      assert.equal((await fetch(`${base}/${game}/missing.js`)).status, 404);
+      assert.equal((await fetch(`${base}/${game}/`, { method: 'POST' })).status, 405);
+    }
+  });
+  await t.test('in-game links back to the portal leave the player iframe', async () => {
+    for (const game of games) {
+      if (game.id === 'crown') continue;
+      const html = await (await fetch(`${base}${game.path}`)).text();
+      for (const [anchor] of html.matchAll(/<a\s[^>]*href=["']\/["'][^>]*>/g))
+        assert.match(anchor, /target=["']_top["']/, `${game.title}: ${anchor}`);
+    }
+  });
+  await t.test('audio credit files are served as plain text', async () => {
+    for (const game of ['word-adventure', 'pinyin-adventure', 'poetry-adventure', 'hanzi-blocks']) {
+      const response = await fetch(`${base}/${game}/audio/CREDITS.txt`);
+      assert.equal(response.status, 200, game);
+      assert.match(response.headers.get('content-type'), /^text\/plain/);
+    }
+  });
   await t.test(
     'home and player are served; HTML HEAD has no body',
     async () => {
@@ -94,6 +145,12 @@ test('unified game gateway', async (t) => {
       for (const route of [
         '/cube-game',
         '/earth',
+        '/little-railway',
+        '/robot-rescue',
+        '/contraption-house',
+        '/water-rescue',
+        '/icefire-delivery',
+        '/potion-shop',
         '/huang',
         '/mini-game/weiqi',
       ]) {

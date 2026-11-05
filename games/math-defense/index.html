@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>口算大作战</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="title" class="screen active">
+  <div class="title-card">
+    <div class="title-art" aria-hidden="true">🏰🍭</div>
+    <h1>口算大作战</h1>
+    <p class="title-sub">捣蛋怪举着算式来偷糖果，算对就开炮！</p>
+    <button id="start" class="big-btn">保卫城堡 ▶</button>
+    <div class="grade-pick" role="group" aria-label="选择年级">
+      <span>我上</span>
+      <div id="grades"></div>
+    </div>
+    <div class="title-links">
+      <button id="open-book" class="link-btn">📖 怪物图鉴</button>
+      <button id="open-credits" class="link-btn">ℹ️ 关于</button>
+    </div>
+  </div>
+</section>
+
+<section id="map" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="title" aria-label="返回">←</button>
+    <h2 id="world-title">糖果城堡</h2>
+    <span class="coins">🪙 <b id="map-coins">0</b></span>
+  </header>
+  <div id="levels" class="level-path"></div>
+</section>
+
+<section id="play" class="screen">
+  <canvas id="canvas" tabindex="-1" aria-label="游戏画面：点写着答案的炮台"></canvas>
+  <p class="rotate-tip">📱 横过来玩，画面更大哦</p>
+  <div class="hud-btns">
+    <button id="pause" class="icon-btn round" aria-label="暂停">⏸</button>
+  </div>
+  <div id="intro" class="overlay">
+    <div class="panel">
+      <p class="level-no" id="intro-no">第 1 关</p>
+      <h2 id="intro-name"></h2>
+      <p id="intro-text"></p>
+      <p class="keys-tip">点炮台开炮；用键盘也可以直接打数字，空格放彩虹大招</p>
+      <button id="go" class="big-btn">开炮！</button>
+    </div>
+  </div>
+  <div id="paused" class="overlay" hidden>
+    <div class="panel">
+      <h2>休息一下</h2>
+      <button id="resume" class="big-btn">继续</button>
+      <button id="restart" class="mid-btn">重新开始</button>
+      <button class="mid-btn" data-go="map">回地图</button>
+    </div>
+  </div>
+  <div id="result" class="overlay" hidden>
+    <div class="panel">
+      <h2 id="result-title"></h2>
+      <p id="result-stars" class="stars"></p>
+      <p id="result-text"></p>
+      <button id="result-next" class="big-btn"></button>
+      <button id="result-again" class="mid-btn">再玩一次</button>
+      <button id="result-skip" class="mid-btn" hidden>先跳过这关</button>
+      <button class="mid-btn" data-go="map">回地图</button>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="title" aria-label="返回">←</button>
+    <h2>怪物图鉴</h2>
+    <span class="coins" id="book-count"></span>
+  </header>
+  <p class="book-tip">打跑一只怪物，它就会来图鉴里报到。点一点看看它的秘密。</p>
+  <div id="cards" class="cards"></div>
+</section>
+
+<div id="credits" class="overlay" hidden>
+  <div class="panel credits">
+    <h2>关于</h2>
+    <p>口算大作战：画面、怪物、音效和玩法都是本游戏原创，没有使用第三方素材。</p>
+    <p>题目由程序按一年级口算范围自动生成，每道题的答案都有自动测试检查。</p>
+    <button id="close-credits" class="mid-btn">知道啦</button>
+  </div>
+</div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="js/questions.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/save.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

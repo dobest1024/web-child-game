@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#407d86" />
+    <title>水滴救援队 · 让花园重新开花</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="/" target="_top" aria-label="返回游戏大厅"
+          ><span class="brand-icon">💧</span
+          ><span
+            >水滴救援队<small>每一滴小小的水，都能让花朵微笑</small></span
+          ></a
+        >
+        <div>
+          <button id="sound" aria-label="关闭音效" aria-pressed="true">
+            ♫ 音效开</button
+          ><button id="help" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="heading">
+        <div>
+          <p class="eyebrow" id="chapter"></p>
+          <h1 id="title">第一滴问候</h1>
+          <p id="story"></p>
+        </div>
+        <button id="map" class="map-button">
+          🗺 花园地图 <b id="progress">0 / 15</b>
+        </button>
+      </section>
+      <div class="workspace">
+        <section class="garden" aria-label="水管花园">
+          <div class="garden-top">
+            <span id="theme"></span><span id="weather">早安，小园丁</span>
+          </div>
+          <div class="board" id="board">
+            <svg id="scene" viewBox="0 0 700 600" aria-hidden="true"></svg>
+            <div
+              id="cells"
+              role="group"
+              aria-label="水管地图，方向键移动，回车或空格旋转"
+            ></div>
+          </div>
+          <div class="garden-bottom">
+            <span>↻ 点击水管，顺时针旋转</span><span>💧 水源 → 🌼 花朵</span>
+          </div>
+        </section>
+        <aside class="sidebar">
+          <section class="guide">
+            <div id="droplet"></div>
+            <div>
+              <small>水滴队长 · 泡泡</small>
+              <p id="guide-text">水管接好了，我就带着朋友们出发！</p>
+            </div>
+          </section>
+          <section class="card">
+            <p class="eyebrow">这一站的小心愿</p>
+            <h2>让每一朵花喝到水</h2>
+            <div id="flowers"></div>
+            <div class="stats">
+              <span>调整 <b id="moves">0</b> 次</span
+              ><span>放水 <b id="attempts">0</b> 次</span>
+            </div>
+            <p id="budget" class="note"></p>
+            <div class="goals">
+              <span>🌸 花朵全开：1 星</span><span>🛠 巧用旋转：再得 1 星</span
+              ><span>💧 两次内成功：再得 1 星</span>
+            </div>
+            <p class="note">
+              没有倒计时，失败不扣已得星星。想试新的办法，随时重新开始。
+            </p>
+          </section>
+          <section class="hint">
+            <span>☀</span>
+            <p id="hint-text"></p>
+          </section>
+          <button id="hint" class="hint-button">给我一点提示</button>
+          <section class="legend">
+            <span>蓝色：水已经到了</span><span>红圈：这里漏水了</span
+            ><span>红阀门：点一下打开</span>
+          </section>
+        </aside>
+      </div>
+      <div class="controls">
+        <div>
+          <button id="undo">↶ 撤回</button
+          ><button id="reset">↺ 重新开始</button>
+        </div>
+        <div>
+          <button id="speed" aria-label="切换水流速度">1×</button
+          ><button id="run" class="primary">开闸放水 <span>➜</span></button>
+        </div>
+      </div>
+      <p id="status" role="status" aria-live="polite">
+        先接好水管，再点「开闸放水」。
+      </p>
+      <footer>慢慢观察，转个方向，也许就有新发现。</footer>
+    </main>
+    <dialog id="map-dialog" class="map-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">从晨露花园到月光温室</p>
+          <h2>泡泡的浇花旅行</h2>
+        </div>
+        <button data-close aria-label="关闭花园地图">✕</button>
+      </div>
+      <div id="level-list"></div>
+      <p class="note">所有关卡都可以自由选择。星星自动保存在当前浏览器。</p>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>小园丁，准备好了吗？</h2>
+        <button data-close aria-label="关闭玩法说明">✕</button>
+      </div>
+      <ol>
+        <li>
+          <b>转一转水管</b
+          >点击水管顺时针旋转，让相邻管口对齐。水源和花盆方向固定。
+        </li>
+        <li>
+          <b>照顾每一朵花</b>三通和十字管可以分流，所有正在流水的开口都要接好。
+        </li>
+        <li><b>打开红色阀门</b>阀门不能旋转，点击它可以开启或关闭。</li>
+        <li>
+          <b>开闸看看</b
+          >蓝色水流会沿着你接好的管道前进。漏水处有红圈，修改后可以再次放水。
+        </li>
+      </ol>
+      <p class="note">
+        键盘：Tab 进入地图，方向键移动，回车或空格旋转水管 /
+        开关阀门。未接通水源的备用管不会漏水。放水时再点按钮可暂停或继续。
+      </p>
+      <button data-close class="primary">收到，开始浇花！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <div id="result-flower"></div>
+      <p class="eyebrow">又一座花园重新盛开</p>
+      <h2>花朵们说：谢谢你！</h2>
+      <div id="stars" class="stars"></div>
+      <p id="result-text"></p>
+      <div id="badges"></div>
+      <div class="result-actions">
+        <button id="retry">再试一种接法</button
+        ><button id="next" class="primary">下一座花园 ➜</button>
+      </div>
+    </dialog>
+  </body>
+</html>

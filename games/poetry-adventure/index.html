@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>古诗大作战</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E📜%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="title" class="screen active">
+  <div class="title-card">
+    <div class="title-icon" aria-hidden="true">🐥📜</div>
+    <h1>古诗大作战</h1>
+    <p class="title-sub">接住天上掉下的字，铺好诗句小桥，和 Boss 对诗！</p>
+    <button id="start" class="big-btn">开始冒险 ▶</button>
+    <div class="grade-pick" role="group" aria-label="选择年级">
+      <span>我上</span>
+      <div id="grades"></div>
+    </div>
+    <div class="title-links">
+      <button id="open-book" class="link-btn">📖 诗卡图鉴</button>
+      <button id="open-credits" class="link-btn">ℹ️ 关于</button>
+    </div>
+  </div>
+</section>
+
+<section id="map" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="title" aria-label="返回">←</button>
+    <h2 id="world-title">诗词花园</h2>
+    <span class="coins">🪙 <b id="map-coins">0</b></span>
+  </header>
+  <div id="levels" class="level-path"></div>
+</section>
+
+<section id="play" class="screen">
+  <canvas id="canvas" aria-label="游戏画面"></canvas>
+  <p class="rotate-tip">📱 横过来玩，画面更大哦</p>
+  <div class="hud-btns">
+    <button id="replay" class="icon-btn round" aria-label="再听一遍">🔊</button>
+    <button id="pause" class="icon-btn round" aria-label="暂停">⏸</button>
+  </div>
+  <div id="intro" class="overlay">
+    <div class="panel">
+      <p class="level-no" id="intro-no">第 1 关</p>
+      <h2 id="intro-name"></h2>
+      <p id="intro-text"></p>
+      <button id="go" class="big-btn">出发！</button>
+      <button class="mid-btn" data-go="map">回地图</button>
+    </div>
+  </div>
+  <div id="paused" class="overlay" hidden>
+    <div class="panel">
+      <h2>休息一下</h2>
+      <button id="resume" class="big-btn">继续</button>
+      <button id="restart" class="mid-btn">重新开始</button>
+      <button class="mid-btn" data-go="map">回地图</button>
+    </div>
+  </div>
+  <div id="result" class="overlay" hidden>
+    <div class="panel">
+      <h2 id="result-title"></h2>
+      <p id="result-stars" class="stars"></p>
+      <p id="result-text"></p>
+      <button id="result-next" class="big-btn"></button>
+      <button id="result-again" class="mid-btn">再玩一次</button>
+      <button id="result-skip" class="mid-btn" hidden>先跳过这关</button>
+      <button class="mid-btn" data-go="map">回地图</button>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="title" aria-label="返回">←</button>
+    <h2>诗卡图鉴</h2>
+    <span class="coins" id="book-count"></span>
+  </header>
+  <p class="book-tip">学会的诗会变成诗卡，点开就能读。</p>
+  <div id="cards" class="cards"></div>
+</section>
+
+<div id="poem-view" class="overlay" hidden>
+  <div class="panel poem-panel">
+    <p class="poem-icon" id="pv-icon"></p>
+    <h2 id="pv-title"></h2>
+    <p class="poem-author" id="pv-author"></p>
+    <div id="pv-lines" class="poem-lines"></div>
+    <button id="pv-read" class="mid-btn">🔊 读一读</button>
+    <button id="pv-close" class="mid-btn">关上</button>
+  </div>
+</div>
+
+<div id="credits" class="overlay" hidden>
+  <div class="panel credits">
+    <h2>关于</h2>
+    <p>诗文为统编版小学语文一年级上、下册古诗，已对照多个公开诗文网站核对。</p>
+    <p>朗读声音由电脑语音合成（Qwen3-TTS）生成，个别字可能读得不够准，请以老师和课本为准。</p>
+    <p>画面和玩法为本游戏原创。</p>
+    <button id="close-credits" class="mid-btn">知道啦</button>
+  </div>
+</div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="js/poems.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/save.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

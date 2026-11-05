@@ -22,14 +22,27 @@ const types = {
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf',
   '.wasm': 'application/wasm',
+  '.txt': 'text/plain; charset=utf-8',
 };
 const staticGames = new Set([
   'ai-edu',
   'earth',
   'edu-game',
   'fanyingnengli',
+  'hanzi-blocks',
+  'little-shop',
+  'little-railway',
+  'robot-rescue',
+  'contraption-house',
+  'potion-shop',
+  'water-rescue',
+  'icefire-delivery',
+  'math-defense',
   'mini-game',
+  'pinyin-adventure',
+  'poetry-adventure',
   'tanke',
+  'word-adventure',
   'zhili',
 ]);
 const crownRoutes =

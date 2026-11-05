@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#355d69" />
+    <title>机器人救援队 · 豆豆出发！</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a href="/" target="_top" class="brand"
+          ><span class="brand-bot">▣</span
+          ><span>机器人救援队<small>小小指令，大大的勇气</small></span></a
+        >
+        <div class="top-actions">
+          <button id="sound" aria-pressed="true" aria-label="关闭音效">
+            ♫ 音效开</button
+          ><button id="help" aria-label="打开玩法说明">?</button>
+        </div>
+      </header>
+      <section class="intro">
+        <div>
+          <p class="eyebrow" id="chapter">01 / 萌芽森林</p>
+          <h1 id="title">你好，小队长</h1>
+          <p id="story"></p>
+        </div>
+        <button class="map-button" id="map">
+          🗺 任务地图 <b id="progress">0 / 18</b>
+        </button>
+      </section>
+      <div class="workspace">
+        <section class="world-panel" aria-label="救援地图">
+          <div class="world-top">
+            <span id="theme-name">🌱 萌芽森林</span
+            ><span id="position">豆豆朝右 →</span>
+          </div>
+          <div class="board" id="board">
+            <svg id="scene" viewBox="0 0 700 600" aria-hidden="true"></svg>
+            <div id="robot" aria-hidden="true"></div>
+            <div
+              id="map-cells"
+              class="map-cells"
+              role="group"
+              aria-label="地图格子，点击可查看位置"
+            ></div>
+          </div>
+          <div class="world-bottom">
+            <span
+              ><i class="live-dot"></i>
+              <span id="world-note">观察地图，再安排动作</span></span
+            ><button id="hint">☀ 给我一点提示</button>
+          </div>
+          <div class="mission-strip">
+            <div id="friends"></div>
+            <span id="crystals">✦ 能量星 0 / 1</span
+            ><span id="home-status">⌂ 抵达救援站</span>
+          </div>
+          <div class="radio">
+            <span id="radio-face"></span>
+            <div>
+              <b>豆豆的对讲机</b>
+              <p id="status" role="status" aria-live="polite">
+                队长，我准备好了！
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="program-panel" aria-label="机器人指令编排">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">你的计划，豆豆来执行</p>
+              <h2>行动口袋</h2>
+            </div>
+            <span class="code-count"><b id="size">0</b> 张指令</span>
+          </div>
+          <div class="command-palette" id="commands"></div>
+          <div class="special-tools">
+            <button id="add-repeat">⟳ 添加重复口袋</button
+            ><button id="main-target">↓ 放到主程序</button>
+          </div>
+          <p id="target-note" class="target-note">
+            点击上方动作，按顺序加入下方。
+          </p>
+          <div class="program-scroll"><div id="program"></div></div>
+          <div class="edit-bar">
+            <span id="budget"></span>
+            <div>
+              <button id="move-up" aria-label="将选中指令上移">↑</button
+              ><button id="move-down" aria-label="将选中指令下移">↓</button
+              ><button id="clear">清空</button>
+            </div>
+          </div>
+          <div class="execution">
+            <button id="reset" title="回到起点，保留指令">↺ 回起点</button
+            ><button id="step">▷ 走一步</button
+            ><button id="run" class="primary">开始救援 ▶</button>
+          </div>
+          <div class="execution-note">
+            <span id="step-count">已执行 0 步</span
+            ><button id="speed" aria-label="切换执行速度">速度 1×</button>
+          </div>
+          <div class="learning-card">
+            <span>✦</span>
+            <div>
+              <b id="lesson-title">先后顺序很重要</b>
+              <p id="lesson-text">
+                到动物身边，再抱起它。每张指令都按从上到下的顺序执行。
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer class="footer">
+        <span>不赶时间，试错也是新发现。</span
+        ><button id="help-footer">玩法与键盘操作 ↗</button>
+      </footer>
+    </main>
+    <dialog id="map-dialog" class="map-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">18 个小任务，18 次新发现</p>
+          <h2>豆豆的救援手册</h2>
+        </div>
+        <button data-close aria-label="关闭任务地图">✕</button>
+      </div>
+      <div id="levels"></div>
+      <p class="note">所有关卡均可选择，星星自动保存在当前浏览器。</p>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>队长，轮到你啦！</h2>
+        <button data-close aria-label="关闭玩法说明">✕</button>
+      </div>
+      <ol class="instructions">
+        <li><b>看清豆豆的朝向</b>前进走一格，左转和右转只转身。</li>
+        <li>
+          <b>安排救援计划</b
+          >点动作卡，把指令从上到下排好。走到动物所在的格子，再执行「救援」。
+        </li>
+        <li>
+          <b>运行或一步一步检查</b
+          >点击「走一步」看清发生了什么。走错时回起点，修改指令再出发。
+        </li>
+        <li>
+          <b>让计划更聪明</b
+          >海岸章节解锁重复口袋和开桥机关；山谷章节解锁探路：前方有障碍就右转，否则前进。
+        </li>
+      </ol>
+      <p class="note">
+        点指令选中，再用 ↑ ↓ 调整位置；×
+        删除。选中重复口袋后，动作会放进口袋里，点「放到主程序」退出。重复口袋不嵌套。
+      </p>
+      <p class="note">
+        键盘：Tab 移动焦点，回车操作按钮。指令快捷键 W 前进、A 左转、D 右转、R
+        救援；空格开始 / 暂停。地图用方向键移动焦点。
+      </p>
+      <button data-close class="primary">收到，出发！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <div id="result-art"></div>
+      <p class="eyebrow">救援任务完成</p>
+      <h2>大家都平安回家啦！</h2>
+      <div id="stars" class="stars"></div>
+      <p id="result-text"></p>
+      <div id="badges"></div>
+      <div class="result-actions">
+        <button id="retry">再优化一下</button
+        ><button id="next" class="primary">下一次救援 ➜</button>
+      </div>
+    </dialog>
+  </body>
+</html>
