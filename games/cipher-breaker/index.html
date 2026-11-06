@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>密码解谜家 - 计算机与密码学益智小游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="/" target="_top" class="back-link">‹ 返回大厅</a>
+    <h1 class="game-title">密码解谜家 🕵️‍♂️</h1>
+    <div class="stats">
+      <span id="total-stars" class="stat-item">⭐ 0</span>
+      <button id="mute-btn" class="icon-btn" aria-label="声音开关">🔊 声音</button>
+      <select id="level-select" class="icon-btn" aria-label="选择关卡"></select>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 特工档案卡 -->
+    <section class="dossier-card">
+      <div class="dossier-header">
+        <h2 id="dossier-title" class="dossier-title">特工档案 01</h2>
+        <span id="cipher-badge" class="cipher-badge">凯撒移位密码</span>
+      </div>
+      <p id="dossier-desc" class="dossier-desc">转动密码盘，将密文还原为真实单词。</p>
+    </section>
+
+    <!-- 密文电报纸 -->
+    <section class="telegraph-paper">
+      <div class="paper-title">▼ 截获的加密通信电文 (CIPHERTEXT)</div>
+      <div id="cipher-display" class="cipher-display">CFBS</div>
+      <div id="telegraph-row" class="telegraph-controls" style="display: none;">
+        <button id="play-morse-btn" class="telegraph-btn">📻 播放电报声</button>
+      </div>
+    </section>
+
+    <!-- 解密工作台 (动态切换工具) -->
+    <section id="workbench-card" class="workbench-card">
+      <!-- 凯撒工具 -->
+      <div id="caesar-tool">
+        <div class="tool-title">🎛️ 凯撒密码对照盘 (移位值: <span id="shift-val">+1</span>)</div>
+        <div class="cipher-wheel-box">
+          <div class="shift-slider-row">
+            <span>移位调节:</span>
+            <input type="range" id="shift-slider" class="shift-slider" min="1" max="13" value="1">
+          </div>
+          <div id="caesar-mapping" class="alphabet-mapping"></div>
+        </div>
+      </div>
+
+      <!-- 摩斯电码工具 -->
+      <div id="morse-tool" style="display: none;">
+        <div class="tool-title">📖 摩斯电码速查手册 (· 为短嘀，— 为长哒)</div>
+        <div id="morse-grid" class="morse-cheat-grid"></div>
+      </div>
+
+      <!-- Atbash 工具 -->
+      <div id="atbash-tool" style="display: none;">
+        <div class="tool-title">🪞 阿特巴什魔镜对称表 (A ↔ Z, B ↔ Y)</div>
+        <div class="cipher-wheel-box">
+          <div id="atbash-mapping" class="alphabet-mapping"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 特工解密输入区 -->
+    <section class="input-section">
+      <div class="input-row">
+        <input type="text" id="agent-input" class="agent-input" placeholder="输入破译出的英文暗号..." autocomplete="off">
+        <button id="submit-btn" class="submit-btn">解码提交</button>
+      </div>
+      <div class="hint-bar">
+        <span id="hint-text"></span>
+        <button id="hint-btn" class="hint-btn">请求特工线索</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- 通关结算弹窗 -->
+  <div id="win-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <div class="stamp-mark">CONFIDENTIAL</div>
+      <h3 class="modal-title">机密破译成功！</h3>
+      <div id="modal-stars" class="stars-row">⭐⭐⭐</div>
+      <p id="modal-msg" class="modal-msg">情报破译成功！暗号已传回总部！</p>
+      <div class="modal-btns">
+        <button id="retry-btn" class="secondary-btn">重新研究</button>
+        <button id="next-level-btn" class="primary-btn">下一份档案</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

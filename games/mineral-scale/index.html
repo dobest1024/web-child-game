@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>天平探矿师 - 经典假币算法益智小游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="/" target="_top" class="back-link">‹ 返回大厅</a>
+    <h1 class="game-title">天平探矿师 ⚖️</h1>
+    <div class="stats">
+      <span id="weigh-count" class="stat-item">⚖️ 已称量: 0 次</span>
+      <span id="total-stars" class="stat-item">⭐ 0</span>
+      <button id="mute-btn" class="icon-btn" aria-label="声音开关">🔊 声音</button>
+      <select id="level-select" class="icon-btn" aria-label="选择关卡"></select>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 探矿任务简报 -->
+    <section class="mission-card">
+      <div class="mission-header">
+        <h2 id="mission-title" class="mission-title">关卡简报</h2>
+        <span id="mission-badge" class="mission-badge">目标称量 ≤2 次</span>
+      </div>
+      <p id="mission-desc" class="mission-desc">利用天平称量，通过最少步骤找出混在金币堆中的轻假币。</p>
+    </section>
+
+    <!-- 天平称量舞台 -->
+    <section class="scale-stage">
+      <div class="scale-canvas-box">
+        <canvas id="scale-canvas"></canvas>
+      </div>
+
+      <!-- 左右托盘放置区 -->
+      <div class="pans-container">
+        <div class="pan-zone" id="left-pan-zone">
+          <div class="pan-title">◀ 左托盘</div>
+          <div id="left-pan-coins" class="pan-coins"></div>
+        </div>
+
+        <div class="pan-zone" id="right-pan-zone">
+          <div class="pan-title">右托盘 ▶</div>
+          <div id="right-pan-coins" class="pan-coins"></div>
+        </div>
+      </div>
+
+      <!-- 称量操作行 -->
+      <div class="scale-actions">
+        <button id="weigh-btn" class="action-btn-primary">⚖️ 开始称量</button>
+        <button id="clear-btn" class="action-btn-secondary">清空托盘</button>
+      </div>
+    </section>
+
+    <!-- 金币选择与托盘区 -->
+    <section class="coin-tray-card">
+      <div class="tray-title-row">
+        <span>金币托盘（点击金币放入当前指定位置）：</span>
+        <div>
+          <button id="target-left-btn" class="icon-btn">放入左盘</button>
+          <button id="target-right-btn" class="icon-btn">放入右盘</button>
+          <button id="target-accuse-btn" class="icon-btn">🔍 指认假币</button>
+        </div>
+      </div>
+      <div id="tray-coins" class="coin-grid"></div>
+    </section>
+
+    <!-- 探矿笔记日志 -->
+    <section class="log-card">
+      <div class="log-title">📜 探矿称量笔记：</div>
+      <div id="log-list" class="log-list">
+        <div class="log-item">暂无称量记录，请放入相同数量金币后点击【开始称量】。</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 通关结算弹窗 -->
+  <div id="win-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-icon">🏆🥇✨</div>
+      <h3 class="modal-title">假币锁定成功！</h3>
+      <div id="modal-stars" class="stars-row">⭐⭐⭐</div>
+      <p id="modal-msg" class="modal-msg">太神了！你凭借精妙的三分法称量，顺利找出了伪造假币！</p>
+      <div class="modal-btns">
+        <button id="retry-btn" class="secondary-btn">再试一次</button>
+        <button id="next-level-btn" class="primary-btn">下一关</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

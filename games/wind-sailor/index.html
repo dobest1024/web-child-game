@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>风力帆船航海记 - 物理流体与导航力学小游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="/" target="_top" class="back-link">‹ 返回大厅</a>
+    <h1 class="game-title">风力帆船航海记 ⛵</h1>
+    <div class="stats">
+      <span id="total-stars" class="stat-item">⭐ 0</span>
+      <button id="mute-btn" class="icon-btn" aria-label="声音开关">🔊 声音</button>
+      <select id="level-select" class="icon-btn" aria-label="选择关卡"></select>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 航海任务简报 -->
+    <section class="marine-card">
+      <div class="marine-info">
+        <h2 id="marine-title" class="marine-title">启航初试</h2>
+        <p id="marine-desc" class="marine-desc">顺风扬帆，注意避开顶风禁航区。</p>
+      </div>
+      <div id="wind-vane-badge" class="wind-vane-badge">💨 西风 1.5 节</div>
+    </section>
+
+    <!-- 海图主 Canvas -->
+    <section class="chart-card">
+      <canvas id="marine-canvas"></canvas>
+
+      <!-- 实时 HUD 仪表 -->
+      <div class="marine-hud">
+        <span class="hud-item">航速: <span id="hud-speed" class="hud-val">0.0 节</span></span>
+        <span class="hud-item">航向: <span id="hud-heading" class="hud-val">90°</span></span>
+        <span class="hud-item">航时: <span id="hud-time" class="hud-val">0.0s</span></span>
+        <span id="hud-warning" class="hud-warning" style="display: none;">⚠️ 顶风失速！请转舵</span>
+      </div>
+    </section>
+
+    <!-- 驾驶台与舵盘控制台 -->
+    <section class="helm-console">
+      <div class="rudder-controls">
+        <span>舵角操控:</span>
+        <button id="steer-left-btn" class="helm-btn">◀ 满左舵 [A/←]</button>
+        <button id="steer-right-btn" class="helm-btn">满右舵 ▶ [D/→]</button>
+      </div>
+
+      <div class="sail-controls">
+        <span>主帆张角:</span>
+        <button id="trim-in-btn" class="icon-btn">收帆 [+]</button>
+        <button id="trim-out-btn" class="icon-btn">放帆 [-]</button>
+        <span id="sail-trim-val" class="sail-trim-badge">100%</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- 通关结算弹窗 -->
+  <div id="win-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-icon">⚓🎉🌊</div>
+      <h3 class="modal-title">顺利抵达目标海港！</h3>
+      <div id="modal-stars" class="stars-row">⭐⭐⭐</div>
+      <p id="modal-msg" class="modal-msg">太棒啦！你展现了出色的大航海家控帆技巧，乘风破浪安全靠泊！</p>
+      <div class="modal-btns">
+        <button id="retry-btn" class="secondary-btn">重新起航</button>
+        <button id="next-level-btn" class="primary-btn">下一海域</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

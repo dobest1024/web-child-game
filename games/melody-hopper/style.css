@@ -1,0 +1,394 @@
+/* 音符跳跃岛 - 样式 */
+:root {
+  --pond-bg: #e0f2fe;
+  --pond-deep: #0284c7;
+  --pad-green: #22c55e;
+  --pad-border: #15803d;
+  --pad-hover: #4ade80;
+  --text-main: #0f172a;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(180deg, #bae6fd 0%, #38bdf8 60%, #0284c7 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid #7dd3fc;
+}
+
+.back-link {
+  color: #0369a1;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 6px 12px;
+  background: #e0f2fe;
+  border-radius: 8px;
+  border: 1px solid #bae6fd;
+}
+
+.back-link:hover {
+  background: #bae6fd;
+}
+
+.game-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0c4a6e;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-item {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0369a1;
+}
+
+.icon-btn {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: #166534;
+}
+
+.icon-btn:hover {
+  background: #dcfce7;
+}
+
+.container {
+  flex: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.level-banner {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.level-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: #075985;
+}
+
+.level-mode {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: #e0f2fe;
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.level-desc {
+  font-size: 13px;
+  color: #475569;
+}
+
+/* 舞台区：五线谱与荷塘青蛙 */
+.stage-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stave-wrapper {
+  width: 100%;
+  max-width: 720px;
+  height: 180px;
+  position: relative;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+#stave-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.melody-progress {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 6px;
+}
+
+.melody-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #64748b;
+  border: 2px solid #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.melody-dot.active {
+  background: #fef08a;
+  border-color: #eab308;
+  color: #854d0e;
+  transform: scale(1.15);
+  box-shadow: 0 0 8px rgba(234, 179, 8, 0.5);
+}
+
+.melody-dot.done {
+  background: #86efac;
+  border-color: #16a34a;
+  color: #14532d;
+}
+
+/* 听音回放按钮 */
+.action-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.replay-btn {
+  background: #f59e0b;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.replay-btn:hover {
+  background: #d97706;
+}
+
+/* 荷叶键盘区 */
+.pond-keyboard {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15);
+}
+
+.key-prompt {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0369a1;
+  margin-bottom: 10px;
+}
+
+.lilypads-grid {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.lilypad-btn {
+  width: 62px;
+  height: 72px;
+  background: linear-gradient(180deg, #4ade80 0%, #16a34a 100%);
+  border: 2px solid #15803d;
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(21, 128, 61, 0.35);
+  transition: transform 0.1s, background 0.1s;
+  position: relative;
+}
+
+.lilypad-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(180deg, #86efac 0%, #22c55e 100%);
+}
+
+.lilypad-btn:active {
+  transform: translateY(2px) scale(0.96);
+}
+
+.pad-note {
+  font-size: 15px;
+  font-weight: 900;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.pad-solfege {
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.pad-letter {
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+/* 成功结算弹窗 */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 100%;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-frog {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.stars-row {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.modal-msg {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.modal-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.primary-btn {
+  background: #0284c7;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: #0369a1;
+}
+
+.secondary-btn {
+  background: #e2e8f0;
+  color: #334155;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background: #cbd5e1;
+}
+
+@media (max-width: 600px) {
+  .lilypad-btn {
+    width: 48px;
+    height: 58px;
+  }
+  .pad-note { font-size: 13px; }
+  .pad-solfege { font-size: 10px; }
+  .stave-wrapper { height: 150px; }
+}
