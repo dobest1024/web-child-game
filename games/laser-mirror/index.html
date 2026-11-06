@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>彩虹镜子屋 · 光学反射</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="back-link" href="/" target="_top" aria-label="返回游戏大厅">
+      <span>←</span> 大厅
+    </a>
+    <h1>彩虹镜子屋</h1>
+    <button id="btn-levels">关卡 📋</button>
+  </header>
+
+  <div class="level-banner">
+    <span id="level-info" style="font-weight:700">第 1 关</span>
+    <button id="btn-restart" style="padding:4px 12px; font-size:0.85rem">🔄 重置</button>
+  </div>
+
+  <div class="lab-board" id="lab-board">
+    <!-- 7x7 grid cells -->
+    <div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div>
+    <div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div>
+    <div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div>
+    <div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div>
+    <div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div>
+    <div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div>
+    <div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div><div class="lab-cell"></div>
+
+    <svg class="laser-overlay" id="laser-svg"></svg>
+  </div>
+
+  <div class="tip-box" id="tip-text">提示：点击镜子旋转朝向，让光束折射照亮水晶！</div>
+
+  <!-- Win Modal -->
+  <dialog id="win-dialog">
+    <h2 style="color:#38bdf8">✨ 水晶充能完成！</h2>
+    <p style="margin:14px 0; font-size:1.05rem; color:#cbd5e1">你成功掌握了光的反射定律！⭐⭐⭐</p>
+    <button id="btn-next" class="primary" style="padding:10px 24px; font-weight:800">下一关 ➔</button>
+  </dialog>
+
+  <!-- Level Select Modal -->
+  <dialog id="levels-dialog">
+    <h3>选择光学实验室</h3>
+    <div class="level-grid" id="level-grid"></div>
+    <button id="btn-close-levels">关闭</button>
+  </dialog>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

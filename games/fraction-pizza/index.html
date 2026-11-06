@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>森林披萨店 · 分数切切乐</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="back-link" href="/" target="_top" aria-label="返回游戏大厅">
+      <span>←</span> 大厅
+    </a>
+    <h1>森林披萨店</h1>
+    <button id="btn-levels" class="clear-btn" style="padding:6px 14px">关卡 📋</button>
+  </header>
+
+  <div class="order-ticket">
+    <div class="customer-row">
+      <span class="customer-name" id="customer-title">🐰 小白兔</span>
+      <span style="font-weight:700; color:var(--text-dim)" id="level-number">第 1 关</span>
+    </div>
+    <div class="dialogue-text" id="customer-dialogue">“我想要半张披萨铺满香浓芝士！”</div>
+    <div class="order-badges" id="order-badges"></div>
+  </div>
+
+  <div class="cuts-bar" id="cuts-bar"></div>
+
+  <div class="pizza-container">
+    <svg class="pizza-svg" id="pizza-svg" viewBox="0 0 300 300"></svg>
+  </div>
+
+  <div class="toppings-panel" id="toppings-panel"></div>
+
+  <div class="live-breakdown" id="live-breakdown">
+    披萨还是空白的，点击扇区撒料吧！
+  </div>
+
+  <div class="controls-row">
+    <button id="btn-clear" class="clear-btn">清空 🧹</button>
+    <button id="btn-bake" class="bake-btn">出炉烘烤 🍕</button>
+  </div>
+
+  <!-- Win Dialog -->
+  <dialog id="win-dialog">
+    <h2>🎉 烘烤大成功！</h2>
+    <p style="margin: 12px 0; font-size: 1.1rem; color: #166534">顾客非常满意你的分数配料！⭐⭐⭐</p>
+    <button id="btn-next" class="bake-btn" style="margin-top: 10px;">下一位客人 ➔</button>
+  </dialog>
+
+  <!-- Level Select Dialog -->
+  <dialog id="levels-dialog">
+    <h3>选择关卡</h3>
+    <div class="level-grid" id="level-grid"></div>
+    <button id="btn-close-levels" class="clear-btn">关闭</button>
+  </dialog>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

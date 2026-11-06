@@ -26,7 +26,7 @@ async function copyPublic(source, target) {
     else if (entry.isFile() && publicExtensions.has(path.extname(entry.name))) await cp(from, to);
   }
 }
-for (const game of ['ai-edu', 'earth', 'edu-game', 'fanyingnengli', 'animal-sudoku', 'balance-scale', 'happy-piano', 'idiom-quest', 'maze-treasure', 'number-slide', 'one-stroke', 'spot-difference', 'tangram', 'zoo-2048', 'hanzi-blocks', 'little-shop', 'little-railway', 'robot-rescue', 'contraption-house', 'potion-shop', 'water-rescue', 'icefire-delivery', 'math-defense', 'mini-game', 'pinyin-adventure', 'poetry-adventure', 'tanke', 'word-adventure', 'zhili']) {
+for (const game of ['ai-edu', 'earth', 'edu-game', 'fanyingnengli', 'traffic-jam', 'fraction-pizza', 'laser-mirror', 'animal-ludo', 'animal-sudoku', 'balance-scale', 'happy-piano', 'idiom-quest', 'maze-treasure', 'number-slide', 'one-stroke', 'spot-difference', 'tangram', 'zoo-2048', 'hanzi-blocks', 'little-shop', 'little-railway', 'robot-rescue', 'contraption-house', 'potion-shop', 'water-rescue', 'icefire-delivery', 'math-defense', 'mini-game', 'pinyin-adventure', 'poetry-adventure', 'tanke', 'word-adventure', 'zhili']) {
   await copyPublic(path.join(root, 'games', game), path.join(output, game));
 }
 await cp(path.join(root, '.cache/cube-game'), path.join(output, 'cube-game'), { recursive: true });
@@ -56,4 +56,4 @@ await edit('portal/games.js', (source) => source
   .replace('可以好友联机', '单人 AI 练习')
   .replace('卡牌 联机 策略 战斗 双人', '卡牌 单人 AI 策略 战斗')
   .replace('策略 · 实时对战', '策略 · AI 对战'));
-console.log(`Static preview ready: ${output} (36 games; Crown Gorge AI practice)`);
+console.log(`Static preview ready: ${output} (40 games; Crown Gorge AI practice)`);

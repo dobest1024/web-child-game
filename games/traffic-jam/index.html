@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小车挪挪乐 · 华容道出车</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="back-link" href="/" target="_top" aria-label="返回游戏大厅">
+      <span>←</span> 大厅
+    </a>
+    <div class="title-group">
+      <h1>小车挪挪乐</h1>
+    </div>
+    <button id="btn-levels" aria-label="关卡列表">关卡 📋</button>
+  </header>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-label">关卡</span>
+      <span class="stat-val" id="level-title">第 1 关</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">步数</span>
+      <span class="stat-val primary" id="moves-val">0</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">目标最优</span>
+      <span class="stat-val" id="min-moves-val">1</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">历史最佳</span>
+      <span class="stat-val" id="best-val">-</span>
+    </div>
+  </div>
+
+  <div class="board-container" id="board" aria-label="6x6 停车场">
+    <!-- 36 grid cells -->
+    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+
+    <div class="exit-gate" aria-hidden="true">出口 →</div>
+    <div class="cars-layer" id="cars-layer"></div>
+  </div>
+
+  <div class="level-tip" id="tip-text">提示：把挡在前面的车挪开，让红色救护车开出大门！</div>
+
+  <div class="controls-bar">
+    <button id="btn-undo" aria-label="撤销上一步">↩ 撤销</button>
+    <button id="btn-restart" aria-label="重新开始本关">🔄 重来</button>
+  </div>
+
+  <!-- Win Modal -->
+  <dialog id="win-modal">
+    <div class="modal-content">
+      <h2>🎉 成功疏通！</h2>
+      <div class="stars-reward" id="stars-display">⭐⭐⭐</div>
+      <p id="win-moves-info">耗费 5 步（最优 5 步）</p>
+      <div style="display:flex; gap:10px; margin-top:8px;">
+        <button id="btn-replay">再玩一次</button>
+        <button id="btn-next" class="primary-btn">下一关 ➔</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Level Select Modal -->
+  <dialog id="levels-modal">
+    <div class="modal-content">
+      <h3>选择关卡</h3>
+      <div class="level-grid" id="level-grid"></div>
+      <button id="btn-close-levels">返回</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

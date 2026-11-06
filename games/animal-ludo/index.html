@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>森林飞行棋 · 萌宠大对决</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="back-link" href="/" target="_top" aria-label="返回游戏大厅">
+      <span>←</span> 大厅
+    </a>
+    <h1>森林飞行棋</h1>
+    <button id="btn-restart" class="action-btn">重新开局 🔄</button>
+  </header>
+
+  <div class="turn-banner">
+    <div class="turn-player">
+      <span class="player-dot" id="player-dot"></span>
+      <span id="turn-indicator">🐰 兔跳跳 (你) 的回合</span>
+    </div>
+    <span style="font-size:0.8rem; color:var(--text-dim)">掷出 5 或 6 起飞 🚀</span>
+  </div>
+
+  <div class="board-container" id="board" aria-label="飞行棋棋盘"></div>
+
+  <div class="controls-panel">
+    <button class="dice-button" id="dice-btn" aria-label="掷骰子">🎲</button>
+  </div>
+
+  <!-- Win Modal -->
+  <dialog id="win-dialog">
+    <h2 style="font-size:1.6rem">🎉 胜利抵达终点！</h2>
+    <p id="winner-text" style="margin: 14px 0; font-size:1.05rem; color:#1e293b"></p>
+    <button id="btn-play-again" class="action-btn" style="background:#3b82f6; color:#fff; border:none; padding:10px 24px; font-weight:800">再战一局 ➔</button>
+  </dialog>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
