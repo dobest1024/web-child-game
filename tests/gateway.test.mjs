@@ -31,9 +31,9 @@ test('unified game gateway', async (t) => {
   });
 
   await t.test(
-    'all 40 game entries open, including the built cube game',
+    'all 44 game entries open, including the built cube game',
     async () => {
-      assert.equal(games.length, 40);
+      assert.equal(games.length, 44);
       assert.equal(new Set(games.map((game) => game.id)).size, games.length);
       for (const game of games) {
         const response = await fetch(`${base}${game.path}`);
@@ -83,8 +83,12 @@ test('unified game gateway', async (t) => {
       assert.equal((await fetch(`${base}/${game}/`, { method: 'POST' })).status, 405);
     }
   });
-  await t.test('fourteen new thinking, learning, and puzzle games expose their entry assets', async () => {
+  await t.test('eighteen new thinking, learning, and puzzle games expose their entry assets', async () => {
     for (const game of [
+      'circuit-lab',
+      'paper-cut',
+      'cube-unfold',
+      'rhythm-kitchen',
       'traffic-jam',
       'fraction-pizza',
       'laser-mirror',
@@ -189,6 +193,10 @@ test('unified game gateway', async (t) => {
         '/fraction-pizza',
         '/laser-mirror',
         '/animal-ludo',
+        '/circuit-lab',
+        '/paper-cut',
+        '/cube-unfold',
+        '/rhythm-kitchen',
         '/number-slide',
         '/tangram',
         '/one-stroke',

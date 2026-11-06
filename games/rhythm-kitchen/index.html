@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>节奏小厨房 - 益智儿童游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">🍳 节奏小厨房</div>
+      <div class="level-name" id="level-name">加载中...</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-recipes" title="食谱列表">📋 食谱</button>
+      <button class="btn-icon" id="btn-restart" title="重新开始">🔄 重来</button>
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Top Stats -->
+    <section class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-label">得分</span>
+        <span class="stat-val score" id="score-val">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">连击</span>
+        <span class="stat-val combo" id="combo-val">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">最高连击</span>
+        <span class="stat-val" id="max-combo-val">0</span>
+      </div>
+    </section>
+
+    <!-- Stage Area -->
+    <section class="stage-container">
+      <!-- Chef Status Strip -->
+      <div class="chef-strip">
+        <div class="chef-info">
+          <div class="chef-avatar" id="chef-avatar">🧑‍🍳</div>
+          <div class="chef-bubble" id="chef-bubble">跟着节拍切切切！</div>
+        </div>
+        <div class="metronome-visual">
+          <span>节拍</span>
+          <div class="beat-dot" id="beat-dot"></div>
+        </div>
+      </div>
+
+      <!-- Food Track / Conveyor -->
+      <div class="track-wrap" id="track-wrap">
+        <!-- Target Cutting Zone -->
+        <div class="target-zone" id="target-zone">
+          <div class="knife-blade" id="knife-blade">🔪</div>
+          <div class="target-line"></div>
+          <div class="target-label">切砧板</div>
+        </div>
+
+        <!-- Food Notes Sprites -->
+        <div id="notes-container"></div>
+
+        <!-- Count-in Overlay -->
+        <div class="count-in-overlay" id="count-in-overlay">
+          <div class="count-in-number" id="count-in-number">3</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls Area -->
+    <section class="controls-area">
+      <button class="btn-chop" id="btn-chop">
+        <span>🔪 挥刀！切！</span>
+      </button>
+      <div class="shortcut-tip">
+        <span>也可以按键盘 <kbd>空格</kbd> 或 <kbd>J</kbd> 键，或者直接轻敲砧板！</span>
+      </div>
+    </section>
+
+    <!-- Tip Card -->
+    <div class="tip-card">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text" id="tip-text">提示加载中...</div>
+    </div>
+  </main>
+
+  <!-- Recipe Completed Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title">🎉 美味佳肴大功告成！</div>
+      <div class="stars-display" id="win-stars">⭐⭐⭐</div>
+      <p style="color: #634f38; font-size: 14px;">小主厨的手艺太棒啦！</p>
+      
+      <div class="score-summary">
+        <div class="score-summary-item">
+          <span>本轮得分:</span>
+          <strong id="res-score">0</strong>
+        </div>
+        <div class="score-summary-item">
+          <span>最大连击:</span>
+          <strong id="res-combo">0</strong>
+        </div>
+        <div class="score-summary-item">
+          <span>完美次数 (PERFECT):</span>
+          <strong id="res-perfect">0</strong>
+        </div>
+        <div class="score-summary-item">
+          <span>漏切次数 (MISS):</span>
+          <strong id="res-miss">0</strong>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-replay">再切一次</button>
+        <button class="btn-primary" id="btn-next-recipe">下一道菜 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recipe Menu Modal -->
+  <div class="modal-overlay" id="recipes-modal">
+    <div class="modal-card">
+      <div class="modal-title">📖 大厨食谱秘籍</div>
+      <p style="color: #7a6855; font-size: 13px;">选择你想挑战的料理关卡：</p>
+      <div class="recipes-grid" id="recipes-grid"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-close-recipes">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

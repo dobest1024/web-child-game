@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小小电路工坊 · 科学实验</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="back-link" href="/" target="_top" aria-label="返回游戏大厅">
+      <span>←</span> 大厅
+    </a>
+    <h1>小小电路工坊</h1>
+    <button id="btn-levels">关卡 📋</button>
+  </header>
+
+  <div class="status-bar">
+    <span id="level-info" style="font-weight:700">第 1 关</span>
+    <span class="short-warning" id="short-warn" style="display:none">⚠️ 危险短路！请检查电路！</span>
+    <button id="btn-restart" style="padding:4px 12px; font-size:0.85rem">🔄 重置</button>
+  </div>
+
+  <div class="circuit-board" id="circuit-board">
+    <!-- 6x6 grid cells -->
+    <div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div>
+    <div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div>
+    <div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div>
+    <div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div>
+    <div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div>
+    <div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div>
+  </div>
+
+  <div class="tip-banner" id="tip-text">提示：点击导线旋转方向，连接成封闭回路！</div>
+
+  <!-- Win Dialog -->
+  <dialog id="win-dialog">
+    <h2 style="color:#38bdf8">💡 电路闭合接通！</h2>
+    <p style="margin:14px 0; font-size:1.05rem; color:#cbd5e1">恭喜你成功掌握了电路连接原理！⭐⭐⭐</p>
+    <button id="btn-next" style="background:#0284c7; color:#fff; border:none; padding:10px 24px; font-weight:800">下一关 ➔</button>
+  </dialog>
+
+  <!-- Level Select Dialog -->
+  <dialog id="levels-dialog">
+    <h3>选择电路实验</h3>
+    <div class="level-grid" id="level-grid"></div>
+    <button id="btn-close-levels">关闭</button>
+  </dialog>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

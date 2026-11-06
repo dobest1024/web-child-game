@@ -1,0 +1,220 @@
+:root {
+  --bg: #0f172a;
+  --board: #1e293b;
+  --grid-line: #334155;
+  --copper: #f59e0b;
+  --copper-active: #fde047;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --primary: #38bdf8;
+  --cell: clamp(48px, 13vw, 70px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: env(safe-area-inset-top, 10px) env(safe-area-inset-right, 10px) env(safe-area-inset-bottom, 14px) env(safe-area-inset-left, 10px);
+}
+
+header {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--board);
+  border: 1px solid #334155;
+}
+
+h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.status-bar {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--board);
+  border: 1px solid #334155;
+  padding: 8px 16px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.short-warning {
+  color: #ef4444;
+  font-weight: 800;
+  animation: blinkWarn 0.6s infinite alternate;
+}
+
+@keyframes blinkWarn {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* Circuit Board */
+.circuit-board {
+  position: relative;
+  width: calc(var(--cell) * 6);
+  height: calc(var(--cell) * 6);
+  background: #022c22; /* Dark electronic PCB green */
+  border: 4px solid #064e3b;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: repeat(6, var(--cell));
+  grid-template-rows: repeat(6, var(--cell));
+}
+
+.board-cell {
+  border: 1px dashed rgba(6, 95, 70, 0.5);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Component elements */
+.component {
+  position: absolute;
+  width: var(--cell);
+  height: var(--cell);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.component.wire svg,
+.component.battery svg,
+.component.switch svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bulb-icon {
+  font-size: 1.8rem;
+  transition: all 0.2s;
+}
+
+.bulb-icon.lit {
+  filter: drop-shadow(0 0 14px #fde047);
+  animation: glowBulb 1.2s infinite alternate;
+}
+
+@keyframes glowBulb {
+  0% { transform: scale(1); filter: drop-shadow(0 0 10px #fde047); }
+  100% { transform: scale(1.08); filter: drop-shadow(0 0 20px #facc15); }
+}
+
+.fan-icon {
+  font-size: 1.8rem;
+}
+
+.fan-icon.spinning {
+  animation: spinFan 0.4s linear infinite;
+}
+
+@keyframes spinFan {
+  100% { transform: rotate(360deg); }
+}
+
+.tip-banner {
+  max-width: 500px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: rgba(30, 41, 59, 0.7);
+  border-radius: 12px;
+}
+
+/* Buttons */
+.controls-bar {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid #334155;
+  background: var(--board);
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+/* Modals */
+dialog {
+  border: 1px solid #334155;
+  border-radius: 20px;
+  padding: 24px;
+  background: #1e293b;
+  color: #fff;
+  max-width: min(90vw, 400px);
+  margin: auto;
+  text-align: center;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.level-btn {
+  padding: 10px 0;
+  border-radius: 10px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #fff;
+}
+
+.level-btn.active {
+  background: #0284c7;
+  border-color: #38bdf8;
+}
