@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>时光钟表师 - 儿童钟表指针与时间进位换算</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">⏰ 时光钟表师</div>
+      <div class="level-name" id="level-name">加载中...</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-levels" title="选择时刻关卡">📋 关卡</button>
+      <button class="btn-icon" id="btn-reset" title="复位表针">🔄 复位</button>
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Mission Box -->
+    <section class="mission-box">
+      <div class="mission-title" id="mission-title">任务加载中...</div>
+      <div class="mission-desc" id="mission-desc">任务说明加载中...</div>
+    </section>
+
+    <!-- Clockwork Area -->
+    <section class="clock-container">
+      <canvas id="clock-canvas" width="360" height="360"></canvas>
+      <div class="digital-readout" id="digital-time">12:00</div>
+
+      <!-- Quick Step Buttons -->
+      <div class="controls-grid">
+        <button class="step-btn" data-step="-60">-1 小时</button>
+        <button class="step-btn" data-step="-15">-15 分钟</button>
+        <button class="step-btn" data-step="-5">-5 分钟</button>
+        <button class="step-btn" data-step="-1">-1 分钟</button>
+        <button class="step-btn" data-step="60">+1 小时</button>
+        <button class="step-btn" data-step="15">+15 分钟</button>
+        <button class="step-btn" data-step="5">+5 分钟</button>
+        <button class="step-btn" data-step="1">+1 分钟</button>
+      </div>
+
+      <button class="btn-submit" id="btn-check">✨ 确认对时！</button>
+    </section>
+
+    <!-- Tip Card -->
+    <div class="tip-card">
+      <span>💡 知识点:</span>
+      <span id="tip-text">可以按住红色分针直接旋转拨动，也可以点击加减按钮微调！</span>
+    </div>
+  </main>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title">🎉 时间完全吻合！</div>
+      <div class="stars-row" id="win-stars">⭐⭐⭐</div>
+      <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 8px;">嘀嗒嘀嗒！时间齿轮完美归位！</p>
+      <p style="color: #94a3b8; font-size: 13px;">目标时刻: <strong id="res-target-time" style="color: #fbbf24;">00:00</strong></p>
+      
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-replay">再练一次</button>
+        <button class="btn-primary" id="btn-next-level">下一时刻 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Levels Modal -->
+  <div class="modal-overlay" id="levels-modal">
+    <div class="modal-card">
+      <div class="modal-title">📖 时光钟表谱</div>
+      <div class="levels-grid" id="levels-grid"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-close-levels">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

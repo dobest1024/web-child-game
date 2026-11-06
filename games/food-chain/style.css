@@ -1,0 +1,335 @@
+:root {
+  --bg-top: #1b382b;
+  --bg-bottom: #0f231a;
+  --panel-bg: rgba(27, 56, 43, 0.85);
+  --border-color: #2e5944;
+  --primary: #4ade80;
+  --primary-hover: #22c55e;
+  --gold: #fbbf24;
+  --text-main: #f0fdf4;
+  --text-dim: #86efac;
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(15, 35, 26, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f0fdf4;
+  background: #234735;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.back-link:hover {
+  background: #315e47;
+  transform: translateX(-2px);
+}
+
+.header-center {
+  text-align: center;
+}
+
+.game-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.level-name {
+  font-size: 13px;
+  color: #a7f3d0;
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-icon {
+  background: #234735;
+  border: 1px solid var(--border-color);
+  color: #f0fdf4;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.btn-icon:hover {
+  background: #315e47;
+  transform: translateY(-1px);
+}
+
+main {
+  flex: 1;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Mission Box */
+.mission-box {
+  width: 100%;
+  background: var(--panel-bg);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.mission-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+}
+
+.mission-desc {
+  font-size: 14px;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+/* Canvas Board Wrap */
+.canvas-wrap {
+  width: 100%;
+  max-width: 600px;
+  background: radial-gradient(circle at 50% 50%, #204534, #12291e);
+  border: 3px solid #3d7257;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  display: block;
+  cursor: pointer;
+}
+
+/* Action Controls Bar */
+.action-bar {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+  justify-content: center;
+}
+
+.btn-simulate {
+  flex: 1;
+  background: linear-gradient(135deg, #4ade80, #16a34a);
+  color: #052e16;
+  border: none;
+  border-radius: 24px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
+  transition: all 0.15s;
+}
+
+.btn-simulate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.5);
+}
+
+.btn-clear {
+  background: #234735;
+  border: 1px solid var(--border-color);
+  color: #f0fdf4;
+  padding: 14px 20px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-clear:hover {
+  background: #315e47;
+}
+
+/* Tip Card */
+.tip-card {
+  width: 100%;
+  background: rgba(27, 56, 43, 0.65);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #a7f3d0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background: #142e22;
+  border: 3px solid #22c55e;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 440px;
+  width: 90%;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.stars-row {
+  font-size: 38px;
+  margin: 12px 0;
+  letter-spacing: 4px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #052e16;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #234735;
+  color: #f0fdf4;
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+/* Levels Grid */
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.level-btn {
+  background: #10251c;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 10px 6px;
+  color: #f0fdf4;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.level-btn:hover {
+  border-color: var(--primary);
+  background: #19382b;
+}
+
+.level-btn.active {
+  border-color: var(--gold);
+  background: #234735;
+}

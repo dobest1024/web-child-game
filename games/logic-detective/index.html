@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>密室小侦探 - 儿童逻辑排除矩阵与斑马难题</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">🔍 密室小侦探</div>
+      <div class="level-name" id="level-name">加载中...</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-levels" title="选择案件档案">📋 案件库</button>
+      <button class="btn-icon" id="btn-reset" title="重新排查">🔄 重开</button>
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Left Column: Clues and Logic Grid -->
+    <div class="left-col">
+      <!-- Clues -->
+      <section class="panel-card">
+        <div class="panel-title">
+          <span>📜 案情线索板 (点击线索可划线标记)</span>
+        </div>
+        <div class="clues-list" id="clues-list"></div>
+      </section>
+
+      <!-- Matrix -->
+      <section class="panel-card">
+        <div class="panel-title">
+          <span>🔍 逻辑排除矩阵 (点击: ❌排除 ➔ ✔️确认)</span>
+        </div>
+        <div class="matrix-container" id="matrix-container"></div>
+      </section>
+
+      <!-- Tip Card -->
+      <div class="tip-card">
+        <span>💡 侦探法则:</span>
+        <span>排除一切不可能的，剩下的无论看似多么不可思议，也必然是真相！</span>
+      </div>
+    </div>
+
+    <!-- Right Column: Deduction Conclusion Form -->
+    <div class="right-col">
+      <section class="paper-file">
+        <div class="file-header">
+          <span class="file-title" id="case-title">案件档案</span>
+          <span class="file-stamp">绝密卷宗</span>
+        </div>
+        <p style="font-size: 13px; color: #523c30;" id="case-desc">案情介绍加载中...</p>
+
+        <div style="font-size: 14px; font-weight: 800; color: #78350f;">🎯 最终推理匹配报告:</div>
+        <div class="matches-list" id="matches-list"></div>
+
+        <button class="btn-verify" id="btn-verify">⚖️ 提交结案验证报告！</button>
+      </section>
+    </div>
+  </main>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title">🏅 案情真相大白！</div>
+      <div class="stars-row" id="win-stars">⭐⭐⭐</div>
+      <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 8px;" id="res-verdict">逻辑缜密，铁证如山！</p>
+      <p style="color: #a69285; font-size: 13px;">成功破获此案，授予大侦探勋章！</p>
+      
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-replay">复盘此案</button>
+        <button class="btn-primary" id="btn-next-level">下一绝密卷宗 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Levels Modal -->
+  <div class="modal-overlay" id="levels-modal">
+    <div class="modal-card">
+      <div class="modal-title">📖 大侦探卷宗馆</div>
+      <div class="levels-grid" id="levels-grid"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-close-levels">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

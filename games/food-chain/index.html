@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>森林食物网 - 儿童自然生态食物链探索</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">🌿 森林食物网</div>
+      <div class="level-name" id="level-name">加载中...</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-levels" title="选择生态环境">🌍 生态圈</button>
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Mission Box -->
+    <section class="mission-box">
+      <div class="mission-title" id="mission-title">生态任务加载中...</div>
+      <div class="mission-desc" id="mission-desc">说明加载中...</div>
+    </section>
+
+    <!-- Canvas Stage -->
+    <section class="canvas-wrap">
+      <canvas id="chain-canvas" width="560" height="380"></canvas>
+    </section>
+
+    <!-- Controls -->
+    <section class="action-bar">
+      <button class="btn-simulate" id="btn-simulate">🌱 开始生态平衡推演！</button>
+      <button class="btn-clear" id="btn-clear">清空重连</button>
+    </section>
+
+    <!-- Tip Card -->
+    <div class="tip-card">
+      <span>💡 生态法则:</span>
+      <span id="tip-text">点击食物来源（如青草），再点击捕食者（如野兔）即可画出箭头连线！</span>
+    </div>
+  </main>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title">🎉 生态系统达到完美平衡！</div>
+      <div class="stars-row" id="win-stars">⭐⭐⭐</div>
+      <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 8px;">能量在生产者、消费者与分解者之间生生不息！</p>
+      <p style="color: #a7f3d0; font-size: 13px;">成功构建: <strong id="res-food-chains" style="color: #4ade80;">0</strong></p>
+      
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-replay">重新推演</button>
+        <button class="btn-primary" id="btn-next-level">下一生态圈 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Levels Modal -->
+  <div class="modal-overlay" id="levels-modal">
+    <div class="modal-card">
+      <div class="modal-title">📖 大自然生态图鉴</div>
+      <div class="levels-grid" id="levels-grid"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-close-levels">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

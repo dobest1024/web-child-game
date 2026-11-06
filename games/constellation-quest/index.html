@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>星空连线家 - 儿童直角坐标系与天文星座冒险</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">✨ 星空连线家</div>
+      <div class="level-name" id="level-name">加载中...</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-levels" title="选择星座">🔭 星图</button>
+      <button class="btn-icon" id="btn-reset" title="重新连线">🔄 重置</button>
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Coordinate Sky Canvas Area -->
+    <section class="canvas-card">
+      <canvas id="sky-canvas" width="600" height="600"></canvas>
+    </section>
+
+    <!-- Sidebar Panel -->
+    <aside class="sidebar">
+      <div class="panel-card">
+        <div class="panel-title">
+          <span>星座百科导览</span>
+          <span class="progress-tag" id="progress-tag">已连线: 0 / 0</span>
+        </div>
+        <div class="constellation-desc" id="constellation-desc">星座介绍加载中...</div>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-title">
+          <span>连线坐标清单</span>
+        </div>
+        <div class="lines-checklist" id="lines-checklist"></div>
+      </div>
+
+      <div class="tip-box">
+        <span>💡 提示:</span>
+        <span id="tip-text">根据坐标点击两颗恒星连线，再次点击已连线段可擦除！</span>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title">🌟 星座点亮成功！</div>
+      <div class="stars-row" id="win-stars">⭐⭐⭐</div>
+      <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 8px;">浩瀚深空因为你的智慧闪耀夺目！</p>
+      <p style="color: #94a3b8; font-size: 13px;">成功连结骨架: <strong id="res-lines" style="color: #38bdf8;">0</strong></p>
+      
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-replay">再连一次</button>
+        <button class="btn-primary" id="btn-next-level">下一星座 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Levels Modal -->
+  <div class="modal-overlay" id="levels-modal">
+    <div class="modal-card">
+      <div class="modal-title">📖 全天八十八星座图册</div>
+      <div class="levels-grid" id="levels-grid"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-close-levels">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
