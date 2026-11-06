@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>拼图游中国 - 儿童中国省份与地理百科大冒险</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">🗺️ 拼图游中国</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Navigation Tabs -->
+    <section class="tabs-bar">
+      <button class="tab-btn active" id="tab-regions">📍 六大地理大区拼图</button>
+      <button class="tab-btn" id="tab-national">🏆 全国拼图大挑战</button>
+      <button class="tab-btn" id="tab-quiz">💡 地理小神童竞猜</button>
+    </section>
+
+    <!-- Map & Sidebar Stage -->
+    <section class="game-container" id="game-container">
+      <!-- Interactive SVG Map -->
+      <div class="map-stage">
+        <svg class="map-svg" id="map-svg" viewBox="0 0 800 600"></svg>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar-panel">
+        <div class="panel-section-title">
+          <span>待拼省份卡片</span>
+        </div>
+        <div class="province-list" id="provinces-list"></div>
+
+        <div class="panel-section-title">
+          <span>省份小百科</span>
+        </div>
+        <div class="encyclopedia-card" id="encyclopedia">
+          <div style="color: #78695d;">点击地图或列表中的省份，查看省会、名胜地标与地道特色美食！</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Mode Container -->
+    <section class="quiz-container" id="quiz-container">
+      <div class="quiz-header">
+        <span style="font-weight: 800; color: #c2410c;" id="quiz-qnum">第 1 / 10 题</span>
+        <span style="font-weight: 700; color: #78695d;" id="quiz-score-val">得分: 0</span>
+      </div>
+      <div class="quiz-question" id="quiz-question-text">题目加载中...</div>
+      <div class="quiz-options" id="quiz-options"></div>
+    </section>
+  </main>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title" id="modal-title">🎉 挑战成功！</div>
+      <p style="color: #4b382a; font-size: 15px; margin: 12px 0;" id="modal-msg">恭喜完成！</p>
+      <div class="modal-actions">
+        <button class="btn-primary" id="btn-modal-continue">继续探索 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

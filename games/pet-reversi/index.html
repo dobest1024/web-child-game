@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>萌宠黑白棋 - 儿童双人与AI策略对战</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">🐾 萌宠黑白棋</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-undo" title="悔棋">↩️ 悔棋</button>
+      <button class="btn-icon" id="btn-restart" title="重新开始">🔄 重开</button>
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Players Banner -->
+    <section class="players-banner">
+      <div class="player-card active" id="card-cat">
+        <div class="player-info">
+          <div class="player-avatar">🐱</div>
+          <div>
+            <div class="player-name">咪咪猫 (黑棋)</div>
+            <div style="font-size: 11px; color: #94a3b8;">先手出发</div>
+          </div>
+        </div>
+        <div class="player-score" id="score-cat">2</div>
+      </div>
+
+      <div class="player-card" id="card-dog">
+        <div class="player-info">
+          <div class="player-avatar">🐶</div>
+          <div>
+            <div class="player-name">汪汪狗 (白棋)</div>
+            <div style="font-size: 11px; color: #94a3b8;">机智后发</div>
+          </div>
+        </div>
+        <div class="player-score" id="score-dog">2</div>
+      </div>
+    </section>
+
+    <!-- Turn Message -->
+    <div class="turn-msg" id="turn-msg">👉 轮到 咪咪猫 出手！</div>
+
+    <!-- 8x8 Board -->
+    <section class="board-container" id="board"></section>
+
+    <!-- Controls -->
+    <section class="controls-bar">
+      <button class="btn-ctrl" id="btn-mode">🤖 人机对战</button>
+      <button class="btn-ctrl" id="btn-diff">难度: ⭐⭐ 中级</button>
+    </section>
+  </main>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title" id="modal-title">🏆 棋局结束！</div>
+      <div class="modal-score" id="modal-score">结算中...</div>
+      <div class="modal-actions">
+        <button class="btn-primary" id="btn-play-again">再战一局 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

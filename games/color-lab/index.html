@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>光影调色师 - 儿童三原色科学混色实验室</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">🎨 光影调色师</div>
+      <div class="level-name" id="level-name">加载中...</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-levels" title="选择实验">📋 关卡</button>
+      <button class="btn-icon" id="btn-reset" title="重置本关">🔄 重置</button>
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Color Comparators Stage -->
+    <section class="stage-container">
+      <div class="color-card">
+        <div class="swatch-box" id="swatch-target"></div>
+        <div class="card-label">🎯 目标样色</div>
+      </div>
+
+      <div class="match-gauge">
+        <div class="gauge-circle" id="match-accuracy">0%</div>
+        <div class="gauge-label">相似度</div>
+      </div>
+
+      <div class="color-card">
+        <div class="swatch-box" id="swatch-current"></div>
+        <div class="card-label">🧪 你的调色</div>
+      </div>
+    </section>
+
+    <!-- Light Mixing Controls (Mode: light) -->
+    <section class="controls-panel" id="light-panel">
+      <div class="panel-title">
+        <span>💡 色光加色投影台 (RGB)</span>
+      </div>
+      <div class="light-controls">
+        <div class="slider-row">
+          <span class="slider-label" style="color: #ef4444;">🔴 红光 (R)</span>
+          <input type="range" min="0" max="1" step="0.05" value="0" class="color-slider slider-r" id="slider-r">
+          <span class="slider-val" id="val-r">0%</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label" style="color: #22c55e;">🟢 绿光 (G)</span>
+          <input type="range" min="0" max="1" step="0.05" value="0" class="color-slider slider-g" id="slider-g">
+          <span class="slider-val" id="val-g">0%</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label" style="color: #3b82f6;">🔵 蓝光 (B)</span>
+          <input type="range" min="0" max="1" step="0.05" value="0" class="color-slider slider-b" id="slider-b">
+          <span class="slider-val" id="val-b">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pigment Dropper Controls (Mode: pigment) -->
+    <section class="controls-panel" id="pigment-panel" style="display: none;">
+      <div class="panel-title">
+        <span>🎨 颜料减色调色板 (CMYK)</span>
+        <button class="btn-icon" id="btn-reset-pigments" style="font-size: 12px; padding: 4px 10px;">清洗调色板</button>
+      </div>
+      <div class="pigment-controls" id="droppers-container"></div>
+    </section>
+
+    <!-- Science Tip Card -->
+    <div class="tip-card">
+      <span>💡 科学原理:</span>
+      <span id="tip-text">科学贴士加载中...</span>
+    </div>
+  </main>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title">🎉 调色大获成功！</div>
+      <div class="stars-row" id="win-stars">⭐⭐⭐</div>
+      <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 8px;">完美复刻目标色彩，色彩感知力太棒啦！</p>
+      <p style="color: #94a3b8; font-size: 13px;">色彩吻合度: <strong id="res-accuracy" style="color: #fbbf24;">100%</strong></p>
+      
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-replay">再调一次</button>
+        <button class="btn-primary" id="btn-next-level">下一实验 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Levels Modal -->
+  <div class="modal-overlay" id="levels-modal">
+    <div class="modal-card">
+      <div class="modal-title">📖 调色实验记录本</div>
+      <div class="levels-grid" id="levels-grid"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-close-levels">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

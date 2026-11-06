@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>齿轮连动坊 - 益智机械小游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="/" target="_top" class="back-link" title="返回游戏大厅">‹ 返回大厅</a>
+    <div class="header-center">
+      <div class="game-title">⚙️ 齿轮连动坊</div>
+      <div class="level-title" id="level-title">加载中...</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-levels" title="选择关卡">📋 关卡</button>
+      <button class="btn-icon" id="btn-reset" title="重置本关">🔄 重置</button>
+      <button class="btn-icon" id="btn-mute" title="声音开关">🔊 声音</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Status Bar -->
+    <section class="status-bar">
+      <div class="level-desc" id="level-desc">关卡任务加载中...</div>
+      <div class="status-indicator">
+        <div class="status-dot" id="status-dot"></div>
+        <span id="status-text">动力未接通</span>
+      </div>
+    </section>
+
+    <!-- Canvas Pegboard -->
+    <section class="canvas-wrap">
+      <canvas id="gear-canvas" width="600" height="400"></canvas>
+    </section>
+
+    <!-- Gear Inventory Tray -->
+    <section class="tray-card">
+      <div class="tray-title">
+        <span>齿轮工具箱（点击选中齿轮，再点击棋盘轴心安装；点击已安装齿轮可取下）</span>
+      </div>
+      <div class="gears-tray" id="gears-tray"></div>
+    </section>
+
+    <!-- Tip Card -->
+    <div class="tip-card">
+      <span>💡 科学小贴士:</span>
+      <span id="tip-text">两个咬合的齿轮转向相反；大齿轮带小齿轮可以加速转动！</span>
+    </div>
+  </main>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="win-modal">
+    <div class="modal-card">
+      <div class="modal-title">🎉 机械联动成功！</div>
+      <div class="stars-row" id="win-stars">⭐⭐⭐</div>
+      <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 8px;">传动效率极高，所有目标均已欢快运转！</p>
+      <p style="color: #94a3b8; font-size: 13px;">使用齿轮: <strong id="res-gears" style="color: #f59e0b;">1</strong></p>
+      
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-replay">再试一次</button>
+        <button class="btn-primary" id="btn-next-level">下一关 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Levels Modal -->
+  <div class="modal-overlay" id="levels-modal">
+    <div class="modal-card">
+      <div class="modal-title">📖 关卡蓝图库</div>
+      <div class="levels-grid" id="levels-grid"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-close-levels">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
