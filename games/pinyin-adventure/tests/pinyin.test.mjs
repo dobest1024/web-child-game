@@ -12,6 +12,12 @@ test('声母 23、韵母 24、整体认读 16', () => {
   assert.equal(P.FINALS.length, 24);
   assert.equal(P.WHOLE_SYLLABLES.length, 16);
   assert.deepEqual(Object.keys(P.INITIAL_AUDIO).sort(), [...P.INITIALS].sort());
+  const finalLevels = WORLDS[0].levels.slice(10, 15).flatMap((L) => L.pools.block);
+  assert.deepEqual(finalLevels.map((i) => i.base), P.FINALS.slice(6));
+  assert.deepEqual(
+    finalLevels.map((i) => i.show),
+    ['āi', 'ēi', 'uī', 'āo', 'ōu', 'iū', 'iē', 'üē', 'ér', 'ān', 'ēn', 'īn', 'ūn', 'ǖn', 'āng', 'ēng', 'īng', 'ōng'],
+  );
 });
 
 test('标调：a 优先，再 o、e，iu ui 标在后', () => {

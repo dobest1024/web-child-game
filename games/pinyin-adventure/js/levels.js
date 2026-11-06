@@ -73,6 +73,10 @@ for (let grade = 2; grade <= 6; grade++) {
   WORLDS.push({ grade, name: ['','','字音小镇','字音山谷','多音字海湾','易错字城堡','字音大挑战'][grade], sky: ['#bfe6ff','#f1fbff'], hill: '#9fd59a', levels });
 }
 // 一年级补足复韵母、鼻韵母和整体认读，追加关卡以保留原存档编号。
+const FINAL_BASES = {
+  wei1: 'ui', you1: 'iu', ye1: 'ie', yue1: 'üe',
+  yin1: 'in', wen1: 'un', yun1: 'ün', ying1: 'ing', hong1: 'ong',
+};
 const FOUNDATION = [
   ['复韵母一', ['ai1','ei1','wei1']], ['复韵母二', ['ao1','ou1','you1']],
   ['复韵母三', ['ye1','yue1','er2']], ['前鼻韵母', ['an1','en1','yin1','wen1','yun1']],
@@ -83,7 +87,10 @@ const FOUNDATION = [
 FOUNDATION.forEach(([name, syllables], i) => WORLDS[0].levels.push({ name, gates: ['block'], options: 3, hedgehogs: 0, speed: 165,
   intro: '听完整音节，辨认复韵母、鼻韵母与整体认读音节。',
   ...(i === 9 ? { boss: { kind: 'thief', name: '拼读大盗', hp: 8 } } : {}),
-  pools: { block: syllables.map(audio => ({ audio, show: pinyinRules.markTone(audio.slice(0,-1), Number(audio.at(-1))) })) } }));
+  pools: { block: syllables.map((audio) => {
+    const base = (i < 5 && FINAL_BASES[audio]) || audio.slice(0, -1);
+    return { audio, base, show: pinyinRules.markTone(base, Number(audio.at(-1))) };
+  }) } }));
 WORLDS.forEach((w) => (w.levels || []).forEach((L, i) => {
   L.n = i + 1;
   L.goal = L.boss ? L.boss.hp : 8;
@@ -94,10 +101,11 @@ function makeOptions(item, pool, count, random = Math.random) {
   const others = [...new Map(pool.filter(p => p.show !== item.show).map(p => [p.show, p])).values()];
   // 同音不同词不做互相干扰项；用其他声调补足选项。
   if (others.length < count - 1) {
-    const base = item.audio.slice(0, -1);
+    const base = item.base || item.audio.slice(0, -1);
+    const audioBase = item.audio.slice(0, -1);
     for (let tone = 1; tone <= 4; tone++) {
       const show = pinyinRules.markTone(base, tone);
-      if (show !== item.show && !others.some(p => p.show === show)) others.push({ show, audio: base + tone });
+      if (show !== item.show && !others.some(p => p.show === show)) others.push({ show, base, audio: audioBase + tone });
     }
   }
   const same = others.filter((p) => item.group && p.group === item.group);

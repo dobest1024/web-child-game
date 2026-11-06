@@ -30,6 +30,10 @@ test('字表：每个字两个部件，左右或上下，部件拼回去就是�
     assert.ok(chars.some((ch) => ch.parts.includes(r)), `偏旁 ${r} 没用上`);
     assert.ok(!C.CHARS[r], `${r} 是偏旁，不是字表里的字`);
   }
+  assert.deepEqual(C.CHARS['杨'].parts, ['木', '昜']);
+  for (const r of ['昜', '㐬', '㣺', '龹', '豙', '肰', '夬', '毌', '䍃', '彖', '彳']) {
+    assert.ok(C.RADICAL_NAMES[r], `缺 ${r} 的偏旁名称`);
+  }
 });
 
 test('关卡：10 关，第 5、10 关是 Boss，部件池就是本关字的部件', () => {

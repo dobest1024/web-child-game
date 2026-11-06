@@ -102,15 +102,15 @@ h1 { font-size: clamp(44px, 9vw, 76px); margin: 6px 0; color: #3b82d6; text-shad
 .book-tip { text-align: center; font-size: 18px; margin: 14px; }
 .book { flex: 1; overflow-y: auto; padding: 0 16px 30px; max-width: 900px; width: 100%; margin: 0 auto; }
 .book h3 { font-size: 20px; margin: 18px 4px 10px; }
-.cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
-.card {
+.cards, .book-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); }
+.card, .book-item {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-  min-height: 112px; padding: 10px 4px; border-radius: 18px;
+  min-height: 112px; min-width: 0; padding: 10px 6px; border-radius: 18px; overflow: hidden;
   background: #ece6da; color: #a69c8d; box-shadow: 0 4px 0 #d8cfc2;
 }
 .card .pic { font-size: 40px; line-height: 1.1; filter: grayscale(1); opacity: 0.45; }
-.card .en { font-size: 20px; font-weight: 800; }
-.card .zh { font-size: 14px; }
+.card .en { font-size: clamp(14px, 3.8vw, 18px); font-weight: 800; max-width: 100%; overflow-wrap: anywhere; text-align: center; line-height: 1.15; }
+.card .zh { font-size: 14px; max-width: 100%; overflow-wrap: anywhere; text-align: center; }
 .card.learned { background: #fff3c4; color: var(--ink); box-shadow: 0 4px 0 #e7c35a; }
 .card.learned .pic { filter: none; opacity: 1; }
 .swatch { display: inline-block; width: 40px; height: 40px; border-radius: 50%; border: 3px solid #0002; }

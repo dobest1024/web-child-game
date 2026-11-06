@@ -473,6 +473,7 @@ function stopTrain(message = true) {
   frame = 0;
   running = false;
   collected = [];
+  $('#riders')?.replaceChildren();
   if (message) {
     render();
     tell('火车回到起点啦，轨道还在，可以修改后再出发。');
@@ -582,8 +583,17 @@ $('#go').addEventListener('click', () => {
         svg.querySelector(`[data-passenger="${id}"]`)?.remove();
         sounds.play('board');
         tell(`${passenger.name}上车啦！车厢里又多了一位好朋友。`);
-        $('#riders').innerHTML =
-          `<g transform="translate(-17 -18) scale(.34)">${animal(passenger.kind, true)}</g>`;
+        const riders = $('#riders');
+        const count = riders.children.length;
+        const total = Math.max(level.passengers.length, count + 1);
+        const s = total === 1 ? 0.34 : total === 2 ? 0.3 : 0.26;
+        const stepX = total < 2 ? 0 : total === 2 ? 20 : 26 / (total - 1);
+        const x = Math.round((count - (total - 1) / 2) * stepX - 50 * s);
+        const y = Math.round(-52 * s);
+        const rider = document.createElementNS(ns, 'g');
+        rider.setAttribute('transform', `translate(${x} ${y}) scale(${s})`);
+        rider.innerHTML = animal(passenger.kind, true);
+        riders.append(rider);
       }
       if (level.tokens.some((p) => key(p) === id)) {
         svg.querySelector(`[data-token="${id}"]`)?.remove();

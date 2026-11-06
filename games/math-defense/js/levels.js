@@ -54,15 +54,30 @@ const WORLDS = [
 
 const GRADE_TOPICS = [
   [2, '乘法花园', [['add100','百以内加法'],['sub100','百以内减法'],['mul9','乘法口诀'],['div9','表内除法'],['missing','乘法填空'],['remainder','有余数除法'],['mixed','乘加混合'],['brackets','括号算式']]],
-  [3, '万以内大森林', [['add1000','三位数加法'],['sub1000','三位数减法'],['mulSmall','两位数乘法'],['divSmall','整除练习'],['perimeter','长方形周长'],['area','长方形面积'],['mixed','运算顺序'],['decimalAdd','小数初步']]],
-  [4, '大数星空', [['addLarge','大数加法'],['subLarge','大数减法'],['mulLarge','两位数相乘'],['divLarge','两位数除法'],['times10','整十整百'],['brackets','括号运算'],['distribute','运算律'],['average','平均数']]],
+  [3, '万以内大森林', [['add1000','三位数加法'],['sub1000','三位数减法'],['mulSmall','两位数乘法'],['divSmall','整除练习'],['perimeter','长方形周长'],['area','长方形面积'],['mixedG3','运算顺序'],['decimalAddG3','小数初步']]],
+  [4, '大数星空', [['addLarge','大数加法'],['subLarge','大数减法'],['mulLarge','两位数相乘'],['divLarge','两位数除法'],['times10','整十整百'],['bracketsG4','括号运算'],['distribute','运算律'],['average','平均数']]],
   [5, '小数海洋', [['decimalAdd','小数加法'],['decimalSub','小数减法'],['decimalMul','小数乘法'],['decimalDiv','小数除法'],['shiftDecimal','小数点移动'],['factor','公因数'],['multiple','公倍数'],['triangle','三角形面积']]],
   [6, '分数城堡', [['fractionAdd','分数加法'],['fractionSub','分数减法'],['fractionMul','分数乘法'],['fractionDiv','分数除法'],['percent','百分数'],['ratio','比与比例'],['volume','长方体体积'],['equation','方程复习']]],
 ];
+const MONSTER_SHAPES = ['bean', 'jelly', 'cloud', 'seesaw', 'cookie', 'pop', 'donut', 'stack'];
+const MONSTER_COLORS = [
+  '#ff9ec4', '#7fd6a4', '#8ecae6', '#ffd166', '#c792ea', '#ff8a65', '#f4a261', '#90be6d',
+  '#f28482', '#84a59d', '#b5838d', '#6d9dc5', '#e5989b', '#a8dadc', '#f7b267', '#9b89b3',
+];
+const MONSTER_BELLIES = ['#fff0f5', '#e8f8f5', '#fef9e7', '#f5eef8', '#eaf2f8', '#fdebd0'];
+const MONSTER_EYES = ['round', 'big', 'wink', 'star', 'lashed'];
+const MONSTER_HORNS = ['single', 'twin', 'antenna', 'crown', 'leaf', 'none'];
+let monsterIdx = 0;
 for (const [grade, name, topics] of GRADE_TOPICS) {
   const levels = topics.map(([kind, title]) => {
+    const shape = MONSTER_SHAPES[monsterIdx % MONSTER_SHAPES.length];
+    const color = MONSTER_COLORS[(monsterIdx * 3 + Math.floor(monsterIdx / 8)) % MONSTER_COLORS.length];
+    const belly = MONSTER_BELLIES[monsterIdx % MONSTER_BELLIES.length];
+    const eyes = MONSTER_EYES[monsterIdx % MONSTER_EYES.length];
+    const horn = MONSTER_HORNS[Math.floor(monsterIdx / 2) % MONSTER_HORNS.length];
+    monsterIdx++;
     KIND_NAMES[kind] = title;
-    MONSTERS[kind] = { ...MONSTERS.add10, name: `${title}小怪`, desc: `用${title}守护城堡。` };
+    MONSTERS[kind] = { name: `${title}小怪`, shape, color, belly, eyes, horn, desc: `用${title}守护城堡。` };
     return { name: title, kinds: [kind], options: 4, goal: 12, walk: 35, gap: 6, maxOn: 2, intro: `本关练习${title}，算好再发射！` };
   });
   const boss = (name, kinds, kind) => ({ name, kinds, options: 4, walk: 80, boss: { kind, hp: 5, chain: 3 }, intro: '用刚学过的知识打败守关怪物，连答三题打掉一格血！' });

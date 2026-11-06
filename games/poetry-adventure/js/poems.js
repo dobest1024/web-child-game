@@ -815,11 +815,14 @@ const poemById = (id) => POEMS.find((p) => p.id === id);
 // 每句一个音频：audio/lines/<诗id>-<句号>.mp3；诗名作者：<诗id>-0.mp3
 const lineAudio = (poem, i) => `${poem.id}-${i + 1}`;
 
-// 上句 → 下句（飞花令出题用）：同一首诗里相邻两句
+// 上句 → 下句（飞花令出题用）：同一首诗里相邻两句（排除《江南》中重复句式的歧义连句）
 function linePairs(poems) {
   const pairs = [];
   for (const p of poems) {
-    for (let i = 0; i + 1 < p.lines.length; i++) pairs.push({ poem: p, i, up: p.lines[i], down: p.lines[i + 1] });
+    for (let i = 0; i + 1 < p.lines.length; i++) {
+      if (p.id === 'jiangnan' && i > 0) continue;
+      pairs.push({ poem: p, i, up: p.lines[i], down: p.lines[i + 1] });
+    }
   }
   return pairs;
 }

@@ -33,7 +33,7 @@ function render() {
   const visible = sorted.filter(
     (game) =>
       (category === '全部游戏' || game.category === category) &&
-      `${game.title} ${game.tags} ${game.category} ${game.series || ''}`
+      `${game.title} ${game.subtitle} ${game.tags} ${game.category} ${game.series || ''} ${game.note || ''}`
         .toLowerCase()
         .includes(query),
   );

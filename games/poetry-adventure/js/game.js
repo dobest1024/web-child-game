@@ -206,31 +206,33 @@ function createGame(canvas, level, world, opts) {
   }
 
   // ---------- 诗句拼桥 ----------
+  const bankL = (T) => G.W * (T && T.poem.lines.length > 6 ? 0.09 : 0.16);
+  const bankR = (T) => G.W * (T && T.poem.lines.length > 6 ? 0.91 : 0.84);
+  const slotW = (T) => (bankR(T) - bankL(T)) / T.poem.lines.length;
+  const slotX = (T, i) => bankL(T) + slotW(T) * (i + 0.5);
   function startBridge(poem) {
     let order = shuffle(poem.lines.map((_, i) => i));
     if (order.every((v, i) => v === i)) order = [...order.slice(1), order[0]];
     const T = { type: 'bridge', poem, order, placed: 0, cards: order.map((line) => ({ line, placed: false, shake: 0, fly: 1 })),
-      walkerX: G.W * 0.16 - 50, idle: 0, glow: 0, crossing: false };
+      walkerX: 0, idle: 0, glow: 0, crossing: false };
+    T.walkerX = bankL(T) - 42;
     laterVoice(() => say(poem, 0), 400);
     return T;
   }
-  const bankL = () => G.W * 0.16;
-  const bankR = () => G.W * 0.84;
-  const slotW = (T) => (bankR() - bankL()) / T.poem.lines.length;
-  const slotX = (T, i) => bankL() + slotW(T) * (i + 0.5);
   function cardRects(T) {
     const rects = [];
-    const maxW = G.W - 80;
-    // 最多排两行，七句的《江南》在竖屏也能完整显示。
+    const gap = T.cards.length > 6 ? 10 : 14;
+    const maxW = G.W - 64;
+    // 最多排两行，七句的《江南》和八句律诗都能完整排下不挤出右边。
     const columns = Math.ceil(T.cards.length / 2);
-    const cardMaxW = (maxW - (columns - 1) * 14) / columns;
+    const cardMaxW = Math.floor((maxW - (columns - 1) * gap) / columns);
     let row = [], rowW = 0;
     const rows = [];
     for (const c of T.cards) {
-      const w = Math.min(bare(T.poem.lines[c.line]).length * 30 + 44, cardMaxW);
-      if (row.length && rowW + w + 14 > maxW) { rows.push([row, rowW]); row = []; rowW = 0; }
+      const w = Math.min(bare(T.poem.lines[c.line]).length * 28 + 40, cardMaxW);
+      if (row.length >= columns || (row.length && rowW + w + gap > maxW)) { rows.push([row, rowW]); row = []; rowW = 0; }
       row.push([c, w]);
-      rowW += w + (row.length > 1 ? 14 : 0);
+      rowW += w + (row.length > 1 ? gap : 0);
     }
     rows.push([row, rowW]);
     const top = rows.length > 1 ? 396 : 430;
@@ -238,7 +240,7 @@ function createGame(canvas, level, world, opts) {
       let x = (G.W - width) / 2;
       for (const [c, w] of items) {
         rects.push({ c, x, y: top + r * 68, w, h: 56 });
-        x += w + 14;
+        x += w + gap;
       }
     });
     return rects;
@@ -273,7 +275,7 @@ function createGame(canvas, level, world, opts) {
     if (T.finished) return;
     T.idle += dt;
     if (T.idle > (assist >= 1 ? 4 : 8)) { T.glow = 2; T.idle = 0; }
-    const target = T.crossing ? bankR() + 60 : T.placed ? slotX(T, T.placed - 1) : bankL() - 50;
+    const target = T.crossing ? bankR(T) + 42 : T.placed ? slotX(T, T.placed - 1) : bankL(T) - 42;
     const d = target - T.walkerX;
     T.walkerX += Math.sign(d) * Math.min(Math.abs(d), 170 * dt);
     if (T.crossing && Math.abs(d) < 1) poemDone(T.poem);
@@ -605,16 +607,17 @@ function createGame(canvas, level, world, opts) {
       const wx = 60 + i * 110 + Math.sin(G.time * 2 + i) * 10;
       ctx.beginPath(); ctx.arc(wx, BANK_Y + 50 + (i % 2) * 22, 12, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke();
     }
+    const bL = bankL(T), bR = bankR(T);
     ctx.fillStyle = '#93d27f';
-    ctx.fillRect(0, BANK_Y, bankL(), 100);
-    ctx.fillRect(bankR(), BANK_Y, G.W - bankR(), 100);
+    ctx.fillRect(0, BANK_Y, bL, 100);
+    ctx.fillRect(bR, BANK_Y, G.W - bR, 100);
     ctx.fillStyle = '#d4a46b';
     ctx.fillRect(0, BANK_Y + 100, G.W, H - BANK_Y - 100);
     // 已经铺好的木板
     const sw = slotW(T);
     for (let i = 0; i < T.poem.lines.length; i++) {
       const c = T.cards.find((k) => k.placed && k.line === i);
-      const x = bankL() + sw * i;
+      const x = bL + sw * i;
       if (!c) {
         ctx.strokeStyle = '#ffffff99';
         ctx.setLineDash([6, 6]);
@@ -632,13 +635,14 @@ function createGame(canvas, level, world, opts) {
     duck(T.walkerX, BANK_Y + 4);
     // 天上的诗：铺好的句子显示出来，没铺的是空格
     const n = T.poem.lines.length;
-    const size = n > 7 ? 18 : n > 4 ? 22 : 28;
+    const size = n > 7 ? 16 : n > 4 ? 20 : 28;
+    const lineStep = n > 7 ? 22 : size + 10;
     ctx.fillStyle = '#fffaf0e0';
-    roundRect(G.W / 2 - 230, 26, 460, 50 + n * (size + 10), 20); ctx.fill();
-    text(`《${T.poem.title}》 ${T.poem.author}`, G.W / 2, 50, 22, '#7a5a3a', UI_FONT);
+    roundRect(G.W / 2 - 230, 22, 460, 44 + n * lineStep, 20); ctx.fill();
+    text(`《${T.poem.title}》 ${T.poem.author}`, G.W / 2, 44, 21, '#7a5a3a', UI_FONT);
     T.poem.lines.forEach((l, i) => {
       const shown = i < T.placed ? l : '＿'.repeat(bare(l).length) + l.slice(-1);
-      text(shown, G.W / 2, 82 + i * (size + 10), size, i < T.placed ? '#3b2a1a' : '#c9b89a');
+      text(shown, G.W / 2, 72 + i * lineStep, size, i < T.placed ? '#3b2a1a' : '#c9b89a');
     });
     // 下面的木板卡片
     cardRects(T).forEach((r, k) => {

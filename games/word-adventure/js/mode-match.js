@@ -88,8 +88,12 @@ MODES.match = (G, api) => {
         roundRect(ctx, -CARD_W / 2, -CARD_H / 2, CARD_W, CARD_H, 20); ctx.fill(); ctx.stroke();
         if (c.kind === 'pic') drawPic(ctx, c.item.pic, 0, 0, 120);
         else {
-          const size = c.item.show.length > 7 ? 26 : c.item.show.length > 5 ? 32 : 40;
-          text(ctx, c.item.show, 0, -6, size, '#2f4f8f');
+          const word = c.item.show;
+          let size = word.length > 10 ? 20 : word.length > 8 ? 22 : word.length > 7 ? 26 : word.length > 5 ? 32 : 40;
+          ctx.font = `bold ${size}px ${ROUND_FONT}`;
+          const measured = ctx.measureText ? ctx.measureText(word).width : 0;
+          if (measured > CARD_W - 16) size = Math.max(16, Math.floor(size * (CARD_W - 16) / measured));
+          text(ctx, word, 0, -6, size, '#2f4f8f');
           text(ctx, '🔊', 0, 52, 22, '#2f4f8f', EMOJI_FONT, '');
         }
       }

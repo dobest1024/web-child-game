@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#4a6fa5" />
+    <title>找不同小侦探 · 火眼金睛大挑战</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="/" target="_top" aria-label="返回游戏大厅"
+          ><span class="brand-icon">🔍</span
+          ><span
+            >找不同小侦探<small>火眼金睛，找出不一样的小秘密</small></span
+          ></a
+        >
+        <div>
+          <button id="sound" aria-label="关闭音效" aria-pressed="true">
+            ♫ 音效开</button
+          ><button id="help" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="heading">
+        <div>
+          <p class="eyebrow" id="chapter">第 1 案 · 共 8 案</p>
+          <h1 id="title">阳光花园</h1>
+          <p id="story"></p>
+        </div>
+        <button id="map" class="map-button">
+          🔎 案件板 <b id="progress">0 / 8</b>
+        </button>
+      </section>
+      <div class="workspace">
+        <section class="detective-board" aria-label="找不同案发现场">
+          <div class="board-top">
+            <span id="theme"></span><span id="clock">⏱ 0:00</span>
+          </div>
+          <div class="scenes">
+            <figure class="scene-frame" id="frame-a">
+              <svg
+                id="scene-a"
+                viewBox="0 0 400 300"
+                role="img"
+                aria-label="第一幅案发现场图"
+              ></svg>
+              <div class="zones" id="zones-a" aria-label="第一幅图的可疑位置"></div>
+              <span class="scene-tag">图一</span>
+            </figure>
+            <figure class="scene-frame" id="frame-b">
+              <svg
+                id="scene-b"
+                viewBox="0 0 400 300"
+                role="img"
+                aria-label="第二幅案发现场图"
+              ></svg>
+              <div class="zones" id="zones-b" aria-label="第二幅图的可疑位置"></div>
+              <span class="scene-tag">图二</span>
+            </figure>
+          </div>
+          <div class="board-bottom">
+            <span>两幅图有 6 处不一样，点哪张图都可以</span
+            ><span>🚩 已找到 <b id="found">0</b> / 6 处</span>
+          </div>
+        </section>
+        <aside class="sidebar">
+          <section class="guide">
+            <div id="mascot"></div>
+            <div>
+              <small>放大镜队长 · 圆圆</small>
+              <p id="guide-text"></p>
+            </div>
+          </section>
+          <section class="card">
+            <p class="eyebrow">侦探任务</p>
+            <h2>找出全部 6 处不同</h2>
+            <div class="stats">
+              <span>找到 <b id="found-side">0</b> 处</span
+              ><span>用时 <b id="time-side">0:00</b></span>
+            </div>
+            <div class="goals">
+              <span>🌟 90 秒内不用提示：3 颗星</span
+              ><span>💡 用了提示：2 颗星</span
+              ><span>🐢 慢慢找：过关也有 1 颗星</span>
+            </div>
+            <p class="note">
+              找错不扣分，也不会失败。每关有 3 次提示，星星自动保存在当前浏览器。
+            </p>
+          </section>
+          <section class="hint">
+            <span>💡</span>
+            <p id="hint-text">
+              想不出来就点提示按钮，放大镜会圈出一处不同。
+            </p>
+          </section>
+          <section class="legend">
+            <span>🚩 小旗：已经找到的不同</span
+            ><span>💡 圈圈：提示的位置</span
+            ><span>🔍 两幅图里点哪张都可以</span>
+          </section>
+        </aside>
+      </div>
+      <div class="controls">
+        <div>
+          <button id="reset">↺ 重新找</button>
+        </div>
+        <div>
+          <button id="hint" class="primary">
+            💡 用一次提示（还剩 <b id="hints-left">3</b> 次）
+          </button>
+        </div>
+      </div>
+      <p id="status" role="status" aria-live="polite">
+        对比两幅图，点一点不一样的地方。
+      </p>
+      <footer>仔细观察，每个角落都藏着小秘密。</footer>
+    </main>
+    <dialog id="map-dialog" class="map-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">从阳光花园到雪天滑雪</p>
+          <h2>侦探案件板</h2>
+        </div>
+        <button data-close aria-label="关闭案件板">✕</button>
+      </div>
+      <div id="scene-list" class="level-grid"></div>
+      <p class="note">所有案件都可以自由选择，星星自动保存在当前浏览器。</p>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>小侦探，接令！</h2>
+        <button data-close aria-label="关闭玩法说明">✕</button>
+      </div>
+      <ol>
+        <li>
+          <b>对比两幅图</b>每个现场有 6 处不一样，点两张图中任何一处都可以做记号。
+        </li>
+        <li>
+          <b>插上小旗</b>找对的地方会插上小旗子；找错了图会轻轻晃一晃提醒你，不扣分。
+        </li>
+        <li>
+          <b>善用提示</b>每关有 3 次提示，放大镜会圈住一处不同，两张图里都能看到。
+        </li>
+        <li>
+          <b>赢得星星</b>90 秒内不用提示得 3 颗星；用了提示得 2 颗星；其余过关也有 1 颗星。
+        </li>
+      </ol>
+      <p class="note">键盘：Tab 在可疑位置之间循环移动，回车或空格做记号。</p>
+      <button data-close class="primary">收到，开始破案！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <div id="result-badge"></div>
+      <p class="eyebrow">本案侦破</p>
+      <h2>真厉害，小侦探！</h2>
+      <div id="stars" class="stars"></div>
+      <p id="result-text"></p>
+      <p id="result-note" class="note"></p>
+      <div class="result-actions">
+        <button id="retry">再找一遍</button
+        ><button id="next" class="primary">下一案发现场 ➜</button>
+      </div>
+    </dialog>
+    <dialog id="party-dialog">
+      <div id="party-badge"></div>
+      <p class="eyebrow">全部 8 案侦破</p>
+      <h2>荣誉小侦探诞生啦！</h2>
+      <p id="party-text"></p>
+      <div id="party-badges"></div>
+      <div class="result-actions">
+        <button id="party-again" class="primary">从头再玩一遍 🎉</button>
+      </div>
+    </dialog>
+  </body>
+</html>

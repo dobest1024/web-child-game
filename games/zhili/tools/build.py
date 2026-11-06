@@ -11,7 +11,6 @@ js = '\n'.join((root / s).read_text(encoding='utf-8') for s in scripts)
 
 out = f'''<title>聪聪智力岛</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=ZCOOL+KuaiLe&display=swap">
 <style>
 {css}
 </style>

@@ -88,7 +88,20 @@ function makeTask(type, spec, r = Math.random) {
   const label = (m) => TM.MONEY[m].label;
   if (type === 'calc') {
     const { ask, answer, unit, explanation } = SHOP_PROBLEMS[spec.topic](r);
-    const values = [...new Set([answer, ...[1, -1, 2, -2, 5, 10].map(d => Math.round((answer + d) * 100) / 100).filter(v => v >= 0)])].slice(0, spec.options || 4);
+    const offsets =
+      answer >= 1000 && answer % 100 === 0
+        ? [-1000, -500, -200, -100, 100, 200, 500, 1000]
+        : answer >= 100 && answer % 10 === 0
+          ? [-100, -50, -20, -10, 10, 20, 50, 100]
+          : !Number.isInteger(answer)
+            ? [-2, -1, -0.5, -0.2, -0.1, 0.1, 0.2, 0.5, 1, 2]
+            : answer >= 20
+              ? [-10, -5, -3, -2, -1, 1, 2, 3, 5, 10]
+              : [-5, -3, -2, -1, 1, 2, 3, 5, 8, 10];
+    const distractors = shuffle(r, offsets)
+      .map((d) => Math.round((answer + d) * 100) / 100)
+      .filter((v) => v > 0 && v !== answer);
+    const values = [...new Set([answer, ...distractors])].slice(0, spec.options || 4);
     return { id, type, topic: spec.topic, ask, target: String(answer), choices: shuffle(r, values.map(String)), unit, explanation };
   }
   if (type === 'count') {

@@ -198,7 +198,7 @@ $('#restart').addEventListener('click', () => openLevel(current.world, current.l
 $('#replay').addEventListener('click', (e) => { e.currentTarget.blur(); if (game) game.replay(); });
 document.addEventListener('visibilitychange', () => document.hidden && pause());
 
-// ---------- 操作：点一列就移过去并放下；键盘 ← → 移动，↓ / 空格放下 ----------
+// ---------- 操作：点别的列先移过去，再点同一列放下；键盘 ← → 移动，↓ / 空格放下 ----------
 const canvas = $('#canvas');
 canvas.addEventListener('pointerdown', (e) => {
   e.preventDefault();
@@ -207,7 +207,8 @@ canvas.addEventListener('pointerdown', (e) => {
   const r = canvas.getBoundingClientRect();
   const c = game.columnAt(e.clientX - r.left, e.clientY - r.top);
   if (c < 0) return;
-  if (c === game.q.col || game.moveTo(c)) game.drop();
+  if (c === game.q.col) game.drop();
+  else game.moveTo(c);
 });
 const overlayOpen = () => !$('#intro').hidden || !$('#paused').hidden || !$('#result').hidden;
 document.addEventListener('keydown', (e) => {

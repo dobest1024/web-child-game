@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#b58ad6" />
+    <title>欢乐琴房 · 小朋友的快乐钢琴</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="/" target="_top" aria-label="返回游戏大厅"
+          ><span class="brand-icon">🎹</span
+          ><span
+            >欢乐琴房<small>小小的手指，也能开出音乐的花</small></span
+          ></a
+        >
+        <div>
+          <button id="sound" aria-label="关闭音效" aria-pressed="true">
+            ♫ 音效开</button
+          ><button id="help" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="heading">
+        <div>
+          <p class="eyebrow" id="eyebrow">小小演奏家</p>
+          <h1 id="title">自由弹奏</h1>
+          <p id="story">想弹哪个键，就弹哪个键，听听每个音的样子。</p>
+        </div>
+        <button id="songs" class="map-button">
+          🎼 曲目单 <b id="progress">0 / 7</b>
+        </button>
+      </section>
+      <nav class="modes" aria-label="选择玩法">
+        <button data-mode="free" class="current" aria-pressed="true">
+          🎹 自由弹奏</button
+        ><button data-mode="follow" aria-pressed="false">
+          💡 跟灯弹儿歌</button
+        ><button data-mode="ear" aria-pressed="false">👂 听音找键</button>
+      </nav>
+      <section class="stage" id="stage" aria-hidden="true"></section>
+      <section class="panel" id="free-panel">
+        <p id="free-hint">
+          随便按按看！屏幕上会开出声音的小波纹。
+        </p>
+      </section>
+      <section class="panel follow-panel" id="follow-panel" hidden>
+        <div class="panel-main">
+          <p class="eyebrow" id="follow-label">第 1 首</p>
+          <h2 id="follow-song">⭐ 小星星</h2>
+          <p class="lyric" id="follow-lyric">一闪一闪亮晶晶</p>
+        </div>
+        <div class="panel-side">
+          <p class="big-note" id="follow-next">do</p>
+          <p class="note" id="follow-progress">第 1 / 42 个音</p>
+          <p class="note" id="follow-mistakes">一次都没错哦</p>
+        </div>
+        <button id="follow-restart">↺ 从头再弹</button>
+      </section>
+      <section class="panel follow-panel" id="ear-panel" hidden>
+        <div class="panel-main">
+          <p class="eyebrow">竖起小耳朵</p>
+          <h2 id="ear-question">第 1 / 20 题</h2>
+          <p class="lyric" id="ear-hint">先听琴声，再点出是哪个键。</p>
+        </div>
+        <div class="panel-side">
+          <button id="ear-replay" class="primary">🔊 再听一遍</button>
+          <p class="note" id="ear-streak">连对 0 题</p>
+        </div>
+      </section>
+      <div class="keyboard-wrap">
+        <div
+          id="keyboard"
+          role="group"
+          aria-label="琴键，可以用鼠标、手指或键盘字母弹奏"
+        ></div>
+        <p class="scroll-hint">← 琴键多的时候，可以左右滑动 →</p>
+      </div>
+      <p id="status" role="status" aria-live="polite">
+        选一种玩法，或者直接按琴键试试音。
+      </p>
+      <footer>慢一点没关系，每个音都值得听一听。</footer>
+    </main>
+    <dialog id="songs-dialog" class="songs-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">跟着亮灯的琴键，弹出整首儿歌</p>
+          <h2>曲目单</h2>
+        </div>
+        <button data-close aria-label="关闭曲目单">✕</button>
+      </div>
+      <div id="song-list" class="song-list"></div>
+      <p class="note">
+        弹完就有星星：小走神 0–2 次得三星，3–8 次得两星，弹完至少一星。星星自动保存在当前浏览器。
+      </p>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>小朋友，来开音乐会吧！</h2>
+        <button data-close aria-label="关闭玩法说明">✕</button>
+      </div>
+      <ol>
+        <li>
+          <b>自由弹奏</b
+          >想弹哪个键就弹哪个键，屏幕上会开出声音的小波纹。
+        </li>
+        <li>
+          <b>跟灯弹儿歌</b
+          >亮灯的琴键在呼吸，弹下它，灯就会走到下一个音。弹错了不扣分，再试一次就好。
+        </li>
+        <li>
+          <b>听音找键</b
+          >先听琴声，再点出是哪个键。前 10 题是白键，后面会加入黑键。连对 3 题有一颗小星星。
+        </li>
+      </ol>
+      <p class="keymap-title">用电脑键盘可以这样弹：</p>
+      <ul class="keymap">
+        <li>
+          <b>白键</b>A S D F G H J K L 弹低音区 do–re，Z X C V 弹高音区
+          mi–la。
+        </li>
+        <li>
+          <b>黑键</b>W＝C♯4、E＝D♯4、T＝F♯4、Y＝G♯4、U＝A♯4、I＝C♯5、O＝D♯5、P＝F♯5、R＝G♯5。
+        </li>
+        <li>
+          <b>触屏和鼠标</b
+          >直接点琴键；用鼠标按住滑过琴键，可以把音连成一句话。
+        </li>
+      </ul>
+      <p class="note">
+        拿到第一颗星星后，自由弹奏就会解锁全部黑键。拿到星星的当晚，记得给爸爸妈妈表演一首哦。
+      </p>
+      <button data-close class="primary">收到，开始弹琴！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <p class="concert-art" id="result-art">🎉🎹🎉</p>
+      <p class="eyebrow">音乐会时间到</p>
+      <h2 id="result-title">掌声送给你！</h2>
+      <div id="stars" class="stars"></div>
+      <p id="result-text"></p>
+      <div id="result-badges"></div>
+      <div class="result-actions">
+        <button id="again">再弹一次</button
+        ><button id="next" class="primary">下一首 ➜</button>
+      </div>
+    </dialog>
+  </body>
+</html>

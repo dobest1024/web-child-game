@@ -74,15 +74,20 @@ function rainDistractors(poem, needed, count, random = Math.random) {
   return [...shuffle(own, random), ...shuffle(others, random)].slice(0, count);
 }
 
-// 飞花令的选项：正确下句 + 同一关别的诗里字数相同的句子（不拿还没学过的诗出题）
+// 飞花令的选项：正确下句 + 同一关别的诗里字数相同的句子（不拿还没学过的诗出题，避免同诗重复句式造成歧义）
 function bossOptions(pair, count, random = Math.random, poems = poemData.POEMS) {
-  const len = poemData.bare(pair.down).length;
+  const down = poemData.bare(pair.down);
+  const len = down.length;
+  const distinct = (l) => {
+    const b = poemData.bare(l);
+    return b !== down && !(pair.poem.id === 'jiangnan' && b.startsWith('鱼戏莲叶') && down.startsWith('鱼戏莲叶'));
+  };
   const pool = poems.filter((p) => p !== pair.poem).flatMap((p) => p.lines)
-    .filter((l) => poemData.bare(l).length === len && poemData.bare(l) !== poemData.bare(pair.down));
-  const own = pair.poem.lines.map(poemData.bare).filter(l => l.length === len && l !== poemData.bare(pair.down));
-  const fallback = poems.flatMap(p => p.lines.map(poemData.bare)).filter(l => l !== poemData.bare(pair.down));
+    .filter((l) => poemData.bare(l).length === len && distinct(l));
+  const own = pair.poem.lines.filter(distinct).map(poemData.bare).filter((l) => l.length === len);
+  const fallback = poems.flatMap((p) => p.lines.filter(distinct).map(poemData.bare));
   const picks = [...new Set([...shuffle(pool, random).map(poemData.bare), ...shuffle(own, random), ...shuffle(fallback, random)])].slice(0, count - 1);
-  return shuffle([poemData.bare(pair.down), ...picks], random);
+  return shuffle([down, ...picks], random);
 }
 
 if (typeof module === 'object') module.exports = { WORLDS, shuffle, rainDistractors, bossOptions };

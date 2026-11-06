@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#c98a24" />
+    <title>七巧板小达人 · 七块板子变变变</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="/" target="_top" aria-label="返回游戏大厅"
+          ><span class="brand-icon">📐</span
+          ><span
+            >七巧板小达人<small>七块神奇的板子，能变出全世界</small></span
+          ></a
+        >
+        <div>
+          <button id="sound" aria-label="关闭音效" aria-pressed="true">
+            ♫ 音效开</button
+          ><button id="help" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="heading">
+        <div>
+          <p class="eyebrow" id="chapter"></p>
+          <h1 id="title"></h1>
+          <p id="story">拼出剪影里的图形，七块板子都要用上哦。</p>
+        </div>
+        <button id="map" class="map-button">
+          🧩 拼图地图 <b id="progress">0 / 12</b>
+        </button>
+      </section>
+      <div class="workspace">
+        <section class="puzzle" aria-label="七巧板拼图">
+          <div class="puzzle-top">
+            <span>🖱 拖动 · ⌨ 方向键微调 · R 旋转 · F 翻转</span
+            ><span>把七块板子都放进影子里</span>
+          </div>
+          <div class="board" id="board">
+            <svg
+              id="scene"
+              viewBox="0 0 800 760"
+              tabindex="0"
+              role="application"
+              aria-label="七巧板拼图区：空格或 Q/E 换块，方向键微调，R 旋转，Shift+R 反向转，F 翻转，回车放置"
+            ></svg>
+          </div>
+          <div class="puzzle-bottom">
+            <span>已拼好 <b id="placed-board">0 / 7</b> 块</span
+            ><span>🎨 每块板子颜色不一样</span>
+          </div>
+        </section>
+        <aside class="sidebar">
+          <section class="card">
+            <p class="eyebrow">这一关的小目标</p>
+            <h2>七块全部归位</h2>
+            <div class="stats">
+              <span>旋转 <b id="rotations">0</b> 次</span
+              ><span>已拼 <b id="placed">0 / 7</b> 块</span>
+            </div>
+            <p id="budget" class="note"></p>
+            <div class="goals">
+              <span>🧩 全部归位：1 星</span
+              ><span>🙈 不看提示：再得 1 星</span
+              ><span>✨ 旋转达标：再得 1 星</span>
+            </div>
+            <p class="note">
+              没有时间限制，放错了也不会扣星星。随时可以重新开始。
+            </p>
+          </section>
+          <section class="hint">
+            <span>💡</span>
+            <p id="hint-text"></p>
+          </section>
+          <section class="legend">
+            <span>虚线：入门模式的拼法提示</span
+            ><span>高亮白边：当前选中的板子</span
+            ><span>靠近正确位置会自动吸住</span>
+          </section>
+        </aside>
+      </div>
+      <div class="controls">
+        <div>
+          <button id="rotate-ccw" aria-label="逆时针旋转（Shift+R）">↺ 左转</button
+          ><button id="rotate-cw" aria-label="顺时针旋转（R）">↻ 右转</button
+          ><button id="flip" aria-label="翻转（F）">⇋ 翻转</button>
+        </div>
+        <div>
+          <button id="hints" aria-label="开关提示" aria-pressed="false">
+            💡 提示：关</button
+          ><button id="reset">↺ 重新开始</button
+          ><button id="place" class="primary">放这里！ <span>⏎</span></button>
+        </div>
+      </div>
+      <p id="status" role="status" aria-live="polite">
+        点击一块七巧板，把它拖进影子里。
+      </p>
+      <footer>慢慢观察，转个方向，每一块都有自己的家。</footer>
+    </main>
+    <dialog id="map-dialog" class="map-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">从正方形到展翅的老鹰</p>
+          <h2>拼图地图</h2>
+        </div>
+        <button data-close aria-label="关闭拼图地图">✕</button>
+      </div>
+      <div id="level-list"></div>
+      <p class="note">所有关卡都可以自由选择，星星自动保存在当前浏览器。</p>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>小朋友，准备好了吗？</h2>
+        <button data-close aria-label="关闭玩法说明">✕</button>
+      </div>
+      <ol>
+        <li>
+          <b>认一认七块板子</b
+          >两块大三角、一块中三角、两块小三角、一块正方形和一块平行四边形。
+        </li>
+        <li>
+          <b>拖进影子里</b
+          >按住板子拖到剪影里，靠近正确的位置会“啪”地吸住。
+        </li>
+        <li>
+          <b>转一转、翻一翻</b
+          >「右转」每次转 45°，「左转」往回转；平行四边形要用「翻转」。
+        </li>
+        <li>
+          <b>两种模式</b
+          >入门模式影子里有虚线提示；挑战模式只有剪影，能多拿一颗星。
+        </li>
+      </ol>
+      <p class="note">
+        键盘玩法：空格或 Q/E 切换板子，方向键微调位置，R 顺时针转，Shift+R
+        逆时针转，F 翻转，回车放好，Esc 取消选中，Tab 移动到控制按钮。
+      </p>
+      <button data-close class="primary">收到，开始拼图！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <div id="result-figure" aria-hidden="true">📐</div>
+      <p class="eyebrow">又一个小图形诞生了</p>
+      <h2 id="result-title">拼好啦，真漂亮！</h2>
+      <div id="stars" class="stars"></div>
+      <p id="result-text"></p>
+      <div class="result-actions">
+        <button id="retry">再拼一次</button
+        ><button id="next" class="primary">下一个图形 ➜</button>
+      </div>
+    </dialog>
+  </body>
+</html>

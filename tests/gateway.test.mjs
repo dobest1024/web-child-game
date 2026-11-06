@@ -31,9 +31,9 @@ test('unified game gateway', async (t) => {
   });
 
   await t.test(
-    'all 26 game entries open, including the built cube game',
+    'all 36 game entries open, including the built cube game',
     async () => {
-      assert.equal(games.length, 26);
+      assert.equal(games.length, 36);
       assert.equal(new Set(games.map((game) => game.id)).size, games.length);
       for (const game of games) {
         const response = await fetch(`${base}${game.path}`);
@@ -83,10 +83,40 @@ test('unified game gateway', async (t) => {
       assert.equal((await fetch(`${base}/${game}/`, { method: 'POST' })).status, 405);
     }
   });
-  await t.test('in-game links back to the portal leave the player iframe', async () => {
+  await t.test('ten new thinking and learning games expose their entry assets', async () => {
+    for (const game of [
+      'number-slide',
+      'tangram',
+      'one-stroke',
+      'animal-sudoku',
+      'zoo-2048',
+      'spot-difference',
+      'idiom-quest',
+      'happy-piano',
+      'balance-scale',
+      'maze-treasure',
+    ]) {
+      const response = await fetch(`${base}/${game}/`);
+      assert.equal(response.status, 200, game);
+      const html = await response.text();
+      const assets = [...html.matchAll(/(?:src|href)=["']([^"']+\.(?:js|css))["']/g)].map((match) => match[1]);
+      assert.ok(assets.length >= 2, `${game} must link its logic and styles`);
+      for (const asset of assets) {
+        const url = new URL(asset, `${base}/${game}/`);
+        assert.equal(url.origin, base, `${game} assets are self-contained`);
+        const served = await fetch(url);
+        assert.equal(served.status, 200, `${game}: ${asset}`);
+        assert.match(served.headers.get('content-type'), asset.endsWith('.css') ? /text\/css/ : /javascript/);
+      }
+      assert.equal((await fetch(`${base}/${game}/missing.js`)).status, 404);
+      assert.equal((await fetch(`${base}/${game}/`, { method: 'POST' })).status, 405);
+    }
+  });
+  await t.test('in-game links back to the portal leave the player iframe and do not block on external Google Fonts', async () => {
     for (const game of games) {
       if (game.id === 'crown') continue;
       const html = await (await fetch(`${base}${game.path}`)).text();
+      assert.doesNotMatch(html, /fonts\.googleapis\.com/, `${game.title} should not block on Google Fonts`);
       for (const [anchor] of html.matchAll(/<a\s[^>]*href=["']\/["'][^>]*>/g))
         assert.match(anchor, /target=["']_top["']/, `${game.title}: ${anchor}`);
     }
@@ -151,6 +181,16 @@ test('unified game gateway', async (t) => {
         '/water-rescue',
         '/icefire-delivery',
         '/potion-shop',
+        '/number-slide',
+        '/tangram',
+        '/one-stroke',
+        '/animal-sudoku',
+        '/zoo-2048',
+        '/spot-difference',
+        '/idiom-quest',
+        '/happy-piano',
+        '/balance-scale',
+        '/maze-treasure',
         '/huang',
         '/mini-game/weiqi',
       ]) {

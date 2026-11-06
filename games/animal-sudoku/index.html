@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#b07fd0" />
+    <title>动物数独 · 每行每列都住着小动物</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="/" target="_top" aria-label="返回游戏大厅"
+          ><span class="brand-icon">🐼</span
+          ><span
+            >动物数独<small>每行、每列、每宫都住着一只小动物</small></span
+          ></a
+        >
+        <div>
+          <button id="sound" aria-label="关闭音效" aria-pressed="true">
+            ♫ 音效开</button
+          ><button id="help" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="heading">
+        <div>
+          <p class="eyebrow" id="chapter"></p>
+          <h1 id="title">第 1 题</h1>
+          <p id="story"></p>
+        </div>
+        <button id="diff" class="map-button">
+          🧩 选择难度 <b id="progress">完成 0 题</b>
+        </button>
+      </section>
+      <div class="workspace">
+        <section class="garden" aria-label="数独棋盘">
+          <div class="garden-top">
+            <span id="board-tag"></span><span id="clock">⏰ 0:00</span>
+          </div>
+          <div class="board-wrap">
+            <div
+              id="board"
+              role="group"
+              aria-label="数独棋盘，方向键选择格子，数字键放入小动物"
+            ></div>
+          </div>
+          <div id="tray" role="group" aria-label="动物托盘，先选格子再点小动物"></div>
+          <div class="garden-bottom">
+            <span>先点格子，再点托盘里的小动物</span
+            ><span>同行、同列、同宫不能重复</span>
+          </div>
+        </section>
+        <aside class="sidebar">
+          <section class="guide">
+            <div id="mascot"></div>
+            <div>
+              <small>熊猫队长 · 团团</small>
+              <p id="guide-text">先点一个空格，再选一只小动物送它回家！</p>
+            </div>
+          </section>
+          <section class="card">
+            <p class="eyebrow">这一题的小目标</p>
+            <h2>让每只动物都有自己的格子</h2>
+            <div class="stats">
+              <span>用时 <b id="elapsed">0:00</b></span
+              ><span>提示 <b id="hints">3</b> 次</span>
+            </div>
+            <div class="goals">
+              <span>🌸 全部填对：1 星</span><span>⚡ 用时很快：再得 1 星</span
+              ><span>💪 不用提示：再得 1 星</span>
+            </div>
+            <p class="note">
+              没有惩罚，也不会催你。放错了摇摇头，换一只再试试就好。
+            </p>
+          </section>
+          <section class="hint">
+            <span>💡</span>
+            <p id="hint-text">
+              选一个空格再点「帮帮我」，团团会悄悄把正确的小伙伴放进去。
+            </p>
+          </section>
+          <section class="legend">
+            <span>白色格子：等你来放</span><span>淡紫格子：题目放好的</span
+            ><span>淡金格子：提示帮忙放的</span
+            ><span>红红的小脸：和旁边重复啦</span>
+          </section>
+        </aside>
+      </div>
+      <div class="controls">
+        <div>
+          <button id="reset">↺ 重新开始</button
+          ><button id="erase">🧹 擦除</button>
+        </div>
+        <div>
+          <button id="hint" class="primary">💡 帮帮我（剩 3 次）</button>
+        </div>
+      </div>
+      <p id="status" role="status" aria-live="polite">
+        先选一个空格，再点托盘里的小动物。
+      </p>
+      <footer>慢慢想，不着急，每一只小动物都会等你的。</footer>
+    </main>
+    <dialog id="diff-dialog" class="diff-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">从 4×4 到 9×9</p>
+          <h2>选择一个难度</h2>
+        </div>
+        <button data-close aria-label="关闭难度选择">✕</button>
+      </div>
+      <div id="diff-list"></div>
+      <p class="note">
+        每个难度都会连续出新题。星星和完成的题数自动保存在当前浏览器。
+      </p>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>小朋友，一起玩数独吧！</h2>
+        <button data-close aria-label="关闭玩法说明">✕</button>
+      </div>
+      <ol>
+        <li>
+          <b>棋盘的规则</b
+          >每一行、每一列、每个小宫格里，同一种动物只能出现一次。9×9
+          挑战用数字 1-9 代替动物。
+        </li>
+        <li>
+          <b>放小动物</b
+          >先点一个空格，再点下面托盘里的小动物。放错了它会摇摇头提醒你，换一只就好。
+        </li>
+        <li>
+          <b>看剩余数量</b
+          >托盘角落的数字告诉你，这种动物还剩几只没放上棋盘。
+        </li>
+        <li>
+          <b>遇到困难</b
+          >点「帮帮我」，会自动放对一格。每题有 3 次提示，不用完也没有关系。
+        </li>
+      </ol>
+      <p class="note">
+        键盘：方向键选格子，数字键 1-9 直接放入，退格键擦掉。Tab
+        可以走到托盘，回车放入。
+      </p>
+      <button data-close class="primary">收到，开始挑战！</button>
+    </dialog>
+    <dialog id="result-dialog">
+      <div id="result-mascot"></div>
+      <p class="eyebrow">又一张棋盘住满啦</p>
+      <h2>小动物们说：谢谢你！</h2>
+      <div id="stars" class="stars"></div>
+      <p id="result-text"></p>
+      <div id="badges"></div>
+      <div class="result-actions">
+        <button id="change-diff">换个难度</button
+        ><button id="next" class="primary">下一题 ➜</button>
+      </div>
+    </dialog>
+  </body>
+</html>

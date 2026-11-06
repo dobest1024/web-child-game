@@ -44,8 +44,13 @@ test('接字雨干扰字：不等于要接的字、不重复、数量够', () =>
   }
 });
 
-test('飞花令选项：3 个不同的句子，正确下句在里面，字数相同', () => {
+test('飞花令选项：3 个不同的句子，正确下句在里面，字数相同，且不出现《江南》鱼戏莲叶歧义题', () => {
+  const jiangnanPairs = P.linePairs([P.poemById('jiangnan')]);
+  assert.equal(jiangnanPairs.length, 1);
+  assert.equal(jiangnanPairs[0].up, '江南可采莲，');
+  assert.equal(jiangnanPairs[0].down, '莲叶何田田。');
   for (const pair of P.linePairs(P.POEMS)) {
+    assert.ok(!pair.up.startsWith('鱼戏莲叶'), `不应以重复前缀句出题: ${pair.up}`);
     const o = bossOptions(pair, 3);
     const answer = P.bare(pair.down);
     assert.equal(o.length, 3, pair.up);

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#e8833a" />
+    <title>2048动物园 · 滑一滑，孵出神秘独角兽</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./game.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="/" target="_top" aria-label="返回游戏大厅"
+          ><span class="brand-icon">🐣</span
+          ><span
+            >2048动物园<small>相同的动物碰一碰，就会进化哦</small></span
+          ></a
+        >
+        <div>
+          <button id="sound" aria-label="关闭音效" aria-pressed="true">
+            ♫ 音效开</button
+          ><button id="help" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="heading">
+        <div>
+          <p class="eyebrow">动物园进化之旅</p>
+          <h1>滑一滑，孵出独角兽</h1>
+          <p id="story">
+            滑动棋盘，让两只相同的小动物碰面，它们就会合体进化。从一颗小小的蛋开始，一路养出威风的狮子和神秘的独角兽吧！
+          </p>
+        </div>
+        <button id="album" class="map-button">
+          📖 收藏册 <b id="albumCount">0 / 11</b>
+        </button>
+      </section>
+      <div class="workspace">
+        <section class="zoo" aria-label="2048动物园棋盘">
+          <div class="zoo-top">
+            <span>🥚→🐥→🦆→🐰→🐱→🐶→🐐→🐑→🦌→🦁→🦄</span
+            ><span>相同的动物碰一碰就会进化</span>
+          </div>
+          <div
+            class="board"
+            id="board"
+            tabindex="0"
+            role="group"
+            aria-label="动物棋盘，按方向键、WASD 或在屏幕上滑动来移动动物"
+          >
+            <div class="cells" id="cells" aria-hidden="true"></div>
+            <div class="tiles" id="tiles" aria-hidden="true"></div>
+          </div>
+          <div class="zoo-bottom">
+            <span>⬆⬇⬅➡ 方向键 / WASD / 手指滑动</span
+            ><span>棋盘满了也不要紧，可以撤销或重新开始</span>
+          </div>
+        </section>
+        <aside class="sidebar">
+          <section class="guide">
+            <div id="mascot"></div>
+            <div>
+              <small>饲养员 · 蛋蛋</small>
+              <p id="guide-text">
+                把相同的动物滑到一起，它们就会进化成新朋友！
+              </p>
+            </div>
+          </section>
+          <section class="card">
+            <p class="eyebrow">下一个进化目标</p>
+            <h2>孵出神秘独角兽</h2>
+            <div id="nextGoal"></div>
+            <div class="stats">
+              <span>分数 <b id="score">0</b></span
+              ><span>最高分 <b id="best">0</b></span>
+            </div>
+            <p class="note">
+              没有时间限制，输了也不会丢掉收藏。想换一局，随时点「新的一局」。
+            </p>
+          </section>
+        </aside>
+      </div>
+      <div class="controls">
+        <div>
+          <button id="undo">↶ 撤销 <b id="undoCount">3</b></button
+          ><button id="reset">↺ 新的一局</button>
+        </div>
+      </div>
+      <p id="status" role="status" aria-live="polite">
+        滑动棋盘，让相同的动物碰面吧！
+      </p>
+      <footer>慢慢想，不着急，见过的每一种动物都会住进收藏册。</footer>
+    </main>
+    <dialog id="album-dialog" class="album-dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">见过的动物都会住进来</p>
+          <h2>动物园收藏册</h2>
+        </div>
+        <button data-close aria-label="关闭收藏册">✕</button>
+      </div>
+      <div id="album-grid" class="album-grid"></div>
+      <p class="note">继续游玩，收集全部 11 位动物朋友吧！</p>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-heading">
+        <h2>小朋友，准备好了吗？</h2>
+        <button data-close aria-label="关闭玩法说明">✕</button>
+      </div>
+      <ol>
+        <li>
+          <b>滑一滑</b
+          >用手指在棋盘上滑动，或按方向键 / W、A、S、D，所有动物会一起朝那个方向滑过去。
+        </li>
+        <li>
+          <b>合并进化</b
+          >两只相同的动物碰到一起，就会合体成下一级的小动物，同时得到和它分值一样的分数。
+        </li>
+        <li>
+          <b>新朋友</b
+          >每次滑动后，会有一个新的动物蛋（偶尔直接是小鸡）出现在空格子里。
+        </li>
+        <li>
+          <b>小目标</b
+          >一路进化，孵出传说中的神秘独角兽吧！棋盘满了也没关系，点「新的一局」再出发。
+        </li>
+      </ol>
+      <p class="note">
+        键盘：方向键或 W、A、S、D 移动，U 或 Z 撤销。撤销会回到上一步棋盘，每局有
+        3 次机会。手机上直接在棋盘上滑动即可。
+      </p>
+      <button data-close class="primary">收到，开始滑动！</button>
+    </dialog>
+    <dialog id="win-dialog">
+      <div id="win-unicorn"></div>
+      <p class="eyebrow">进化链的最高点</p>
+      <h2>神秘独角兽诞生啦！</h2>
+      <p id="win-text"></p>
+      <div class="result-actions">
+        <button data-close>继续挑战</button
+        ><button id="win-new" class="primary">新的一局</button>
+      </div>
+    </dialog>
+    <dialog id="result-dialog">
+      <p class="eyebrow">本局结束</p>
+      <h2>收获满满！</h2>
+      <div id="result-album" class="album-grid small"></div>
+      <p id="result-text"></p>
+      <div class="result-actions">
+        <button data-close>看看棋盘</button
+        ><button id="again" class="primary">再来一局</button>
+      </div>
+    </dialog>
+  </body>
+</html>

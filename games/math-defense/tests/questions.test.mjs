@@ -128,6 +128,17 @@ test('关卡数据：10 关，第 5、10 关是 Boss，题型和怪物都对得�
   }
   assert.deepEqual(WORLDS.map((x) => x.grade), [1, 2, 3, 4, 5, 6]);
   assert.ok(WORLDS.every((x) => !x.locked && x.levels.length === 10));
+  const nonBossLevels = WORLDS.flatMap((x) => x.levels.filter((L) => !L.boss));
+  assert.equal(new Set(nonBossLevels.map((L) => L.kinds[0])).size, nonBossLevels.length);
+  for (const L of nonBossLevels) {
+    const k = L.kinds[0];
+    assert.ok(Q.GENERATORS[k] && MONSTERS[k] && KIND_NAMES[k], L.name);
+  }
+  for (const L of WORLDS.slice(1).flatMap((x) => x.levels.filter((l) => !l.boss))) {
+    assert.equal(KIND_NAMES[L.kinds[0]], L.name);
+  }
+  const looks = Object.values(MONSTERS).map((m) => `${m.shape}|${m.color}|${m.belly || ''}|${m.eyes || ''}|${m.horn || ''}`);
+  assert.equal(new Set(looks).size, looks.length);
 });
 
 test('存档清洗：坏数据回到默认值，图鉴只记正数', () => {

@@ -536,13 +536,24 @@ function createGame(canvas, level, world, opts) {
     }
   }
 
-  function bubble(str, x, y, active, alpha = 1, big = 30) {
+  function bubbleMetrics(str, active, big = 30, maxW = 360) {
+    let size = active ? big : 20;
+    if (str.length > 9) size = Math.max(16, Math.round((size * 9.5) / str.length));
+    ctx.font = `bold ${size}px ${FONT}`;
+    let textW = ctx.measureText(str).width || str.length * size * 0.65;
+    if (textW + 28 > maxW) {
+      size = Math.max(14, Math.floor((size * (maxW - 28)) / textW));
+      ctx.font = `bold ${size}px ${FONT}`;
+      textW = ctx.measureText(str).width || str.length * size * 0.65;
+    }
+    const w = Math.min(maxW, Math.max(70, textW + 28));
+    return { size, w, h: Math.max(42, size + 22) };
+  }
+
+  function bubble(str, x, y, active, alpha = 1, big = 30, maxW = 360) {
     ctx.save();
     ctx.globalAlpha = alpha;
-    const size = active ? big : 20;
-    ctx.font = `bold ${size}px ${FONT}`;
-    const w = Math.max(70, (ctx.measureText(str).width || str.length * size * 0.6) + 28);
-    const h = size + 22;
+    const { size, w, h } = bubbleMetrics(str, active, big, maxW);
     x = Math.min(G.W - w / 2 - 6, Math.max(w / 2 + 6, x)); // 刚走进来时气泡别出屏幕
     ctx.fillStyle = active ? '#ffffff' : '#ffffffcc';
     roundRect(x - w / 2, y - h, w, h, 16); ctx.fill();
@@ -577,13 +588,19 @@ function createGame(canvas, level, world, opts) {
     drawMonster(ctx, B.type, B.x + shake, GROUND + fall * 60, 1.75 * puff, { t: G.time, alpha: 1 - fall * 0.8, mood, walking: !B.stun && !B.dead });
     if (B.stun > 0) text('💫', B.x, GROUND - 175 + Math.sin(G.time * 8) * 6, 34, '#ffffff');
     if (B.dead) return;
-    // 一串三道题：当前那道亮着，后面的画淡；整串挂在 Boss 头顶，不挡住炮台
+    // 一串三道题：当前那道亮着，后面的画淡；整串挂在 Boss 头顶，按各自气泡宽度排开不重叠
     const n = B.chain.length;
-    const mid = Math.min(G.W - 250, Math.max(250, B.x));
+    const gapX = 12, leftBound = 186, rightBound = G.W - 14;
+    const availW = Math.max(300, rightBound - leftBound - gapX * (n - 1));
+    const maxItemW = Math.floor(availW / n);
+    const widths = B.chain.map((q, i) => (i < B.idx ? 44 : bubbleMetrics(q.prompt, i === B.idx, 30, maxItemW).w));
+    const totalW = widths.reduce((a, b) => a + b, 0) + gapX * (n - 1);
+    let cursorX = Math.min(rightBound - totalW, Math.max(leftBound, B.x - totalW / 2));
     B.chain.forEach((q, i) => {
-      const bx = mid + (i - (n - 1) / 2) * 165;
+      const bx = cursorX + widths[i] / 2;
+      cursorX += widths[i] + gapX;
       if (i < B.idx) text('✔', bx, GROUND - 222, 34, '#3fae6e', 'center', '#ffffff');
-      else bubble(q.prompt, bx, GROUND - 196, i === B.idx, i === B.idx ? 1 : 0.45, 32);
+      else bubble(q.prompt, bx, GROUND - 196, i === B.idx, i === B.idx ? 1 : 0.45, 30, maxItemW);
     });
     if (B.rageT > 0 || (B.x - bossReach < DANGER && G.state === 'play')) {
       text('!', B.x - 92, GROUND - 120 + Math.sin(G.time * 24) * 4, 56, '#ff4d4d', 'center', '#ffffff');
@@ -690,10 +707,9 @@ function createGame(canvas, level, world, opts) {
     ctx.fillStyle = '#ffffffcc';
     roundRect(14, 54, 236, 38, 19); ctx.fill();
     text(G.boss ? `🪙 ${G.coins}` : `第${G.wave}波 ⭐${G.progress}/${G.goal} 🪙${G.coins}`, 26, 73, 19, '#5b4210', 'left');
-    const bw = 300, cx = Math.max(G.W / 2, 262 + bw / 2);
     if (G.boss) {
       // Boss 关：题目在 Boss 头顶一串气泡里，顶上只放血条
-      const B = G.boss, w = 300;
+      const B = G.boss, w = 300, cx = Math.max(G.W / 2, 262 + w / 2);
       ctx.fillStyle = '#ffffffcc';
       roundRect(cx - w / 2, 14, w, 34, 17); ctx.fill();
       ctx.fillStyle = '#c9b2f0';
@@ -701,12 +717,19 @@ function createGame(canvas, level, world, opts) {
       text(`${B.type.name} ${B.hp}/${B.max} · 第 ${Math.min(B.idx + 1, B.chain.length)}/${B.chain.length} 题`, cx, 31, 17, '#3a2470');
       return;
     }
-    // 当前题放大挂在顶上
+    // 当前题放大挂在顶上，长应用题动态加宽并缩小字号
     const q = G.state === 'play' ? currentQ() : null;
     if (q) {
+      let fontSize = q.prompt.length > 12 ? 26 : q.prompt.length > 9 ? 32 : 40;
+      ctx.font = `bold ${fontSize}px ${FONT}`;
+      const textW = ctx.measureText(q.prompt).width || q.prompt.length * fontSize * 0.72;
+      const maxBw = Math.max(300, Math.min(540, G.W - 338));
+      const bw = Math.max(300, Math.min(maxBw, Math.ceil(textW + 44)));
+      if (textW > bw - 32) fontSize = Math.max(22, Math.floor((fontSize * (bw - 32)) / textW));
+      const cx = Math.min(G.W - 76 - bw / 2, Math.max(G.W / 2, 262 + bw / 2));
       ctx.fillStyle = '#ffffffee';
       roundRect(cx - bw / 2, 12, bw, 64, 22); ctx.fill();
-      text(q.prompt, cx, 45, 40, '#4a3214');
+      text(q.prompt, cx, 45, fontSize, '#4a3214');
     }
   }
 
@@ -860,17 +883,43 @@ function drawMonster(ctx, type, x, y, s, o = {}) {
     default:
       circle(0, -36, 30);
   }
+  if (type.belly && !dark && !['donut', 'stack', 'dragon', 'king'].includes(type.shape)) {
+    fill(type.belly);
+    ctx.beginPath(); ctx.ellipse(0, -21, 14, 9, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  if (type.horn && type.horn !== 'none' && !['dragon', 'king'].includes(type.shape)) {
+    const topY = type.shape === 'stack' ? -88 : type.shape === 'seesaw' ? -76 : -66;
+    fill(dark ? '#b9aeb3' : type.belly || '#ffd166');
+    if (type.horn === 'single') {
+      ctx.beginPath(); ctx.moveTo(-7, topY + 2); ctx.lineTo(0, topY - 14); ctx.lineTo(7, topY + 2); ctx.closePath(); ctx.fill(); ctx.stroke();
+    } else if (type.horn === 'twin') {
+      for (const side of [-1, 1]) {
+        ctx.beginPath(); ctx.moveTo(side * 10 - 5, topY + 4); ctx.lineTo(side * 14, topY - 11); ctx.lineTo(side * 10 + 5, topY + 4); ctx.closePath(); ctx.fill(); ctx.stroke();
+      }
+    } else if (type.horn === 'antenna') {
+      ctx.beginPath(); ctx.moveTo(0, topY + 2); ctx.lineTo(0, topY - 12); ctx.stroke();
+      circle(0, topY - 15, 5);
+    } else if (type.horn === 'crown') {
+      ctx.beginPath(); ctx.moveTo(-12, topY + 2); ctx.lineTo(-12, topY - 10); ctx.lineTo(-4, topY - 4); ctx.lineTo(0, topY - 12); ctx.lineTo(4, topY - 4); ctx.lineTo(12, topY - 10); ctx.lineTo(12, topY + 2); ctx.closePath(); ctx.fill(); ctx.stroke();
+    } else if (type.horn === 'leaf') {
+      fill(dark ? '#b9aeb3' : '#7fd6a4');
+      ctx.beginPath(); ctx.ellipse(-5, topY - 8, 7, 4, -0.5, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(5, topY - 8, 7, 4, 0.5, 0, Math.PI * 2); ctx.fill();
+    }
+  }
   // 脸
   if (!dark) {
     const mood = o.mood || 'happy';
+    const eyeR = type.eyes === 'big' ? 7.2 : 6;
+    const pupilR = type.eyes === 'star' ? 3.8 : 3;
     if (mood === 'hurt') {
       ctx.strokeStyle = '#3b2f4a'; ctx.lineWidth = 3;
       for (const sx of [-eyeGap, eyeGap]) {
         ctx.beginPath(); ctx.moveTo(sx - 4, eyeY - 4); ctx.lineTo(sx + 4, eyeY + 4); ctx.moveTo(sx + 4, eyeY - 4); ctx.lineTo(sx - 4, eyeY + 4); ctx.stroke();
       }
     } else {
-      fill('#ffffff'); circle(-eyeGap, eyeY, 6); circle(eyeGap, eyeY, 6);
-      fill('#2a2a3a'); circle(-eyeGap - 1, eyeY + 1, 3); circle(eyeGap - 1, eyeY + 1, 3);
+      fill('#ffffff'); circle(-eyeGap, eyeY, eyeR); circle(eyeGap, eyeY, eyeR);
+      fill('#2a2a3a'); circle(-eyeGap - 1, eyeY + 1, pupilR); circle(eyeGap - 1, eyeY + 1, pupilR);
       if (mood === 'angry') {
         ctx.strokeStyle = '#3b2f4a'; ctx.lineWidth = 3;
         ctx.beginPath(); ctx.moveTo(-eyeGap - 6, eyeY - 10); ctx.lineTo(-eyeGap + 5, eyeY - 6); ctx.moveTo(eyeGap + 6, eyeY - 10); ctx.lineTo(eyeGap - 5, eyeY - 6); ctx.stroke();

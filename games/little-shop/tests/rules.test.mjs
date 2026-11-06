@@ -127,15 +127,21 @@ test('存档清洗：坏数据回到默认值，没买的装修换不上', () =>
 });
 
 test('二至六年级经营题可解，干扰项不同且已学题型全部覆盖', () => {
+  const r = T.makeRng(42);
+  const ranks = new Set();
   for (const w of WORLDS.slice(1)) for (const L of w.levels) {
     for (const topic of L.topics || [L.specs.calc.topic]) for (let i = 0; i < 50; i++) {
-      const t = T.makeTask('calc', { topic, options: 4 });
+      const t = T.makeTask('calc', { topic, options: 4 }, r);
       assert.ok(T.checkAnswer(t, T.solveTask(t)), `${w.grade} ${topic}`);
       assert.equal(t.choices.length, 4);
       assert.equal(new Set(t.choices).size, 4);
       assert.ok(t.choices.includes(T.solveTask(t)));
+      const sorted = t.choices.map(Number).sort((a, b) => a - b);
+      ranks.add(sorted.indexOf(Number(t.target)));
+      if (topic === 'grams') assert.ok(sorted.every((n) => n % 100 === 0));
       for (const c of t.choices) if (c !== T.solveTask(t)) assert.ok(!T.checkAnswer(t, c));
       assert.ok(t.ask && t.unit && T.hintText(t, '999'));
     }
   }
+  assert.ok(ranks.size >= 3, '正确答案在数值排序中的位置不应固定为第二小');
 });
